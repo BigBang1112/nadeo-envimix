@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<quad pos="0 50" z-index="0" size="120 40" bgcolor="FFFA" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center"/>
+<frame pos="0 10">
+<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8"/>
+</frame>
+<frame pos="-27.5 -10">
+<quad pos="0 0" z-index="0" size="45 10" bgcolor="000" halign="center" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+<label pos="0 0" z-index="1" size="45 10" text="Statistics" halign="center" valign="center2" style="TextTitle3" textsize="2"/>
+</frame>
+<frame pos="-27.5 -25">
+<quad pos="0 0" z-index="0" size="45 10" bgcolor="000" halign="center" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+<label pos="0 0" z-index="1" size="45 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2"/>
+</frame>
+<frame pos="-27.5 -40">
+<quad pos="0 0" z-index="0" size="45 10" bgcolor="000" halign="center" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+<label pos="0 0" z-index="1" size="45 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2"/>
+</frame>
+<frame pos="0 -5">
+<quad z-index="0" size="50 40" bgcolor="FFFA" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+<label pos="25 -5" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1"/>
+<quad pos="0 -10" z-index="1" size="50 25" bgcolor="FFFF"/>
+</frame>
+<script>
+<!--
+	while(True) {
+		yield;
+	}
+-->
+</script>
+</manialink>
