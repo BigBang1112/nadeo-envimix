@@ -1,31 +1,107 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
-<quad pos="0 50" z-index="0" size="120 40" bgcolor="FFFA" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center"/>
-<frame pos="0 10">
-<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
-<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8"/>
+<frame>
+<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
+<quad pos="0 -55" z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center"/>
+<label pos="0 -55" z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextTitle3"/>
+<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>
+<frame id="buttons">
+<frame pos="0 5" id="buttonPlay">
+<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8" id="text"/>
 </frame>
-<frame pos="-27.5 -10">
-<quad pos="0 0" z-index="0" size="45 10" bgcolor="000" halign="center" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
-<label pos="0 0" z-index="1" size="45 10" text="Statistics" halign="center" valign="center2" style="TextTitle3" textsize="2"/>
+<frame pos="-26 -12" id="buttonStatistics">
+<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+<label pos="0 0" z-index="1" size="48 10" text="Statistics" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 </frame>
-<frame pos="-27.5 -25">
-<quad pos="0 0" z-index="0" size="45 10" bgcolor="000" halign="center" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
-<label pos="0 0" z-index="1" size="45 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2"/>
+<frame pos="-26 -24" id="buttonProfile">
+<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+<label pos="0 0" z-index="1" size="48 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 </frame>
-<frame pos="-27.5 -40">
-<quad pos="0 0" z-index="0" size="45 10" bgcolor="000" halign="center" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
-<label pos="0 0" z-index="1" size="45 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2"/>
+<frame pos="-26 -40" id="buttonExit">
+<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+<label pos="0 0" z-index="1" size="48 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 </frame>
-<frame pos="0 -5">
-<quad z-index="0" size="50 40" bgcolor="FFFA" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
-<label pos="25 -5" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1"/>
-<quad pos="0 -10" z-index="1" size="50 25" bgcolor="FFFF"/>
+<frame pos="0 -7" id="buttonTrack">
+<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".9" pos="0 0" id="button"/>
+<label pos="25 -5" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
+<quad pos="0 -10" z-index="1" size="50 25" bgcolor="222F"/>
+</frame>
+</frame>
 </frame>
 <script>
 <!--
-	while(True) {
-		yield;
+	#Include "TextLib" as TextLib
+	#Include "AnimLib" as AnimLib
+
+	Void OnInit() {
+	
+	}
+	
+	Void OnStart() {
+	
+	}
+
+	Void OnLoop() {
+		
+	
+		foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
+			declare B <=> (Button as CMlFrame);
+			
+			declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+			declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+			
+			if(B.DataAttributeGet("hover") == "true") {
+				(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+				(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+			}
+			else {
+				(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+				(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
+			}
+		}
+	}
+
+	Void OnEvent(CMlEvent _Event) {
+		declare E <=> _Event;
+		
+		switch(E.Type) {
+			case CMlEvent::Type::MouseOver: {
+				declare Frame <=> E.Control.Parent;
+				
+				if(E.ControlId == "button") {
+					Frame.DataAttributeSet("hover","true");
+					Frame.DataAttributeSet("hover_time",Now^"");
+					Frame.DataAttributeSet("hover_last_value","true");
+				}
+			}
+			case CMlEvent::Type::MouseOut: {
+				declare Frame <=> E.Control.Parent;
+				
+				if(E.ControlId == "button") {
+					Frame.DataAttributeSet("hover","false");
+					Frame.DataAttributeSet("hover_time",Now^"");
+				}
+			}
+			case CMlEvent::Type::MouseClick: {
+				
+			}
+		}
+	}
+	
+	main() {
+		OnInit();
+		OnStart();
+	
+		while(True) {
+			OnLoop();
+		
+			foreach(Event,PendingEvents) {
+				OnEvent(Event);
+			}
+		
+			yield;
+		}
 	}
 -->
 </script>
