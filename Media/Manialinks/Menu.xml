@@ -1,108 +1,122 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
-<frame>
-<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
-<quad pos="0 -55" z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center"/>
-<label pos="0 -55" z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextTitle3"/>
-<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>
-<frame id="buttons">
-<frame pos="0 5" id="buttonPlay">
-<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8" id="text"/>
-</frame>
-<frame pos="-26 -12" id="buttonStatistics">
-<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-<label pos="0 0" z-index="1" size="48 10" text="Statistics" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
-</frame>
-<frame pos="-26 -24" id="buttonProfile">
-<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-<label pos="0 0" z-index="1" size="48 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
-</frame>
-<frame pos="-26 -40" id="buttonExit">
-<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-<label pos="0 0" z-index="1" size="48 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
-</frame>
-<frame pos="0 -7" id="buttonTrack">
-<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".9" pos="0 0" id="button"/>
-<label pos="25 -5" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
-<quad pos="0 -10" z-index="1" size="50 25" bgcolor="222F"/>
-</frame>
-</frame>
-</frame>
-<script>
-<!--
-	#Include "TextLib" as TextLib
-	#Include "AnimLib" as AnimLib
-
-	Void OnInit() {
-	
-	}
-	
-	Void OnStart() {
-	
-	}
-
-	Void OnLoop() {
+	<frame>
+		<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
+		<frame id="base">
+			<frame pos="0 -52" id="footer">
+				<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3"/>
+				<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextTitle3" pos="0 -3"/>
+			</frame>
+			<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>
+			<frame id="buttons">
+				<frame pos="0 5" id="buttonPlay">
+					<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+					<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8" id="text"/>
+				</frame>
+				<frame pos="-26 -12" id="buttonStatistics">
+					<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+					<label pos="0 0" z-index="1" size="48 10" text="Statistics" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+				</frame>
+				<frame pos="-26 -24" id="buttonProfile">
+					<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+					<label pos="0 0" z-index="1" size="48 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+				</frame>
+				<frame pos="-26 -40" id="buttonExit">
+					<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+					<label pos="0 0" z-index="1" size="48 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+				</frame>
+				<frame pos="25 -26" id="buttonTrack">
+					<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".9" id="button" halign="center" valign="center"/>
+					<label pos="0 14" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
+					<quad pos="0 10" z-index="1" size="50 25" bgcolor="222F" halign="center"/>
+				</frame>
+			</frame>
+		</frame>
+	</frame>
+	<script>
+	<!--
+		#Include "TextLib" as TextLib
+		#Include "AnimLib" as AnimLib
 		
+		declare Integer StartTime;
 	
-		foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
-			declare B <=> (Button as CMlFrame);
-			
-			declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
-			declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
-			
-			if(B.DataAttributeGet("hover") == "true") {
-				(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
-				(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
-			}
-			else {
-				(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
-				(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
-			}
+		Void OnInit() {
+			StartTime = Now;
 		}
-	}
-
-	Void OnEvent(CMlEvent _Event) {
-		declare E <=> _Event;
 		
-		switch(E.Type) {
-			case CMlEvent::Type::MouseOver: {
-				declare Frame <=> E.Control.Parent;
+		Void OnStart() {
+		
+		}
+	
+		Void OnLoop() {
+			Page.GetFirstChild("logo").RelativeScale = AnimLib::EaseOutCubic(Now - StartTime, 0.0, 1.0, 1000);
+			Page.GetFirstChild("base").RelativeScale = AnimLib::EaseOutCubic(Now - StartTime - 100, 0.0, 1.0, 1000);
+			Page.GetFirstChild("footer").RelativeScale = AnimLib::EaseOutCubic(Now - StartTime - 200, 0.0, 1.0, 1000);
+			
+			Page.GetFirstChild("buttonPlay").RelativeScale = AnimLib::EaseOutCubic(Now - StartTime - 300, 0.0, 1.0, 500);
+			Page.GetFirstChild("buttonStatistics").RelativeScale = AnimLib::EaseOutCubic(Now - StartTime - 400, 0.0, 1.0, 500);
+			Page.GetFirstChild("buttonProfile").RelativeScale = AnimLib::EaseOutCubic(Now - StartTime - 500, 0.0, 1.0, 500);
+			Page.GetFirstChild("buttonExit").RelativeScale = AnimLib::EaseOutCubic(Now - StartTime - 600, 0.0, 1.0, 500);
+			Page.GetFirstChild("buttonTrack").RelativeScale = AnimLib::EaseOutCubic(Now - StartTime - 400, 0.0, 1.0, 500);
+		
+			foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
+				declare B <=> (Button as CMlFrame);
 				
-				if(E.ControlId == "button") {
-					Frame.DataAttributeSet("hover","true");
-					Frame.DataAttributeSet("hover_time",Now^"");
-					Frame.DataAttributeSet("hover_last_value","true");
+				declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+				
+				if(B.DataAttributeGet("hover") == "true") {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+					(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+				}
+				else {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+					(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
 				}
 			}
-			case CMlEvent::Type::MouseOut: {
-				declare Frame <=> E.Control.Parent;
-				
-				if(E.ControlId == "button") {
-					Frame.DataAttributeSet("hover","false");
-					Frame.DataAttributeSet("hover_time",Now^"");
+		}
+	
+		Void OnEvent(CMlEvent _Event) {
+			declare E <=> _Event;
+			
+			switch(E.Type) {
+				case CMlEvent::Type::MouseOver: {
+					declare Frame <=> E.Control.Parent;
+					
+					if(E.ControlId == "button") {
+						Frame.DataAttributeSet("hover","true");
+						Frame.DataAttributeSet("hover_time",Now^"");
+						Frame.DataAttributeSet("hover_last_value","true");
+					}
+				}
+				case CMlEvent::Type::MouseOut: {
+					declare Frame <=> E.Control.Parent;
+					
+					if(E.ControlId == "button") {
+						Frame.DataAttributeSet("hover","false");
+						Frame.DataAttributeSet("hover_time",Now^"");
+					}
+				}
+				case CMlEvent::Type::MouseClick: {
+					
 				}
 			}
-			case CMlEvent::Type::MouseClick: {
-				
+		}
+		
+		main() {
+			OnInit();
+			OnStart();
+		
+			while(True) {
+				OnLoop();
+			
+				foreach(Event,PendingEvents) {
+					OnEvent(Event);
+				}
+			
+				yield;
 			}
 		}
-	}
-	
-	main() {
-		OnInit();
-		OnStart();
-	
-		while(True) {
-			OnLoop();
-		
-			foreach(Event,PendingEvents) {
-				OnEvent(Event);
-			}
-		
-			yield;
-		}
-	}
--->
-</script>
+	-->
+	</script>
 </manialink>
