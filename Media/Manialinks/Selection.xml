@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<quad pos="85 70" z-index="0" size="55 140" bgcolor="000" opacity=".9"/>
+<quad pos="-140 70" z-index="0" size="223 140" bgcolor="000" opacity=".9"/>
+</manialink>
