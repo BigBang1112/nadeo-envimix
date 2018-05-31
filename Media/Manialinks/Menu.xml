@@ -1,36 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
-		<frame id="menu">
-			<quad pos="0 5" z-index="0" size="120 120" halign="center" valign="center" scriptevents="1" id="block" hidden="1"/>
-			<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
-			<frame pos="0 -52" id="footer" scale="0">
-				<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3"/>
-				<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextTitle3" pos="0 -3"/>
+	<frame id="menu">
+		<quad pos="0 5" z-index="0" size="120 120" halign="center" valign="center" scriptevents="1" id="block" hidden="1"/>
+		<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
+		<frame pos="0 -52" id="footer" scale="0">
+			<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3"/>
+			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextTitle3" pos="0 -3"/>
+		</frame>
+		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>
+		<frame id="buttons">
+			<frame pos="0 5" id="buttonPlay">
+				<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8" id="text"/>
 			</frame>
-			<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>
-			<frame id="buttons">
-				<frame pos="0 5" id="buttonPlay">
-					<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-					<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8" id="text"/>
-				</frame>
-				<frame pos="-26 -12" id="buttonStatistics">
-					<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-					<label pos="0 0" z-index="1" size="48 10" text="Statistics" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
-				</frame>
-				<frame pos="-26 -24" id="buttonProfile">
-					<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-					<label pos="0 0" z-index="1" size="48 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
-				</frame>
-				<frame pos="-26 -40" id="buttonExit">
-					<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-					<label pos="0 0" z-index="1" size="48 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
-				</frame>
-				<frame pos="25 -26" id="buttonTrack">
-					<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".9" id="button" halign="center" valign="center"/>
-					<label pos="0 14" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
-					<quad pos="0 9" z-index="1" size="50 25" bgcolor="222F" halign="center"/>
-				</frame>
+			<frame pos="-26 -12" id="buttonStatistics">
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="48 10" text="Statistics" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
+			<frame pos="-26 -24" id="buttonProfile">
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="48 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+			</frame>
+			<frame pos="-26 -40" id="buttonExit">
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="48 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+			</frame>
+			<frame pos="25 -26" id="buttonTrack">
+				<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".9" id="button" halign="center" valign="center"/>
+				<label pos="0 14" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
+				<quad pos="0 9" z-index="1" size="50 25" bgcolor="222F" halign="center"/>
+			</frame>
+		</frame>
+	</frame>
+	<frame id="selection" hidden="1" z-index="1">
+		<quad pos="-140 70" z-index="0" size="3 140" bgcolor="444A"/>
+		<quad pos="88 70" z-index="0" size="49 140" bgcolor="000A"/>
+		<quad pos="-137 70" z-index="0" size="217 140" bgcolor="000A"/>
+		<quad pos="80 70" z-index="0" size="3 140" bgcolor="444A"/>
+		<quad pos="83 60" z-index="0" size="2 30" bgcolor="000A"/>
+		<quad pos="85 70" z-index="0" size="3 140" bgcolor="444A"/>
+		<quad pos="137 70" z-index="0" size="3 140" bgcolor="444A"/>
+		
+		<quad pos="65 65" z-index="1" size="10 130" bgcolor="111A"/>
+		<quad pos="70 60" z-index="2" size="8 20" bgcolor="444A" halign="center"/>
+		
+		<frame pos="112.5 -60" z-index="1">
+			<quad pos="0 0" size="49 10" bgcolor="800" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+			<label pos="0 0" z-index="1" size="49 10" text="Back" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+		</frame>
+		
 	</frame>
 	<script>
 	<!--
@@ -58,7 +76,7 @@
 			Page.GetFirstChild("buttonTrack").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 400, 0.0, 1.0, 500);
 		}
 		
-		Void HideMenu(Integer _StartTime) {
+		Integer HideMenu(Integer _StartTime) {
 			declare Time = Now - _StartTime;
 			
 			(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
@@ -73,6 +91,8 @@
 				Page.GetFirstChild("menu").Hide();
 			else
 				Page.GetFirstChild("menu").Show();
+				
+			return Time;
 		}
 	
 		Void OnInit() {
@@ -134,6 +154,14 @@
 				}
 				case CMlEvent::Type::MouseClick: {
 					if(E.Control.Parent.ControlId == "buttonPlay") {
+						Audio.PlaySoundEvent(SoundClick, 1.0);
+						Audio.PlaySoundEvent(SoundElectric, 1.0);
+						Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
+						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+						
+						Page.GetFirstChild("selection").Show();
+					}
+					if(E.Control.Parent.ControlId == "buttonProfile") {
 						Audio.PlaySoundEvent(SoundClick, 1.0);
 						Audio.PlaySoundEvent(SoundElectric, 1.0);
 						Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
