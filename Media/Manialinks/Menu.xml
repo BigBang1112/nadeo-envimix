@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
-	<frame id="menu">
+	<frame pos="160 -88" id="tooltip" hidden="1">
+		<quad pos="0 0" z-index="0" size="280 6" bgcolor="222A" valign="bottom" halign="right"/>
+		<label pos="-270 3" z-index="1" size="260 6" text="Play Nadeo maps with any car of your wish. Combinations are endless." valign="center2" style="TextTitle3" textsize="1"/>
+	</frame>
+	<frame id="menu" hidden="1">
+		<quad pos="55 20" z-index="1" size="8 8" bgcolor="FFFA" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Help" scriptevents="1" id="help"/>
 		<quad pos="0 5" z-index="0" size="120 120" halign="center" valign="center" scriptevents="1" id="block" hidden="1"/>
 		<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
-		<frame pos="0 -52" id="footer" scale="0">
+		<frame pos="0 -52" id="footer" scale="1">
 			<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3"/>
-			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextTitle3" pos="0 -3"/>
+			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextButtonBig" pos="0 -3" scriptevents="1"/>
 		</frame>
 		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>
 		<frame id="buttons">
@@ -22,29 +27,124 @@
 				<label pos="0 0" z-index="1" size="48 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 			<frame pos="-26 -40" id="buttonExit">
-				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button" action="exit"/>
 				<label pos="0 0" z-index="1" size="48 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 			<frame pos="25 -26" id="buttonTrack">
-				<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".9" id="button" halign="center" valign="center"/>
+				<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".9" id="button" halign="center" valign="center" pos="0 0"/>
 				<label pos="0 14" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
-				<quad pos="0 9" z-index="1" size="50 25" bgcolor="222F" halign="center"/>
+				<frame z-index="1" scale="1.05" id="track">
+					<quad pos="0 9" size="50 25" halign="center" image="file://Media/Thumbnails/Loading.jpg" id="thumbnail"/>
+					<label pos="-22 -14" z-index="1" size="45 5" text="Lagoon D15" valign="bottom" style="TextTitle3" textsize="2" id="name"/>
+				</frame>
 			</frame>
 		</frame>
 	</frame>
-	<frame id="selection" hidden="1" z-index="1">
-		<quad pos="-140 70" z-index="0" size="3 140" bgcolor="444A"/>
-		<quad pos="88 70" z-index="0" size="49 140" bgcolor="000A"/>
-		<quad pos="-137 70" z-index="0" size="217 140" bgcolor="000A"/>
-		<quad pos="80 70" z-index="0" size="3 140" bgcolor="444A"/>
+	<frame id="selection" z-index="1">
+		<quad pos="-160 90" z-index="-1" size="320 180" scriptevents="1"/>
+		<quad pos="-140 70" z-index="0" size="3 140" bgcolor="444C"/>
+		<quad pos="88 70" z-index="0" size="49 140" bgcolor="000C"/>
+		<quad pos="-137 70" z-index="0" size="217 140" bgcolor="000C"/>
+		<quad pos="80 70" z-index="0" size="3 140" bgcolor="444C"/>
 		<quad pos="83 60" z-index="0" size="2 30" bgcolor="000A"/>
-		<quad pos="85 70" z-index="0" size="3 140" bgcolor="444A"/>
-		<quad pos="137 70" z-index="0" size="3 140" bgcolor="444A"/>
+		<quad pos="85 70" z-index="0" size="3 140" bgcolor="444C"/>
+		<quad pos="137 70" z-index="0" size="3 140" bgcolor="444C"/>
 		
-		<quad pos="65 65" z-index="1" size="10 130" bgcolor="111A"/>
-		<quad pos="70 60" z-index="2" size="8 20" bgcolor="444A" halign="center"/>
+		<frame pos="-135 50" id="maps" z-index="1">
+			<frame>
+				<frame>
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="40">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="80">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="120">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="160">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+			</frame>
+			<frame pos="0 -20">
+				<frame>
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="40">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="80">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="120">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="160">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+			</frame>
+			<frame pos="0 -40">
+				<frame>
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="40">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="80">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="120">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="160">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+			</frame>
+			<quad pos="0 -62.5" z-index="0" size="200 5" bgcolor="222C" valign="center"/>
+			<frame pos="0 -65">
+				<frame>
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="40">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="80">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="120">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="160">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+			</frame>
+			<frame pos="0 -85">
+				<frame>
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="40">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="80">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="120">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+				<frame pos="160">
+					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+				</frame>
+			</frame>
+		</frame>
 		
-		<frame pos="112.5 -60" z-index="1">
+		<frame pos="72.5 50" z-index="1" id="slider">
+			<quad pos="0 5" z-index="0" size="10 120" bgcolor="000C" halign="center"/>
+			<quad z-index="1" size="8 20" bgcolor="AAAC" halign="center" id="button" scriptevents="1"/>
+		</frame>
+		
+		<frame pos="112.5 -60" z-index="1" id="buttonBack">
 			<quad pos="0 0" size="49 10" bgcolor="800" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
 			<label pos="0 0" z-index="1" size="49 10" text="Back" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 		</frame>
@@ -60,11 +160,15 @@
 		declare CAudioSource SoundClick;
 		declare CAudioSource SoundElectric;
 		
+		declare CHttpRequest TrackOfTheDayRequest;
+		
 		Boolean IsMenuShown() {
 			return (Page.GetFirstChild("footer").RelativeScale == 1.0);
 		}
 		
 		Void ShowMenu(Integer _StartTime) {
+			Page.GetFirstChild("menu").Show();
+		
 			Page.GetFirstChild("logo").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime, 0.0, 1.0, 1000);
 			Page.GetFirstChild("menu").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 100, 0.0, 1.0, 1000);
 			Page.GetFirstChild("footer").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 200, 0.0, 1.0, 1000);
@@ -74,12 +178,12 @@
 			Page.GetFirstChild("buttonProfile").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 500, 0.0, 1.0, 500);
 			Page.GetFirstChild("buttonExit").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 600, 0.0, 1.0, 500);
 			Page.GetFirstChild("buttonTrack").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 400, 0.0, 1.0, 500);
+			
+			((Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("help") as CMlQuad).Opacity = AnimLib::EaseOutCubic(Now - _StartTime - 1200, 0.0, 1.0, 500);
 		}
 		
-		Integer HideMenu(Integer _StartTime) {
+		Integer HideMenu(Integer _StartTime, Text _Action) {
 			declare Time = Now - _StartTime;
-			
-			(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
 			
 			if(Time > 0 && Time < 100)
 				Page.GetFirstChild("menu").Hide();
@@ -92,6 +196,8 @@
 			else
 				Page.GetFirstChild("menu").Show();
 				
+			if(Time > 400 && _Action != "") TriggerPageAction(_Action);
+				
 			return Time;
 		}
 	
@@ -99,18 +205,34 @@
 			SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
 			SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 			SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+			
+			TrackOfTheDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/trackoftheday.php");
 		}
 		
 		Void OnStart() {
 			StartTime = Now;
+			Page.GetFirstChild("menu").DataAttributeSet("time",StartTime^"");
 		}
 	
 		Void OnLoop() {
+			if(TrackOfTheDayRequest != Null) {
+				if(TrackOfTheDayRequest.IsCompleted) {
+					if(TrackOfTheDayRequest.StatusCode == 200) {
+						(((Page.GetFirstChild("buttonTrack") as CMlFrame).GetFirstChild("track") as CMlFrame).GetFirstChild("thumbnail") as CMlQuad).ChangeImageUrl("file://Media/Thumbnails/NoThumbnail.jpg");
+					}
+					else {
+						(((Page.GetFirstChild("buttonTrack") as CMlFrame).GetFirstChild("track") as CMlFrame).GetFirstChild("thumbnail") as CMlQuad).ChangeImageUrl("file://Media/Thumbnails/Unknown.jpg");
+					}
+						
+					TrackOfTheDayRequest = Null;
+				}
+			}
+		
 			if(Page.GetFirstChild("menu").DataAttributeGet("state") == "hidden") {
-				HideMenu(TextLib::ToInteger(Page.GetFirstChild("menu").DataAttributeGet("time")));
+				HideMenu(TextLib::ToInteger(Page.GetFirstChild("menu").DataAttributeGet("time")),Page.GetFirstChild("menu").DataAttributeGet("action"));
 			}
 			else {
-				ShowMenu(StartTime);
+				ShowMenu(TextLib::ToInteger(Page.GetFirstChild("menu").DataAttributeGet("time")));
 			}
 		
 			foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
@@ -127,6 +249,27 @@
 					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
 					(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
 				}
+				
+				if(B.ControlId == "buttonTrack") {
+					declare ValueTrack = AnimLib::EaseInOutSine(Now - Time, 0.0, 1.0, 500);
+				
+					if(B.DataAttributeGet("hover") == "true") {
+						(B.GetFirstChild("track") as CMlFrame).RelativeScale = ValueTrack * 0.05 + 1;
+					}
+					else {
+						(B.GetFirstChild("track") as CMlFrame).RelativeScale = 1.05 - ValueTrack * 0.05;
+					}
+				}
+			}
+			
+			declare Button = ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("slider") as CMlFrame);
+			declare V = AnimLib::EaseOutCubic(Now - TextLib::ToInteger(Button.DataAttributeGet("hover_time")), 0.0, 1.0, 100) * 0.5 + 0.25;
+			
+			if(Button.DataAttributeGet("hover") == "true") {
+				(Button.GetFirstChild("button") as CMlQuad).BgColor = <V,V,V>;
+			}
+			else {
+				(Button.GetFirstChild("button") as CMlQuad).BgColor = <1.0-V,1.0-V,1.0-V>;
 			}
 		}
 	
@@ -141,7 +284,7 @@
 						Audio.PlaySoundEvent(SoundHover, 1.0);
 						Frame.DataAttributeSet("hover","true");
 						Frame.DataAttributeSet("hover_time",Now^"");
-						Frame.DataAttributeSet("hover_last_value","true");
+						Frame.DataAttributeSet("hover_in_value",(E.Control as CMlQuad).BgColor[0]^"");
 					}
 				}
 				case CMlEvent::Type::MouseOut: {
@@ -150,6 +293,7 @@
 					if(E.ControlId == "button") {
 						Frame.DataAttributeSet("hover","false");
 						Frame.DataAttributeSet("hover_time",Now^"");
+						Frame.DataAttributeSet("hover_out_value",(E.Control as CMlQuad).BgColor[0]^"");
 					}
 				}
 				case CMlEvent::Type::MouseClick: {
@@ -158,7 +302,9 @@
 						Audio.PlaySoundEvent(SoundElectric, 1.0);
 						Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
 						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
-						
+						Page.GetFirstChild("menu").DataAttributeSet("action","");
+			
+						(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
 						Page.GetFirstChild("selection").Show();
 					}
 					if(E.Control.Parent.ControlId == "buttonProfile") {
@@ -166,6 +312,24 @@
 						Audio.PlaySoundEvent(SoundElectric, 1.0);
 						Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
 						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+						Page.GetFirstChild("menu").DataAttributeSet("action","menu_profile");
+					}
+					if(E.Control.Parent.ControlId == "buttonExit") {
+						Audio.PlaySoundEvent(SoundClick, 1.0);
+						Audio.PlaySoundEvent(SoundElectric, 1.0);
+						Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
+						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+						Page.GetFirstChild("menu").DataAttributeSet("action","quit");
+					}
+					
+					if(E.Control.Parent.ControlId == "buttonBack") {
+						Audio.PlaySoundEvent(SoundClick, 1.0);
+						Page.GetFirstChild("menu").DataAttributeSet("state","shown");
+						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+						Page.GetFirstChild("menu").DataAttributeSet("action","");
+						
+						(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Hide();
+						Page.GetFirstChild("selection").Hide();
 					}
 				}
 			}

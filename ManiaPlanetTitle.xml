@@ -2,7 +2,7 @@
 <maniaplanet_title version="4">
 	<id>Nadeo_Envimix@bigbang1112</id>
 	<name>Nadeo Envimix</name>
-	<desc></desc>
+	<desc>Play Nadeo maps with any car of your wish. Combinations are endless.</desc>
 	<url>nadeoenvimix</url>
 	<download_url></download_url>
 	<title_version></title_version>
@@ -63,7 +63,10 @@
 		<mode name=""/>
 		<playlist name=""/>
 	</splitscreen>
-	<files/>
+	<files>
+		<file name="Media\Manialinks\Menu.xml" public="false" internal="false"/>
+		<file name="Media\Menu.xml" public="false" internal="false"/>
+	</files>
 	<folders>
 		<folder name="Maps\Canyon" public="false" internal="true"/>
 		<folder name="Maps\Stadium" public="false" internal="true"/>
