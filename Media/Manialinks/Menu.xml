@@ -40,108 +40,168 @@
 			</frame>
 		</frame>
 	</frame>
-	<frame id="selection" z-index="1">
-		<quad pos="-160 90" z-index="-1" size="320 180" scriptevents="1"/>
-		<quad pos="-140 70" z-index="0" size="3 140" bgcolor="444C"/>
-		<quad pos="88 70" z-index="0" size="49 140" bgcolor="000C"/>
-		<quad pos="-137 70" z-index="0" size="217 140" bgcolor="000C"/>
-		<quad pos="80 70" z-index="0" size="3 140" bgcolor="444C"/>
+	<frame id="selection" z-index="1" hidden="1">
+		<quad pos="-160 89.8" z-index="-1" size="320 180" scriptevents="1"/>
+		<quad pos="-140 70" z-index="0" size="3 140" bgcolor="444A"/>
+		<quad pos="88 70" z-index="0" size="49 12.5" bgcolor="444A"/>
+		<quad pos="88 57.5" z-index="0" size="49 127.5" bgcolor="000A"/>
+		<quad pos="-137 57.5" z-index="0" size="217 127.5" bgcolor="000A"/>
+		<quad pos="-137 70" z-index="0" size="217 12.5" bgcolor="444A"/>
+		<quad pos="80 70" z-index="0" size="3 140" bgcolor="444A"/>
 		<quad pos="83 60" z-index="0" size="2 30" bgcolor="000A"/>
-		<quad pos="85 70" z-index="0" size="3 140" bgcolor="444C"/>
-		<quad pos="137 70" z-index="0" size="3 140" bgcolor="444C"/>
+		<quad pos="85 70" z-index="0" size="3 140" bgcolor="444A"/>
+		<quad pos="137 70" z-index="0" size="3 140" bgcolor="444A"/>
+		
+		<frame pos="-130 63.5" z-index="1">
+			<label pos="0 0.5" z-index="0" size="40 10" text="Canyon" style="TextTitle3" textsize="4" valign="center" scale="1.25"/>
+			
+			<frame pos="145 0" id="buttonMostInteresting">
+				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="40 10" text="Most Interesting" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
+			</frame>
+			<frame pos="190 0" id="buttonMostDifficult">
+				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="40 10" text="Most Difficult" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
+			</frame>
+		</frame>
+		
+		<frame pos="112.5 66" z-index="1">
+			<label pos="0 0" z-index="0" size="45 5" text="Map not selected" style="TextTitle3" halign="center"/>
+		</frame>
 		
 		<frame pos="-135 50" id="maps" z-index="1">
 			<frame>
-				<frame>
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="40">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="80">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="120">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="160">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
 			</frame>
+			<frame pos="40">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="80">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="120">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="160">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+				
 			<frame pos="0 -20">
-				<frame>
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="40">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="80">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="120">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="160">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
 			</frame>
+			<frame pos="40 -20">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="80 -20">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="120 -20">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="160 -20">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+				
 			<frame pos="0 -40">
-				<frame>
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="40">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="80">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="120">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="160">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
 			</frame>
+			<frame pos="40 -40">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="80 -40">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="120 -40">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="160 -40">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+				
 			<quad pos="0 -62.5" z-index="0" size="200 5" bgcolor="222C" valign="center"/>
+			
 			<frame pos="0 -65">
-				<frame>
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="40">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="80">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="120">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="160">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
 			</frame>
+			<frame pos="40 -65">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="80 -65">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="120 -65">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="160 -65">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			
 			<frame pos="0 -85">
-				<frame>
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="40">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="80">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="120">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
-				<frame pos="160">
-					<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
-				</frame>
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="40 -85">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="80 -85">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="120 -85">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="160 -85">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			
+			<frame pos="0 -105">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="40 -105">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="80 -105">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="120 -105">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
+			</frame>
+			<frame pos="160 -105">
+				<quad pos="-0.5 0.5" z-index="1" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1"/>
+				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9"/>
 			</frame>
 		</frame>
 		
 		<frame pos="72.5 50" z-index="1" id="slider">
-			<quad pos="0 5" z-index="0" size="10 120" bgcolor="000C" halign="center"/>
-			<quad z-index="1" size="8 20" bgcolor="AAAC" halign="center" id="button" scriptevents="1"/>
+			<quad pos="0 5" z-index="0" size="10 120" bgcolor="000A" halign="center"/>
+			<quad z-index="1" size="8 30" bgcolor="AAAA" halign="center" id="button" scriptevents="1" pos="0 0"/>
 		</frame>
 		
 		<frame pos="112.5 -60" z-index="1" id="buttonBack">
@@ -153,6 +213,7 @@
 	<script>
 	<!--
 		#Include "TextLib" as TextLib
+		#Include "MathLib" as MathLib
 		#Include "AnimLib" as AnimLib
 		
 		declare Integer StartTime;
@@ -200,6 +261,10 @@
 				
 			return Time;
 		}
+		
+		Real GetSliderValue() {
+			return (Page.GetFirstChild("slider") as CMlFrame).GetFirstChild("button").RelativePosition_V3.Y / -80.0;
+		}
 	
 		Void OnInit() {
 			SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
@@ -207,6 +272,10 @@
 			SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
 			
 			TrackOfTheDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/trackoftheday.php");
+			
+			(Page.GetFirstChild("maps") as CMlFrame).ClipWindowActive = True;
+			(Page.GetFirstChild("maps") as CMlFrame).ClipWindowRelativePosition = <0.0,0.0>;
+			(Page.GetFirstChild("maps") as CMlFrame).ClipWindowSize = <410.0,220.0>;
 		}
 		
 		Void OnStart() {
@@ -215,6 +284,8 @@
 		}
 	
 		Void OnLoop() {
+			log(GetSliderValue());
+		
 			if(TrackOfTheDayRequest != Null) {
 				if(TrackOfTheDayRequest.IsCompleted) {
 					if(TrackOfTheDayRequest.StatusCode == 200) {
@@ -226,6 +297,16 @@
 						
 					TrackOfTheDayRequest = Null;
 				}
+			}
+			
+			declare Slider = (Page.GetFirstChild("slider") as CMlFrame);
+			
+			if(!MouseLeftButton) {
+				Slider.DataAttributeSet("hold","false");
+			}
+			
+			if(Slider.DataAttributeGet("hold") == "true") {
+				Slider.GetFirstChild("button").RelativePosition_V3.Y = MathLib::Clamp(TextLib::ToReal(Slider.DataAttributeGet("pos")) + MouseY - TextLib::ToReal(Slider.DataAttributeGet("mouse_y")),-80.0,0.0);
 			}
 		
 			if(Page.GetFirstChild("menu").DataAttributeGet("state") == "hidden") {
@@ -255,9 +336,11 @@
 				
 					if(B.DataAttributeGet("hover") == "true") {
 						(B.GetFirstChild("track") as CMlFrame).RelativeScale = ValueTrack * 0.05 + 1;
+						((B.GetFirstChild("track") as CMlFrame).GetFirstChild("name") as CMlLabel).Opacity = ValueTrack;
 					}
 					else {
 						(B.GetFirstChild("track") as CMlFrame).RelativeScale = 1.05 - ValueTrack * 0.05;
+						((B.GetFirstChild("track") as CMlFrame).GetFirstChild("name") as CMlLabel).Opacity = 1.0 - ValueTrack;
 					}
 				}
 			}
@@ -330,6 +413,13 @@
 						
 						(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Hide();
 						Page.GetFirstChild("selection").Hide();
+					}
+					
+					if(E.Control.Parent.ControlId == "slider") {
+						Audio.PlaySoundEvent(SoundClick, 1.0);
+						E.Control.Parent.DataAttributeSet("hold","true");
+						E.Control.Parent.DataAttributeSet("mouse_y",MouseY^"");
+						E.Control.Parent.DataAttributeSet("pos",E.Control.RelativePosition_V3.Y^"");
 					}
 				}
 			}
