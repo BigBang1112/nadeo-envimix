@@ -35,7 +35,7 @@
 	</editor>
 	<solo>
 		<!-- either campaign or playlist-->
-		<mode name=""/>
+		<mode name="Modes\TrackMania\EnvimixSolo.Script.txt"/>
 		<datapack name=""/>
 		<default_maprecord_type>-1</default_maprecord_type>
 		<score_context>
@@ -63,15 +63,14 @@
 		<mode name=""/>
 		<playlist name=""/>
 	</splitscreen>
-	<files>
-		<file name="Media\Manialinks\Menu.xml" public="false" internal="false"/>
-		<file name="Media\Menu.xml" public="false" internal="false"/>
-	</files>
+	<files/>
 	<folders>
 		<folder name="Maps\Canyon" public="false" internal="true"/>
 		<folder name="Maps\Stadium" public="false" internal="true"/>
 		<folder name="Maps\Lagoon" public="false" internal="true"/>
 		<folder name="Maps\Valley" public="false" internal="true"/>
+		<folder name="Scripts" public="false" internal="true"/>
+		<folder name="Media" public="false" internal="true"/>
 		<!--- <folder name="...." public="..." internal="..." /> -->
 	</folders>
 	<allowed_client_title_version></allowed_client_title_version>
