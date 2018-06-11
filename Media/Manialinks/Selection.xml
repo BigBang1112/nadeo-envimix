@@ -1,5 +1,77 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
-<quad pos="85 70" z-index="0" size="55 140" bgcolor="000" opacity=".9"/>
-<quad pos="-140 70" z-index="0" size="223 140" bgcolor="000" opacity=".9"/>
+<quad pos="0 0" z-index="0" size="270 100" bgcolor="000A" halign="center" valign="center"/>
+<frame pos="-130 45" z-index="1">
+	<quad size="50 90" bgcolor="888A" image="file://Media/CanyonSelect.jpg"/>
+	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="SelectionCanyon" z-index="1"/>
+	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
+	<label pos="25 -5" z-index="3" size="45 5" text="Canyon Car" halign="center" style="TextTitle3" textsize="3"/>
+</frame>
+<frame pos="-80 45" z-index="1">
+	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/StadiumSelect.jpg"/>
+	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="SelectionStadium" z-index="1"/>
+	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
+	<label pos="25 -5" z-index="3" size="45 5" text="Stadium Car" halign="center" style="TextTitle3" textsize="3"/>
+</frame>
+<frame pos="-30 45" z-index="1">
+	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/ValleySelect.jpg"/>
+	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="SelectionValley" z-index="1"/>
+	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
+	<label pos="25 -5" z-index="3" size="45 5" text="Valley Car" halign="center" style="TextTitle3" textsize="3"/>
+</frame>
+<frame pos="20 45" z-index="1">
+	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/LagoonSelect.jpg"/>
+	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="SelectionLagoon" z-index="1"/>
+	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
+	<label pos="25 -5" z-index="3" size="45 5" text="Lagoon Car" halign="center" style="TextTitle3" textsize="3"/>
+</frame>
+
+<quad pos="75 45" z-index="1" size="3 90" bgcolor="FFFA" halign="center"/>
+<frame hidden="1">
+	<quad pos="80 45" z-index="1" size="50 65" bgcolor="FFFA"/>
+	<label pos="105 40" z-index="2" size="50 5" text="Custom vehicle" autonewline="1" style="TextTitle3" textsize="2.5" halign="center"/>
+	<label pos="105 -15" z-index="2" size="20 5" text="Select" style="TextTitle3" halign="center" valign="center"/>
+</frame>
+<frame pos="105 -28" z-index="1">
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1"/>
+	<label size="30 5" text="Spectate" style="TextTitle3" halign="center" valign="center2" z-index="1"/>
+</frame>
+<frame pos="105 -40" z-index="1">
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1"/>
+	<label size="30 5" text="Back" style="TextTitle3" halign="center" valign="center2" z-index="1"/>
+</frame>
+<script>
+	<!--
+		while(True) {
+		
+			SendCustomEvent("k", [""]);
+			
+			foreach(Event,PendingEvents) {
+				/*switch(Event.Type) {
+					case CMlScriptEvent::Type::MouseClick: {
+						if(Event.ControlId == "SelectionCanyon"
+						|| Event.ControlId == "SelectionStadium"
+						|| Event.ControlId == "SelectionValley"
+						|| Event.ControlId == "SelectionLagoon") {
+						
+							declare netwrite Text Net_Vehicle for UI;
+							
+							switch(Event.ControlId) {
+								case "SelectionCanyon": { Net_Vehicle = "CanyonCar"; }
+								case "SelectionStadium": { Net_Vehicle = "StadiumCar"; }
+								case "SelectionValley": { Net_Vehicle = "ValleyCar"; }
+								case "SelectionLagoon": { Net_Vehicle = "LagoonCar"; }
+							}
+					
+							declare netwrite Boolean Net_Start for UI;
+							Net_Start = True;
+						
+						}
+					}
+				}*/
+			}
+			yield;
+		}
+	-->
+</script>
 </manialink>

@@ -1,0 +1,100 @@
+#RequireContext CTmMode
+
+#Include "MathLib" as MathLib
+#Include "TextLib" as TextLib
+#Include "TimeLib" as TimeLib
+
+#Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
+
+declare Ident[Text] VehicleList;
+
+Void Init() {
+	ItemList_Begin();
+	VehicleList["CanyonCar"] = ItemList_Add("CanyonCar");
+	VehicleList["StadiumCar"] = ItemList_Add("StadiumCar");
+	VehicleList["ValleyCar"] = ItemList_Add("ValleyCar");
+	VehicleList["LagoonCar"] = ItemList_Add("LagoonCar");
+	ItemList_End();
+	
+	declare CHttpRequest SelectionManialinkRequest = Http.CreateGet("file://Media/Manialinks/Selection.xml");
+	wait(SelectionManialinkRequest.IsCompleted);
+	
+	Layers2::Create("VehicleSelection",SelectionManialinkRequest.Result);
+	
+	Http.Destroy(SelectionManialinkRequest);
+	
+	
+	RequestLoadMap();
+    wait(MapLoaded);
+}
+
+Boolean Start() {
+    //CutOffTimeLimit = -1;
+
+    UIManager.UIAll.OverlayHideChat = True;
+    UIManager.UIAll.OverlayHidePosition = True;
+    UIManager.UIAll.OverlayHideSpectatorControllers = True;
+    UIManager.UIAll.OverlayHideBackground = True;
+    UIManager.UIAll.OverlayHideCheckPointList = True;
+    UIManager.UIAll.OverlayHideOpponentsInfo = True;
+    UIManager.UIAll.OverlayHideRoundScores = True;
+    UIManager.UIAll.OverlayHideEndMapLadderRecap = True;
+    UIManager.UIAll.AltMenuNoDefaultScores = True;
+    UIManager.UIAll.AltMenuNoCustomScores = True;
+    UIManager.UIAll.OverlayHidePersonnalBestAndRank = True;
+
+    UIManager.UIAll.ScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
+    UIManager.UIAll.SmallScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
+	
+	declare UI <=> UIManager.GetUI(AllPlayers[0]);
+	
+	UI.UISequence = CUIConfig::EUISequence::Intro;
+	wait(UI.UISequenceIsCompleted);
+	UI.UISequence = CUIConfig::EUISequence::PlayersPresentation;
+	
+	Layers2::Attach("VehicleSelection",AllPlayers[0]);
+
+    return True;
+}
+
+Void Event(CTmModeEvent _Event) {
+    log(_Event.CommandName);
+}
+
+Void Loop() {
+	if(PlayersWaiting.existskey(0)) {
+		declare Player <=> PlayersWaiting[0];
+		declare UI <=> UIManager.GetUI(Player);
+		
+		declare netread Text Net_Vehicle for UI;
+		if(Net_Vehicle != "")
+			Player.ForceModelId = VehicleList[Net_Vehicle];		
+		
+		declare netread Boolean Net_Start for UI;
+		
+		if(Net_Start) {
+			Player.IsSpawned = True;
+			Player.RaceStartTime = Now;
+			
+			Layers2::Detach("VehicleSelection",Player);
+			UI.UISequence = CUIConfig::EUISequence::None;
+    }
+}
+}
+
+main() {
+    Init();
+	Start();
+	
+	while(!ServerShutdownRequested) {
+		Loop();
+		
+		foreach(Event, PendingEvents) {
+			Event(Event);
+		}
+
+		yield;
+	}
+
+    UIManager.ResetAll();
+}

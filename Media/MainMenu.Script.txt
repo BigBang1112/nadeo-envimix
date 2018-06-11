@@ -1,0 +1,38 @@
+#RequireContext CManiaAppTitle
+
+declare CUILayer ScriptLayer;
+
+Void DoNothing() {
+	
+}
+
+main() {
+	declare CUILayer Layer;
+
+	declare CHttpRequest RequestMainMenuPage = Http.CreateGet("file://Media/Manialinks/Menu.xml");
+	wait(RequestMainMenuPage.IsCompleted);
+	
+	Layer = UILayerCreate();
+	Layer.ManialinkPage = RequestMainMenuPage.Result;
+
+	Http.Destroy(RequestMainMenuPage);
+	
+	while(True) {
+		yield;
+		
+		foreach(Event,PendingEvents) {
+			if(Event.Type == CManiaAppEvent::EType::LayerCustomEvent) {
+				if(Event.CustomEventLayer == Layer) {
+					switch(Event.CustomEventType) {
+						case "COMMAND_EXIT": {
+							Menu_Quit();
+						}
+						case "COMMAND_PLAYMAP": {
+							TitleFlow.PlayMap(Event.CustomEventData[0] ^ "/" ^ Event.CustomEventData[1] ^ ".Map.Gbx","","");
+						}
+					}
+				}
+			}
+		}
+	}
+}
