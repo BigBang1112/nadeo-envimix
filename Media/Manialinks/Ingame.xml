@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<frame id="buttonMenu">
+<quad pos="-125 -75" z-index="0" size="50 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1"/>
+<label pos="-125 -75" z-index="1" size="50 10" text="Menu" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+</frame>
+<script>
+	<!--
+		#Include "TextLib" as TextLib
+		#Include "MathLib" as MathLib
+		#Include "AnimLib" as AnimLib
+		
+		declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
+		declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
+		declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+		
+		while(True) {
+			declare B <=> (Page.GetFirstChild("buttonMenu") as CMlFrame);
+				
+			declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+			declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+				
+			if(B.DataAttributeGet("hover") == "true") {
+				(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+				(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+			}
+			else {
+				(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+				(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
+			}
+			
+			foreach(Event,PendingEvents) {
+				switch(Event.Type) {
+					case CMlEvent::Type::MouseOver: {
+						declare Frame <=> Event.Control.Parent;
+					
+						if(Event.ControlId == "button") {
+							Audio.PlaySoundEvent(SoundHover, 1.0);
+							Frame.DataAttributeSet("hover","true");
+							Frame.DataAttributeSet("hover_time",Now^"");
+							Frame.DataAttributeSet("hover_in_value",(Event.Control as CMlQuad).BgColor[0]^"");
+						}
+					}
+					case CMlEvent::Type::MouseOut: {
+						declare Frame <=> Event.Control.Parent;
+					
+						if(Event.ControlId == "button") {
+							Frame.DataAttributeSet("hover","false");
+							Frame.DataAttributeSet("hover_time",Now^"");
+							Frame.DataAttributeSet("hover_out_value",(Event.Control as CMlQuad).BgColor[0]^"");
+						}
+					}
+					case CMlScriptEvent::Type::MouseClick: {
+						if(Event.ControlId == "button") {
+							declare netwrite Text Net_State for UI;
+							Net_State = "MENU";
+						}
+					}
+				}
+			}
+			
+			yield;
+		}
+	-->
+</script>
+</manialink>

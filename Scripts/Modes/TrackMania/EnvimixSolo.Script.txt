@@ -7,6 +7,7 @@
 #Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
 
 declare Ident[Text] VehicleList;
+declare Boolean Terminate;
 
 Void Init() {
 	ItemList_Begin();
@@ -16,13 +17,13 @@ Void Init() {
 	VehicleList["LagoonCar"] = ItemList_Add("LagoonCar");
 	ItemList_End();
 	
-	declare CHttpRequest SelectionManialinkRequest = Http.CreateGet("file://Media/Manialinks/Selection.xml");
-	wait(SelectionManialinkRequest.IsCompleted);
-	
-	Layers2::Create("VehicleSelection",SelectionManialinkRequest.Result);
-	
-	Http.Destroy(SelectionManialinkRequest);
-	
+	declare CHttpRequest ManialinkRequest = Http.CreateGet("file://Media/Manialinks/Selection.xml");
+	wait(ManialinkRequest.IsCompleted);
+	Layers2::Create("VehicleSelection",ManialinkRequest.Result);
+	ManialinkRequest = Http.CreateGet("file://Media/Manialinks/Ingame.xml");
+	wait(ManialinkRequest.IsCompleted);
+	Layers2::Create("Ingame",ManialinkRequest.Result);
+	Http.Destroy(ManialinkRequest);
 	
 	RequestLoadMap();
     wait(MapLoaded);
@@ -62,31 +63,52 @@ Void Event(CTmModeEvent _Event) {
 }
 
 Void Loop() {
-	if(PlayersWaiting.existskey(0)) {
-		declare Player <=> PlayersWaiting[0];
-		declare UI <=> UIManager.GetUI(Player);
-		
-		declare netread Text Net_Vehicle for UI;
-		if(Net_Vehicle != "")
-			Player.ForceModelId = VehicleList[Net_Vehicle];		
-		
-		declare netread Boolean Net_Start for UI;
-		
-		if(Net_Start) {
-			Player.IsSpawned = True;
-			Player.RaceStartTime = Now;
+	declare Player <=> AllPlayers[0];
+	declare UI <=> UIManager.GetUI(Player);
+	
+	declare netread Text Net_State for UI;
+	
+	switch(Net_State) {
+		case "START": {
+			if(PlayersWaiting.existskey(0)) {
+				declare netread Text Net_Vehicle for UI;
+				
+				Player.ForceModelId = VehicleList[Net_Vehicle];
+				Player.IsSpawned = True;
+				Player.RaceStartTime = Now + 2500;
 			
+				Layers2::Detach("VehicleSelection",Player);
+				Layers2::Attach("Ingame",Player);
+				
+				UI.UISequence = CUIConfig::EUISequence::None;
+			}
+		}
+		case "SPECTATE": {
 			Layers2::Detach("VehicleSelection",Player);
+			Layers2::Attach("Ingame",Player);
 			UI.UISequence = CUIConfig::EUISequence::None;
-    }
-}
+		}
+		case "MENU": {
+			if(PlayersRacing.existskey(0))
+				UnspawnPlayer(Player);
+				
+			Layers2::Detach("Ingame",Player);
+			Layers2::Attach("VehicleSelection",Player);
+			UI.UISequence = CUIConfig::EUISequence::None;
+		}
+		case "BACK": {
+			Player.IsSpawned = False;
+			
+			Terminate = True;
+		}
+	}
 }
 
 main() {
     Init();
 	Start();
 	
-	while(!ServerShutdownRequested) {
+	while(!ServerShutdownRequested && !Terminate) {
 		Loop();
 		
 		foreach(Event, PendingEvents) {

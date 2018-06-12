@@ -40,7 +40,7 @@
 			</frame>
 		</frame>
 	</frame>
-	<frame id="selection" z-index="1" hidden="0">
+	<frame id="selection" z-index="1" hidden="1">
 		<quad pos="-160 89.8" z-index="-1" size="320 180" scriptevents="1"/>
 		<quad pos="-140 70" z-index="0" size="3 140" bgcolor="444A"/>
 		<quad pos="88 70" z-index="0" size="49 12.5" bgcolor="444A"/>

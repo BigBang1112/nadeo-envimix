@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
 <quad pos="0 0" z-index="0" size="270 100" bgcolor="000A" halign="center" valign="center"/>
-<frame pos="-130 45" z-index="1">
+<frame z-index="1" id="selection">
+<frame pos="-130 45" id="SelectionCanyon">
 	<quad size="50 90" bgcolor="888A" image="file://Media/CanyonSelect.jpg"/>
-	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="SelectionCanyon" z-index="1"/>
+	<quad size="50 90" bgcolor="FFFA" scriptevents="1" z-index="1" id="button"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Canyon Car" halign="center" style="TextTitle3" textsize="3"/>
 </frame>
-<frame pos="-80 45" z-index="1">
+<frame pos="-80 45" id="SelectionStadium">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/StadiumSelect.jpg"/>
-	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="SelectionStadium" z-index="1"/>
+	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Stadium Car" halign="center" style="TextTitle3" textsize="3"/>
 </frame>
-<frame pos="-30 45" z-index="1">
+<frame pos="-30 45" id="SelectionValley">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/ValleySelect.jpg"/>
-	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="SelectionValley" z-index="1"/>
+	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Valley Car" halign="center" style="TextTitle3" textsize="3"/>
 </frame>
-<frame pos="20 45" z-index="1">
+<frame pos="20 45" id="SelectionLagoon">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/LagoonSelect.jpg"/>
-	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="SelectionLagoon" z-index="1"/>
+	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Lagoon Car" halign="center" style="TextTitle3" textsize="3"/>
+</frame>
 </frame>
 
 <quad pos="75 45" z-index="1" size="3 90" bgcolor="FFFA" halign="center"/>
@@ -32,43 +34,105 @@
 	<label pos="105 40" z-index="2" size="50 5" text="Custom vehicle" autonewline="1" style="TextTitle3" textsize="2.5" halign="center"/>
 	<label pos="105 -15" z-index="2" size="20 5" text="Select" style="TextTitle3" halign="center" valign="center"/>
 </frame>
-<frame pos="105 -28" z-index="1">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1"/>
-	<label size="30 5" text="Spectate" style="TextTitle3" halign="center" valign="center2" z-index="1"/>
+<frame id="buttons" z-index="1">
+<frame pos="105 -28" id="buttonSpectate">
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="30 5" text="Spectate" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
 </frame>
-<frame pos="105 -40" z-index="1">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1"/>
-	<label size="30 5" text="Back" style="TextTitle3" halign="center" valign="center2" z-index="1"/>
+<frame pos="105 -40" id="buttonExit">
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="30 5" text="Exit" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
+</frame>
 </frame>
 <script>
 	<!--
-		while(True) {
+		#Include "TextLib" as TextLib
+		#Include "MathLib" as MathLib
+		#Include "AnimLib" as AnimLib
 		
-			SendCustomEvent("k", [""]);
+		declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
+		declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
+		declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+	
+		while(True) {
+			foreach(Car,(Page.GetFirstChild("selection") as CMlFrame).Controls) {
+				declare Time = TextLib::ToInteger(Car.DataAttributeGet("hover_time"));
+				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+				
+				if(Car.DataAttributeGet("hover") == "true") {
+					((Car as CMlFrame).GetFirstChild("button") as CMlQuad).Opacity = Value * .25;
+				}
+				else {
+					((Car as CMlFrame).GetFirstChild("button") as CMlQuad).Opacity = .25 - Value * .25;
+				}
+			}
+			
+			foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
+				declare B <=> (Button as CMlFrame);
+				
+				declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+				
+				if(B.DataAttributeGet("hover") == "true") {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+					(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+				}
+				else {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+					(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
+				}
+			}
 			
 			foreach(Event,PendingEvents) {
-				/*switch(Event.Type) {
+				switch(Event.Type) {
+					case CMlEvent::Type::MouseOver: {
+						declare Frame <=> Event.Control.Parent;
+					
+						if(Event.ControlId == "button") {
+							Audio.PlaySoundEvent(SoundHover, 1.0);
+							Frame.DataAttributeSet("hover","true");
+							Frame.DataAttributeSet("hover_time",Now^"");
+							Frame.DataAttributeSet("hover_in_value",(Event.Control as CMlQuad).BgColor[0]^"");
+						}
+					}
+					case CMlEvent::Type::MouseOut: {
+						declare Frame <=> Event.Control.Parent;
+					
+						if(Event.ControlId == "button") {
+							Frame.DataAttributeSet("hover","false");
+							Frame.DataAttributeSet("hover_time",Now^"");
+							Frame.DataAttributeSet("hover_out_value",(Event.Control as CMlQuad).BgColor[0]^"");
+						}
+					}
 					case CMlScriptEvent::Type::MouseClick: {
-						if(Event.ControlId == "SelectionCanyon"
-						|| Event.ControlId == "SelectionStadium"
-						|| Event.ControlId == "SelectionValley"
-						|| Event.ControlId == "SelectionLagoon") {
+						if(Event.Control.Parent.ControlId == "SelectionCanyon"
+						|| Event.Control.Parent.ControlId == "SelectionStadium"
+						|| Event.Control.Parent.ControlId == "SelectionValley"
+						|| Event.Control.Parent.ControlId == "SelectionLagoon") {
 						
 							declare netwrite Text Net_Vehicle for UI;
 							
-							switch(Event.ControlId) {
+							switch(Event.Control.Parent.ControlId) {
 								case "SelectionCanyon": { Net_Vehicle = "CanyonCar"; }
 								case "SelectionStadium": { Net_Vehicle = "StadiumCar"; }
 								case "SelectionValley": { Net_Vehicle = "ValleyCar"; }
 								case "SelectionLagoon": { Net_Vehicle = "LagoonCar"; }
 							}
 					
-							declare netwrite Boolean Net_Start for UI;
-							Net_Start = True;
+							declare netwrite Text Net_State for UI;
+							Net_State = "START";
+						}
 						
+						if(Event.Control.Parent.ControlId == "buttonSpectate") {
+							declare netwrite Text Net_State for UI;
+							Net_State = "SPECTATE";
+						}
+						if(Event.Control.Parent.ControlId == "buttonExit") {
+							declare netwrite Text Net_State for UI;
+							Net_State = "BACK";
 						}
 					}
-				}*/
+				}
 			}
 			yield;
 		}
