@@ -94,7 +94,7 @@ Void Loop() {
 				
 			Layers2::Detach("Ingame",Player);
 			Layers2::Attach("VehicleSelection",Player);
-			UI.UISequence = CUIConfig::EUISequence::None;
+			UI.UISequence = CUIConfig::EUISequence::PlayersPresentation;
 		}
 		case "BACK": {
 			Player.IsSpawned = False;
