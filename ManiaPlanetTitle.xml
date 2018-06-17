@@ -2,7 +2,7 @@
 <maniaplanet_title version="4">
 	<id>Nadeo_Envimix@bigbang1112</id>
 	<name>Nadeo Envimix</name>
-	<desc>Play Nadeo maps with any car of your wish. Combinations are endless.</desc>
+	<desc>Play Nadeo maps with any car. Combinations are endless.</desc>
 	<url>nadeoenvimix</url>
 	<download_url></download_url>
 	<title_version></title_version>
@@ -23,7 +23,7 @@
 		<background_replay name=""/>
 		<header name="MenuHeader.png"/>
 		<music name=""/>
-		<manialink url=""/>
+		<manialink url="Media/MainMenu.Script.txt"/>
 	</menu>
 	<menu_style name=""/>
 	<music folder=""/>
@@ -38,6 +38,38 @@
 		<mode name="Modes\TrackMania\EnvimixSolo.Script.txt"/>
 		<datapack name=""/>
 		<default_maprecord_type>-1</default_maprecord_type>
+		<score_context>
+			<name>AscendingScore</name>
+			<maprecord_type>0</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>true</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name>DescendingScore</name>
+			<maprecord_type>1</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>true</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name></name>
+			<maprecord_type>2</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>true</compute_medals_from_maprecord>
+			<author_medals_enabled>true</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name>NumberOfRespawns</name>
+			<maprecord_type>3</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>true</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
 		<score_context>
 			<name>CanyonCar</name>
 			<maprecord_type>-1</maprecord_type>
@@ -76,7 +108,7 @@
 			<score_context></score_context>
 			<official_record_enabled>false</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
-			<maps folder="Canyon\"/>
+			<maps folder="Campaigns\Canyon\"/>
 		</campaign>
 		<campaign num="1">
 			<playlist name=""/>
@@ -84,7 +116,7 @@
 			<score_context></score_context>
 			<official_record_enabled>false</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
-			<maps folder="Stadium\"/>
+			<maps folder="Campaigns\Stadium\"/>
 		</campaign>
 		<campaign num="2">
 			<playlist name=""/>
@@ -92,7 +124,7 @@
 			<score_context></score_context>
 			<official_record_enabled>false</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
-			<maps folder="Lagoon\"/>
+			<maps folder="Campaigns\Valley\"/>
 		</campaign>
 		<campaign num="3">
 			<playlist name=""/>
@@ -100,7 +132,7 @@
 			<score_context></score_context>
 			<official_record_enabled>false</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
-			<maps folder="Valley\"/>
+			<maps folder="Campaigns\Lagoon\"/>
 		</campaign>
 	</solo>
 	<network>
@@ -113,12 +145,9 @@
 	</splitscreen>
 	<files/>
 	<folders>
-		<folder name="Maps\Canyon" public="false" internal="true"/>
-		<folder name="Maps\Stadium" public="false" internal="true"/>
-		<folder name="Maps\Lagoon" public="false" internal="true"/>
-		<folder name="Maps\Valley" public="false" internal="true"/>
 		<folder name="Scripts" public="false" internal="true"/>
 		<folder name="Media" public="false" internal="true"/>
+		<folder name="Maps/Campaigns" public="false" internal="true"/>
 		<!--- <folder name="...." public="..." internal="..." /> -->
 	</folders>
 	<allowed_client_title_version></allowed_client_title_version>

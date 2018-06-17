@@ -1,5 +1,7 @@
 #RequireContext CManiaAppTitle
 
+#Include "TextLib" as TextLib
+
 declare CUILayer ScriptLayer;
 
 Void DoNothing() {
@@ -28,7 +30,27 @@ main() {
 							Menu_Quit();
 						}
 						case "COMMAND_PLAYMAP": {
-							TitleFlow.PlayMap(Event.CustomEventData[0] ^ "/" ^ Event.CustomEventData[1] ^ ".Map.Gbx","","");
+							//TitleFlow.PlayMap(Event.CustomEventData[0] ^ "/" ^ Event.CustomEventData[1] ^ ".Map.Gbx","","");
+							
+							declare DifficultyNumber = TextLib::ToInteger(Event.CustomEventData[1]);
+							declare MapNumber = TextLib::ToInteger(Event.CustomEventData[2]) - 1;
+							
+							declare CCampaign Campaign = Null;
+							
+							switch(Event.CustomEventData[0]) {
+								case "Canyon": { Campaign <=> DataFileMgr.Campaigns[0]; }
+								case "Stadium": { Campaign <=> DataFileMgr.Campaigns[1]; }
+								case "Valley": { Campaign <=> DataFileMgr.Campaigns[2]; }
+								case "Lagoon": { Campaign <=> DataFileMgr.Campaigns[3]; }
+							}
+							
+							TitleFlow.PlayCampaign(Campaign,Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber],"","");
+						}
+						case "OPEN_ITEMEDITOR": {
+							TitleFlow.OpenEditor(CTitleFlow::EEditorType::ItemEditor);
+						}
+						case "PLAY_POUTREL_SERVER": {
+							TitleFlow.JoinServer("poutrel_NEM", False, "");
 						}
 					}
 				}

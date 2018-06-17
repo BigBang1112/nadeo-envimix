@@ -11,6 +11,11 @@
 	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
+	
+	<frame id="Default" z-index="2" hidden="1">
+		<quad pos="0 0" size="50 90" bgcolor="000A" scriptevents="1"/>
+		<label pos="25 -46.5" z-index="1" size="40 20" text="Original maps are unplayable" halign="center" valign="center2" style="TextTitle3" autonewline="1"/>
+	</frame>
 </frame>
 <frame pos="-80 45" id="SelectionStadium">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/StadiumSelect.jpg"/>
@@ -21,16 +26,26 @@
 	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
+	
+	<frame id="Default" z-index="2" hidden="1">
+		<quad pos="0 0" size="50 90" bgcolor="000A" scriptevents="1"/>
+		<label pos="25 -46.5" z-index="1" size="40 20" text="Original maps are unplayable" halign="center" valign="center2" style="TextTitle3" autonewline="1"/>
+	</frame>
 </frame>
 <frame pos="-30 45" id="SelectionValley">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/ValleySelect.jpg"/>
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
-	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
-	<label pos="25 -5" z-index="3" size="45 5" text="Valley Car" halign="center" style="TextTitle3" textsize="3"/>
+	<quad pos="25 -2" z-index="3" size="45 10" bgcolor="000A" halign="center"/>
+	<label pos="25 -5" z-index="4" size="45 5" text="Valley Car" halign="center" style="TextTitle3" textsize="3"/>
 	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
+	
+	<frame id="Default" z-index="2">
+		<quad pos="0 0" size="50 90" bgcolor="000A" scriptevents="1"/>
+		<label pos="25 -46.5" z-index="1" size="40 20" text="Original maps are unplayable" halign="center" valign="center2" style="TextTitle3" autonewline="1"/>
+	</frame>
 </frame>
 <frame pos="20 45" id="SelectionLagoon">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/LagoonSelect.jpg"/>
@@ -41,16 +56,41 @@
 	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
+	
+	<frame id="Default" z-index="2" hidden="1">
+		<quad pos="0 0" size="50 90" bgcolor="000A" scriptevents="1"/>
+		<label pos="25 -46.5" z-index="1" size="40 20" text="Original maps are unplayable" halign="center" valign="center2" style="TextTitle3" autonewline="1"/>
+	</frame>
 </frame>
 </frame>
 
-<quad pos="75 45" z-index="1" size="3 90" bgcolor="FFFA" halign="center"/>
-<frame hidden="1">
-	<quad pos="80 45" z-index="1" size="50 65" bgcolor="FFFA"/>
+<quad pos="75 45" z-index="1" size="3 90" bgcolor="000A" halign="center"/>
+<frame hidden="0" z-index="1">
+	<quad pos="80 45" z-index="1" size="50 65" bgcolor="000A"/>
 	<label pos="105 40" z-index="2" size="50 5" text="Custom vehicle" autonewline="1" style="TextTitle3" textsize="2.5" halign="center"/>
-	<label pos="105 -15" z-index="2" size="20 5" text="Select" style="TextTitle3" halign="center" valign="center"/>
 </frame>
-<frame id="buttons" z-index="1">
+<frame id="buttons" z-index="2">
+<frame pos="105 28" id="buttonCar1">
+	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
+</frame>
+<frame pos="105 18" id="buttonCar2">
+	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
+</frame>
+<frame pos="105 8" id="buttonCar3">
+	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
+</frame>
+<frame pos="105 -2" id="buttonCar4">
+	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
+</frame>
+<frame pos="105 -12" id="buttonCar5">
+	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
+</frame>
+
 <frame pos="105 -28" id="buttonSpectate">
 	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="30 5" text="Spectate" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
@@ -69,8 +109,39 @@
 		declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
 		declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 		declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+		
+		declare MapRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map.php?id=" ^ Map.MapInfo.MapUid);
+		
+		declare persistent Text[] NEM_CustomCars for LocalUser;
+		
+		if(NEM_CustomCars.count == 0) {
+			for(i,0,4) {
+				NEM_CustomCars.add("");
+			}
+		}
+		
+		for(i,1,5) {
+			if(NEM_CustomCars[i-1] == "")
+				((Page.GetFirstChild("buttonCar"^i) as CMlFrame).GetFirstChild("text") as CMlLabel).SetText("...");
+			else
+				((Page.GetFirstChild("buttonCar"^i) as CMlFrame).GetFirstChild("text") as CMlLabel).SetText(NEM_CustomCars[i-1]);
+		}
 	
 		while(True) {
+			if(MapRequest != Null) {
+				if(MapRequest.IsCompleted) {
+					if(MapRequest.StatusCode == 200) {
+						
+					}
+					else {
+						
+					}
+					
+					Http.Destroy(MapRequest);
+					MapRequest = Null;
+				}
+			}
+		
 			foreach(Car,(Page.GetFirstChild("selection") as CMlFrame).Controls) {
 				declare Time = TextLib::ToInteger(Car.DataAttributeGet("hover_time"));
 				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
@@ -133,6 +204,25 @@
 								case "SelectionStadium": { Net_Vehicle = "StadiumCar"; }
 								case "SelectionValley": { Net_Vehicle = "ValleyCar"; }
 								case "SelectionLagoon": { Net_Vehicle = "LagoonCar"; }
+							}
+					
+							declare netwrite Text Net_State for UI;
+							Net_State = "START";
+						}
+						
+						if(Event.Control.Parent.ControlId == "buttonCar1"
+						|| Event.Control.Parent.ControlId == "buttonCar2"
+						|| Event.Control.Parent.ControlId == "buttonCar3"
+						|| Event.Control.Parent.ControlId == "buttonCar4"
+						|| Event.Control.Parent.ControlId == "buttonCar5") {
+							declare netwrite Text Net_Vehicle for UI;
+							
+							switch(Event.Control.Parent.ControlId) {
+								case "buttonCar1": { Net_Vehicle = NEM_CustomCars[0]; }
+								case "buttonCar2": { Net_Vehicle = NEM_CustomCars[1]; }
+								case "buttonCar3": { Net_Vehicle = NEM_CustomCars[2]; }
+								case "buttonCar4": { Net_Vehicle = NEM_CustomCars[3]; }
+								case "buttonCar5": { Net_Vehicle = NEM_CustomCars[4]; }
 							}
 					
 							declare netwrite Text Net_State for UI;

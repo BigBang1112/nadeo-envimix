@@ -192,7 +192,7 @@
 		<quad pos="80 -38" z-index="1" size="1 22" bgcolor="000C" halign="right"/>
 		
 		<frame pos="72.5 50" z-index="1" id="slider">
-			<quad pos="0 5" z-index="0" size="10 120" bgcolor="000A" halign="center"/>
+			<quad pos="0 5" z-index="0" size="10 120" bgcolor="000A" halign="center" scriptevents="1" id="QuadBack"/>
 			<quad z-index="1" size="8 22" bgcolor="AAAA" halign="center" id="button" scriptevents="1" pos="0 0"/>
 		</frame>
 		
@@ -215,6 +215,11 @@
 				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1"/>
 				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/StadiumButton.jpg" opacity=".75"/>
 				<label pos="0 0" z-index="2" size="49 10" text="Stadium" halign="center" valign="center2" style="TextTitle3" textsize="2" textemboss="1"/>
+				
+				<frame z-index="3" id="FrameOpenplanet">
+					<quad z-index="0" size="49 10" bgcolor="101" halign="center" valign="center" opacity=".9" scriptevents="1"/>
+					<label size="10 10" text="$f0f" halign="center" valign="center2" textsize="5" z-index="1"/>
+				</frame>
 			</frame>
 			<frame pos="112.5 28" id="buttonValley">
 				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1"/>
@@ -233,7 +238,7 @@
 			</frame>
 		
 			<frame pos="112.5 -17" z-index="1" id="buttonPlayLocally">
-				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<quad pos="0 0" size="49 10" bgcolor="111" halign="center" valign="center" opacity=".9" id="button"/>
 				<label pos="0 0" z-index="1" size="49 10" text="Play Locally" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 			
@@ -247,7 +252,35 @@
 				<label pos="0 0" z-index="1" size="49 10" text="Back" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 		</frame>
+	</frame>
+	<frame id="FrameCustomCars" z-index="2" hidden="1">
+		<quad z-index="0" size="200 100" bgcolor="000A" halign="center" valign="center"/>
 		
+		<frame pos="-95 35" z-index="1" id="FrameList">
+			<quad pos="0 0" z-index="0" size="135 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+			<entry pos="5 0" z-index="1" size="125 5" default="" valign="center2" textsize="2" id="EntryCar1"/>
+			<quad pos="0 -10" z-index="0" size="135 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+			<entry pos="5 -10" z-index="1" size="125 5" default="" valign="center2" textsize="2" id="EntryCar2"/>
+			<quad pos="0 -20" z-index="0" size="135 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+			<entry pos="5 -20" z-index="1" size="125 5" default="" valign="center2" textsize="2" id="EntryCar3"/>
+			<quad pos="0 -30" z-index="0" size="135 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+			<entry pos="5 -30" z-index="1" size="125 5" default="" valign="center2" textsize="2" id="EntryCar4"/>
+			<quad pos="0 -40" z-index="0" size="135 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+			<entry pos="5 -40" z-index="1" size="125 5" default="" valign="center2" textsize="2" id="EntryCar5"/>
+		</frame>
+		
+		<label pos="-95 -24" z-index="1" size="135 20" text="Because of Maniaplanet limitations, we have to follow some rules. Use CREATE button to setup and manage cars you wanna use. Once you do that, you have 5 slots to put your cars into. Type the exact full car name with extension, like $oLowGravity.Item.Gbx$z. Remember that if you misspell the car name, the whole gamemode will crash immediately." textsize="2" autonewline="1"/>
+		
+		<frame id="buttonsCustomCars" z-index="1">
+			<frame pos="70 -28" id="buttonCreate">
+				<quad pos="0 0" z-index="0" size="50 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="50 10" text="Create" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+			</frame>
+			<frame pos="70 -40" id="buttonBack">
+				<quad pos="0 0" z-index="0" size="50 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="50 10" text="Back" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+			</frame>
+		</frame>
 	</frame>
 	<script>
 	<!--
@@ -299,7 +332,7 @@
 			else
 				Page.GetFirstChild("menu").Show();
 				
-			if(Time > 400 && _Action != "") SendCustomEvent("COMMAND_EXIT", [""]);
+			if(Time > 400 && _Action != "") SendCustomEvent("COMMAND_EXIT", Text[]);
 				
 			return Time;
 		}
@@ -344,6 +377,10 @@
 			}
 		}
 		
+		declare Text TrackDayEnvironment;
+		declare Text TrackDayDifficulty;
+		declare Text TrackDayMap;
+		
 		Void HandleRequests() {
 			if(TrackOfTheDayRequest != Null) {
 				if(TrackOfTheDayRequest.IsCompleted) {
@@ -353,9 +390,20 @@
 						declare NodeDifficulty = Doc.Root.GetFirstChild("Difficulty");
 						declare NodeMap = Doc.Root.GetFirstChild("Map");
 						
+						switch(NodeDifficulty.TextContents) {
+							case "A": TrackDayDifficulty = "0";
+							case "B": TrackDayDifficulty = "1";
+							case "C": TrackDayDifficulty = "2";
+							case "D": TrackDayDifficulty = "3";
+							case "E": TrackDayDifficulty = "4";
+						}
+						
+						TrackDayEnvironment = NodeEnvironment.TextContents;
+						TrackDayMap = NodeMap.TextContents;
+						
 						declare Map = "";
-						if(TextLib::ToInteger(NodeMap.TextContents) < 10) Map = "0"^NodeMap.TextContents;
-						else Map = NodeMap.TextContents;
+						if(TextLib::ToInteger(TrackDayMap) < 10) Map = "0"^TrackDayMap;
+						else Map = TrackDayMap;
 						
 						(((Page.GetFirstChild("buttonTrack") as CMlFrame).GetFirstChild("track") as CMlFrame).GetFirstChild("name") as CMlLabel).SetText(NodeEnvironment.TextContents ^ " " ^ NodeDifficulty.TextContents ^ Map);
 						(((Page.GetFirstChild("buttonTrack") as CMlFrame).GetFirstChild("track") as CMlFrame).GetFirstChild("thumbnail") as CMlQuad).ChangeImageUrl("file://Media/Thumbnails/NoThumbnail.jpg");
@@ -385,6 +433,24 @@
 				}
 			}
 		}
+		
+		
+		
+		Void LoadCustomCars() {
+			declare persistent Text[] NEM_CustomCars for LocalUser;
+			
+			if(NEM_CustomCars.count == 0) {
+				for(i,0,4) {
+					NEM_CustomCars.add("");
+				}
+			}
+			
+			declare Frame <=> ((Page.GetFirstChild("FrameCustomCars") as CMlFrame).GetFirstChild("FrameList") as CMlFrame);
+		
+			for(i,0,4) {
+				(Frame.Controls[i*2 + 1] as CMlEntry).SetText(NEM_CustomCars[i],False);
+			}
+		}
 	
 		Void OnInit() {
 			
@@ -394,6 +460,8 @@
 			SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
 			SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 			SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+			
+			if(SystemSkuIdentifier == CMlScript::ESystemSkuIdentifier::EU) Page.GetFirstChild("FrameOpenplanet").Hide();
 			
 			Environment = "Canyon";
 			
@@ -509,23 +577,41 @@
 						((B.GetFirstChild("track") as CMlFrame).GetFirstChild("name") as CMlLabel).Opacity = 1.0 - ValueTrack;
 					}
 				}
+			}
+			
+			foreach(Button,(Page.GetFirstChild("buttonsSelection") as CMlFrame).Controls) {
+				declare B <=> (Button as CMlFrame);
 				
-				foreach(Button,(Page.GetFirstChild("buttonsSelection") as CMlFrame).Controls) {
-					declare B <=> (Button as CMlFrame);
+				declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
 				
-					declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
-					declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+				if(B.DataAttributeGet("hover") == "true") {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+					if(B.GetFirstChild("text") != Null)
+						(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+				}
+				else {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+					if(B.GetFirstChild("text") != Null)
+						(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
+				}
+			}
+			
+			foreach(Button,(Page.GetFirstChild("buttonsCustomCars") as CMlFrame).Controls) {
+				declare B <=> (Button as CMlFrame);
 				
-					if(B.DataAttributeGet("hover") == "true") {
-						(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
-						if(B.GetFirstChild("text") != Null)
-							(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
-					}
-					else {
-						(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
-						if(B.GetFirstChild("text") != Null)
-							(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
-					}
+				declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+				
+				if(B.DataAttributeGet("hover") == "true") {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+					if(B.GetFirstChild("text") != Null)
+						(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+				}
+				else {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+					if(B.GetFirstChild("text") != Null)
+						(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
 				}
 			}
 			
@@ -572,16 +658,19 @@
 						declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
 						
 						(Panel.GetFirstChild("Name") as CMlLabel).SetText(Diff ^ E.Control.Parent.ControlId);
-						(Panel.GetFirstChild("Validator") as CMlLabel).SetText(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeText("Validator","..."));
 						
-						(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Difficulty",0.0));
-						(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Difficulty",0.0));
-						(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Difficulty",0.0));
-						(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Difficulty",0.0));
-						(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Quality",0.0));
-						(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Quality",0.0));
-						(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Quality",0.0));
-						(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Quality",0.0));
+						if(MapBriefDocument != Null) {
+							(Panel.GetFirstChild("Validator") as CMlLabel).SetText(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeText("Validator","..."));
+							
+							(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Difficulty",0.0));
+							(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Difficulty",0.0));
+							(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Difficulty",0.0));
+							(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Difficulty",0.0));
+							(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Quality",0.0));
+							(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Quality",0.0));
+							(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Quality",0.0));
+							(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Quality",0.0));
+						}
 					}
 				}
 				case CMlEvent::Type::MouseOut: {
@@ -629,76 +718,115 @@
 								case 4: { Diff = "E"; }
 							}
 						
-							SendCustomEvent("COMMAND_PLAYMAP", [Environment, Diff ^ E.Control.Parent.ControlId,"Any"]);
+							SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^GetDifficulty(), E.Control.Parent.ControlId,"Any"]);
 						}
 					}
-					if(E.Control.Parent.ControlId == "buttonPlay") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						Audio.PlaySoundEvent(SoundElectric, 1.0);
+					if(E.Control.Parent.Parent.ControlId == "buttons") {
+						if(E.Control.Parent.ControlId == "buttonPlay") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Audio.PlaySoundEvent(SoundElectric, 1.0);
+							
+							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
+							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+							Page.GetFirstChild("menu").DataAttributeSet("action","");
+				
+							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
+							Page.GetFirstChild("selection").Show();
+						}
+						if(E.Control.Parent.ControlId == "buttonProfile") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Audio.PlaySoundEvent(SoundElectric, 1.0);
+							
+							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
+							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+							Page.GetFirstChild("menu").DataAttributeSet("action","menu_profile");
+						}
+						if(E.Control.Parent.ControlId == "buttonExit") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Audio.PlaySoundEvent(SoundElectric, 1.0);
+							
+							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
+							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+							Page.GetFirstChild("menu").DataAttributeSet("action","quit");
+						}
+						if(E.Control.Parent.ControlId == "buttonTrack") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							
+							SendCustomEvent("COMMAND_PLAYMAP", [TrackDayEnvironment, TrackDayDifficulty, TrackDayMap,"Any"]);
+						}
+					}
+					if(E.Control.Parent.Parent.ControlId == "buttonsSelection") {
+						if(E.Control.Parent.ControlId == "buttonBack") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							
+							Page.GetFirstChild("menu").DataAttributeSet("state","shown");
+							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+							Page.GetFirstChild("menu").DataAttributeSet("action","");
+							
+							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Hide();
+							Page.GetFirstChild("selection").Hide();
+						}
 						
-						Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
-						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
-						Page.GetFirstChild("menu").DataAttributeSet("action","");
-			
-						(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
-						Page.GetFirstChild("selection").Show();
+						if(E.Control.Parent.ControlId == "buttonCanyon") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Environment = "Canyon";
+						}
+						if(E.Control.Parent.ControlId == "buttonStadium") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Environment = "Stadium";
+						}
+						if(E.Control.Parent.ControlId == "buttonValley") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Environment = "Valley";
+						}
+						if(E.Control.Parent.ControlId == "buttonLagoon") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Environment = "Lagoon";
+						}
+						if(E.Control.Parent.ControlId == "buttonPlayOnline") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							SendCustomEvent("PLAY_POUTREL_SERVER", Text[]);
+						}
+						if(E.Control.Parent.ControlId == "buttonCustomCars") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Page.GetFirstChild("selection").Hide();
+							Page.GetFirstChild("FrameCustomCars").Show();
+							LoadCustomCars();
+						}
 					}
-					if(E.Control.Parent.ControlId == "buttonProfile") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						Audio.PlaySoundEvent(SoundElectric, 1.0);
-						
-						Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
-						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
-						Page.GetFirstChild("menu").DataAttributeSet("action","menu_profile");
-					}
-					if(E.Control.Parent.ControlId == "buttonExit") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						Audio.PlaySoundEvent(SoundElectric, 1.0);
-						
-						Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
-						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
-						Page.GetFirstChild("menu").DataAttributeSet("action","quit");
-					}
-					
-					if(E.Control.Parent.ControlId == "buttonBack") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						
-						Page.GetFirstChild("menu").DataAttributeSet("state","shown");
-						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
-						Page.GetFirstChild("menu").DataAttributeSet("action","");
-						
-						(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Hide();
-						Page.GetFirstChild("selection").Hide();
-					}
-					
-					if(E.Control.Parent.ControlId == "buttonCanyon") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						Environment = "Canyon";
-					}
-					if(E.Control.Parent.ControlId == "buttonStadium") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						Environment = "Stadium";
-					}
-					if(E.Control.Parent.ControlId == "buttonValley") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						Environment = "Valley";
-					}
-					if(E.Control.Parent.ControlId == "buttonLagoon") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						Environment = "Lagoon";
-					}
-					
-					if(E.Control.Parent.ControlId == "buttonCustomCars") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-						//Page.GetFirstChild("selection").Hide();
+					if(E.Control.Parent.Parent.ControlId == "buttonsCustomCars") {
+						if(E.Control.Parent.ControlId == "buttonBack") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							Page.GetFirstChild("selection").Show();
+							Page.GetFirstChild("FrameCustomCars").Hide();
+						}
+						if(E.Control.Parent.ControlId == "buttonCreate") {
+							Audio.PlaySoundEvent(SoundClick, 1.0);
+							SendCustomEvent("OPEN_ITEMEDITOR", Text[]);
+						}
 					}
 					
 					if(E.Control.Parent.ControlId == "slider") {
 						Audio.PlaySoundEvent(SoundClick, 1.0);
-						E.Control.Parent.DataAttributeSet("hold","true");
-						E.Control.Parent.DataAttributeSet("mouse_y",MouseY^"");
-						E.Control.Parent.DataAttributeSet("pos",E.Control.RelativePosition_V3.Y^"");
+					
+						if(E.ControlId == "QuadBack") {
+							E.Control.Parent.GetFirstChild("button").RelativePosition_V3.Y = MathLib::Clamp(MouseY-40,-88.0,0.0);
+						}
+						else {
+							E.Control.Parent.DataAttributeSet("hold","true");
+							E.Control.Parent.DataAttributeSet("mouse_y",MouseY^"");
+							E.Control.Parent.DataAttributeSet("pos",E.Control.RelativePosition_V3.Y^"");
+						}
 					}
+				}
+				case CMlEvent::Type::EntrySubmit: {
+					declare persistent Text[] NEM_CustomCars for LocalUser;
+							
+					if(E.ControlId == "EntryCar1") NEM_CustomCars[0] = (Page.GetFirstChild("EntryCar1") as CMlEntry).Value;
+					else if(E.ControlId == "EntryCar2") NEM_CustomCars[1] = (Page.GetFirstChild("EntryCar2") as CMlEntry).Value;
+					else if(E.ControlId == "EntryCar3") NEM_CustomCars[2] = (Page.GetFirstChild("EntryCar3") as CMlEntry).Value;
+					else if(E.ControlId == "EntryCar4") NEM_CustomCars[3] = (Page.GetFirstChild("EntryCar4") as CMlEntry).Value;
+					else if(E.ControlId == "EntryCar5") NEM_CustomCars[4] = (Page.GetFirstChild("EntryCar5") as CMlEntry).Value;
 				}
 			}
 		}
