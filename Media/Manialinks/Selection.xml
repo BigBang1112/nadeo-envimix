@@ -7,24 +7,40 @@
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" z-index="1" id="button"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Canyon Car" halign="center" style="TextTitle3" textsize="3"/>
+	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
+	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
+	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
+	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
 </frame>
 <frame pos="-80 45" id="SelectionStadium">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/StadiumSelect.jpg"/>
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Stadium Car" halign="center" style="TextTitle3" textsize="3"/>
+	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
+	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
+	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
+	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
 </frame>
 <frame pos="-30 45" id="SelectionValley">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/ValleySelect.jpg"/>
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Valley Car" halign="center" style="TextTitle3" textsize="3"/>
+	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
+	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
+	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
+	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
 </frame>
 <frame pos="20 45" id="SelectionLagoon">
 	<quad size="50 90" bgcolor="888A" scriptevents="1" image="file://Media/LagoonSelect.jpg"/>
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Lagoon Car" halign="center" style="TextTitle3" textsize="3"/>
+	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
+	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
+	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
+	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
 </frame>
 </frame>
 
