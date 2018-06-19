@@ -21,7 +21,7 @@ Void Init() {
 	VehicleList["LagoonCar"] = ItemList_Add("LagoonCar");
 	
 	foreach(Car,NEM_CustomCars) {
-		if(Car != "") VehicleList[Car] = ItemList_Add(Car);
+		if(Car != "" && !VehicleList.existskey(Car)) VehicleList[Car] = ItemList_Add(Car);
 	}
 	
 	ItemList_End();

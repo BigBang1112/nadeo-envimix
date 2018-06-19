@@ -10,9 +10,13 @@
 		<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
 		<frame pos="0 -52" id="footer" scale="1">
 			<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3"/>
-			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextButtonBig" pos="0 -3" scriptevents="1"/>
+			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextButtonBig" pos="0 -3" manialink="nadeoenvimix?about"/>
 		</frame>
-		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>
+		
+		<label pos="-58 -40" z-index="1" size="20 5" text="FEEDBACK" valign="center2" textsize=".5" style="TextCardMedium" halign="right" textemboss="1" url="maniaplanet://#mailto=bigbang1112"/>
+		<label pos="-58 -45" z-index="1" size="20 5" text="PRIVACY POLICY" valign="center2" textsize=".5" style="TextCardMedium" manialink="nadeoenvimix?privacy" halign="right" textemboss="1"/>
+		
+		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>		
 		<frame id="buttons">
 			<frame pos="0 5" id="buttonPlay">
 				<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
@@ -66,99 +70,101 @@
 			<frame pos="20 -10" id="01">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A01" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="60 -10" id="02">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="100 -10" id="03">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A03" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="140 -10" id="04">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A04" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="180 -10" id="05">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A05" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 				
 			<frame pos="20 -30" id="06">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A06" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="60 -30" id="07">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A07" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="100 -30" id="08">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A08" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="140 -30" id="09">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A09" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="180 -30" id="10">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A10" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 				
 			<frame pos="20 -50" id="11">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A11" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="60 -50" id="12">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A12" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="100 -50" id="13">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A13" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="140 -50" id="14">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A14" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 			<frame pos="180 -50" id="15">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
-				<quad z-index="2" size="41 21" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A15" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name"/>
 			</frame>
 		</frame>
 		
 		<quad z-index="0" size="200 50" bgcolor="000A" pos="-135 -15"/>
+		<quad pos="-20 -20" z-index="1" size="80 40" bgcolor="000A"/>
 		<frame pos="-135 -15" z-index="1" id="Panel" hidden="0">
+			<quad z-index="0" size="10 10" bgcolor="FFFA" halign="center" valign="center" id="Lock" style="Icons64x64_1" substyle="StatePrivate" pos="30 -8.5" scriptevents="1" hidden="1"/>
 			<label pos="5 -5" z-index="0" size="20 10" text="..." textsize="8" style="TextTitle3" id="Name"/>
 			<label pos="5 -15" z-index="0" size="30 5" text="Validated by" textsize="1.5" style="TextTitle3"/>
 			<label pos="32.5 -15" z-index="0" size="40 5" text="..." textsize="1.5" style="TextTitle3" id="Validator"/>
@@ -183,6 +189,7 @@
 				<gauge pos="63 -10" z-index="0" size="40 10" valign="center" drawbg="0" id="QualityValleyCar"/>
 				<gauge pos="63 -15" z-index="0" size="40 10" valign="center" drawbg="0" id="QualityLagoonCar"/>
 			</frame>
+			
 		</frame>
 		
 		<quad pos="80 50" z-index="1" size="1 22" bgcolor="FFFC" halign="right"/>
@@ -197,6 +204,11 @@
 		</frame>
 		
 		<frame id="buttonsSelection" z-index="1">
+			<frame pos="-40 -25" id="buttonPlay">
+				<quad pos="0 0" z-index="0" size="30 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="30 10" text="Play" halign="center" valign="center2" style="TextTitle3" id="text"/>
+			</frame>
+		
 			<frame pos="15 63.5" id="buttonMostInteresting">
 				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
 				<label pos="0 0" z-index="1" size="40 8" text="Most Interesting" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
@@ -217,7 +229,7 @@
 				<label pos="0 0" z-index="2" size="49 10" text="Stadium" halign="center" valign="center2" style="TextTitle3" textsize="2" textemboss="1"/>
 				
 				<frame z-index="3" id="FrameOpenplanet">
-					<quad z-index="0" size="49 10" bgcolor="101" halign="center" valign="center" opacity=".9" scriptevents="1"/>
+					<quad z-index="0" size="49 10" bgcolor="101" halign="center" valign="center" opacity=".9" url="https://openplanet.nl/"/>
 					<label size="10 10" text="$f0f" halign="center" valign="center2" textsize="5" z-index="1"/>
 				</frame>
 			</frame>
@@ -349,6 +361,10 @@
 		declare Text[] Maps;
 		declare Integer LastDifficulty;
 		declare Integer DifficultySwitchTime;
+		
+		declare Text SelectEnvironment;
+		declare Integer SelectDifficulty;
+		declare Integer SelectMap;
 		
 		Void AnimateMaps(Integer _StartTime) {
 			declare Time = _StartTime;
@@ -506,6 +522,31 @@
 				
 				Audio.PlaySoundEvent(SoundHover, 1.0);
 				
+				Page.GetFirstChild("Lock").Hide();
+				SelectEnvironment = "";
+				SelectDifficulty = 0;
+				SelectMap = 0;
+						
+				foreach(Tile,(Page.GetFirstChild("maps") as CMlFrame).Controls) {
+					(Tile as CMlFrame).DataAttributeSet("hover","false");
+					
+					(Tile as CMlFrame).GetFirstChild("select").Hide();
+				}
+				
+				declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+					
+				(Panel.GetFirstChild("Name") as CMlLabel).SetText("...");
+				(Panel.GetFirstChild("Validator") as CMlLabel).SetText("...");
+						
+				(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(0.0);
+				(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(0.0);
+				(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(0.0);
+				(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(0.0);
+				(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(0.0);
+				(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(0.0);
+				(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(0.0);
+				(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(0.0);
+				
 				if(Diff == 0) ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <1.0,1.0,1.0>;
 				if(Diff == 1) ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <0.0,1.0,0.0>;
 				if(Diff == 2) ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <0.0,0.0,1.0>;
@@ -641,35 +682,37 @@
 					}
 					
 					if(Frame.Parent.ControlId == "maps") {
-						Audio.PlaySoundEvent(SoundHover, 1.0);
-						Frame.DataAttributeSet("hover","true");
-						Frame.DataAttributeSet("hover_time",Now^"");
-						
-						declare Text Diff = "";
+						if(SelectEnvironment == "") {
+							Audio.PlaySoundEvent(SoundHover, 1.0);
+							Frame.DataAttributeSet("hover","true");
+							Frame.DataAttributeSet("hover_time",Now^"");
 							
-						switch(GetDifficulty()) {
-							case 0: { Diff = "A"; }
-							case 1: { Diff = "B"; }
-							case 2: { Diff = "C"; }
-							case 3: { Diff = "D"; }
-							case 4: { Diff = "E"; }
-						}
-						
-						declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
-						
-						(Panel.GetFirstChild("Name") as CMlLabel).SetText(Diff ^ E.Control.Parent.ControlId);
-						
-						if(MapBriefDocument != Null) {
-							(Panel.GetFirstChild("Validator") as CMlLabel).SetText(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeText("Validator","..."));
+							declare Text Diff = "";
+								
+							switch(GetDifficulty()) {
+								case 0: { Diff = "A"; }
+								case 1: { Diff = "B"; }
+								case 2: { Diff = "C"; }
+								case 3: { Diff = "D"; }
+								case 4: { Diff = "E"; }
+							}
 							
-							(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Difficulty",0.0));
-							(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Difficulty",0.0));
-							(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Difficulty",0.0));
-							(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Difficulty",0.0));
-							(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Quality",0.0));
-							(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Quality",0.0));
-							(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Quality",0.0));
-							(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Quality",0.0));
+							declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+							
+							(Panel.GetFirstChild("Name") as CMlLabel).SetText(Diff ^ E.Control.Parent.ControlId);
+							
+							if(MapBriefDocument != Null) {
+								(Panel.GetFirstChild("Validator") as CMlLabel).SetText(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeText("Validator","..."));
+								
+								(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Difficulty",0.0));
+								(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Difficulty",0.0));
+								(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Difficulty",0.0));
+								(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Difficulty",0.0));
+								(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Quality",0.0));
+								(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Quality",0.0));
+								(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Quality",0.0));
+								(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Quality",0.0));
+							}
 						}
 					}
 				}
@@ -681,7 +724,7 @@
 						Frame.DataAttributeSet("hover_time",Now^"");
 						Frame.DataAttributeSet("hover_out_value",(E.Control as CMlQuad).BgColor[0]^"");
 					}
-					
+					if(SelectEnvironment == "") {
 					if(E.Control.Parent.Parent.ControlId == "maps") {
 						Audio.PlaySoundEvent(SoundHover, 1.0);
 						Frame.DataAttributeSet("hover","false");
@@ -702,11 +745,41 @@
 						(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(0.0);
 						(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(0.0);
 						(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(0.0);
+						}
 					}
 				}
-				case CMlEvent::Type::MouseClick: {				
+				case CMlEvent::Type::MouseClick: {
+					if(E.ControlId == "Lock") {
+						Page.GetFirstChild("Lock").Hide();
+						
+						SelectEnvironment = "";
+						SelectDifficulty = 0;
+						SelectMap = 0;
+						
+						foreach(Tile,(Page.GetFirstChild("maps") as CMlFrame).Controls) {
+							(Tile as CMlFrame).DataAttributeSet("hover","false");
+							(Tile as CMlFrame).DataAttributeSet("hover_time",Now^"");
+							
+							(Tile as CMlFrame).GetFirstChild("select").Hide();
+						}
+						
+						declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+					
+						(Panel.GetFirstChild("Name") as CMlLabel).SetText("...");
+						(Panel.GetFirstChild("Validator") as CMlLabel).SetText("...");
+						
+						(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(0.0);
+					}
 					if(E.ControlId == "hover") {
 						Audio.PlaySoundEvent(SoundClick, 1.0);
+						if(!Page.GetFirstChild("Lock").Visible)
 						if(E.Control.Parent.Parent.ControlId == "maps") {
 							declare Text Diff = "";
 							
@@ -717,8 +790,32 @@
 								case 3: { Diff = "D"; }
 								case 4: { Diff = "E"; }
 							}
-						
-							SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^GetDifficulty(), E.Control.Parent.ControlId,"Any"]);
+							
+							foreach(Tile,E.Control.Parent.Parent.Controls) {
+								if(Tile != E.Control.Parent)
+									(Tile as CMlFrame).GetFirstChild("select").Hide();
+							}
+							
+							if(E.Control.Parent.GetFirstChild("select").Visible) {
+								E.Control.Parent.GetFirstChild("select").Hide();
+								
+								Page.GetFirstChild("Lock").Hide();
+								
+								SelectEnvironment = "";
+								SelectDifficulty = 0;
+								SelectMap = 0;
+							}
+							else {
+								E.Control.Parent.GetFirstChild("select").Show();
+								
+								Page.GetFirstChild("Lock").Show();
+								
+								SelectEnvironment = Environment;
+								SelectDifficulty = GetDifficulty();
+								SelectMap = TextLib::ToInteger(E.Control.Parent.ControlId);
+							}
+							
+							//SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^GetDifficulty(), E.Control.Parent.ControlId,"Any"]);
 						}
 					}
 					if(E.Control.Parent.Parent.ControlId == "buttons") {
@@ -752,10 +849,13 @@
 						if(E.Control.Parent.ControlId == "buttonTrack") {
 							Audio.PlaySoundEvent(SoundClick, 1.0);
 							
-							SendCustomEvent("COMMAND_PLAYMAP", [TrackDayEnvironment, TrackDayDifficulty, TrackDayMap,"Any"]);
+							//SendCustomEvent("COMMAND_PLAYMAP", [TrackDayEnvironment, TrackDayDifficulty, TrackDayMap,"Any"]);
 						}
 					}
 					if(E.Control.Parent.Parent.ControlId == "buttonsSelection") {
+						if(E.Control.Parent.ControlId == "buttonPlay") {
+							SendCustomEvent("COMMAND_PLAYMAP", [SelectEnvironment, ""^SelectDifficulty, ""^SelectMap,"Any"]);
+						}
 						if(E.Control.Parent.ControlId == "buttonBack") {
 							Audio.PlaySoundEvent(SoundClick, 1.0);
 							
