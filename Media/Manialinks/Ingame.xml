@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
-<frame id="buttonMenu">
-<quad pos="-125 -75" z-index="0" size="50 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1"/>
-<label pos="-125 -75" z-index="1" size="50 10" text="Menu" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+<label pos="-150 80" z-index="0" size="30 5" text="CanyonCar" textfont="RajdhaniMono" textemboss="1"/>
+<label pos="-150 70" z-index="0" size="30 5" text="StadiumCar" textfont="RajdhaniMono" textemboss="1"/>
+<label pos="-150 60" z-index="0" size="30 5" text="ValleyCar" textfont="RajdhaniMono" textemboss="1"/>
+<label pos="-150 50" z-index="0" size="30 5" text="LagoonCar" textfont="RajdhaniMono" textemboss="1"/>
+
+<frame pos="-135 -75" id="buttonMenu">
+<quad z-index="0" size="30 8" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".5"/>
+<label z-index="1" size="30 8" text="Menu" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
 </frame>
+<label pos="-118 -72" z-index="0" size="15 3" text="OR PRESS" textsize="1" textfont="RajdhaniMono" textemboss="1" opacity=".75"/>
+<label pos="-118 -74.5" z-index="0" size="10 4" text="M" textsize="2" textfont="RajdhaniMono" textemboss="1" opacity=".9"/>
 <script>
 	<!--
 		#Include "TextLib" as TextLib
@@ -28,9 +35,26 @@
 				(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
 				(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
 			}
+		
+			foreach(Event,RaceEvents) {
+				switch(Event.Type) {
+					case CTmRaceClientEvent::EType::WayPoint: {
+						if(Event.IsEndRace) {
+							declare netwrite Text Net_State for UI;
+							Net_State = "FINISH";
+						}
+					}
+				}
+			}
 			
 			foreach(Event,PendingEvents) {
 				switch(Event.Type) {
+					case CMlEvent::Type::KeyPress: {
+						if(Event.KeyName == "M") {
+							declare netwrite Text Net_State for UI;
+							Net_State = "MENU";
+						}
+					}
 					case CMlEvent::Type::MouseOver: {
 						declare Frame <=> Event.Control.Parent;
 					

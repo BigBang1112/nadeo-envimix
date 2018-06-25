@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<quad z-index="0" size="150 100" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur" halign="center" valign="center" pos="0 0"/>
+<frame z-index="1">
+	<label z-index="0" size="100 15" text="0:00.000" halign="center" valign="center2" pos="0 35" textfont="RajdhaniMono" textsize="15" id="Record"/>
+	<label pos="0 27.5" z-index="0" size="100 5" text="NEW PESONAL BEST" halign="center" textfont="RajdhaniMono"/>
+	
+	<label pos="48 5.75" z-index="0" size="40 10" text="STADIUM" halign="right" textfont="RajdhaniMono" textsize="6" valign="bottom" id="LabelEnvironment"/>
+	<label pos="70 16" z-index="0" size="20 10" text="A01" halign="right" textfont="RajdhaniMono" textsize="10" id="LabelMap"/>
+	<label pos="68 5" z-index="0" size="30 5" text="VALLEYCAR" textfont="RajdhaniMono" halign="right" id="LabelCar"/>
+	
+	<quad pos="-15 -2" z-index="0" size="86 28" bgcolor="FFFA" style="Bgs1" substyle="BgList"/>
+	<frame id="FrameRating" hidden="1" pos="-2" z-index="1">
+		<frame pos="30 -9">
+			<quad z-index="-1" size="81 9" bgcolor="FFFA" halign="center" valign="center" style="BgsPlayerCard" substyle="BgRacePlayerName" id="QuadDifficultyGlow"/>
+			<quad z-index="0" size="80 8" style="Bgs1" substyle="BgHealthBar" valign="center" halign="center" id="QuadDifficultyBack" scriptevents="1"/>
+			<quad z-index="1" size="5 6" bgcolor="FFFA" halign="center" valign="center" style="Bgs1InRace" substyle="BgCard" scriptevents="1" id="QuadDifficultySlider" pos="-10" hidden="1"/>
+			<label z-index="2" size="80 8" text="Advanced" halign="center" valign="center2" id="LabelDifficulty" style="TextTitle3" textsize="1" opacity=".5" hidden="1"/>
+		</frame>
+		<frame pos="30 -19">
+			<quad z-index="-1" size="81 9" bgcolor="FFFA" halign="center" valign="center" style="BgsPlayerCard" substyle="BgRacePlayerName" id="QuadQualityGlow"/>
+			<quad z-index="0" size="80 8" style="Bgs1" substyle="BgHealthBar" valign="center" halign="center" id="QuadQualityBack" scriptevents="1"/>
+			<quad z-index="1" size="5 6" bgcolor="FFFA" halign="center" valign="center" style="Bgs1InRace" substyle="BgCard" scriptevents="1" id="QuadQualitySlider" pos="-10" hidden="1"/>
+			<label z-index="2" size="80 8" text="Alright" halign="center" valign="center2" id="LabelQuality" style="TextTitle3" textsize="1" opacity=".5" hidden="1"/>
+		</frame>
+	</frame>
+	<label pos="28 -25" z-index="1" size="85 3" text="Don't forget to rate the track, it's helpful for everyone!" textsize="1" autonewline="1" halign="center"/>
+	
+	<frame id="Leaderboard" z-index="1" pos="-70 10">
+		<frame pos="0 0">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -3">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -6">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -9">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -12">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -15">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -18">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -21">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -24">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+		<frame pos="0 -27">
+			<label size="20 3" text="USERNAME" textsize="1"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+		</frame>
+	</frame>
+	
+	<frame id="buttons">
+		<frame pos="-45 -40" id="buttonImprove">
+			<quad z-index="0" size="40 10" bgcolor="000" halign="center" valign="center" scriptevents="1" id="button"/>
+			<label pos="0 0" z-index="1" size="30 5" text="Improve" halign="center" valign="center2" style="TextTitle3" id="text"/>
+		</frame>
+		<frame pos="0 -40" id="buttonSaveReplay">
+			<quad z-index="0" size="40 10" bgcolor="000" halign="center" valign="center" scriptevents="1" id="button"/>
+			<label pos="0 0" z-index="1" size="30 5" text="Save Replay" halign="center" valign="center2" style="TextTitle3" id="text"/>
+		</frame>
+		<frame pos="45 -40" id="buttonExit">
+			<quad z-index="0" size="40 10" bgcolor="000" halign="center" valign="center" scriptevents="1" id="button"/>
+			<label pos="0 0" z-index="1" size="30 5" text="Exit" halign="center" valign="center2" style="TextTitle3" id="text"/>
+		</frame>
+	</frame>
+</frame>
+<script>
+<!--
+	#Include "TextLib" as TextLib
+	#Include "MathLib" as MathLib
+	#Include "AnimLib" as AnimLib
+		
+	declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
+	declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
+	declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+	
+	declare Difficulties = [
+		"Very easy",
+		"Easy",
+		"Simple",
+		"Intermediate",
+		"Advanced",
+		"Hard",
+		"Very hard",
+		"Challenging",
+		"Extreme",
+		"Nearly impossible"
+	];
+	
+	declare Qualities = [
+		"The worst",
+		"Bad",
+		"Weird",
+		"Not bad",
+		"Alright",
+		"Good",
+		"Enjoyable",
+		"Great",
+		"Very fun",
+		"Incredible"
+	];
+	
+	declare HoldDifficulty = False;
+	declare HoldQuality = False;
+	
+	declare MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php");
+
+	while(True) {
+		declare netread Integer Net_Record for UI;
+		(Page.GetFirstChild("Record") as CMlLabel).SetText(TextLib::TimeToText(Net_Record,True)^TextLib::SubText(""^Net_Record,TextLib::Length(""^Net_Record)-1,1));
+		
+		declare netread Text Net_Environment for UI;
+		declare netread Text Net_Map for UI;
+		declare netread Text Net_Car for UI;
+		
+		(Page.GetFirstChild("LabelEnvironment") as CMlLabel).SetText(Net_Environment);
+		(Page.GetFirstChild("LabelMap") as CMlLabel).SetText(Net_Map);
+		(Page.GetFirstChild("LabelCar") as CMlLabel).SetText(Net_Car);
+		
+		if(MapInfoRequest != Null) {
+			if(MapInfoRequest.IsCompleted) {
+				if(MapInfoRequest.StatusCode == 200) {
+					Page.GetFirstChild("FrameRating").Show();
+				}
+				else if(MapInfoRequest.StatusCode == 12007) {
+					
+				}
+				else {
+				
+				}
+				
+				Http.Destroy(MapInfoRequest);
+				MapInfoRequest = Null;
+			}
+		}
+		
+		(Page.GetFirstChild("QuadDifficultyGlow") as CMlQuad).Opacity = MathLib::Sin(Now/100.0) * .5 + .5;
+		(Page.GetFirstChild("QuadQualityGlow") as CMlQuad).Opacity = MathLib::Sin((Now-1000)/100.0) * .5 + .5;
+		
+		declare DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
+		declare QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
+		
+		log(MathLib::CeilingInteger(DifficultyValue*10));
+		
+		(Page.GetFirstChild("LabelDifficulty") as CMlLabel).SetText(Difficulties[MathLib::FloorInteger(DifficultyValue * 9.999)]);
+		(Page.GetFirstChild("LabelQuality") as CMlLabel).SetText(Qualities[MathLib::FloorInteger(QualityValue * 9.999)]);
+		
+		if(MouseLeftButton) {
+			if(HoldDifficulty) {
+				Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
+			}
+			if(HoldQuality) {
+				Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
+			}
+		}
+		else {
+			HoldDifficulty = False;
+			HoldQuality = False;
+		}
+	
+		foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
+			declare B <=> (Button as CMlFrame);
+		
+			declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+			declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+					
+			if(B.DataAttributeGet("hover") == "true") {
+				(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+				(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+			}
+			else {
+				(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+				(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
+			}
+		}
+		
+		foreach(Event,PendingEvents) {
+			switch(Event.Type) {
+				
+				case CMlEvent::Type::KeyPress: {
+					if(Event.KeyName == "Enter") {
+						declare netwrite Text Net_State for UI;
+						Net_State = "IMPROVE";
+					}
+				}
+				case CMlEvent::Type::MouseOver: {
+					declare Frame <=> Event.Control.Parent;
+				
+					if(Event.ControlId == "button") {
+						Audio.PlaySoundEvent(SoundHover, 1.0);
+						Frame.DataAttributeSet("hover","true");
+						Frame.DataAttributeSet("hover_time",Now^"");
+						Frame.DataAttributeSet("hover_in_value",(Event.Control as CMlQuad).BgColor[0]^"");
+					}
+				}
+				case CMlEvent::Type::MouseOut: {
+					declare Frame <=> Event.Control.Parent;
+				
+					if(Event.ControlId == "button") {
+						Frame.DataAttributeSet("hover","false");
+						Frame.DataAttributeSet("hover_time",Now^"");
+						Frame.DataAttributeSet("hover_out_value",(Event.Control as CMlQuad).BgColor[0]^"");
+					}
+				}
+				case CMlScriptEvent::Type::MouseClick: {
+					if(Event.ControlId == "QuadDifficultySlider") {
+						HoldDifficulty = True;
+					}
+					if(Event.ControlId == "QuadQualitySlider") {
+						HoldQuality = True;
+					}
+					if(Event.ControlId == "QuadDifficultyBack") {
+						Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
+						HoldDifficulty = True;
+						
+						Page.GetFirstChild("QuadDifficultyGlow").Hide();
+						Page.GetFirstChild("QuadDifficultySlider").Show();
+						Page.GetFirstChild("LabelDifficulty").Show();
+					}
+					if(Event.ControlId == "QuadQualityBack") {
+						Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
+						HoldQuality = True;
+						
+						Page.GetFirstChild("QuadQualityGlow").Hide();
+						Page.GetFirstChild("QuadQualitySlider").Show();
+						Page.GetFirstChild("LabelQuality").Show();
+					}
+					if(Event.Control.Parent.ControlId == "buttonImprove") {
+						declare netwrite Text Net_State for UI;
+						Net_State = "START";
+					}
+					if(Event.Control.Parent.ControlId == "buttonSaveReplay") {
+						declare netwrite Text Net_State for UI;
+						Net_State = "REPLAY";
+					}
+					if(Event.Control.Parent.ControlId == "buttonExit") {
+						declare netwrite Text Net_State for UI;
+						Net_State = "BACK";
+					}
+				}
+			}
+		}
+		
+		yield;
+	}
+-->
+</script>
+</manialink>

@@ -42,7 +42,7 @@
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -85" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Quality"/>
 	
-	<frame id="Default" z-index="2">
+	<frame id="Default" z-index="2" hidden="1">
 		<quad pos="0 0" size="50 90" bgcolor="000A" scriptevents="1"/>
 		<label pos="25 -46.5" z-index="1" size="40 20" text="Original maps are unplayable" halign="center" valign="center2" style="TextTitle3" autonewline="1"/>
 	</frame>
@@ -65,28 +65,28 @@
 </frame>
 
 <quad pos="75 45" z-index="1" size="3 90" bgcolor="000A" halign="center"/>
-<frame hidden="0" z-index="1">
+<frame hidden="1" z-index="1">
 	<quad pos="80 45" z-index="1" size="50 65" bgcolor="000A"/>
-	<label pos="105 40" z-index="2" size="50 5" text="Custom vehicle" autonewline="1" style="TextTitle3" textsize="2.5" halign="center"/>
+	<label pos="105 40" z-index="2" size="50 5" text="Custom car" autonewline="1" style="TextTitle3" textsize="2.5" halign="center"/>
 </frame>
 <frame id="buttons" z-index="2">
-<frame pos="105 28" id="buttonCar1">
+<frame pos="105 28" id="buttonCar1" hidden="1">
 	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
 </frame>
-<frame pos="105 18" id="buttonCar2">
+<frame pos="105 18" id="buttonCar2" hidden="1">
 	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
 </frame>
-<frame pos="105 8" id="buttonCar3">
+<frame pos="105 8" id="buttonCar3" hidden="1">
 	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
 </frame>
-<frame pos="105 -2" id="buttonCar4">
+<frame pos="105 -2" id="buttonCar4" hidden="1">
 	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
 </frame>
-<frame pos="105 -12" id="buttonCar5">
+<frame pos="105 -12" id="buttonCar5" hidden="1">
 	<quad pos="0 0" z-index="0" size="50 8" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
 </frame>
@@ -139,6 +139,23 @@
 					
 					Http.Destroy(MapRequest);
 					MapRequest = Null;
+				}
+			}
+			
+			declare netread Text Net_MapCar for UI;
+			
+			switch(Net_MapCar) {
+				case "CanyonCar": {
+					(Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("Default").Show();
+				}
+				case "StadiumCar": {
+					(Page.GetFirstChild("SelectionStadium") as CMlFrame).GetFirstChild("Default").Show();
+				}
+				case "ValleyCar": {
+					(Page.GetFirstChild("SelectionValley") as CMlFrame).GetFirstChild("Default").Show();
+				}
+				case "LagoonCar": {
+					(Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("Default").Show();
 				}
 			}
 		

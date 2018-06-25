@@ -23,7 +23,7 @@
 		<background_replay name=""/>
 		<header name="MenuHeader.png"/>
 		<music name=""/>
-		<manialink url="Media/MainMenu.Script.txt"/>
+		<manialink url=""/>
 	</menu>
 	<menu_style name=""/>
 	<music folder=""/>
@@ -72,7 +72,7 @@
 		</score_context>
 		<score_context>
 			<name>CanyonCar</name>
-			<maprecord_type>-1</maprecord_type>
+			<maprecord_type>2</maprecord_type>
 			<medals_enabled>false</medals_enabled>
 			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
 			<author_medals_enabled>false</author_medals_enabled>
@@ -80,7 +80,7 @@
 		</score_context>
 		<score_context>
 			<name>StadiumCar</name>
-			<maprecord_type>-1</maprecord_type>
+			<maprecord_type>2</maprecord_type>
 			<medals_enabled>false</medals_enabled>
 			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
 			<author_medals_enabled>false</author_medals_enabled>
@@ -88,7 +88,7 @@
 		</score_context>
 		<score_context>
 			<name>ValleyCar</name>
-			<maprecord_type>-1</maprecord_type>
+			<maprecord_type>2</maprecord_type>
 			<medals_enabled>false</medals_enabled>
 			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
 			<author_medals_enabled>false</author_medals_enabled>
@@ -96,7 +96,7 @@
 		</score_context>
 		<score_context>
 			<name>LagoonCar</name>
-			<maprecord_type>-1</maprecord_type>
+			<maprecord_type>2</maprecord_type>
 			<medals_enabled>false</medals_enabled>
 			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
 			<author_medals_enabled>false</author_medals_enabled>

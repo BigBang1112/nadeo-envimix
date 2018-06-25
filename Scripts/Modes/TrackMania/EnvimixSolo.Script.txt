@@ -7,18 +7,36 @@
 #Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
 
 declare Ident[Text] VehicleList;
+declare CTaskResult_Ghost[Text] GhostList;
 declare Boolean Terminate;
 
-Void Init() {
-	wait(AllPlayers.count>0);
+declare Text Vehicle;
 
-	declare persistent Text[] NEM_CustomCars for AllPlayers[0].User;
+declare CTaskResult SetRecordRequest;
+
+declare Text LastState;
+
+Void RefreshPersonalGhosts() {
+	GhostList["CanyonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"CanyonCar");
+	GhostList["StadiumCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"StadiumCar");
+	GhostList["ValleyCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"ValleyCar");
+	GhostList["LagoonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"LagoonCar");
+	wait(!GhostList["CanyonCar"].IsProcessing);
+	wait(!GhostList["StadiumCar"].IsProcessing);
+	wait(!GhostList["ValleyCar"].IsProcessing);
+	wait(!GhostList["LagoonCar"].IsProcessing);
+}
+
+Void Init() {
+	wait(Players.count>0);
+
+	declare persistent Text[] NEM_CustomCars for Players[0].User;
 
 	ItemList_Begin();
-	VehicleList["CanyonCar"] = ItemList_Add("CanyonCar");
-	VehicleList["StadiumCar"] = ItemList_Add("StadiumCar");
-	VehicleList["ValleyCar"] = ItemList_Add("ValleyCar");
-	VehicleList["LagoonCar"] = ItemList_Add("LagoonCar");
+	VehicleList["CanyonCar"] = ItemList_AddWithSkin("CanyonVehicle.Item.Gbx","Profile");
+	VehicleList["StadiumCar"] = ItemList_AddWithSkin("StadiumVehicle.Item.Gbx","Profile");
+	VehicleList["ValleyCar"] = ItemList_AddWithSkin("ValleyVehicle.Item.Gbx","Profile");
+	VehicleList["LagoonCar"] = ItemList_AddWithSkin("LagoonVehicle.Item.Gbx","Profile");
 	
 	foreach(Car,NEM_CustomCars) {
 		if(Car != "" && !VehicleList.existskey(Car)) VehicleList[Car] = ItemList_Add(Car);
@@ -32,16 +50,12 @@ Void Init() {
 	ManialinkRequest = Http.CreateGet("file://Media/Manialinks/Ingame.xml");
 	wait(ManialinkRequest.IsCompleted);
 	Layers2::Create("Ingame",ManialinkRequest.Result);
+	ManialinkRequest = Http.CreateGet("file://Media/Manialinks/Endscreen.xml");
+	wait(ManialinkRequest.IsCompleted);
+	Layers2::Create("Endscreen",ManialinkRequest.Result);
 	Http.Destroy(ManialinkRequest);
 	
-	RequestLoadMap();
-    wait(MapLoaded);
-}
-
-Boolean Start() {
-    //CutOffTimeLimit = -1;
-
-    UIManager.UIAll.OverlayHideChat = True;
+	UIManager.UIAll.OverlayHideChat = True;
     UIManager.UIAll.OverlayHidePosition = True;
     UIManager.UIAll.OverlayHideSpectatorControllers = True;
     UIManager.UIAll.OverlayHideBackground = True;
@@ -51,63 +65,190 @@ Boolean Start() {
     UIManager.UIAll.OverlayHideEndMapLadderRecap = True;
     UIManager.UIAll.AltMenuNoDefaultScores = True;
     UIManager.UIAll.AltMenuNoCustomScores = True;
-    UIManager.UIAll.OverlayHidePersonnalBestAndRank = True;
+    //UIManager.UIAll.OverlayHidePersonnalBestAndRank = True;
 
     UIManager.UIAll.ScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
     UIManager.UIAll.SmallScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
 	
-	declare UI <=> UIManager.GetUI(AllPlayers[0]);
+	RequestLoadMap();
+    wait(MapLoaded);	
 	
-	UI.UISequence = CUIConfig::EUISequence::PlayersPresentation;
-	
-	Layers2::Attach("VehicleSelection",AllPlayers[0]);
+	GhostList["CanyonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"CanyonCar");
+	GhostList["StadiumCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"StadiumCar");
+	GhostList["ValleyCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"ValleyCar");
+	GhostList["LagoonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"LagoonCar");
+	wait(!GhostList["CanyonCar"].IsProcessing);
+	wait(!GhostList["StadiumCar"].IsProcessing);
+	wait(!GhostList["ValleyCar"].IsProcessing);
+	wait(!GhostList["LagoonCar"].IsProcessing);
+}
 
-    return True;
+Boolean Start() {
+	declare Player <=> Players[0];
+	declare UI <=> UIManager.GetUI(Player);
+	
+	declare netwrite Text Net_MapCar for UI;
+	Net_MapCar = MapPlayerModelName;
+	
+	declare netwrite Text Net_Environment for UI;
+	Net_Environment = "STADIUM";
+	declare netwrite Text Net_Map for UI;
+	Net_Environment = "A04";
+	declare netwrite Text Net_Car for UI;
+	Net_Environment = MapPlayerModelName;
+	
+	UI.UISequence = CUIConfig::EUISequence::Outro;
+	
+	Layers2::Attach("VehicleSelection",Player);
+
+  return True;
 }
 
 Void Event(CTmModeEvent _Event) {
-    log(_Event.CommandName);
+	declare UI <=> UIManager.GetUI(_Event.Player);
+
+	switch(_Event.Type) {
+		case CTmModeEvent::EType::WayPoint: {
+			if(_Event.IsEndRace) {							
+				UIManager.UIAll.OverlayHideCheckPointTime = True;
+				
+				declare Ghost = ScoreMgr.Playground_GetPlayerGhost(_Event.Player);
+				
+				_Event.Player.Score.PrevRace = Ghost.Result;				
+				
+				if(ScoreMgr.MapLeaderBoard_GetPlayerCount(Map.MapInfo.MapUid, Vehicle, "World") == 0) {
+					log("New Validator!");
+				}
+				
+				if(_Event.Player.Score.BestRace.Time == -1) {
+					log("First finish");
+					SetRecordRequest = ScoreMgr.Map_SetNewRecord(_Event.Player.Id, Map.MapInfo.MapUid, Vehicle, Ghost);
+				}
+				else if(Ghost.Result.Time < _Event.Player.Score.BestRace.Time) {
+					log("Improvement");
+					SetRecordRequest = ScoreMgr.Map_SetNewRecord(_Event.Player.Id, Map.MapInfo.MapUid, Vehicle, Ghost);
+				}
+				else if(Ghost.Result.Time == _Event.Player.Score.BestRace.Time) {
+					log("Equal");
+				}
+				else {
+					log("Worse run");
+				}
+	
+				declare netwrite Integer Net_Record for UI;
+				Net_Record = Ghost.Result.Time;
+			}
+			else if(_Event.IsEndLap) {
+				
+			}
+			else {
+				
+			}
+		}
+		case CTmModeEvent::EType::GiveUp: {
+			
+		}
+	}
+}
+
+Void ScoreRequestEvent() {
+	if(SetRecordRequest != Null) {
+		if(!SetRecordRequest.IsProcessing) {
+			if(SetRecordRequest.HasSucceeded) {
+				log("SetRecord succeeded");	
+				log(ScoreMgr.Map_GetSkillPoints(Players[0].Id, Map.MapInfo.MapUid, Vehicle));		
+			}
+			else if(SetRecordRequest.HasFailed) {
+				log("SetRecord failed");
+			}
+			
+			ScoreMgr.TaskResult_Release(SetRecordRequest.Id);
+			SetRecordRequest = Null;
+		}
+	}
+}
+
+Void SpawnPlayer(CTmPlayer _Player) {
+	declare UI <=> UIManager.GetUI(_Player);
+
+	declare netread Text Net_Vehicle for UI;
+	Vehicle = Net_Vehicle;
+	_Player.ForceModelId = VehicleList[Vehicle];
+	if(_Player.ForceModelId == VehicleList[MapPlayerModelName]) Terminate = True;
+				
+	RaceGhost_RemoveAll();
+	RefreshPersonalGhosts();
+	
+	if(GhostList["CanyonCar"].Ghost != Null) {
+		RaceGhost_Add(GhostList["CanyonCar"].Ghost, False);
+	}
+	if(GhostList["StadiumCar"].Ghost != Null) {
+		RaceGhost_Add(GhostList["StadiumCar"].Ghost, False);
+	}
+	if(GhostList["ValleyCar"].Ghost != Null) {
+		RaceGhost_Add(GhostList["ValleyCar"].Ghost, False);
+	}
+	if(GhostList["LagoonCar"].Ghost != Null) {
+		RaceGhost_Add(GhostList["LagoonCar"].Ghost, False);
+	}
+	
+	if(GhostList[Vehicle].Ghost != Null) {
+		_Player.Score.BestRace = GhostList[Vehicle].Ghost.Result;
+	}
+	
+	_Player.IsSpawned = True;
+	_Player.RaceStartTime = Now + 2500;
+	
+	UIManager.UIAll.OverlayHideCheckPointTime = False;
+
+	Layers2::Detach("VehicleSelection",_Player);
+	Layers2::Detach("Endscreen",_Player);
+	Layers2::Attach("Ingame",_Player);
+	
+	UI.UISequence = CUIConfig::EUISequence::None;
 }
 
 Void Loop() {
-	declare Player <=> AllPlayers[0];
+	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
 	
 	declare netread Text Net_State for UI;
 	
-	switch(Net_State) {
-		case "START": {
-			if(PlayersWaiting.existskey(0)) {
-				declare netread Text Net_Vehicle for UI;
-				
-				Player.ForceModelId = VehicleList[Net_Vehicle];
-				Player.IsSpawned = True;
-				Player.RaceStartTime = Now + 2500;
-			
+	if(Net_State != LastState) {
+		switch(Net_State) {
+			case "START": {
+				UnspawnPlayer(Player);
+			}
+			case "FINISH": {
+				Layers2::Detach("Ingame",Player);
+				Layers2::Attach("Endscreen",Player);
+			}
+			case "SPECTATE": {
 				Layers2::Detach("VehicleSelection",Player);
 				Layers2::Attach("Ingame",Player);
-				
 				UI.UISequence = CUIConfig::EUISequence::None;
 			}
-		}
-		case "SPECTATE": {
-			Layers2::Detach("VehicleSelection",Player);
-			Layers2::Attach("Ingame",Player);
-			UI.UISequence = CUIConfig::EUISequence::None;
-		}
-		case "MENU": {
-			if(PlayersRacing.existskey(0))
-				UnspawnPlayer(Player);
+			case "MENU": {
+				if(PlayersRacing.existskey(0))
+					UnspawnPlayer(Player);
+					
+				Layers2::Detach("Ingame",Player);
+				Layers2::Attach("VehicleSelection",Player);
+				UI.UISequence = CUIConfig::EUISequence::Outro;
+			}
+			case "BACK": {
+				Player.IsSpawned = False;
 				
-			Layers2::Detach("Ingame",Player);
-			Layers2::Attach("VehicleSelection",Player);
-			UI.UISequence = CUIConfig::EUISequence::PlayersPresentation;
+				Terminate = True;
+			}
 		}
-		case "BACK": {
-			Player.IsSpawned = False;
-			
-			Terminate = True;
-		}
+		log(Net_State);
+		LastState = Net_State;
+	}
+	
+	if(Net_State == "START") {
+		if(PlayersWaiting.existskey(0))
+			SpawnPlayer(Player);
 	}
 }
 
@@ -117,6 +258,8 @@ main() {
 	
 	while(!ServerShutdownRequested && !Terminate) {
 		Loop();
+		
+		ScoreRequestEvent();
 		
 		foreach(Event, PendingEvents) {
 			Event(Event);
