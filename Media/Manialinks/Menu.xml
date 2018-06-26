@@ -207,44 +207,44 @@
 			<label pos="22.5 -22.5" z-index="2" size="25 10"  text="$f00ERROR" halign="center" valign="center" textemboss="1" id="LeaderboardError" textfont="RajdhaniMono" hidden="1"/>
 			<frame id="Leaderboard" z-index="1">
 				<frame pos="2 -9">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -12">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -15">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -18">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -21">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -24">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -27">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -30">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -33">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 				<frame pos="2 -36">
-					<label size="20 3" text="USERNAME" textsize="1"/>
-					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
+					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 			</frame>
 		</frame>
@@ -423,7 +423,7 @@
 					}
 				}
 				
-				declare CTaskResult_FileList List = DataFileMgr.Media_GetGameList (CDataFileMgr::EMediaType::Image, "Thumbnails/"^Env, False);
+				declare CTaskResult_FileList List = DataFileMgr.Media_GetGameList(CDataFileMgr::EMediaType::Image, "Thumbnails/"^Env, False);
 				wait(List.HasSucceeded);
 				
 				foreach(File,List.Files) {
@@ -588,6 +588,13 @@
 					if(LeaderboardRequest.HasSucceeded) {
 						(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").Hide();
 						(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("Leaderboard").Show();
+						
+						declare Leaderboard <=> ((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("Leaderboard") as CMlFrame);
+						
+						for(i,0,Leaderboard.Controls.count - 1) {
+							((Leaderboard.Controls[i] as CMlFrame).GetFirstChild("Username") as CMlLabel).SetText(LeaderboardRequest.LeaderBoardInfo[i].DisplayName);
+							((Leaderboard.Controls[i] as CMlFrame).GetFirstChild("Time") as CMlLabel).SetText(LeaderboardRequest.LeaderBoardInfo[i].Score);
+						}
 					}
 					else if(LeaderboardRequest.HasFailed) {
 						(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").Hide();
@@ -718,11 +725,7 @@
 			}
 		}
 	
-		Void OnInit() {
-			SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
-			SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
-			SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
-			
+		Void OnInit() {			
 			Zones = TextLib::Split("|",LocalUser.ZonePath);
 			Cars = ["CanyonCar","StadiumCar","ValleyCar","LagoonCar"];
 			
@@ -803,8 +806,6 @@
 			
 			if(Diff != LastDifficulty) {
 				DifficultySwitchTime = Now;
-				
-				Audio.PlaySoundEvent(SoundHover, 1.0);
 				
 				DeselectAll();
 				
@@ -938,7 +939,6 @@
 					declare Frame <=> E.Control.Parent;
 					
 					if(E.ControlId == "button") {
-						Audio.PlaySoundEvent(SoundHover, 1.0);
 						Frame.DataAttributeSet("hover","true");
 						Frame.DataAttributeSet("hover_time",Now^"");
 						Frame.DataAttributeSet("hover_in_value",(E.Control as CMlQuad).BgColor[0]^"");
@@ -946,7 +946,6 @@
 					
 					if(Frame.Parent.ControlId == "maps") {
 						if(SelectEnvironment == -1) {
-							Audio.PlaySoundEvent(SoundHover, 1.0);
 							Frame.DataAttributeSet("hover","true");
 							Frame.DataAttributeSet("hover_time",Now^"");
 							
@@ -1008,7 +1007,6 @@
 					}
 					if(SelectEnvironment == -1) {
 						if(E.Control.Parent.Parent.ControlId == "maps") {
-							Audio.PlaySoundEvent(SoundHover, 1.0);
 							Frame.DataAttributeSet("hover","false");
 							Frame.DataAttributeSet("hover_time",Now^"");
 						}
@@ -1074,7 +1072,6 @@
 						}
 					}
 					if(E.ControlId == "hover") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
 						if(!Page.GetFirstChild("Lock").Visible)
 						if(E.Control.Parent.Parent.ControlId == "maps") {
 							declare Text Diff = "";
@@ -1129,10 +1126,7 @@
 					if(E.ControlId == "PlayLagoonCar") SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"LagoonCar"]);
 					
 					if(E.Control.Parent.Parent.ControlId == "buttons") {
-						if(E.Control.Parent.ControlId == "buttonPlay") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
-							Audio.PlaySoundEvent(SoundElectric, 1.0);
-							
+						if(E.Control.Parent.ControlId == "buttonPlay") {							
 							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
 							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
 							Page.GetFirstChild("menu").DataAttributeSet("action","");
@@ -1140,25 +1134,17 @@
 							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
 							Page.GetFirstChild("selection").Show();
 						}
-						if(E.Control.Parent.ControlId == "buttonProfile") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
-							Audio.PlaySoundEvent(SoundElectric, 1.0);
-							
+						if(E.Control.Parent.ControlId == "buttonProfile") {							
 							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
 							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
 							Page.GetFirstChild("menu").DataAttributeSet("action","menu_profile");
 						}
 						if(E.Control.Parent.ControlId == "buttonExit") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
-							Audio.PlaySoundEvent(SoundElectric, 1.0);
-							
 							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
 							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
 							Page.GetFirstChild("menu").DataAttributeSet("action","quit");
 						}
-						if(E.Control.Parent.ControlId == "buttonTrack") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
-							
+						if(E.Control.Parent.ControlId == "buttonTrack") {							
 							SendCustomEvent("COMMAND_PLAYMAP", [TrackDayEnvironment, TrackDayDifficulty, TrackDayMap,"Any"]);
 						}
 					}
@@ -1167,9 +1153,7 @@
 							if(SelectEnvironment != -1)
 								SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"Any"]);
 						}
-						if(E.Control.Parent.ControlId == "buttonBack") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
-							
+						if(E.Control.Parent.ControlId == "buttonBack") {							
 							Page.GetFirstChild("menu").DataAttributeSet("state","shown");
 							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
 							Page.GetFirstChild("menu").DataAttributeSet("action","");
@@ -1179,7 +1163,6 @@
 						}
 						
 						if(E.Control.Parent.ControlId == "buttonCanyon") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
 							Environment = "Canyon";
 							DeselectAll();
 							
@@ -1190,7 +1173,6 @@
 							UpdateThumbnails();
 						}
 						if(E.Control.Parent.ControlId == "buttonStadium") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
 							Environment = "Stadium";
 							DeselectAll();
 							
@@ -1201,7 +1183,6 @@
 							UpdateThumbnails();
 						}
 						if(E.Control.Parent.ControlId == "buttonValley") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
 							Environment = "Valley";
 							DeselectAll();
 							
@@ -1212,7 +1193,6 @@
 							UpdateThumbnails();
 						}
 						if(E.Control.Parent.ControlId == "buttonLagoon") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
 							Environment = "Lagoon";
 							DeselectAll();
 							
@@ -1223,11 +1203,9 @@
 							UpdateThumbnails();
 						}
 						if(E.Control.Parent.ControlId == "buttonPlayOnline") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
 							SendCustomEvent("PLAY_POUTREL_SERVER", Text[]);
 						}
 						if(E.Control.Parent.ControlId == "buttonCustomCars") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
 							Page.GetFirstChild("selection").Hide();
 							Page.GetFirstChild("FrameCustomCars").Show();
 							LoadCustomCars();
@@ -1235,19 +1213,15 @@
 					}
 					if(E.Control.Parent.Parent.ControlId == "buttonsCustomCars") {
 						if(E.Control.Parent.ControlId == "buttonBack") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
 							Page.GetFirstChild("selection").Show();
 							Page.GetFirstChild("FrameCustomCars").Hide();
 						}
 						if(E.Control.Parent.ControlId == "buttonCreate") {
-							Audio.PlaySoundEvent(SoundClick, 1.0);
 							SendCustomEvent("OPEN_ITEMEDITOR", Text[]);
 						}
 					}
 					
-					if(E.Control.Parent.ControlId == "slider") {
-						Audio.PlaySoundEvent(SoundClick, 1.0);
-					
+					if(E.Control.Parent.ControlId == "slider") {					
 						if(E.ControlId == "QuadBack") {
 							E.Control.Parent.GetFirstChild("button").RelativePosition_V3.Y = MathLib::Clamp(MouseY-40,-88.0,0.0);
 						}

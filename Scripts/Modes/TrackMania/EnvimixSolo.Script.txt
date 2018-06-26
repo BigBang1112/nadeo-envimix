@@ -28,7 +28,7 @@ Void RefreshPersonalGhosts() {
 }
 
 Void Init() {
-	wait(Players.count>0);
+	wait(AllPlayers.count>0);
 
 	declare persistent Text[] NEM_CustomCars for Players[0].User;
 
@@ -93,9 +93,9 @@ Boolean Start() {
 	declare netwrite Text Net_Environment for UI;
 	Net_Environment = "STADIUM";
 	declare netwrite Text Net_Map for UI;
-	Net_Environment = "A04";
+	Net_Map = "A04";
 	declare netwrite Text Net_Car for UI;
-	Net_Environment = MapPlayerModelName;
+	Net_Car = MapPlayerModelName;
 	
 	UI.UISequence = CUIConfig::EUISequence::Outro;
 	
