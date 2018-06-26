@@ -27,10 +27,23 @@ Void RefreshPersonalGhosts() {
 	wait(!GhostList["LagoonCar"].IsProcessing);
 }
 
-Void Init() {
-	wait(AllPlayers.count>0);
+Void RefreshPersonalRecords() {
+	declare Player <=> Players[0];
+	declare UI <=> UIManager.GetUI(Player);
+	
+	declare netwrite Integer[] Net_Records for UI;
+	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "CanyonCar"));
+	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "StadiumCar"));
+	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "ValleyCar"));
+	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "LagoonCar"));
+}
 
-	declare persistent Text[] NEM_CustomCars for Players[0].User;
+Void Init() {
+	wait(Players.count>0);
+	
+	declare Player <=> Players[0];
+
+	declare persistent Text[] NEM_CustomCars for Player.User;
 
 	ItemList_Begin();
 	VehicleList["CanyonCar"] = ItemList_AddWithSkin("CanyonVehicle.Item.Gbx","Profile");
@@ -43,6 +56,11 @@ Void Init() {
 	}
 	
 	ItemList_End();
+	
+	RequestLoadMap();
+    wait(MapLoaded);
+
+	RefreshPersonalRecords();
 	
 	declare CHttpRequest ManialinkRequest = Http.CreateGet("file://Media/Manialinks/Selection.xml");
 	wait(ManialinkRequest.IsCompleted);
@@ -70,9 +88,6 @@ Void Init() {
     UIManager.UIAll.ScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
     UIManager.UIAll.SmallScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
 	
-	RequestLoadMap();
-    wait(MapLoaded);	
-	
 	GhostList["CanyonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"CanyonCar");
 	GhostList["StadiumCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"StadiumCar");
 	GhostList["ValleyCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"ValleyCar");
@@ -93,13 +108,11 @@ Boolean Start() {
 	declare netwrite Text Net_Environment for UI;
 	Net_Environment = "STADIUM";
 	declare netwrite Text Net_Map for UI;
-	Net_Map = "A04";
-	declare netwrite Text Net_Car for UI;
-	Net_Car = MapPlayerModelName;
-	
-	UI.UISequence = CUIConfig::EUISequence::Outro;
+	Net_Map = Map.MapName;
 	
 	Layers2::Attach("VehicleSelection",Player);
+	
+	UI.UISequence = CUIConfig::EUISequence::Outro;
 
   return True;
 }
@@ -114,7 +127,9 @@ Void Event(CTmModeEvent _Event) {
 				
 				declare Ghost = ScoreMgr.Playground_GetPlayerGhost(_Event.Player);
 				
-				_Event.Player.Score.PrevRace = Ghost.Result;				
+				_Event.Player.Score.PrevRace = Ghost.Result;
+				
+				declare netwrite Text Net_Type for UI;		
 				
 				if(ScoreMgr.MapLeaderBoard_GetPlayerCount(Map.MapInfo.MapUid, Vehicle, "World") == 0) {
 					log("New Validator!");
@@ -123,20 +138,26 @@ Void Event(CTmModeEvent _Event) {
 				if(_Event.Player.Score.BestRace.Time == -1) {
 					log("First finish");
 					SetRecordRequest = ScoreMgr.Map_SetNewRecord(_Event.Player.Id, Map.MapInfo.MapUid, Vehicle, Ghost);
+					Net_Type = "FIRST_FINISH";
 				}
 				else if(Ghost.Result.Time < _Event.Player.Score.BestRace.Time) {
 					log("Improvement");
 					SetRecordRequest = ScoreMgr.Map_SetNewRecord(_Event.Player.Id, Map.MapInfo.MapUid, Vehicle, Ghost);
+					Net_Type = "PERSONAL_BEST";
 				}
 				else if(Ghost.Result.Time == _Event.Player.Score.BestRace.Time) {
 					log("Equal");
+					Net_Type = "EQUAL";
 				}
 				else {
 					log("Worse run");
+					Net_Type = "WORSE";
 				}
 	
 				declare netwrite Integer Net_Record for UI;
 				Net_Record = Ghost.Result.Time;
+
+				RefreshPersonalRecords();
 			}
 			else if(_Event.IsEndLap) {
 				
@@ -156,7 +177,9 @@ Void ScoreRequestEvent() {
 		if(!SetRecordRequest.IsProcessing) {
 			if(SetRecordRequest.HasSucceeded) {
 				log("SetRecord succeeded");	
-				log(ScoreMgr.Map_GetSkillPoints(Players[0].Id, Map.MapInfo.MapUid, Vehicle));		
+				log(ScoreMgr.Map_GetSkillPoints(AllPlayers[0].Id, Map.MapInfo.MapUid, Vehicle));
+				
+				declare netwrite Boolean Net_WorldRecord for UIManager.GetUI(AllPlayers[0]) = True;
 			}
 			else if(SetRecordRequest.HasFailed) {
 				log("SetRecord failed");
@@ -200,6 +223,8 @@ Void SpawnPlayer(CTmPlayer _Player) {
 	_Player.RaceStartTime = Now + 2500;
 	
 	UIManager.UIAll.OverlayHideCheckPointTime = False;
+	
+	declare netwrite Text Net_Car for UI = Vehicle;
 
 	Layers2::Detach("VehicleSelection",_Player);
 	Layers2::Detach("Endscreen",_Player);

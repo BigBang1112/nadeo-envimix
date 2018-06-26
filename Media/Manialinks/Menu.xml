@@ -593,7 +593,7 @@
 						
 						for(i,0,Leaderboard.Controls.count - 1) {
 							((Leaderboard.Controls[i] as CMlFrame).GetFirstChild("Username") as CMlLabel).SetText(LeaderboardRequest.LeaderBoardInfo[i].DisplayName);
-							((Leaderboard.Controls[i] as CMlFrame).GetFirstChild("Time") as CMlLabel).SetText(LeaderboardRequest.LeaderBoardInfo[i].Score);
+							((Leaderboard.Controls[i] as CMlFrame).GetFirstChild("Time") as CMlLabel).SetText(""^LeaderboardRequest.LeaderBoardInfo[i].Score);
 						}
 					}
 					else if(LeaderboardRequest.HasFailed) {
@@ -1024,6 +1024,10 @@
 							(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(0.0);
 							(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(0.0);
 							(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(0.0);
+							Panel.GetFirstChild("MarkedCanyonCar").Hide();
+							Panel.GetFirstChild("MarkedStadiumCar").Hide();
+							Panel.GetFirstChild("MarkedValleyCar").Hide();
+							Panel.GetFirstChild("MarkedLagoonCar").Hide();
 						}
 					}
 				}

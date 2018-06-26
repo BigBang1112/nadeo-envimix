@@ -3,7 +3,7 @@
 <quad z-index="0" size="150 100" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur" halign="center" valign="center" pos="0 0"/>
 <frame z-index="1">
 	<label z-index="0" size="100 15" text="0:00.000" halign="center" valign="center2" pos="0 35" textfont="RajdhaniMono" textsize="15" id="Record"/>
-	<label pos="0 27.5" z-index="0" size="100 5" text="NEW PESONAL BEST" halign="center" textfont="RajdhaniMono"/>
+	<label pos="0 27.5" z-index="0" size="100 5" text="NEW PESONAL BEST" halign="center" textfont="RajdhaniMono" id="Type"/>
 	
 	<label pos="48 5.75" z-index="0" size="40 10" text="STADIUM" halign="right" textfont="RajdhaniMono" textsize="6" valign="bottom" id="LabelEnvironment"/>
 	<label pos="70 16" z-index="0" size="20 10" text="A01" halign="right" textfont="RajdhaniMono" textsize="10" id="LabelMap"/>
@@ -129,12 +129,19 @@
 	declare CHttpRequest RateRequest;
 	declare MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid="^Map.MapInfo.MapUid^"&user="^LocalUser.Login);
 	
-	declare Real DifficultyValue = -1;
-	declare Real QualityValue = -1;
+	declare Real DifficultyValue = -1.0;
+	declare Real QualityValue = -1.0;
 
 	while(True) {
 		declare netread Integer Net_Record for UI;
 		(Page.GetFirstChild("Record") as CMlLabel).SetText(TextLib::TimeToText(Net_Record,True)^TextLib::SubText(""^Net_Record,TextLib::Length(""^Net_Record)-1,1));
+		
+		declare netread Text Net_Type for UI;
+		switch(Net_Type) {
+			case "PERSONAL_BEST": (Page.GetFirstChild("Type") as CMlLabel).SetText("NEW PERSONAL BEST");
+			case "EQUAL": (Page.GetFirstChild("Type") as CMlLabel).SetText("EQUAL! HOW UNLUCKY");
+			case "WORSE": (Page.GetFirstChild("Type") as CMlLabel).SetText("MAYBE NEXT TIME");
+		}
 		
 		declare netread Text Net_Environment for UI;
 		declare netread Text Net_Map for UI;
@@ -144,8 +151,14 @@
 		(Page.GetFirstChild("LabelMap") as CMlLabel).SetText(Net_Map);
 		(Page.GetFirstChild("LabelCar") as CMlLabel).SetText(TextLib::ToUpperCase(Net_Car));
 		
-		DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
-		QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
+		if(DifficultyValue != -1.0) {
+			DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
+			(Page.GetFirstChild("LabelDifficulty") as CMlLabel).SetText(Difficulties[MathLib::FloorInteger(DifficultyValue * 9.999)]);
+		}
+		if(QualityValue != -1.0) {
+			QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
+			(Page.GetFirstChild("LabelQuality") as CMlLabel).SetText(Qualities[MathLib::FloorInteger(QualityValue * 9.999)]);
+		}
 		
 		if(MapInfoRequest != Null) {
 			if(MapInfoRequest.IsCompleted) {
@@ -208,15 +221,12 @@
 		(Page.GetFirstChild("QuadDifficultyGlow") as CMlQuad).Opacity = MathLib::Sin(Now/100.0) * .5 + .5;
 		(Page.GetFirstChild("QuadQualityGlow") as CMlQuad).Opacity = MathLib::Sin((Now-1000)/100.0) * .5 + .5;
 		
-		(Page.GetFirstChild("LabelDifficulty") as CMlLabel).SetText(Difficulties[MathLib::FloorInteger(DifficultyValue * 9.999)]);
-		(Page.GetFirstChild("LabelQuality") as CMlLabel).SetText(Qualities[MathLib::FloorInteger(QualityValue * 9.999)]);
-		
 		if(MouseLeftButton) {
 			if(HoldDifficulty) {
-				Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
+				Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 27.5,-35.0,35.0);
 			}
 			if(HoldQuality) {
-				Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
+				Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 27.5,-35.0,35.0);
 			}
 		}
 		else {
@@ -281,6 +291,8 @@
 						Page.GetFirstChild("QuadDifficultyGlow").Hide();
 						Page.GetFirstChild("QuadDifficultySlider").Show();
 						Page.GetFirstChild("LabelDifficulty").Show();
+						
+						DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
 					}
 					if(Event.ControlId == "QuadQualityBack") {
 						Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
@@ -289,6 +301,8 @@
 						Page.GetFirstChild("QuadQualityGlow").Hide();
 						Page.GetFirstChild("QuadQualitySlider").Show();
 						Page.GetFirstChild("LabelQuality").Show();
+						
+						QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
 					}
 					if(Event.Control.Parent.ControlId == "buttonImprove") {
 						if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {

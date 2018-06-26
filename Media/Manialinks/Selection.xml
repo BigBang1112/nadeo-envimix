@@ -7,6 +7,7 @@
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" z-index="1" id="button"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Canyon Car" halign="center" style="TextTitle3" textsize="3"/>
+	<label pos="25 -15" z-index="2" size="40 5" text="---" halign="center" textfont="RajdhaniMono" id="PB"/>
 	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
@@ -22,6 +23,7 @@
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Stadium Car" halign="center" style="TextTitle3" textsize="3"/>
+	<label pos="25 -15" z-index="2" size="40 5" text="---" halign="center" textfont="RajdhaniMono" id="PB"/>
 	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
@@ -37,6 +39,7 @@
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="3" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="4" size="45 5" text="Valley Car" halign="center" style="TextTitle3" textsize="3"/>
+	<label pos="25 -15" z-index="2" size="40 5" text="---" halign="center" textfont="RajdhaniMono" id="PB"/>
 	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
@@ -52,6 +55,7 @@
 	<quad size="50 90" bgcolor="FFFA" scriptevents="1" id="button" z-index="1"/>
 	<quad pos="25 -2" z-index="2" size="45 10" bgcolor="000A" halign="center"/>
 	<label pos="25 -5" z-index="3" size="45 5" text="Lagoon Car" halign="center" style="TextTitle3" textsize="3"/>
+	<label pos="25 -15" z-index="2" size="40 5" text="---" halign="center" textfont="RajdhaniMono" id="PB"/>
 	<label pos="25 -72" z-index="1" size="50 5" text="Difficulty" style="TextTitle3" valign="center" halign="center" textsize="1"/>
 	<gauge pos="25 -75" z-index="1" size="45 10" ratio=".5" drawbg="0" style="EnergyBar" halign="center" valign="center" id="Difficulty"/>
 	<label pos="25 -82" z-index="1" size="50 5" text="Quality" style="TextTitle3" valign="center" halign="center" textsize="1"/>
@@ -128,6 +132,13 @@
 		}
 	
 		while(True) {
+			declare netread Integer[] Net_Records for UI;
+			
+			((Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[0],True)^TextLib::SubText(""^Net_Records[0],TextLib::Length(""^Net_Records[0])-1,1));
+			((Page.GetFirstChild("SelectionStadium") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[1],True)^TextLib::SubText(""^Net_Records[1],TextLib::Length(""^Net_Records[1])-1,1));
+			((Page.GetFirstChild("SelectionValley") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[2],True)^TextLib::SubText(""^Net_Records[2],TextLib::Length(""^Net_Records[2])-1,1));
+			((Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[3],True)^TextLib::SubText(""^Net_Records[3],TextLib::Length(""^Net_Records[3])-1,1));
+		
 			if(MapRequest != Null) {
 				if(MapRequest.IsCompleted) {
 					if(MapRequest.StatusCode == 200) {
