@@ -6,8 +6,11 @@
 
 #Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
 
+#Setting S_Car ""
+
 declare Ident[Text] VehicleList;
 declare CTaskResult_Ghost[Text] GhostList;
+declare Boolean[] GhostShow;
 declare Boolean Terminate;
 
 declare Text Vehicle;
@@ -110,9 +113,15 @@ Boolean Start() {
 	declare netwrite Text Net_Map for UI;
 	Net_Map = Map.MapName;
 	
-	Layers2::Attach("VehicleSelection",Player);
+	if(S_Car == "") {
+		Layers2::Attach("VehicleSelection",Player);
 	
-	UI.UISequence = CUIConfig::EUISequence::Outro;
+		UI.UISequence = CUIConfig::EUISequence::Outro;
+	}
+	else {
+		Vehicle = S_Car;
+		declare netwrite Text Net_State for UI = "START";
+	}
 
   return True;
 }
@@ -167,7 +176,8 @@ Void Event(CTmModeEvent _Event) {
 			}
 		}
 		case CTmModeEvent::EType::GiveUp: {
-			
+			Layers2::Detach("Ingame",_Event.Player);
+			//Layers2::Attach("Ingame",_Event.Player);
 		}
 	}
 }
@@ -202,17 +212,58 @@ Void SpawnPlayer(CTmPlayer _Player) {
 	RaceGhost_RemoveAll();
 	RefreshPersonalGhosts();
 	
-	if(GhostList["CanyonCar"].Ghost != Null) {
+	declare netwrite Integer Net_NEM_Start for UI;
+	declare netwrite Text[] Net_NEM_GhostCars for UI;
+	declare netwrite Integer[] Net_NEM_GhostTimes for UI;
+	declare netwrite Integer[][] Net_NEM_GhostCheckpoints for UI;
+	
+	Net_NEM_GhostCars.clear();
+	Net_NEM_GhostTimes.clear();
+	Net_NEM_GhostCheckpoints.clear();
+	
+	if(GhostList["CanyonCar"].Ghost != Null && GhostShow[0]) {
 		RaceGhost_Add(GhostList["CanyonCar"].Ghost, False);
+		
+		Net_NEM_GhostCars.add("CanyonCar");
+		Net_NEM_GhostTimes.add(GhostList["CanyonCar"].Ghost.Result.Time);
+		
+		declare Integer[] CheckpointArray;
+		for(i,0,GhostList["CanyonCar"].Ghost.Result.Checkpoints.count-1)
+			CheckpointArray.add(GhostList["CanyonCar"].Ghost.Result.Checkpoints[i]);
+		Net_NEM_GhostCheckpoints.add(CheckpointArray);
 	}
-	if(GhostList["StadiumCar"].Ghost != Null) {
+	if(GhostList["StadiumCar"].Ghost != Null && GhostShow[1]) {
 		RaceGhost_Add(GhostList["StadiumCar"].Ghost, False);
+		
+		Net_NEM_GhostCars.add("StadiumCar");
+		Net_NEM_GhostTimes.add(GhostList["StadiumCar"].Ghost.Result.Time);
+		
+		declare Integer[] CheckpointArray;
+		for(i,0,GhostList["StadiumCar"].Ghost.Result.Checkpoints.count-1)
+			CheckpointArray.add(GhostList["StadiumCar"].Ghost.Result.Checkpoints[i]);
+		Net_NEM_GhostCheckpoints.add(CheckpointArray);
 	}
-	if(GhostList["ValleyCar"].Ghost != Null) {
+	if(GhostList["ValleyCar"].Ghost != Null && GhostShow[2]) {
 		RaceGhost_Add(GhostList["ValleyCar"].Ghost, False);
+		
+		Net_NEM_GhostCars.add("ValleyCar");
+		Net_NEM_GhostTimes.add(GhostList["ValleyCar"].Ghost.Result.Time);
+		
+		declare Integer[] CheckpointArray;
+		for(i,0,GhostList["ValleyCar"].Ghost.Result.Checkpoints.count-1)
+			CheckpointArray.add(GhostList["ValleyCar"].Ghost.Result.Checkpoints[i]);
+		Net_NEM_GhostCheckpoints.add(CheckpointArray);
 	}
-	if(GhostList["LagoonCar"].Ghost != Null) {
+	if(GhostList["LagoonCar"].Ghost != Null && GhostShow[3]) {
 		RaceGhost_Add(GhostList["LagoonCar"].Ghost, False);
+		
+		Net_NEM_GhostCars.add("LagoonCar");
+		Net_NEM_GhostTimes.add(GhostList["LagoonCar"].Ghost.Result.Time);
+		
+		declare Integer[] CheckpointArray;
+		for(i,0,GhostList["LagoonCar"].Ghost.Result.Checkpoints.count-1)
+			CheckpointArray.add(GhostList["LagoonCar"].Ghost.Result.Checkpoints[i]);
+		Net_NEM_GhostCheckpoints.add(CheckpointArray);
 	}
 	
 	if(GhostList[Vehicle].Ghost != Null) {
@@ -222,7 +273,11 @@ Void SpawnPlayer(CTmPlayer _Player) {
 	_Player.IsSpawned = True;
 	_Player.RaceStartTime = Now + 2500;
 	
+	Net_NEM_Start = _Player.RaceStartTime;
+	
 	UIManager.UIAll.OverlayHideCheckPointTime = False;
+	
+	declare netwrite Integer[] Net_GhostCars for UI;
 	
 	declare netwrite Text Net_Car for UI = Vehicle;
 
@@ -243,6 +298,10 @@ Void Loop() {
 		switch(Net_State) {
 			case "START": {
 				UnspawnPlayer(Player);
+				
+				declare netread Boolean[] Net_NEM_Ghosts for UI;
+				
+				for(i,1,4) GhostShow.add(True);
 			}
 			case "FINISH": {
 				Layers2::Detach("Ingame",Player);

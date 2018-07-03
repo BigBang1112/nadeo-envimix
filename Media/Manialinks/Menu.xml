@@ -57,10 +57,13 @@
 		
 		<label pos="-130 64" z-index="1" size="40 10" text="Canyon" style="TextTitle3" textsize="3" valign="center" scale="1.25" id="labelEnvironment"/>
 		
+		
+		
 		<frame pos="112.5 66" z-index="1">
 			<label pos="0 0" z-index="0" size="45 5" text="Menu" style="TextTitle3" halign="center" textsize="4"/>
 		</frame>
 		
+		<frame z-index="1">
 		<quad pos="-135 55" z-index="1" size="200 2" bgcolor="FFFF" opacity=".75" id="difficultyBar"/>
 		
 		<frame pos="-135 50" id="maps" z-index="1">
@@ -188,6 +191,8 @@
 		</frame>
 		
 		<quad z-index="0" size="200 50" bgcolor="000A" pos="-135 -15"/>
+		<quad pos="-90 -20" z-index="0.1" size="20 10" bgcolor="FFFA"/>
+		<label pos="-45 -25" z-index="1" size="20 5" text="Play" style="CardButtonMediumS" halign="center" valign="center" scale="1.4" scriptevents="1" id="buttonPlayTrack"/>
 		<quad pos="-20 -20" z-index="1" size="80 40" bgcolor="000A"/>
 		<frame pos="-20 -20" id="Scanner" z-index="2">
 			<label z-index="0" size="30 5" text="USERNAME" pos="61 -12" valign="center2" textsize="1" id="Username" halign="center"/>
@@ -279,6 +284,7 @@
 			</frame>
 			
 		</frame>
+		</frame>
 		
 		<quad pos="80 50" z-index="1" size="1 22" bgcolor="FFFC" halign="right"/>
 		<quad pos="80 28" z-index="1" size="1 22" bgcolor="0F0C" halign="right"/>
@@ -291,12 +297,7 @@
 			<quad z-index="1" size="8 22" bgcolor="AAAA" halign="center" id="button" scriptevents="1" pos="0 0"/>
 		</frame>
 		
-		<frame id="buttonsSelection" z-index="1">
-			<frame pos="-45 -25" id="buttonPlay">
-				<quad pos="0 0" z-index="0" size="40 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
-				<label pos="0 0" z-index="1" size="40 10" text="Play" halign="center" valign="center2" style="TextTitle3" id="text"/>
-			</frame>
-		
+		<frame id="buttonsSelection" z-index="1">		
 			<frame pos="15 63.5" id="buttonMostInteresting">
 				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
 				<label pos="0 0" z-index="1" size="40 8" text="Most Interesting" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
@@ -663,12 +664,17 @@
 		declare Integer CurrentCar;
 		
 		Void ReloadLeaderboard(Integer _CampaignId) {
+			(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardError").Hide();
 			(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").Show();
 			
 			declare UID = DataFileMgr.Campaigns[_CampaignId].MapGroups[SelectDifficulty].MapInfos[SelectMap - 1].MapUid;
 			
 			LeaderboardRequest = ScoreMgr.MapLeaderBoard_GetPlayerList(NullId, UID, Cars[CurrentCar], "World", 1, 10);
-			log(ScoreMgr.MapLeaderBoard_GetPlayerCount(UID, Cars[CurrentCar], "World"));
+			
+			if(LeaderboardRequest == Null) {
+				(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").Hide();
+				(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardError").Show();
+			}
 		}
 		
 		Void RefreshTrack() {		
@@ -1119,8 +1125,6 @@
 								
 								RefreshTrack();
 							}
-							
-							//SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^GetDifficulty(), E.Control.Parent.ControlId,"Any"]);
 						}
 					}
 					
@@ -1128,6 +1132,10 @@
 					if(E.ControlId == "PlayStadiumCar") SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"StadiumCar"]);
 					if(E.ControlId == "PlayValleyCar") SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"ValleyCar"]);
 					if(E.ControlId == "PlayLagoonCar") SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"LagoonCar"]);
+					
+					if(E.ControlId == "buttonPlayTrack")
+						if(SelectEnvironment != -1)
+							SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"Any"]);
 					
 					if(E.Control.Parent.Parent.ControlId == "buttons") {
 						if(E.Control.Parent.ControlId == "buttonPlay") {							
@@ -1153,10 +1161,6 @@
 						}
 					}
 					if(E.Control.Parent.Parent.ControlId == "buttonsSelection") {
-						if(E.Control.Parent.ControlId == "buttonPlay") {
-							if(SelectEnvironment != -1)
-								SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"Any"]);
-						}
 						if(E.Control.Parent.ControlId == "buttonBack") {							
 							Page.GetFirstChild("menu").DataAttributeSet("state","shown");
 							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");

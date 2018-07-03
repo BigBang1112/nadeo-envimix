@@ -134,10 +134,14 @@
 		while(True) {
 			declare netread Integer[] Net_Records for UI;
 			
-			((Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[0],True)^TextLib::SubText(""^Net_Records[0],TextLib::Length(""^Net_Records[0])-1,1));
-			((Page.GetFirstChild("SelectionStadium") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[1],True)^TextLib::SubText(""^Net_Records[1],TextLib::Length(""^Net_Records[1])-1,1));
-			((Page.GetFirstChild("SelectionValley") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[2],True)^TextLib::SubText(""^Net_Records[2],TextLib::Length(""^Net_Records[2])-1,1));
-			((Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[3],True)^TextLib::SubText(""^Net_Records[3],TextLib::Length(""^Net_Records[3])-1,1));
+			if(Net_Records[0] == -1) ((Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
+			else ((Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[0],True)^TextLib::SubText(""^Net_Records[0],TextLib::Length(""^Net_Records[0])-1,1));
+			if(Net_Records[1] == -1) ((Page.GetFirstChild("SelectionStadium") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
+			else ((Page.GetFirstChild("SelectionStadium") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[1],True)^TextLib::SubText(""^Net_Records[1],TextLib::Length(""^Net_Records[1])-1,1));
+			if(Net_Records[2] == -1) ((Page.GetFirstChild("SelectionValley") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
+			else ((Page.GetFirstChild("SelectionValley") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[2],True)^TextLib::SubText(""^Net_Records[2],TextLib::Length(""^Net_Records[2])-1,1));
+			if(Net_Records[3] == -1) ((Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
+			else ((Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[3],True)^TextLib::SubText(""^Net_Records[3],TextLib::Length(""^Net_Records[3])-1,1));
 		
 			if(MapRequest != Null) {
 				if(MapRequest.IsCompleted) {

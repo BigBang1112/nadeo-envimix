@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
-<label pos="-150 80" z-index="0" size="30 5" text="CanyonCar" textfont="RajdhaniMono" textemboss="1"/>
-<label pos="-150 70" z-index="0" size="30 5" text="StadiumCar" textfont="RajdhaniMono" textemboss="1"/>
-<label pos="-150 60" z-index="0" size="30 5" text="ValleyCar" textfont="RajdhaniMono" textemboss="1"/>
-<label pos="-150 50" z-index="0" size="30 5" text="LagoonCar" textfont="RajdhaniMono" textemboss="1"/>
+<frame id="GhostState">
+<frame pos="-150 80">
+<label z-index="0" size="30 5" text="CanyonCar" textfont="RajdhaniMono" textemboss="1" id="Car"/>
+<label pos="45 0" z-index="0" size="20 5" text="0:00.000" textfont="RajdhaniMono" textemboss="1" halign="right" id="Time"/>
+<label pos="45 -5" z-index="0" size="20 5" text="CP1" textfont="RajdhaniMono" textemboss="1" halign="right" textsize="1" id="State"/>
+</frame>
+<frame pos="-150 70">
+<label z-index="0" size="30 5" text="CanyonCar" textfont="RajdhaniMono" textemboss="1" id="Car"/>
+<label pos="45 0" z-index="0" size="20 5" text="0:00.000" textfont="RajdhaniMono" textemboss="1" halign="right" id="Time"/>
+<label pos="45 -5" z-index="0" size="20 5" text="CP1" textfont="RajdhaniMono" textemboss="1" halign="right" textsize="1" id="State"/>
+</frame>
+<frame pos="-150 60">
+<label z-index="0" size="30 5" text="CanyonCar" textfont="RajdhaniMono" textemboss="1" id="Car"/>
+<label pos="45 0" z-index="0" size="20 5" text="0:00.000" textfont="RajdhaniMono" textemboss="1" halign="right" id="Time"/>
+<label pos="45 -5" z-index="0" size="20 5" text="CP1" textfont="RajdhaniMono" textemboss="1" halign="right" textsize="1" id="State"/>
+</frame>
+</frame>
+
+<frame pos="-150 30">
+<label z-index="0" size="30 5" text="CanyonCar" textfont="RajdhaniMono" textemboss="1"/>
+<label pos="45 0" z-index="0" size="20 5" text="0:00.000" textfont="RajdhaniMono" textemboss="1" halign="right" id="Time"/>
+<label pos="45 -5" z-index="0" size="20 5" text="CP1" textfont="RajdhaniMono" textemboss="1" halign="right" textsize="1" id="State"/>
+</frame>
 
 <frame pos="-135 -75" id="buttonMenu">
-<quad z-index="0" size="30 8" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".5"/>
+<quad z-index="0" size="30 8" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".75"/>
 <label z-index="1" size="30 8" text="Menu" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
 </frame>
-<label pos="-118 -72" z-index="0" size="15 3" text="OR PRESS" textsize="1" textfont="RajdhaniMono" textemboss="1" opacity=".75"/>
+<label pos="-118 -72" z-index="0" size="15 3" text="OR PRESS" textsize="1" textfont="RajdhaniMono" textemboss="1" opacity=".9" textcolor="CCC"/>
 <label pos="-118 -74.5" z-index="0" size="10 4" text="M" textsize="2" textfont="RajdhaniMono" textemboss="1" opacity=".9"/>
 <script>
 	<!--
@@ -21,8 +40,54 @@
 		declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 		declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
 		
+		declare Frame <=> (Page.GetFirstChild("GhostState") as CMlFrame);
+		
+		foreach(FrameCar,Frame.Controls) FrameCar.Hide();
+		
+		declare Integer[] CheckpointCounters;
+		
+		declare netread Integer Net_NEM_Start for UI;
+		declare netread Text[] Net_NEM_GhostCars for UI;
+		declare netread Integer[] Net_NEM_GhostTimes for UI;
+		declare netread Integer[][] Net_NEM_GhostCheckpoints for UI;
+		
+		log(Net_NEM_Start);
+		log(GameTime);
+		
+		for(i,0,Net_NEM_GhostCars.count - 1) {
+			((Frame.Controls[i] as CMlFrame).GetFirstChild("Car") as CMlLabel).SetText(Net_NEM_GhostCars[i]);
+			Frame.Controls[i].Show();
+			
+			CheckpointCounters.add(0);
+		}
+		
 		while(True) {
 			declare B <=> (Page.GetFirstChild("buttonMenu") as CMlFrame);
+			
+			for(i,0,Net_NEM_GhostCars.count - 1) {
+				if(CheckpointCounters[i] < Net_NEM_GhostCheckpoints[i].count && Net_NEM_Start + Net_NEM_GhostCheckpoints[i][CheckpointCounters[i]] < GameTime) {
+					CheckpointCounters[i]+=1;
+				}
+				
+				if(CheckpointCounters[i] > 0) {
+					declare Tim = Net_NEM_GhostCheckpoints[i][CheckpointCounters[i]-1];
+					((Frame.Controls[i] as CMlFrame).GetFirstChild("Time") as CMlLabel).SetText(TextLib::TimeToText(Tim,True)^TextLib::SubText(""^Tim,TextLib::Length(""^Tim)-1,1));
+				}
+			
+				if(CheckpointCounters[i] == Net_NEM_GhostCheckpoints[i].count) {
+					(Frame.Controls[i] as CMlFrame).GetFirstChild("State").Show();
+					((Frame.Controls[i] as CMlFrame).GetFirstChild("State") as CMlLabel).SetText("FINISH");
+					((Frame.Controls[i] as CMlFrame).GetFirstChild("State") as CMlLabel).TextColor = <1.0,0.25,0.25>;
+				}
+				else if(CheckpointCounters[i] == 0) {
+					(Frame.Controls[i] as CMlFrame).GetFirstChild("State").Hide();
+				}
+				else {
+					(Frame.Controls[i] as CMlFrame).GetFirstChild("State").Show();
+					((Frame.Controls[i] as CMlFrame).GetFirstChild("State") as CMlLabel).SetText("CP"^(CheckpointCounters[i]));
+					((Frame.Controls[i] as CMlFrame).GetFirstChild("State") as CMlLabel).TextColor = <0.5,0.75,1.0>;
+				}
+			}
 				
 			declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
 			declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);

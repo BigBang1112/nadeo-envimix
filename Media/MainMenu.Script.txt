@@ -19,6 +19,8 @@ main() {
 
 	Http.Destroy(RequestMainMenuPage);
 	
+	TitleFlow.GetServerInfo("nadeo_envimix");
+	
 	while(True) {
 		yield;
 		
@@ -44,13 +46,17 @@ main() {
 								case "Lagoon": { Campaign <=> DataFileMgr.Campaigns[3]; }
 							}
 							
-							TitleFlow.PlayCampaign(Campaign,Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber],"","");
+							TitleFlow.PlayCampaign(Campaign,Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber],"","""
+								<mode_script_settings>
+									<setting name='S_Car' value='{{{Event.CustomEventData[3]}}}' type='text' />
+								</mode_script_settings>
+							""");
 						}
 						case "OPEN_ITEMEDITOR": {
 							TitleFlow.OpenEditor(CTitleFlow::EEditorType::ItemEditor);
 						}
 						case "PLAY_POUTREL_SERVER": {
-							TitleFlow.JoinServer("poutrel_NEM", False, "");
+							TitleFlow.JoinServer("nadeo_envimix", False, "");
 						}
 					}
 				}
