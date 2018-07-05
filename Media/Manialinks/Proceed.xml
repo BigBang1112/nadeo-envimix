@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<quad pos="0 0" z-index="0" size="320 180" bgcolor="000" halign="center" valign="center"/>
+<label z-index="1" size="20 5" text="Proceed" halign="center" valign="center" style="CardButtonMediumS" scale="2" scriptevents="1" id="ButtonProceed"/>
+
+<script>
+<!--
+while(True) {
+	foreach(Event,PendingEvents) {
+		if(Event.Type == CMlEvent::Type::MouseClick) {
+			if(Event.ControlId == "ButtonProceed") {
+				SendCustomEvent("PROCEED", Text[]);
+			}
+		}
+	}
+	yield;
+}
+-->
+</script>
+</manialink>

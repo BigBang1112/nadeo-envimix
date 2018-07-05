@@ -95,6 +95,10 @@
 	<label size="45 8" text="..." halign="center" valign="center2" z-index="1" id="text" textsize="1"/>
 </frame>
 
+<frame pos="105 40" id="buttonViewRecords">
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="45 5" text="View Records" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
+</frame>
 <frame pos="105 -28" id="buttonSpectate">
 	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="30 5" text="Spectate" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>

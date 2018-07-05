@@ -36,7 +36,7 @@
 				<label pos="0 14" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
 				<frame z-index="1" scale="1.05" id="track">
 					<quad pos="0 9" size="50 25" halign="center" image="file://Media/Thumbnails/Loading.jpg" id="thumbnail"/>
-					<label pos="-22 -14" z-index="1" size="45 5" text="LOADING..." valign="bottom" style="TextTitle3" textsize="2" id="name"/>
+					<label pos="-22 -14" z-index="1" size="45 5" text="LOADING..." valign="bottom" style="TextTitle3" textsize="2" id="name" textemboss="1"/>
 				</frame>
 			</frame>
 		</frame>
@@ -55,7 +55,7 @@
 		
 		<quad pos="140 70" z-index="1" size="10 10" bgcolor="FFFA" id="help" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Help" scriptevents="1"/>
 		
-		<label pos="-130 64" z-index="1" size="40 10" text="Canyon" style="TextTitle3" textsize="3" valign="center" scale="1.25" id="labelEnvironment"/>
+		<label pos="-130 64" z-index="1" size="70 10" text="Canyon" style="TextTitle3" textsize="3" valign="center" scale="1.25" id="labelEnvironment"/>
 		
 		
 		
@@ -63,7 +63,7 @@
 			<label pos="0 0" z-index="0" size="45 5" text="Menu" style="TextTitle3" halign="center" textsize="4"/>
 		</frame>
 		
-		<frame z-index="1">
+		<frame z-index="1" id="campaign">
 		<quad pos="-135 55" z-index="1" size="200 2" bgcolor="FFFF" opacity=".75" id="difficultyBar"/>
 		
 		<frame pos="-135 50" id="maps" z-index="1">
@@ -284,7 +284,6 @@
 			</frame>
 			
 		</frame>
-		</frame>
 		
 		<quad pos="80 50" z-index="1" size="1 22" bgcolor="FFFC" halign="right"/>
 		<quad pos="80 28" z-index="1" size="1 22" bgcolor="0F0C" halign="right"/>
@@ -295,6 +294,8 @@
 		<frame pos="72.5 50" z-index="1" id="slider">
 			<quad pos="0 5" z-index="0" size="10 120" bgcolor="000A" halign="center" scriptevents="1" id="QuadBack"/>
 			<quad z-index="1" size="8 22" bgcolor="AAAA" halign="center" id="button" scriptevents="1" pos="0 0"/>
+		</frame>
+		
 		</frame>
 		
 		<frame id="buttonsSelection" z-index="1">		
@@ -393,6 +394,8 @@
 		declare CHttpRequest MapBriefListRequest;
 		
 		declare CXmlDocument MapBriefDocument;
+		
+		declare Text[Text][Text] Thumbnails;
 		
 		Text[Text][Text] ThumbnailList() {
 			declare Thumbnails = Text[Text][Text];
@@ -499,7 +502,7 @@
 			declare Time = _StartTime;
 			
 			for(i,1,15) {
-				declare Map = ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("maps") as CMlFrame).Controls[i - 1];
+				declare Map = (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("maps") as CMlFrame).Controls[i - 1];
 				
 				Map.RelativeScale = 0.75 + AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 500) * .25;
 				
@@ -553,7 +556,7 @@
 						else Map = TrackDayMap;
 						
 						(((Page.GetFirstChild("buttonTrack") as CMlFrame).GetFirstChild("track") as CMlFrame).GetFirstChild("name") as CMlLabel).SetText(NodeEnvironment.TextContents ^ " " ^ NodeDifficulty.TextContents ^ Map);
-						(((Page.GetFirstChild("buttonTrack") as CMlFrame).GetFirstChild("track") as CMlFrame).GetFirstChild("thumbnail") as CMlQuad).ChangeImageUrl("file://Media/Thumbnails/NoThumbnail.jpg");
+						(((Page.GetFirstChild("buttonTrack") as CMlFrame).GetFirstChild("track") as CMlFrame).GetFirstChild("thumbnail") as CMlQuad).ChangeImageUrl(Thumbnails[TrackDayEnvironment][NodeDifficulty.TextContents^Map]);
 						
 						Xml.Destroy(Doc);
 					}
@@ -643,7 +646,7 @@
 				(Tile as CMlFrame).GetFirstChild("select").Hide();
 			}
 			
-			declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+			declare Panel <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
 					
 			(Panel.GetFirstChild("Name") as CMlLabel).SetText("...");
 						
@@ -692,7 +695,7 @@
 			declare Time = ScoreMgr.Map_GetRecord(NullId, UID, Cars[CurrentCar]);
 			declare Skillpoints = ScoreMgr.Map_GetSkillPoints(NullId, UID, Cars[CurrentCar]);
 			
-			if(Time == -1) ((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("UNFINISHED");
+			if(Time == -1) ((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
 			else ((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Time,True)^TextLib::SubText(""^Time,TextLib::Length(""^Time)-1,1));
 			
 			((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("Skillpoints") as CMlLabel).SetText(""^Skillpoints);
@@ -700,11 +703,18 @@
 			ReloadLeaderboard(CampaignID);
 		}
 		
-		declare Text[Text][Text] Thumbnails;
-		
 		Void UpdateThumbnails() {
-			declare Mapz <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("maps") as CMlFrame);
+			declare Mapz <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("maps") as CMlFrame);
 			declare Diff = GetDifficulty();
+			
+			declare Integer CampaignID;
+		
+			switch(Environment) {
+				case "Canyon": CampaignID = 0;
+				case "Stadium": CampaignID = 1;
+				case "Valley": CampaignID = 2;
+				case "Lagoon": CampaignID = 3;
+			}
 				
 			for(i,1,15) {
 				declare Number = "";
@@ -728,6 +738,29 @@
 						((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Thumbnail") as CMlQuad).ChangeImageUrl(Thumbnails[Environment]["E"^Number]);
 					}
 				}
+					
+				if(Diff != 4) {
+					declare UID = DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].MapUid;
+						
+					((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Skillpoints") as CMlLabel).SetText(
+						(ScoreMgr.Map_GetSkillPoints(NullId, UID, "CanyonCar")+
+						ScoreMgr.Map_GetSkillPoints(NullId, UID, "StadiumCar")+
+						ScoreMgr.Map_GetSkillPoints(NullId, UID, "ValleyCar")+
+						ScoreMgr.Map_GetSkillPoints(NullId, UID, "LagoonCar"))^""
+					);
+				}
+			}
+			if(Diff == 4) {
+				for(i,1,5) {
+					declare UID = DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].MapUid;
+						
+					((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Skillpoints") as CMlLabel).SetText(
+						(ScoreMgr.Map_GetSkillPoints(NullId, UID, "CanyonCar")+
+						ScoreMgr.Map_GetSkillPoints(NullId, UID, "StadiumCar")+
+						ScoreMgr.Map_GetSkillPoints(NullId, UID, "ValleyCar")+
+						ScoreMgr.Map_GetSkillPoints(NullId, UID, "LagoonCar"))^""
+					);
+				}
 			}
 		}
 	
@@ -745,7 +778,7 @@
 				foreach(Thumb,ThumbnailsCampaign) {
 					PreloadImage(Thumb);
 					ThumbnailProceed+=1;
-					(Page.GetFirstChild("LoadingBar") as CMlGauge).SetRatio(ThumbnailProceed / (4*65));
+					(Page.GetFirstChild("LoadingBar") as CMlGauge).SetRatio(ThumbnailProceed / (4*65+5*4));
 					yield;
 				}
 			}
@@ -787,7 +820,7 @@
 		
 			(Page.GetFirstChild("labelEnvironment") as CMlLabel).SetText(Environment);	
 			
-			foreach(Map,((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("maps") as CMlFrame).Controls) {
+			foreach(Map,(((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("maps") as CMlFrame).Controls) {
 				declare Time = TextLib::ToInteger(Map.DataAttributeGet("hover_time"));
 				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
 				
@@ -815,7 +848,7 @@
 				
 				DeselectAll();
 				
-				declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+				declare Panel <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
 					
 				(Panel.GetFirstChild("Name") as CMlLabel).SetText("...");
 						
@@ -828,11 +861,11 @@
 				(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(0.0);
 				(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(0.0);
 				
-				if(Diff == 0) ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <1.0,1.0,1.0>;
-				if(Diff == 1) ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <0.0,1.0,0.0>;
-				if(Diff == 2) ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <0.0,0.0,1.0>;
-				if(Diff == 3) ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <1.0,0.0,0.0>;
-				if(Diff == 4) ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <0.0,0.0,0.0>;
+				if(Diff == 0) (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <1.0,1.0,1.0>;
+				if(Diff == 1) (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <0.0,1.0,0.0>;
+				if(Diff == 2) (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <0.0,0.0,1.0>;
+				if(Diff == 3) (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <1.0,0.0,0.0>;
+				if(Diff == 4) (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("difficultyBar") as CMlQuad).BgColor = <0.0,0.0,0.0>;
 				
 				UpdateThumbnails();
 			}
@@ -926,7 +959,7 @@
 				}
 			}
 			
-			declare Button = ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("slider") as CMlFrame);
+			declare Button = (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("slider") as CMlFrame);
 			declare V = AnimLib::EaseOutCubic(Now - TextLib::ToInteger(Button.DataAttributeGet("hover_time")), 0.0, 1.0, 100) * 0.5 + 0.25;
 			
 			if(Button.DataAttributeGet("hover") == "true") {
@@ -965,7 +998,7 @@
 								case 4: { Diff = "E"; }
 							}
 							
-							declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+							declare Panel <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
 							
 							(Panel.GetFirstChild("Name") as CMlLabel).SetText(Diff ^ E.Control.Parent.ControlId);
 							
@@ -1018,7 +1051,7 @@
 						}
 						
 						if(Frame.Parent.ControlId == "maps") {
-							declare Panel <=> ((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+							declare Panel <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
 						
 							(Panel.GetFirstChild("Name") as CMlLabel).SetText("...");
 							
@@ -1142,6 +1175,9 @@
 							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
 							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
 							Page.GetFirstChild("menu").DataAttributeSet("action","");
+							
+							if((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Visible)
+								UpdateThumbnails();
 				
 							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
 							Page.GetFirstChild("selection").Show();
@@ -1170,6 +1206,15 @@
 							Page.GetFirstChild("selection").Hide();
 						}
 						
+						if(E.Control.Parent.ControlId == "buttonMostInteresting") {
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Hide();
+							Environment = "Most Intereseting";
+						}
+						if(E.Control.Parent.ControlId == "buttonMostDifficult") {
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Hide();
+							Environment = "Most Difficult";
+						}
+						
 						if(E.Control.Parent.ControlId == "buttonCanyon") {
 							Environment = "Canyon";
 							DeselectAll();
@@ -1179,6 +1224,8 @@
 							}
 							
 							UpdateThumbnails();
+							
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Show();
 						}
 						if(E.Control.Parent.ControlId == "buttonStadium") {
 							Environment = "Stadium";
@@ -1189,6 +1236,8 @@
 							}
 							
 							UpdateThumbnails();
+							
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Show();
 						}
 						if(E.Control.Parent.ControlId == "buttonValley") {
 							Environment = "Valley";
@@ -1199,6 +1248,8 @@
 							}
 							
 							UpdateThumbnails();
+							
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Show();
 						}
 						if(E.Control.Parent.ControlId == "buttonLagoon") {
 							Environment = "Lagoon";
@@ -1209,6 +1260,8 @@
 							}
 							
 							UpdateThumbnails();
+							
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Show();
 						}
 						if(E.Control.Parent.ControlId == "buttonPlayOnline") {
 							SendCustomEvent("PLAY_POUTREL_SERVER", Text[]);

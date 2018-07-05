@@ -2,32 +2,78 @@
 
 #Include "TextLib" as TextLib
 
-declare CUILayer ScriptLayer;
+#Include "Libs/BigBang1112/Random.Script.txt" as Random
 
-Void DoNothing() {
-	
-}
+declare CUILayer MainMenuLayer;
 
-main() {
-	declare CUILayer Layer;
-
-	declare CHttpRequest RequestMainMenuPage = Http.CreateGet("file://Media/Manialinks/Menu.xml");
+Void StartMenu() {
+	declare RequestMainMenuPage = Http.CreateGet("file://Media/Manialinks/Menu.xml");
 	wait(RequestMainMenuPage.IsCompleted);
 	
-	Layer = UILayerCreate();
-	Layer.ManialinkPage = RequestMainMenuPage.Result;
+	MainMenuLayer = UILayerCreate();
+	MainMenuLayer.ManialinkPage = RequestMainMenuPage.Result;
 
 	Http.Destroy(RequestMainMenuPage);
-	
-	TitleFlow.GetServerInfo("nadeo_envimix");
+}
+
+main() {	
+	declare ProceedLayer = UILayerCreate();
+
+	declare Text[] Zones = TextLib::Split("|", LocalUser.ZonePath);
+	if(Zones.count == 0) {
+		StartMenu();
+	}
+	else {
+		declare RequestPlayer = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/player.php?login="^LocalUser.Login);
+		wait(RequestPlayer.IsCompleted);
+		if(RequestPlayer.StatusCode == 200) {
+			if(Xml.Create(RequestPlayer.Result).Root.GetFirstChild("Exists").TextContents == "0") {
+				declare NonPredictableRandomString = Random::String(30,50);
+		
+				OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state="^NonPredictableRandomString^"&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/join.php", CManiaApp::ELinkType::ManialinkBrowser);
+				
+				declare RequestProceedPage = Http.CreateGet("file://Media/Manialinks/Proceed.xml");
+				wait(RequestProceedPage.IsCompleted);
+				ProceedLayer.ManialinkPage = RequestProceedPage.Result;
+				Http.Destroy(RequestProceedPage);
+			}
+			else {
+				StartMenu();
+			}
+		}
+		else {
+			StartMenu();
+		}
+		
+		TitleFlow.GetServerInfo("nadeo_envimix");
+	}
 	
 	while(True) {
 		yield;
 		
 		foreach(Event,PendingEvents) {
 			if(Event.Type == CManiaAppEvent::EType::LayerCustomEvent) {
-				if(Event.CustomEventLayer == Layer) {
+				if(ProceedLayer != Null && Event.CustomEventLayer == ProceedLayer) {
+					if(Event.CustomEventType == "PROCEED") {
+						declare RequestPlayer = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/player.php?login="^LocalUser.Login);
+						wait(RequestPlayer.IsCompleted);
+						if(RequestPlayer.StatusCode == 200) {
+							if(Xml.Create(RequestPlayer.Result).Root.GetFirstChild("Exists").TextContents == "1") {
+								ProceedLayer.IsVisible = False;
+								StartMenu();
+							}
+							else {
+								Menu_Quit();
+							}
+						}
+						else {
+							Menu_Quit();
+						}
+					}
+				}
+				else if(Event.CustomEventLayer == MainMenuLayer) {
 					switch(Event.CustomEventType) {
+						
 						case "COMMAND_EXIT": {
 							Menu_Quit();
 						}
@@ -63,4 +109,6 @@ main() {
 			}
 		}
 	}
+	
+	UILayerDestroyAll();
 }

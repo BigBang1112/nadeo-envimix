@@ -148,6 +148,7 @@
 		<folder name="Scripts" public="false" internal="true"/>
 		<folder name="Media" public="false" internal="true"/>
 		<folder name="Maps/Campaigns" public="false" internal="true"/>
+		<folder name="Items" public="false" internal="true"/>
 		<!--- <folder name="...." public="..." internal="..." /> -->
 	</folders>
 	<allowed_client_title_version></allowed_client_title_version>

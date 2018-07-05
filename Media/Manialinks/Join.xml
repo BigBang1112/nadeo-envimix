@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+	<quad z-index="-1" size="320 180" bgcolor="000" halign="center" valign="center"/>
+	<label pos="-140 70" z-index="0" size="120 10" text="THANK YOU SO MUCH" textsize="10" textfont="RajdhaniMono"/>
+	<label pos="-140 58" z-index="0" size="250 20" text="[USERNAME]" textsize="20" textfont="RajdhaniMono" id="LabelUsername"/>
+	<label pos="-139 20" z-index="0" size="150 10" text="FOR JOINING NADEO ENVIMIX" textsize="10" textfont="RajdhaniMono"/>
+	<label pos="-20 5" z-index="0" size="80 10" text="$iBIGBANG1112 & POUTREL" textsize="5" textfont="RajdhaniMono"/>
+
+	<label pos="-139 -30" z-index="0" size="50 5" text="PRIVACY POLICY" style="TextCardMedium" scriptevents="1" manialink="nadeoenvimix?privacy"/>
+	<label pos="-140 -40" z-index="0" size="20 5" text="Begin" style="CardButtonMediumS" scale="3" id="ButtonBegin" scriptevents="1"/>
+	<script>
+		<!--
+			(Page.GetFirstChild("LabelUsername") as CMlLabel).SetText(LocalUser.Name);
+			
+			while(True) {
+				foreach(Event,PendingEvents) {
+					if(Event.Type == CMlEvent::Type::MouseClick) {
+						if(Event.ControlId == "ButtonBegin") {
+							BrowserQuit();
+						}
+					}
+				}
+				
+				yield;
+			}
+		-->
+	</script>
+</manialink>

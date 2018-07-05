@@ -1,0 +1,20 @@
+#Include "MathLib" as MathLib
+#Include "TextLib" as TextLib
+
+#Const C_CharNumbers "0123456789"
+#Const C_CharMixed "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+Text String(Text _Charset, Integer _Min, Integer _Max) {
+	declare Text RandomString;
+	declare Length = MathLib::Rand(_Min,_Max);
+	
+	for(i,1,Length) {
+		RandomString ^= TextLib::SubText(_Charset, MathLib::Rand(0,TextLib::Length(_Charset) - 1), 1);
+	}
+	
+	return RandomString;
+}
+
+Text String(Integer _Min, Integer _Max) {
+	return String(C_CharMixed, _Min, _Max);
+}
