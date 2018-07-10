@@ -63,7 +63,82 @@
 			<label pos="0 0" z-index="0" size="45 5" text="Menu" style="TextTitle3" halign="center" textsize="4"/>
 		</frame>
 		
-		<frame z-index="1" id="campaign">
+		<frame pos="-135 50" z-index="1" id="FrameMost" hidden="1">
+			<quad pos="202 5" z-index="0" size="10 100" bgcolor="FFFA" style="BgsPlayerCard" substyle="BgCard"/>
+			<quad pos="207 0" z-index="1" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="Icons64x64_1" substyle="ArrowUp" scriptevents="1"/>
+			<quad pos="207 -90" z-index="1" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="Icons64x64_1" substyle="ArrowDown" scriptevents="1"/>
+			<frame>
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -10">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -20">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -30">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -40">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -50">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -60">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -70">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -80">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+			<frame pos="0 -90">
+				<quad z-index="-1" size="200 8" valign="center" style="BgsPlayerCard" substyle="BgCard" scriptevents="1"/>
+				<label pos="4 -.25" z-index="0" size="60 8" text="StadiumD15.CanyonCar" valign="center2" textsize="2" textfont="RajdhaniMono"/>
+				<gauge pos="95 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<gauge pos="145 0.25" z-index="0" size="50 10" valign="center" drawbg="0"/>
+				<quad pos="193" z-index="1" size="7 7" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame"/>
+			</frame>
+		</frame>
+		<frame z-index="1" id="campaign" hidden="0">
 		<quad pos="-135 55" z-index="1" size="200 2" bgcolor="FFFF" opacity=".75" id="difficultyBar"/>
 		
 		<frame pos="-135 50" id="maps" z-index="1">
@@ -191,8 +266,8 @@
 		</frame>
 		
 		<quad z-index="0" size="200 50" bgcolor="000A" pos="-135 -15"/>
-		<quad pos="-90 -20" z-index="0.1" size="20 10" bgcolor="FFFA"/>
-		<label pos="-45 -25" z-index="1" size="20 5" text="Play" style="CardButtonMediumS" halign="center" valign="center" scale="1.4" scriptevents="1" id="buttonPlayTrack"/>
+		
+		<label pos="-46 -25" z-index="1" size="20 5" text="Play" style="CardButtonMediumS" halign="center" valign="center" scale="1.4" scriptevents="1" id="buttonPlayTrack" hidden="1"/>
 		<quad pos="-20 -20" z-index="1" size="80 40" bgcolor="000A"/>
 		<frame pos="-20 -20" id="Scanner" z-index="2">
 			<label z-index="0" size="30 5" text="USERNAME" pos="61 -12" valign="center2" textsize="1" id="Username" halign="center"/>
@@ -331,7 +406,14 @@
 		
 			<frame pos="112.5 0" z-index="1" id="buttonPlayOnline">
 				<quad pos="0 0" size="49 20" bgcolor="000" scriptevents="1" opacity=".9" id="button" halign="center" valign="center"/>
-				<label pos="0 0" z-index="1" size="49 20" text="Play Online" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+				<label pos="0 5" z-index="1" size="49 10" text="Play Online" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+				<quad z-index="1" size="45 8" bgcolor="111A" halign="center"/>
+				<label pos="0 -2" z-index="2" size="40 5" text="$f00OFFLINE" halign="center" textfont="RajdhaniMono" id="ServerOffline"/>
+				<frame id="ServerOnline" z-index="2" hidden="1">
+					<label pos="10 -2" z-index="0" size="20 5" text="$0f0ONLINE" textfont="RajdhaniMono" id="ServerCount" halign="center"/>
+					<label pos="-21 -1" z-index="0" size="10 4" text="0/40" textsize="2" textfont="RajdhaniMono" id="ServerCount"/>
+					<label pos="-21 -4.5" z-index="0" size="15 4" text="PLAYERS" textsize="1" textfont="RajdhaniMono"/>
+				</frame>
 			</frame>
 		
 			<frame pos="112.5 -17" z-index="1" id="buttonPlayLocally">
@@ -636,6 +718,7 @@
 		
 		Void DeselectAll() {
 			Page.GetFirstChild("Lock").Hide();
+			Page.GetFirstChild("buttonPlayTrack").Hide();
 			SelectEnvironment = -1;
 			SelectDifficulty = -1;
 			SelectMap = -1;
@@ -658,6 +741,11 @@
 			(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(0.0);
 			(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(0.0);
 			(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(0.0);
+			
+			(Panel.GetFirstChild("MarkedCanyonCar") as CMlQuad).Hide();
+			(Panel.GetFirstChild("MarkedStadiumCar") as CMlQuad).Hide();
+			(Panel.GetFirstChild("MarkedValleyCar") as CMlQuad).Hide();
+			(Panel.GetFirstChild("MarkedLagoonCar") as CMlQuad).Hide();
 		}
 		
 		declare Text[] Zones;
@@ -974,6 +1062,15 @@
 			declare E <=> _Event;
 			
 			switch(E.Type) {
+				case CMlEvent::Type::PluginCustomEvent: {
+					if(E.CustomEventType == "SERVER_INFO") {
+						if(E.CustomEventData[0] == "ONLINE") {
+							Page.GetFirstChild("ServerOffline").Hide();
+							Page.GetFirstChild("ServerOnline").Show();
+							(Page.GetFirstChild("ServerCount") as CMlLabel).SetText(E.CustomEventData[1]);
+						}
+					}
+				}
 				case CMlEvent::Type::MouseOver: {
 					declare Frame <=> E.Control.Parent;
 					
@@ -1136,6 +1233,7 @@
 								E.Control.Parent.GetFirstChild("select").Hide();
 								
 								Page.GetFirstChild("Lock").Hide();
+								Page.GetFirstChild("buttonPlayTrack").Hide();
 								
 								SelectEnvironment = -1;
 								SelectDifficulty = 0;
@@ -1145,6 +1243,7 @@
 								E.Control.Parent.GetFirstChild("select").Show();
 								
 								Page.GetFirstChild("Lock").Show();
+								Page.GetFirstChild("buttonPlayTrack").Show();
 								
 								switch(Environment) {
 									case "Canyon": { SelectEnvironment = 0; }
@@ -1161,10 +1260,10 @@
 						}
 					}
 					
-					if(E.ControlId == "PlayCanyonCar") SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"CanyonCar"]);
-					if(E.ControlId == "PlayStadiumCar") SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"StadiumCar"]);
-					if(E.ControlId == "PlayValleyCar") SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"ValleyCar"]);
-					if(E.ControlId == "PlayLagoonCar") SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"LagoonCar"]);
+					if(E.ControlId == "PlayCanyonCar") if(SelectEnvironment != -1) SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"CanyonCar"]);
+					if(E.ControlId == "PlayStadiumCar") if(SelectEnvironment != -1) SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"StadiumCar"]);
+					if(E.ControlId == "PlayValleyCar") if(SelectEnvironment != -1) SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"ValleyCar"]);
+					if(E.ControlId == "PlayLagoonCar") if(SelectEnvironment != -1) SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"LagoonCar"]);
 					
 					if(E.ControlId == "buttonPlayTrack")
 						if(SelectEnvironment != -1)
@@ -1208,10 +1307,12 @@
 						
 						if(E.Control.Parent.ControlId == "buttonMostInteresting") {
 							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Hide();
-							Environment = "Most Intereseting";
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Show();
+							Environment = "Most Interesting";
 						}
 						if(E.Control.Parent.ControlId == "buttonMostDifficult") {
 							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Hide();
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Show();
 							Environment = "Most Difficult";
 						}
 						
@@ -1226,6 +1327,7 @@
 							UpdateThumbnails();
 							
 							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Show();
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Hide();
 						}
 						if(E.Control.Parent.ControlId == "buttonStadium") {
 							Environment = "Stadium";
@@ -1238,6 +1340,7 @@
 							UpdateThumbnails();
 							
 							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Show();
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Hide();
 						}
 						if(E.Control.Parent.ControlId == "buttonValley") {
 							Environment = "Valley";
@@ -1250,6 +1353,7 @@
 							UpdateThumbnails();
 							
 							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Show();
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Hide();
 						}
 						if(E.Control.Parent.ControlId == "buttonLagoon") {
 							Environment = "Lagoon";
@@ -1262,6 +1366,7 @@
 							UpdateThumbnails();
 							
 							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Show();
+							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Hide();
 						}
 						if(E.Control.Parent.ControlId == "buttonPlayOnline") {
 							SendCustomEvent("PLAY_POUTREL_SERVER", Text[]);

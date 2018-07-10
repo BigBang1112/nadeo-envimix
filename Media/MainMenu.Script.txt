@@ -7,21 +7,24 @@
 declare CUILayer MainMenuLayer;
 
 Void StartMenu() {
-	declare RequestMainMenuPage = Http.CreateGet("file://Media/Manialinks/Menu.xml");
-	wait(RequestMainMenuPage.IsCompleted);
+	declare Music = Audio.CreateSound("file://Media/Musics/Menu/Silence.ogg", 1.0, True, True, False);
+	Music.Play();
 	
 	MainMenuLayer = UILayerCreate();
-	MainMenuLayer.ManialinkPage = RequestMainMenuPage.Result;
-
-	Http.Destroy(RequestMainMenuPage);
+	MainMenuLayer.ManialinkPage = "file://Media/Manialinks/Menu.xml";
+	
+	wait(TitleFlow.IsReady);
+	TitleFlow.GetServerInfo("nadeo_envimix");
 }
 
 main() {	
 	declare ProceedLayer = UILayerCreate();
+	
+	declare CServerInfo LastServerResult = Null;
 
 	declare Text[] Zones = TextLib::Split("|", LocalUser.ZonePath);
 	if(Zones.count == 0) {
-		StartMenu();
+		//StartMenu();
 	}
 	else {
 		declare RequestPlayer = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/player.php?login="^LocalUser.Login);
@@ -32,10 +35,7 @@ main() {
 		
 				OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state="^NonPredictableRandomString^"&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/join.php", CManiaApp::ELinkType::ManialinkBrowser);
 				
-				declare RequestProceedPage = Http.CreateGet("file://Media/Manialinks/Proceed.xml");
-				wait(RequestProceedPage.IsCompleted);
-				ProceedLayer.ManialinkPage = RequestProceedPage.Result;
-				Http.Destroy(RequestProceedPage);
+				ProceedLayer.ManialinkPage = "file://Media/Manialinks/Proceed.xml";
 			}
 			else {
 				StartMenu();
@@ -45,11 +45,21 @@ main() {
 			StartMenu();
 		}
 		
-		TitleFlow.GetServerInfo("nadeo_envimix");
+		log(ScoreMgr.ScoreStatus_GetMasterServerStatus(UserMgr.MainUser.Id));
 	}
+	
+	declare LoadingLayer = UILayerCreate();
+	LoadingLayer.ManialinkPage = "file://Media/Manialinks/Loading.xml";
+	LoadingLayer.Type = CUILayer::EUILayerType::LoadingScreen; 
 	
 	while(True) {
 		yield;
+		
+		if(TitleFlow.GetServerInfo_Result != Null && TitleFlow.GetServerInfo_Result != LastServerResult) {
+			log("WHOP RESULT");
+			LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["ONLINE"]);
+			LastServerResult = TitleFlow.GetServerInfo_Result;
+		}
 		
 		foreach(Event,PendingEvents) {
 			if(Event.Type == CManiaAppEvent::EType::LayerCustomEvent) {

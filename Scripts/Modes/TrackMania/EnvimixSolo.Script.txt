@@ -5,19 +5,23 @@
 #Include "TimeLib" as TimeLib
 
 #Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
+#Include "Libs/Nadeo/TrackMania/TM.Script.txt" as TM
 
 #Setting S_Car ""
 
 declare Ident[Text] VehicleList;
 declare CTaskResult_Ghost[Text] GhostList;
-declare Boolean[] GhostShow;
 declare Boolean Terminate;
+declare Text[] ResumeInfo;
 
 declare Text Vehicle;
 
 declare CTaskResult SetRecordRequest;
 
 declare Text LastState;
+declare Text LastVehicle;
+
+declare Boolean Continued;
 
 Void RefreshPersonalGhosts() {
 	GhostList["CanyonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"CanyonCar");
@@ -35,10 +39,95 @@ Void RefreshPersonalRecords() {
 	declare UI <=> UIManager.GetUI(Player);
 	
 	declare netwrite Integer[] Net_Records for UI;
+	Net_Records.clear();
 	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "CanyonCar"));
 	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "StadiumCar"));
 	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "ValleyCar"));
 	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "LagoonCar"));
+}
+
+Void SpawnPlayer(CTmPlayer _Player) {
+	declare UI <=> UIManager.GetUI(_Player);
+	
+	Vehicle = ResumeInfo[0];
+	
+	_Player.ForceModelId = VehicleList[Vehicle];
+	if(_Player.ForceModelId == VehicleList[MapPlayerModelName]) Terminate = True;
+				
+	RaceGhost_RemoveAll();
+	RefreshPersonalGhosts();
+	
+	Continued = False;
+	
+	declare netwrite Integer Net_NEM_Start for UI;
+	declare netwrite Text[] Net_NEM_GhostCars for UI;
+	declare netwrite Integer[] Net_NEM_GhostTimes for UI;
+	declare netwrite Integer[][] Net_NEM_GhostCheckpoints for UI;
+	
+	Net_NEM_GhostCars.clear();
+	Net_NEM_GhostTimes.clear();
+	Net_NEM_GhostCheckpoints.clear();
+	
+	if(GhostList["CanyonCar"].Ghost != Null && ResumeInfo[1] == "True") {
+		RaceGhost_Add(GhostList["CanyonCar"].Ghost, False);
+		
+		Net_NEM_GhostCars.add("CanyonCar");
+		Net_NEM_GhostTimes.add(GhostList["CanyonCar"].Ghost.Result.Time);
+		
+		declare Integer[] CheckpointArray;
+		for(i,0,GhostList["CanyonCar"].Ghost.Result.Checkpoints.count-1)
+			CheckpointArray.add(GhostList["CanyonCar"].Ghost.Result.Checkpoints[i]);
+		Net_NEM_GhostCheckpoints.add(CheckpointArray);
+	}
+	if(GhostList["StadiumCar"].Ghost != Null && ResumeInfo[2] == "True") {
+		RaceGhost_Add(GhostList["StadiumCar"].Ghost, False);
+		
+		Net_NEM_GhostCars.add("StadiumCar");
+		Net_NEM_GhostTimes.add(GhostList["StadiumCar"].Ghost.Result.Time);
+		
+		declare Integer[] CheckpointArray;
+		for(i,0,GhostList["StadiumCar"].Ghost.Result.Checkpoints.count-1)
+			CheckpointArray.add(GhostList["StadiumCar"].Ghost.Result.Checkpoints[i]);
+		Net_NEM_GhostCheckpoints.add(CheckpointArray);
+	}
+	if(GhostList["ValleyCar"].Ghost != Null && ResumeInfo[3] == "True") {
+		RaceGhost_Add(GhostList["ValleyCar"].Ghost, False);
+		
+		Net_NEM_GhostCars.add("ValleyCar");
+		Net_NEM_GhostTimes.add(GhostList["ValleyCar"].Ghost.Result.Time);
+		
+		declare Integer[] CheckpointArray;
+		for(i,0,GhostList["ValleyCar"].Ghost.Result.Checkpoints.count-1)
+			CheckpointArray.add(GhostList["ValleyCar"].Ghost.Result.Checkpoints[i]);
+		Net_NEM_GhostCheckpoints.add(CheckpointArray);
+	}
+	if(GhostList["LagoonCar"].Ghost != Null && ResumeInfo[4] == "True") {
+		RaceGhost_Add(GhostList["LagoonCar"].Ghost, False);
+		
+		Net_NEM_GhostCars.add("LagoonCar");
+		Net_NEM_GhostTimes.add(GhostList["LagoonCar"].Ghost.Result.Time);
+		
+		declare Integer[] CheckpointArray;
+		for(i,0,GhostList["LagoonCar"].Ghost.Result.Checkpoints.count-1)
+			CheckpointArray.add(GhostList["LagoonCar"].Ghost.Result.Checkpoints[i]);
+		Net_NEM_GhostCheckpoints.add(CheckpointArray);
+	}
+	
+	if(GhostList[Vehicle].Ghost != Null) {
+		_Player.Score.BestRace = GhostList[Vehicle].Ghost.Result;
+	}
+	
+	_Player.IsSpawned = True;
+	_Player.RaceStartTime = Now+2500;
+	
+	UI.UISequence = CUIConfig::EUISequence::Playing;
+	
+	Net_NEM_Start = _Player.RaceStartTime;
+	
+	declare netwrite Text Net_NEM_Car for UI;
+	Net_NEM_Car = Vehicle;
+
+	Layers2::Attach("Ingame",_Player);
 }
 
 Void Init() {
@@ -60,21 +149,28 @@ Void Init() {
 	
 	ItemList_End();
 	
+	CutOffTimeLimit = -1;
+	
 	RequestLoadMap();
     wait(MapLoaded);
 
 	RefreshPersonalRecords();
 	
-	declare CHttpRequest ManialinkRequest = Http.CreateGet("file://Media/Manialinks/Selection.xml");
-	wait(ManialinkRequest.IsCompleted);
-	Layers2::Create("VehicleSelection",ManialinkRequest.Result);
-	ManialinkRequest = Http.CreateGet("file://Media/Manialinks/Ingame.xml");
-	wait(ManialinkRequest.IsCompleted);
-	Layers2::Create("Ingame",ManialinkRequest.Result);
-	ManialinkRequest = Http.CreateGet("file://Media/Manialinks/Endscreen.xml");
-	wait(ManialinkRequest.IsCompleted);
-	Layers2::Create("Endscreen",ManialinkRequest.Result);
-	Http.Destroy(ManialinkRequest);
+	Layers2::Create("Start","file://Media/Manialinks/Start.xml");
+	Layers2::Attach("Start",Null);
+	
+	Layers2::Create("GameMenu","file://Media/Manialinks/GameMenuSolo.xml");
+	Layers2::SetType("GameMenu", CUILayer::EUILayerType::InGameMenu);
+	Layers2::SetAnimationTypeIn("GameMenu",CUILayer::EUILayerAnimation::ScaleSlow);
+	Layers2::Attach("GameMenu",Null);
+	
+	Layers2::Create("Ingame","file://Media/Manialinks/Ingame.xml");
+	Layers2::SetAnimationTypeIn("Ingame",CUILayer::EUILayerAnimation::UpSlow);
+	
+	Layers2::Create("Endscreen","file://Media/Manialinks/Endscreen.xml");
+	Layers2::SetAnimationTypeIn("Endscreen",CUILayer::EUILayerAnimation::ScaleSlow);
+	
+	UiDisplayStuntsNames = True;
 	
 	UIManager.UIAll.OverlayHideChat = True;
     UIManager.UIAll.OverlayHidePosition = True;
@@ -86,7 +182,6 @@ Void Init() {
     UIManager.UIAll.OverlayHideEndMapLadderRecap = True;
     UIManager.UIAll.AltMenuNoDefaultScores = True;
     UIManager.UIAll.AltMenuNoCustomScores = True;
-    //UIManager.UIAll.OverlayHidePersonnalBestAndRank = True;
 
     UIManager.UIAll.ScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
     UIManager.UIAll.SmallScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
@@ -109,19 +204,19 @@ Boolean Start() {
 	Net_MapCar = MapPlayerModelName;
 	
 	declare netwrite Text Net_Environment for UI;
-	Net_Environment = "STADIUM";
+	Net_Environment = Map.CollectionName;
 	declare netwrite Text Net_Map for UI;
 	Net_Map = Map.MapName;
 	
-	if(S_Car == "") {
-		Layers2::Attach("VehicleSelection",Player);
-	
-		UI.UISequence = CUIConfig::EUISequence::Outro;
+	if(S_Car == "") {	
+		
 	}
 	else {
 		Vehicle = S_Car;
 		declare netwrite Text Net_State for UI = "START";
 	}
+	
+	ResumeInfo = ["","","",""];
 
   return True;
 }
@@ -130,6 +225,9 @@ Void Event(CTmModeEvent _Event) {
 	declare UI <=> UIManager.GetUI(_Event.Player);
 
 	switch(_Event.Type) {
+		case CTmModeEvent::EType::StartLine: {
+			
+		}
 		case CTmModeEvent::EType::WayPoint: {
 			if(_Event.IsEndRace) {							
 				UIManager.UIAll.OverlayHideCheckPointTime = True;
@@ -167,6 +265,8 @@ Void Event(CTmModeEvent _Event) {
 				Net_Record = Ghost.Result.Time;
 
 				RefreshPersonalRecords();
+				
+				Layers2::Attach("Endscreen",_Event.Player);
 			}
 			else if(_Event.IsEndLap) {
 				
@@ -176,8 +276,7 @@ Void Event(CTmModeEvent _Event) {
 			}
 		}
 		case CTmModeEvent::EType::GiveUp: {
-			Layers2::Detach("Ingame",_Event.Player);
-			//Layers2::Attach("Ingame",_Event.Player);
+			
 		}
 	}
 }
@@ -187,9 +286,9 @@ Void ScoreRequestEvent() {
 		if(!SetRecordRequest.IsProcessing) {
 			if(SetRecordRequest.HasSucceeded) {
 				log("SetRecord succeeded");	
-				log(ScoreMgr.Map_GetSkillPoints(AllPlayers[0].Id, Map.MapInfo.MapUid, Vehicle));
+				log(ScoreMgr.Map_GetSkillPoints(Players[0].Id, Map.MapInfo.MapUid, Vehicle));
 				
-				declare netwrite Boolean Net_WorldRecord for UIManager.GetUI(AllPlayers[0]) = True;
+				declare netwrite Boolean Net_WorldRecord for UIManager.GetUI(Players[0]) = True;
 			}
 			else if(SetRecordRequest.HasFailed) {
 				log("SetRecord failed");
@@ -201,138 +300,40 @@ Void ScoreRequestEvent() {
 	}
 }
 
-Void SpawnPlayer(CTmPlayer _Player) {
-	declare UI <=> UIManager.GetUI(_Player);
-
-	declare netread Text Net_Vehicle for UI;
-	Vehicle = Net_Vehicle;
-	_Player.ForceModelId = VehicleList[Vehicle];
-	if(_Player.ForceModelId == VehicleList[MapPlayerModelName]) Terminate = True;
-				
-	RaceGhost_RemoveAll();
-	RefreshPersonalGhosts();
-	
-	declare netwrite Integer Net_NEM_Start for UI;
-	declare netwrite Text[] Net_NEM_GhostCars for UI;
-	declare netwrite Integer[] Net_NEM_GhostTimes for UI;
-	declare netwrite Integer[][] Net_NEM_GhostCheckpoints for UI;
-	
-	Net_NEM_GhostCars.clear();
-	Net_NEM_GhostTimes.clear();
-	Net_NEM_GhostCheckpoints.clear();
-	
-	if(GhostList["CanyonCar"].Ghost != Null && GhostShow[0]) {
-		RaceGhost_Add(GhostList["CanyonCar"].Ghost, False);
-		
-		Net_NEM_GhostCars.add("CanyonCar");
-		Net_NEM_GhostTimes.add(GhostList["CanyonCar"].Ghost.Result.Time);
-		
-		declare Integer[] CheckpointArray;
-		for(i,0,GhostList["CanyonCar"].Ghost.Result.Checkpoints.count-1)
-			CheckpointArray.add(GhostList["CanyonCar"].Ghost.Result.Checkpoints[i]);
-		Net_NEM_GhostCheckpoints.add(CheckpointArray);
-	}
-	if(GhostList["StadiumCar"].Ghost != Null && GhostShow[1]) {
-		RaceGhost_Add(GhostList["StadiumCar"].Ghost, False);
-		
-		Net_NEM_GhostCars.add("StadiumCar");
-		Net_NEM_GhostTimes.add(GhostList["StadiumCar"].Ghost.Result.Time);
-		
-		declare Integer[] CheckpointArray;
-		for(i,0,GhostList["StadiumCar"].Ghost.Result.Checkpoints.count-1)
-			CheckpointArray.add(GhostList["StadiumCar"].Ghost.Result.Checkpoints[i]);
-		Net_NEM_GhostCheckpoints.add(CheckpointArray);
-	}
-	if(GhostList["ValleyCar"].Ghost != Null && GhostShow[2]) {
-		RaceGhost_Add(GhostList["ValleyCar"].Ghost, False);
-		
-		Net_NEM_GhostCars.add("ValleyCar");
-		Net_NEM_GhostTimes.add(GhostList["ValleyCar"].Ghost.Result.Time);
-		
-		declare Integer[] CheckpointArray;
-		for(i,0,GhostList["ValleyCar"].Ghost.Result.Checkpoints.count-1)
-			CheckpointArray.add(GhostList["ValleyCar"].Ghost.Result.Checkpoints[i]);
-		Net_NEM_GhostCheckpoints.add(CheckpointArray);
-	}
-	if(GhostList["LagoonCar"].Ghost != Null && GhostShow[3]) {
-		RaceGhost_Add(GhostList["LagoonCar"].Ghost, False);
-		
-		Net_NEM_GhostCars.add("LagoonCar");
-		Net_NEM_GhostTimes.add(GhostList["LagoonCar"].Ghost.Result.Time);
-		
-		declare Integer[] CheckpointArray;
-		for(i,0,GhostList["LagoonCar"].Ghost.Result.Checkpoints.count-1)
-			CheckpointArray.add(GhostList["LagoonCar"].Ghost.Result.Checkpoints[i]);
-		Net_NEM_GhostCheckpoints.add(CheckpointArray);
-	}
-	
-	if(GhostList[Vehicle].Ghost != Null) {
-		_Player.Score.BestRace = GhostList[Vehicle].Ghost.Result;
-	}
-	
-	_Player.IsSpawned = True;
-	_Player.RaceStartTime = Now + 2500;
-	
-	Net_NEM_Start = _Player.RaceStartTime;
-	
-	UIManager.UIAll.OverlayHideCheckPointTime = False;
-	
-	declare netwrite Integer[] Net_GhostCars for UI;
-	
-	declare netwrite Text Net_Car for UI = Vehicle;
-
-	Layers2::Detach("VehicleSelection",_Player);
-	Layers2::Detach("Endscreen",_Player);
-	Layers2::Attach("Ingame",_Player);
-	
-	UI.UISequence = CUIConfig::EUISequence::None;
-}
-
 Void Loop() {
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
 	
-	declare netread Text Net_State for UI;
+	declare netread Text[] Net_NEM_ResumeInfo for UI;
 	
-	if(Net_State != LastState) {
-		switch(Net_State) {
-			case "START": {
-				UnspawnPlayer(Player);
-				
-				declare netread Boolean[] Net_NEM_Ghosts for UI;
-				
-				for(i,1,4) GhostShow.add(True);
-			}
-			case "FINISH": {
-				Layers2::Detach("Ingame",Player);
-				Layers2::Attach("Endscreen",Player);
-			}
-			case "SPECTATE": {
-				Layers2::Detach("VehicleSelection",Player);
-				Layers2::Attach("Ingame",Player);
-				UI.UISequence = CUIConfig::EUISequence::None;
-			}
-			case "MENU": {
-				if(PlayersRacing.existskey(0))
-					UnspawnPlayer(Player);
-					
-				Layers2::Detach("Ingame",Player);
-				Layers2::Attach("VehicleSelection",Player);
-				UI.UISequence = CUIConfig::EUISequence::Outro;
-			}
-			case "BACK": {
-				Player.IsSpawned = False;
-				
-				Terminate = True;
-			}
-		}
-		log(Net_State);
-		LastState = Net_State;
+	if(Net_NEM_ResumeInfo.count == 5)
+	if(ResumeInfo[0] != Net_NEM_ResumeInfo[0]
+	|| ResumeInfo[1] != Net_NEM_ResumeInfo[1]
+	|| ResumeInfo[2] != Net_NEM_ResumeInfo[2]
+	|| ResumeInfo[3] != Net_NEM_ResumeInfo[3]
+	|| ResumeInfo[4] != Net_NEM_ResumeInfo[4]) {
+		Layers2::Detach("Ingame",Player);
+		ResumeInfo = Net_NEM_ResumeInfo;
+		UnspawnPlayer(Player);
+		wait(PlayersWaiting.existskey(0));
+		SpawnPlayer(Player);
 	}
 	
-	if(Net_State == "START") {
-		if(PlayersWaiting.existskey(0))
-			SpawnPlayer(Player);
+	if(ResumeInfo[0] != "") {
+		if(PlayersWaiting.existskey(0)) {
+			Player.IsSpawned = True;
+			Player.RaceStartTime = Now+2500;
+			
+			declare netwrite Integer Net_NEM_Start for UI;
+			Net_NEM_Start = Player.RaceStartTime;
+		}
+	}
+	
+	declare netread Boolean Net_NEM_Continue for UI;
+	if(Net_NEM_Continue && !Continued) {
+		Solo_SetNewRecord(Player.Score, CTmMode::EMedal::None);
+		Continued = True;
+		Layers2::Detach("Endscreen",Player);
 	}
 }
 

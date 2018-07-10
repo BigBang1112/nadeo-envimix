@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<quad z-index="10" size="320 180" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur" halign="center" valign="center" scriptevents="1"/>
+<frame id="buttons" z-index="11">		
+	<frame pos="0 6" id="buttonResume">
+		<quad pos="0 0" z-index="0" size="50 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+		<label pos="0 0" z-index="1" size="50 10" text="Resume" halign="center" valign="center2" style="TextTitle3" id="text"/>
+	</frame>
+	<frame pos="0 -6" id="buttonExit">
+		<quad pos="0 0" z-index="0" size="50 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+		<label pos="0 0" z-index="1" size="50 10" text="Exit" halign="center" valign="center2" style="TextTitle3" id="text"/>
+	</frame>
+</frame>
+
+<script>
+	<!--
+		#Include "TextLib" as TextLib
+		#Include "MathLib" as MathLib
+		#Include "AnimLib" as AnimLib
+		
+		declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
+		declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
+		declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+		
+		declare Index = 0;
+		
+		
+		
+		declare ExitTimer = 0;
+		
+		while(True) {
+			foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
+				declare B <=> (Button as CMlFrame);
+					
+				declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+					
+				if(B.DataAttributeGet("hover") == "true") {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+					(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+				}
+				else {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+					(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
+				}
+			}
+			
+			foreach(Event,PendingEvents) {
+				switch(Event.Type) {
+					case CMlEvent::Type::KeyPress: {
+						if(Event.KeyName == "Up") {
+							Index+=1;
+							if(Index>1)
+								Index = 0;
+							Audio.PlaySoundEvent(SoundHover, 1.0);
+						}
+						if(Event.KeyName == "Down") {
+							Index-=1;
+							if(Index<0)
+								Index = 1;
+							Audio.PlaySoundEvent(SoundHover, 1.0);
+						}
+						if(Event.KeyName == "Return") {
+							if(Index == 0) {
+								CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
+							}
+							if(Index == 1) {
+								CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Quit);
+							}
+						}
+						if(Event.KeyName == "Escape") {
+							ExitTimer = Now;
+							if(ExitTimer + 500 < Now) CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
+						}
+						
+						if(Index == 0) {
+							Page.GetFirstChild("buttonResume").DataAttributeSet("hover","true");
+							Page.GetFirstChild("buttonExit").DataAttributeSet("hover","false");
+						}
+						else {
+							Page.GetFirstChild("buttonResume").DataAttributeSet("hover","false");
+							Page.GetFirstChild("buttonExit").DataAttributeSet("hover","true");
+						}
+					}
+					case CMlEvent::Type::MouseOver: {
+						declare Frame <=> Event.Control.Parent;
+						Page.GetFirstChild("buttonResume").DataAttributeSet("hover","false");
+						Page.GetFirstChild("buttonExit").DataAttributeSet("hover","false");
+					
+						if(Event.ControlId == "button") {
+							Audio.PlaySoundEvent(SoundHover, 1.0);
+							Frame.DataAttributeSet("hover","true");
+							Frame.DataAttributeSet("hover_time",Now^"");
+							Frame.DataAttributeSet("hover_in_value",(Event.Control as CMlQuad).BgColor[0]^"");
+						}
+					}
+					case CMlEvent::Type::MouseOut: {
+						declare Frame <=> Event.Control.Parent;
+					
+						if(Event.ControlId == "button") {
+							Frame.DataAttributeSet("hover","false");
+							Frame.DataAttributeSet("hover_time",Now^"");
+							Frame.DataAttributeSet("hover_out_value",(Event.Control as CMlQuad).BgColor[0]^"");
+						}
+					}
+					case CMlScriptEvent::Type::MouseClick: {
+						if(Event.Control.Parent.ControlId == "buttonResume") {
+							CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
+						}
+						if(Event.Control.Parent.ControlId == "buttonExit") {
+							CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Quit);
+						}
+					}
+				}
+			}
+			
+			yield;
+		}
+	-->
+</script>
+</manialink>

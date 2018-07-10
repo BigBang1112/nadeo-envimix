@@ -14,73 +14,66 @@
 		<frame pos="30 -9">
 			<quad z-index="-1" size="81 9" bgcolor="FFFA" halign="center" valign="center" style="BgsPlayerCard" substyle="BgRacePlayerName" id="QuadDifficultyGlow" hidden="1"/>
 			<quad z-index="0" size="80 8" style="Bgs1" substyle="BgHealthBar" valign="center" halign="center" id="QuadDifficultyBack" scriptevents="1"/>
-			<quad z-index="1" size="5 6" bgcolor="FFFA" halign="center" valign="center" style="Bgs1InRace" substyle="BgCard" scriptevents="1" id="QuadDifficultySlider" pos="-10" hidden="1"/>
+			<quad z-index="1" size="5 6" bgcolor="FFFA" halign="center" valign="center" style="Bgs1InRace" substyle="BgCard" scriptevents="1" id="QuadDifficultySlider" hidden="1"/>
 			<label z-index="2" size="80 8" text="Advanced" halign="center" valign="center2" id="LabelDifficulty" style="TextTitle3" textsize="1" opacity=".5" hidden="1"/>
 		</frame>
 		<frame pos="30 -19">
 			<quad z-index="-1" size="81 9" bgcolor="FFFA" halign="center" valign="center" style="BgsPlayerCard" substyle="BgRacePlayerName" id="QuadQualityGlow" hidden="1"/>
 			<quad z-index="0" size="80 8" style="Bgs1" substyle="BgHealthBar" valign="center" halign="center" id="QuadQualityBack" scriptevents="1"/>
-			<quad z-index="1" size="5 6" bgcolor="FFFA" halign="center" valign="center" style="Bgs1InRace" substyle="BgCard" scriptevents="1" id="QuadQualitySlider" pos="-10" hidden="1"/>
+			<quad z-index="1" size="5 6" bgcolor="FFFA" halign="center" valign="center" style="Bgs1InRace" substyle="BgCard" scriptevents="1" id="QuadQualitySlider" hidden="1"/>
 			<label z-index="2" size="80 8" text="Alright" halign="center" valign="center2" id="LabelQuality" style="TextTitle3" textsize="1" opacity=".5" hidden="1"/>
 		</frame>
 	</frame>
 	<label pos="28 -25" z-index="1" size="85 3" text="Don't forget to rate the track, it's helpful for everyone!" textsize="1" autonewline="1" halign="center"/>
 	
-	<frame id="Leaderboard" z-index="1" pos="-70 10">
-		<frame pos="0 0">
+	<frame id="Leaderboard" z-index="1" pos="-67 7">
+		<quad pos="-3 3" z-index="-1" size="50 40" bgcolor="FFFA" style="Bgs1" substyle="BgList"/>
+		<frame pos="1.75 -2">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -3">
+		<frame pos="1.75 -5">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -6">
+		<frame pos="1.75 -8">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -9">
+		<frame pos="1.75 -11">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -12">
+		<frame pos="1.75 -14">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -15">
+		<frame pos="1.75 -17">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -18">
+		<frame pos="1.75 -20">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -21">
+		<frame pos="1.75 -23">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -24">
+		<frame pos="1.75 -26">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="0 -27">
+		<frame pos="1.75 -29">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
 	</frame>
 	
 	<frame id="buttons">
-		<frame pos="-45 -40" id="buttonImprove">
-			<quad z-index="0" size="40 10" bgcolor="000" halign="center" valign="center" scriptevents="1" id="button"/>
-			<label pos="0 0" z-index="1" size="30 5" text="Improve" halign="center" valign="center2" style="TextTitle3" id="text"/>
-		</frame>
-		<frame pos="0 -40" id="buttonSaveReplay">
-			<quad z-index="0" size="40 10" bgcolor="000" halign="center" valign="center" scriptevents="1" id="button"/>
-			<label pos="0 0" z-index="1" size="30 5" text="Save Replay" halign="center" valign="center2" style="TextTitle3" id="text"/>
-		</frame>
-		<frame pos="45 -40" id="buttonExit">
-			<quad z-index="0" size="40 10" bgcolor="000" halign="center" valign="center" scriptevents="1" id="button"/>
-			<label pos="0 0" z-index="1" size="30 5" text="Exit" halign="center" valign="center2" style="TextTitle3" id="text"/>
+		<frame pos="0 -40" id="buttonContinue">
+			<quad z-index="0" size="140 10" bgcolor="000" halign="center" valign="center" scriptevents="1" id="button"/>
+			<label pos="0 0" z-index="1" size="30 5" text="Continue" halign="center" valign="center2" style="TextTitle3" id="text"/>
 		</frame>
 	</frame>
 </frame>
@@ -127,7 +120,7 @@
 	declare HoldQuality = False;
 	
 	declare CHttpRequest RateRequest;
-	declare MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid="^Map.MapInfo.MapUid^"&user="^LocalUser.Login);
+	declare MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid="^Map.MapInfo.MapUid^"&login="^LocalUser.Login);
 	
 	declare Real DifficultyValue = -1.0;
 	declare Real QualityValue = -1.0;
@@ -145,11 +138,11 @@
 		
 		declare netread Text Net_Environment for UI;
 		declare netread Text Net_Map for UI;
-		declare netread Text Net_Car for UI;
+		declare netread Text Net_NEM_Car for UI;
 		
 		(Page.GetFirstChild("LabelEnvironment") as CMlLabel).SetText(TextLib::ToUpperCase(Net_Environment));
 		(Page.GetFirstChild("LabelMap") as CMlLabel).SetText(Net_Map);
-		(Page.GetFirstChild("LabelCar") as CMlLabel).SetText(TextLib::ToUpperCase(Net_Car));
+		(Page.GetFirstChild("LabelCar") as CMlLabel).SetText(TextLib::ToUpperCase(Net_NEM_Car));
 		
 		if(DifficultyValue != -1.0) {
 			DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
@@ -166,26 +159,30 @@
 					declare Doc = Xml.Create(MapInfoRequest.Result);
 					
 					declare NodeInfo = Doc.GetFirstChild("MAP_INFO");
-					declare NodeCar = NodeInfo.GetFirstChild(Net_Car);
+					declare NodeCar <=> NodeInfo.GetFirstChild(Net_NEM_Car);
 					
-					StartDifficulty = NodeCar.GetAttributeReal("Difficulty",-1.0);
-					StartQuality = NodeCar.GetAttributeReal("Quality",-1.0);
+					StartDifficulty = TextLib::ToReal(NodeCar.GetFirstChild("Difficulty").TextContents);
+					StartQuality = TextLib::ToReal(NodeCar.GetFirstChild("Quality").TextContents);
+					DifficultyValue = StartDifficulty;
+					QualityValue = StartQuality;
 					
 					if(StartDifficulty == -1.0) {
 						Page.GetFirstChild("QuadDifficultyGlow").Show();
 					}
 					else {
 						Page.GetFirstChild("QuadDifficultySlider").Show();
+						Page.GetFirstChild("LabelDifficulty").Show();
 					}
 					if(StartQuality == -1.0) {
 						Page.GetFirstChild("QuadQualityGlow").Show();
 					}
 					else {
 						Page.GetFirstChild("QuadQualitySlider").Show();
+						Page.GetFirstChild("LabelQuality").Show();
 					}
 					
-					Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = StartDifficulty * 70;
-					Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = StartQuality * 70;
+					Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = StartDifficulty * 70 - 35;
+					Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = StartQuality * 70 - 35;
 					
 					Page.GetFirstChild("FrameRating").Show();
 				}
@@ -255,7 +252,7 @@
 				case CMlEvent::Type::KeyPress: {
 					if(Event.KeyName == "Enter") {
 						declare netwrite Text Net_State for UI;
-						Net_State = "IMPROVE";
+						Net_State = "CONTINUE";
 					}
 				}
 				case CMlEvent::Type::MouseOver: {
@@ -304,26 +301,26 @@
 						
 						QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
 					}
-					if(Event.Control.Parent.ControlId == "buttonImprove") {
+					if(Event.Control.Parent.ControlId == "buttonContinue") {
 						if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
-							RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?map="^Map.MapInfo.MapUid^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+							declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+							declare persistent Integer PERSISTENT_NEM_TOKEN_TIME for LocalUser;
+							if(PERSISTENT_NEM_ACCESS_TOKEN != "") {
+								if(PERSISTENT_NEM_TOKEN_TIME > CurrentTime) {
+									RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+								}
+								else {
+									OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+									//musíš to bangu tady vymyslet aby to spíš nejdřív zkusilo token a jestli neprojde tak až si vygenerovat novej
+								}
+							}
+							else {
+								OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+							}
 						}
 						else {
-							declare netwrite Text Net_State for UI;
-							Net_State = "START";
-						}
-					}
-					if(Event.Control.Parent.ControlId == "buttonSaveReplay") {
-						declare netwrite Text Net_State for UI;
-						Net_State = "REPLAY";
-					}
-					if(Event.Control.Parent.ControlId == "buttonExit") {
-						if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
-						
-						}
-						else {
-							declare netwrite Text Net_State for UI;
-							Net_State = "BACK";
+							declare netwrite Boolean Net_NEM_Continue for UI;
+							Net_NEM_Continue = True;
 						}
 					}
 				}
