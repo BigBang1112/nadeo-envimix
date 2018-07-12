@@ -21,7 +21,7 @@ declare CTaskResult SetRecordRequest;
 declare Text LastState;
 declare Text LastVehicle;
 
-declare Boolean Continued;
+declare Boolean Finished;
 
 Void RefreshPersonalGhosts() {
 	GhostList["CanyonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"CanyonCar");
@@ -57,13 +57,12 @@ Void SpawnPlayer(CTmPlayer _Player) {
 	RaceGhost_RemoveAll();
 	RefreshPersonalGhosts();
 	
-	Continued = False;
-	
 	declare netwrite Integer Net_NEM_Start for UI;
 	declare netwrite Text[] Net_NEM_GhostCars for UI;
 	declare netwrite Integer[] Net_NEM_GhostTimes for UI;
 	declare netwrite Integer[][] Net_NEM_GhostCheckpoints for UI;
 	
+	Net_NEM_Start = 0;
 	Net_NEM_GhostCars.clear();
 	Net_NEM_GhostTimes.clear();
 	Net_NEM_GhostCheckpoints.clear();
@@ -137,11 +136,12 @@ Void Init() {
 
 	declare persistent Text[] NEM_CustomCars for Player.User;
 
+	declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for Player.User;
 	ItemList_Begin();
-	VehicleList["CanyonCar"] = ItemList_AddWithSkin("CanyonVehicle.Item.Gbx","Profile");
-	VehicleList["StadiumCar"] = ItemList_AddWithSkin("StadiumVehicle.Item.Gbx","Profile");
-	VehicleList["ValleyCar"] = ItemList_AddWithSkin("ValleyVehicle.Item.Gbx","Profile");
-	VehicleList["LagoonCar"] = ItemList_AddWithSkin("LagoonVehicle.Item.Gbx","Profile");
+	VehicleList["CanyonCar"] = ItemList_AddWithSkin("CanyonVehicle.Item.Gbx",PERSISTENT_NEM_CAR_SKINS["CanyonCar"]);
+	VehicleList["StadiumCar"] = ItemList_AddWithSkin("StadiumVehicle.Item.Gbx",PERSISTENT_NEM_CAR_SKINS["StadiumCar"]);
+	VehicleList["ValleyCar"] = ItemList_AddWithSkin("ValleyVehicle.Item.Gbx",PERSISTENT_NEM_CAR_SKINS["ValleyCar"]);
+	VehicleList["LagoonCar"] = ItemList_AddWithSkin("LagoonVehicle.Item.Gbx",PERSISTENT_NEM_CAR_SKINS["LagoonCar"]);
 	
 	foreach(Car,NEM_CustomCars) {
 		if(Car != "" && !VehicleList.existskey(Car)) VehicleList[Car] = ItemList_Add(Car);
@@ -213,7 +213,6 @@ Boolean Start() {
 	}
 	else {
 		Vehicle = S_Car;
-		declare netwrite Text Net_State for UI = "START";
 	}
 	
 	ResumeInfo = ["","","",""];
@@ -229,9 +228,7 @@ Void Event(CTmModeEvent _Event) {
 			
 		}
 		case CTmModeEvent::EType::WayPoint: {
-			if(_Event.IsEndRace) {							
-				UIManager.UIAll.OverlayHideCheckPointTime = True;
-				
+			if(_Event.IsEndRace) {			
 				declare Ghost = ScoreMgr.Playground_GetPlayerGhost(_Event.Player);
 				
 				_Event.Player.Score.PrevRace = Ghost.Result;
@@ -266,7 +263,8 @@ Void Event(CTmModeEvent _Event) {
 
 				RefreshPersonalRecords();
 				
-				Layers2::Attach("Endscreen",_Event.Player);
+				TM::EndRaceSequence_Add(_Event.Player, "");
+				Finished = True;
 			}
 			else if(_Event.IsEndLap) {
 				
@@ -288,7 +286,7 @@ Void ScoreRequestEvent() {
 				log("SetRecord succeeded");	
 				log(ScoreMgr.Map_GetSkillPoints(Players[0].Id, Map.MapInfo.MapUid, Vehicle));
 				
-				declare netwrite Boolean Net_WorldRecord for UIManager.GetUI(Players[0]) = True;
+				//declare netwrite Boolean Net_WorldRecord for UIManager.GetUI(Players[0]);
 			}
 			else if(SetRecordRequest.HasFailed) {
 				log("SetRecord failed");
@@ -315,11 +313,22 @@ Void Loop() {
 		Layers2::Detach("Ingame",Player);
 		ResumeInfo = Net_NEM_ResumeInfo;
 		UnspawnPlayer(Player);
-		wait(PlayersWaiting.existskey(0));
-		SpawnPlayer(Player);
+		if(ResumeInfo[0] != "") {
+			wait(PlayersWaiting.existskey(0));
+			SpawnPlayer(Player);
+		}
 	}
 	
-	if(ResumeInfo[0] != "") {
+	if(Player.RaceStartTime == 0 && Finished) {
+		Layers2::Attach("Endscreen",Player);
+		declare netread Boolean Net_NEM_Continue for UI;
+		wait(Net_NEM_Continue);
+		Layers2::Detach("Endscreen",Player);
+		Solo_SetNewRecord(Player.Score, CMode::EMedal::None);
+		Finished = False;
+	}
+	
+	if(ResumeInfo[0] != "" && !Finished) {
 		if(PlayersWaiting.existskey(0)) {
 			Player.IsSpawned = True;
 			Player.RaceStartTime = Now+2500;
@@ -329,11 +338,17 @@ Void Loop() {
 		}
 	}
 	
-	declare netread Boolean Net_NEM_Continue for UI;
+	/*declare netread Boolean Net_NEM_Continue for UI;
 	if(Net_NEM_Continue && !Continued) {
 		Solo_SetNewRecord(Player.Score, CTmMode::EMedal::None);
 		Continued = True;
 		Layers2::Detach("Endscreen",Player);
+	}*/
+	
+	TM::EndRaceSequence_Update();
+	
+	if (MatchEndRequested) {
+		log("seriously match end requested");
 	}
 }
 
@@ -342,13 +357,13 @@ main() {
 	Start();
 	
 	while(!ServerShutdownRequested && !Terminate) {
-		Loop();
-		
 		ScoreRequestEvent();
 		
 		foreach(Event, PendingEvents) {
 			Event(Event);
 		}
+	
+		Loop();
 
 		yield;
 	}

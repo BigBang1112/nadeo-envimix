@@ -37,7 +37,7 @@
 		<!-- either campaign or playlist-->
 		<mode name="Modes\TrackMania\EnvimixSolo.Script.txt"/>
 		<datapack name=""/>
-		<default_maprecord_type>-1</default_maprecord_type>
+		<default_maprecord_type>2</default_maprecord_type>
 		<score_context>
 			<name>CanyonCar</name>
 			<maprecord_type>2</maprecord_type>
@@ -70,50 +70,18 @@
 			<author_medals_enabled>false</author_medals_enabled>
 			<skillpoints_enabled>true</skillpoints_enabled>
 		</score_context>
-		<score_context>
-			<name>AscendingScore</name>
-			<maprecord_type>0</maprecord_type>
-			<medals_enabled>true</medals_enabled>
-			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
-			<author_medals_enabled>true</author_medals_enabled>
-			<skillpoints_enabled>true</skillpoints_enabled>
-		</score_context>
-		<score_context>
-			<name>DescendingScore</name>
-			<maprecord_type>1</maprecord_type>
-			<medals_enabled>true</medals_enabled>
-			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
-			<author_medals_enabled>true</author_medals_enabled>
-			<skillpoints_enabled>true</skillpoints_enabled>
-		</score_context>
-		<score_context>
-			<name></name>
-			<maprecord_type>2</maprecord_type>
-			<medals_enabled>true</medals_enabled>
-			<compute_medals_from_maprecord>true</compute_medals_from_maprecord>
-			<author_medals_enabled>true</author_medals_enabled>
-			<skillpoints_enabled>true</skillpoints_enabled>
-		</score_context>
-		<score_context>
-			<name>NumberOfRespawns</name>
-			<maprecord_type>3</maprecord_type>
-			<medals_enabled>true</medals_enabled>
-			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
-			<author_medals_enabled>true</author_medals_enabled>
-			<skillpoints_enabled>true</skillpoints_enabled>
-		</score_context>
 		<campaign num="0">
 			<playlist name=""/>
 			<mode name=""/>
-			<score_context></score_context>
-			<official_record_enabled>true</official_record_enabled>
+			<score_context>CanyonCar</score_context>
+			<official_record_enabled>false</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
 			<maps folder="Campaigns\Canyon\"/>
 		</campaign>
 		<campaign num="1">
 			<playlist name=""/>
 			<mode name=""/>
-			<score_context></score_context>
+			<score_context>CanyonCar</score_context>
 			<official_record_enabled>true</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
 			<maps folder="Campaigns\Stadium\"/>
@@ -121,7 +89,7 @@
 		<campaign num="2">
 			<playlist name=""/>
 			<mode name=""/>
-			<score_context></score_context>
+			<score_context>CanyonCar</score_context>
 			<official_record_enabled>true</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
 			<maps folder="Campaigns\Valley\"/>
@@ -129,8 +97,104 @@
 		<campaign num="3">
 			<playlist name=""/>
 			<mode name=""/>
-			<score_context></score_context>
+			<score_context>CanyonCar</score_context>
 			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
+		</campaign>
+		<campaign num="4">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>StadiumCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="5">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>StadiumCar</score_context>
+			<official_record_enabled>false</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="6">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>StadiumCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="7">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>StadiumCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
+		</campaign>
+		<campaign num="8">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>ValleyCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="9">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>ValleyCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="10">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>ValleyCar</score_context>
+			<official_record_enabled>false</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="11">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>ValleyCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
+		</campaign>
+		<campaign num="12">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>LagoonCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="13">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>LagoonCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="14">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>LagoonCar</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="15">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>LagoonCar</score_context>
+			<official_record_enabled>false</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
 			<maps folder="Campaigns\Lagoon\"/>
 		</campaign>

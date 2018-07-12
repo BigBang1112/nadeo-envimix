@@ -116,6 +116,8 @@
 		"Incredible"
 	];
 	
+	declare TimerRequest = Now;
+	
 	declare HoldDifficulty = False;
 	declare HoldQuality = False;
 	
@@ -124,6 +126,10 @@
 	
 	declare Real DifficultyValue = -1.0;
 	declare Real QualityValue = -1.0;
+	
+	declare netread Text Net_Environment for UI;
+	declare netread Text Net_Map for UI;
+	declare netread Text Net_NEM_Car for UI;
 
 	while(True) {
 		declare netread Integer Net_Record for UI;
@@ -135,10 +141,6 @@
 			case "EQUAL": (Page.GetFirstChild("Type") as CMlLabel).SetText("EQUAL! HOW UNLUCKY");
 			case "WORSE": (Page.GetFirstChild("Type") as CMlLabel).SetText("MAYBE NEXT TIME");
 		}
-		
-		declare netread Text Net_Environment for UI;
-		declare netread Text Net_Map for UI;
-		declare netread Text Net_NEM_Car for UI;
 		
 		(Page.GetFirstChild("LabelEnvironment") as CMlLabel).SetText(TextLib::ToUpperCase(Net_Environment));
 		(Page.GetFirstChild("LabelMap") as CMlLabel).SetText(Net_Map);
@@ -202,12 +204,28 @@
 				if(RateRequest.StatusCode == 200) {
 					
 				}
+				else if (RateRequest.StatusCode == 403) {
+					OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+				
+					while(True) {
+						Http.Destroy(RateRequest);
+						declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+						RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+						wait(RateRequest.IsCompleted);
+						if(RateRequest.StatusCode == 200) {
+							break;
+						}
+					}
+				}
 				else if(RateRequest.StatusCode == 12007) {
 					
 				}
 				else {
-				
+					
 				}
+				
+				declare netwrite Boolean Net_NEM_Continue for UI;
+				Net_NEM_Continue = True;
 				
 				Http.Destroy(RateRequest);
 				RateRequest = Null;
@@ -304,19 +322,7 @@
 					if(Event.Control.Parent.ControlId == "buttonContinue") {
 						if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
 							declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-							declare persistent Integer PERSISTENT_NEM_TOKEN_TIME for LocalUser;
-							if(PERSISTENT_NEM_ACCESS_TOKEN != "") {
-								if(PERSISTENT_NEM_TOKEN_TIME > CurrentTime) {
-									RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
-								}
-								else {
-									OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
-									//musíš to bangu tady vymyslet aby to spíš nejdřív zkusilo token a jestli neprojde tak až si vygenerovat novej
-								}
-							}
-							else {
-								OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
-							}
+							RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
 						}
 						else {
 							declare netwrite Boolean Net_NEM_Continue for UI;

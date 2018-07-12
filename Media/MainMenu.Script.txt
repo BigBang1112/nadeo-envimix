@@ -24,7 +24,7 @@ main() {
 
 	declare Text[] Zones = TextLib::Split("|", LocalUser.ZonePath);
 	if(Zones.count == 0) {
-		//StartMenu();
+		StartMenu();
 	}
 	else {
 		declare RequestPlayer = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/player.php?login="^LocalUser.Login);

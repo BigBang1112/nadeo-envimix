@@ -131,9 +131,13 @@
 	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="45 5" text="Resume" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
 </frame>
-<frame pos="105 28" id="buttonViewRecords">
+<frame pos="105 28" id="buttonViewGhosts">
 	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
-	<label size="45 5" text="View Records" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
+	<label size="45 5" text="View Ghosts" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
+</frame>
+<frame pos="105 -16" id="buttonRecords">
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<label size="45 5" text="Records" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
 </frame>
 <frame pos="105 -28" id="buttonSpectate">
 	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
@@ -154,7 +158,7 @@
 		declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 		declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
 		
-		declare MapRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid);
+		declare CHttpRequest MapRequest;
 		
 		declare persistent Text[] NEM_CustomCars for LocalUser;
 		
@@ -172,10 +176,22 @@
 		}
 		
 		declare netwrite Boolean[] Net_NEM_Ghosts for UI;
+		Net_NEM_Ghosts.clear();
 		for(i,1,4) Net_NEM_Ghosts.add(False);
-	
-		declare ExitTimer = 0;
-		while(True) {		
+		
+		declare netwrite Text[] Net_NEM_ResumeInfo for UI;
+		Net_NEM_ResumeInfo = ["","False","False","False","False"];
+		
+		declare TimerRequest = Now - 10000;
+		
+		while(True) {
+			if(TextLib::Split("|", LocalUser.ZonePath).count != 0)
+			if(TimerRequest < Now - 10000) {
+				MapRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid);
+			
+				TimerRequest = Now;
+			}
+		
 			declare netread Integer[] Net_Records for UI;
 			
 			if(Net_Records[0] == -1) ((Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
@@ -202,7 +218,6 @@
 			if(MapRequest != Null) {
 				if(MapRequest.IsCompleted) {
 					if(MapRequest.StatusCode == 200) {
-						log("lel works");
 						declare Doc = Xml.Create(MapRequest.Result);
 						
 						declare DifficultyCanyon = TextLib::ToReal(Doc.Root.GetFirstChild("CanyonCar").GetFirstChild("Difficulty").TextContents);
@@ -280,7 +295,9 @@
 							(Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("ValidatedBy").Show();
 							(Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("Validator").Show();
 							
-						}							
+						}
+
+						Xml.Destroy(Doc);
 					}
 					else {
 						log("lel nop");
@@ -399,11 +416,8 @@
 								case "SelectionValley": { Net_Vehicle = "ValleyCar"; }
 								case "SelectionLagoon": { Net_Vehicle = "LagoonCar"; }
 							}
-					
-							declare netwrite Text Net_State for UI;
-							Net_State = "START";
 							
-							declare netwrite Text[] Net_NEM_ResumeInfo for UI;
+							
 							Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^""];
 							CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
 						}
@@ -422,9 +436,6 @@
 								case "buttonCar4": { Net_Vehicle = NEM_CustomCars[3]; }
 								case "buttonCar5": { Net_Vehicle = NEM_CustomCars[4]; }
 							}
-					
-							declare netwrite Text Net_State for UI;
-							Net_State = "START";
 						}
 						
 						if(Event.Control.Parent.ControlId == "buttonResume") {
@@ -434,8 +445,6 @@
 							CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
 						}
 						if(Event.Control.Parent.ControlId == "buttonSpectate") {
-							declare netwrite Text Net_State for UI;
-							Net_State = "SPECTATE";
 							CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
 						}
 						if(Event.Control.Parent.ControlId == "buttonExit") {

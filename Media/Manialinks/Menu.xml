@@ -6,33 +6,33 @@
 		<quad pos="0 5" z-index="0" size="120 120" halign="center" valign="center" scriptevents="1" id="block" hidden="1"/>
 		<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
 		<frame pos="0 -52" id="footer" scale="1">
-			<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3"/>
+			<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3" style="Bgs1" substyle="BgDialogBlur"/>
 			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextButtonBig" pos="0 -3" manialink="nadeoenvimix?about"/>
 		</frame>
 		
 		<label pos="-58 -40" z-index="1" size="20 5" text="FEEDBACK" valign="center2" textsize=".5" style="TextCardMedium" halign="right" textemboss="1" url="maniaplanet://#mailto=bigbang1112"/>
 		<label pos="-58 -45" z-index="1" size="20 5" text="PRIVACY POLICY" valign="center2" textsize=".5" style="TextCardMedium" manialink="nadeoenvimix?privacy" halign="right" textemboss="1"/>
 		
-		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center"/>		
+		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur"/>		
 		<frame id="buttons">
 			<frame pos="0 5" id="buttonPlay">
-				<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
 				<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8 " id="text"/>
 			</frame>
 			<frame pos="-26 -12" id="buttonStatistics">
-				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
 				<label pos="0 0" z-index="1" size="48 10" text="Statistics" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 			<frame pos="-26 -24" id="buttonProfile">
-				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
 				<label pos="0 0" z-index="1" size="48 10" text="Profile" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 			<frame pos="-26 -40" id="buttonExit">
-				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
 				<label pos="0 0" z-index="1" size="48 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 			<frame pos="25 -26" id="buttonTrack">
-				<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".9" id="button" halign="center" valign="center" pos="0 0"/>
+				<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".75" id="button" halign="center" valign="center" pos="0 0"/>
 				<label pos="0 14" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
 				<frame z-index="1" scale="1.05" id="track">
 					<quad pos="0 9" size="50 25" halign="center" image="file://Media/Thumbnails/Loading.jpg" id="thumbnail"/>
@@ -41,8 +41,39 @@
 			</frame>
 		</frame>
 	</frame>
+	<frame id="Profile" z-index="1" hidden="1">
+		<quad z-index="-1" size="60 100" bgcolor="FFFA" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur"/>
+		<label pos="-25 45" z-index="0" size="30 5" text="CanyonCar" textfont="RajdhaniMono"/>
+		<label pos="-25 37" z-index="0" size="50 5" text="Default" textsize="2" scriptevents="1" valign="center2" id="LabelCanyonCar"/>
+		<label pos="-25 33" z-index="0" size="30 5" text="StadiumCar" textfont="RajdhaniMono"/>
+		<label pos="-25 25" z-index="0" size="50 5" text="Default" textsize="2" scriptevents="1" valign="center2" id="LabelStadiumCar"/>
+		<label pos="-25 21" z-index="0" size="30 5" text="ValleyCar" textfont="RajdhaniMono"/>
+		<label pos="-25 13" z-index="0" size="50 5" text="Default" textsize="2" scriptevents="1" valign="center2" id="LabelValleyCar"/>
+		<label pos="-25 9" z-index="0" size="30 5" text="LagoonCar" textfont="RajdhaniMono"/>
+		<label pos="-25 1" z-index="0" size="50 5" text="Default" textsize="2" scriptevents="1" valign="center2" id="LabelLagoonCar"/>
+		
+		<frame id="FrameLines">
+		<label pos="-25 -10" z-index="0" size="25 5" text="" textsize="1" scriptevents="1" valign="center2"/>
+		<label pos="-25 -15" z-index="0" size="25 5" text="" textsize="1" scriptevents="1" valign="center2"/>
+		<label pos="-25 -20" z-index="0" size="25 5" text="" textsize="1" scriptevents="1" valign="center2"/>
+		<label pos="-25 -25" z-index="0" size="25 5" text="" textsize="1" scriptevents="1" valign="center2"/>
+		<label pos="-25 -30" z-index="0" size="25 5" text="" textsize="1" scriptevents="1" valign="center2"/>
+		</frame>
+		<label pos="2 -12" z-index="0" size="20 5" text="No car" textsize="1" valign="center2" textfont="RajdhaniMono" id="LabelCarName"/>
+		<quad pos="5 -18" z-index="0" size="10 10" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowUp" halign="center" scriptevents="1" id="QuadUp"/>
+		<quad pos="5.1 -25" z-index="0" size="10 10" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowDown" halign="center" scriptevents="1" id="QuadDown"/>
+		
+		<frame id="buttonsProfile">
+			<frame pos="0 -40" id="buttonBack">
+				<quad pos="0 0" z-index="0" size="50 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="50 10" text="Back" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+			</frame>
+		</frame>
+	</frame>
 	<frame id="selection" z-index="1" hidden="1">
-		<quad pos="-160 89.8" z-index="-1" size="320 180" scriptevents="1"/>
+		<quad pos="-140 70" z-index="-1" size="223 140" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur"/>
+		<quad pos="85 70" z-index="-1" size="55 140" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur"/>
+		<quad pos="-160 89.8" z-index="-2" size="320 180" scriptevents="1"/>
 		<quad pos="-140 70" z-index="0" size="3 140" bgcolor="444A"/>
 		<quad pos="88 70" z-index="0" size="49 12.5" bgcolor="444A"/>
 		<quad pos="88 57.5" z-index="0" size="49 127.5" bgcolor="000A"/>
@@ -286,50 +317,51 @@
 			<quad pos="22.5 -22.5" z-index="2" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="SandTimer" id="LeaderboardLoading"/>
 			<label pos="22.5 -22.5" z-index="2" size="25 10"  text="$f00ERROR" halign="center" valign="center" textemboss="1" id="LeaderboardError" textfont="RajdhaniMono" hidden="1"/>
 			<frame id="Leaderboard" z-index="1">
-				<frame pos="2 -9">
+				<frame pos="2 -9" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -12">
+				<frame pos="2 -12" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -15">
+				<frame pos="2 -15" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -18">
+				<frame pos="2 -18" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -21">
+				<frame pos="2 -21" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -24">
+				<frame pos="2 -24" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -27">
+				<frame pos="2 -27" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -30">
+				<frame pos="2 -30" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -33">
+				<frame pos="2 -33" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
-				<frame pos="2 -36">
+				<frame pos="2 -36" hidden="1">
 					<label size="20 3" text="USERNAME" textsize="1" id="Username"/>
 					<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3" id="Time"/>
 				</frame>
 			</frame>
 		</frame>
 		<frame pos="-135 -15" z-index="1" id="Panel" hidden="0">
-			<quad z-index="0" size="10 10" bgcolor="FFFA" halign="center" valign="center" id="Lock" style="Icons64x64_1" substyle="StatePrivate" pos="30 -10" scriptevents="1" hidden="1"/>
+			<quad z-index="0" size="10 10" bgcolor="FFFA" halign="center" valign="center" id="Lock" style="Icons64x64_1" substyle="StatePrivate" pos="30 -9.75" scriptevents="1" hidden="1"/>
+			<label pos="35 -6.25" z-index="0" size="15 8" text="$nClick to unlock and bring back quick info hover" textsize="0.5" autonewline="1" style="TextTitle2Blink" id="LockText" hidden="1"/>
 			<label pos="5 -6" z-index="0" size="20 10" text="..." textsize="8" style="TextTitle3" id="Name"/>
 			
 			<frame pos="5 -23" id="TableTrackRating">
@@ -352,13 +384,15 @@
 				<gauge pos="63 -10" z-index="0" size="40 10" valign="center" drawbg="0" id="QualityValleyCar"/>
 				<gauge pos="63 -15" z-index="0" size="40 10" valign="center" drawbg="0" id="QualityLagoonCar"/>
 				
-				<quad pos="101 0" z-index="1" size="5 5" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="MarkedCanyonCar"/>
-				<quad pos="101 -5" z-index="1" size="5 5" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="MarkedStadiumCar"/>
-				<quad pos="101 -10" z-index="1" size="5 5" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="MarkedValleyCar"/>
-				<quad pos="101 -15" z-index="1" size="5 5" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="MarkedLagoonCar"/>
+				<quad pos="101 0" z-index="1" size="5 5" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="MarkedCanyonCar" hidden="1"/>
+				<quad pos="101 -5" z-index="1" size="5 5" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="MarkedStadiumCar" hidden="1"/>
+				<quad pos="101 -10" z-index="1" size="5 5" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="MarkedValleyCar" hidden="1"/>
+				<quad pos="101 -15" z-index="1" size="5 5" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="MarkedLagoonCar" hidden="1"/>
 			</frame>
 			
 		</frame>
+		
+		<label pos="65 -66.5" z-index="0" size="40 2" text="$iim working on it riolu, im workin on it" textsize=".2" halign="right" opacity=".1" id="LabelRiolu" hidden="1"/>
 		
 		<quad pos="80 50" z-index="1" size="1 22" bgcolor="FFFC" halign="right"/>
 		<quad pos="80 28" z-index="1" size="1 22" bgcolor="0F0C" halign="right"/>
@@ -403,8 +437,13 @@
 				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/LagoonButton.jpg" opacity=".75"/>
 				<label pos="0 0" z-index="2" size="49 10" text="Lagoon" halign="center" valign="center2" style="TextTitle3" textsize="2" textemboss="1"/>
 			</frame>
+			
+			<frame pos="112.5 6" z-index="1" id="buttonExtensions">
+				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button" manialink="nadeoenvimix?extensions"/>
+				<label pos="0 0" z-index="1" size="49 10" text="Extensions..." halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
+			</frame>
 		
-			<frame pos="112.5 0" z-index="1" id="buttonPlayOnline">
+			<frame pos="112.5 -10" z-index="1" id="buttonPlayOnline">
 				<quad pos="0 0" size="49 20" bgcolor="000" scriptevents="1" opacity=".9" id="button" halign="center" valign="center"/>
 				<label pos="0 5" z-index="1" size="49 10" text="Play Online" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 				<quad z-index="1" size="45 8" bgcolor="111A" halign="center"/>
@@ -415,18 +454,23 @@
 					<label pos="-21 -4.5" z-index="0" size="15 4" text="PLAYERS" textsize="1" textfont="RajdhaniMono"/>
 				</frame>
 			</frame>
-		
-			<frame pos="112.5 -17" z-index="1" id="buttonPlayLocally">
-				<quad pos="0 0" size="49 10" bgcolor="111" halign="center" valign="center" opacity=".9" id="button"/>
-				<label pos="0 0" z-index="1" size="49 10" text="Play Locally" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+			
+			<frame pos="112.5 -26" z-index="1" id="buttonLeaderboards">
+				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="49 10" text="Leaderboards" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 			
-			<frame pos="112.5 -35" z-index="1" id="buttonCustomCars">
+			<frame pos="112.5 -37" z-index="1" id="buttonCustomCars">
 				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
 				<label pos="0 0" z-index="1" size="49 10" text="Custom Cars" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
+			
+			<frame pos="112.5 -48" z-index="1" id="buttonReplays">
+				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
+				<label pos="0 0" z-index="1" size="49 10" text="Replays" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
+			</frame>
 		
-			<frame pos="112.5 -60" z-index="1" id="buttonBack">
+			<frame pos="112.5 -62" z-index="1" id="buttonBack">
 				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".9" id="button"/>
 				<label pos="0 0" z-index="1" size="49 10" text="Back" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
@@ -478,6 +522,20 @@
 		declare CXmlDocument MapBriefDocument;
 		
 		declare Text[Text][Text] Thumbnails;
+		
+		declare Integer ProfileListOffset;
+		declare Text ProfileCar;
+		
+		declare Text[][Text] SkinLists;
+		
+		Void RefreshSkinList(Text _Car) {
+			for(i,ProfileListOffset,SkinLists[_Car].count-1+ProfileListOffset) {
+				if(i<5+ProfileListOffset) {
+					declare FileName = TextLib::Split("\\",SkinLists[_Car][i])[TextLib::Split("\\",SkinLists[_Car][i]).count - 1];
+					(((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("FrameLines") as CMlFrame).Controls[i-ProfileListOffset] as CMlLabel).SetText(FileName);
+				}
+			}
+		}
 		
 		Text[Text][Text] ThumbnailList() {
 			declare Thumbnails = Text[Text][Text];
@@ -675,11 +733,13 @@
 						(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").Hide();
 						(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("Leaderboard").Show();
 						
+						
 						declare Leaderboard <=> ((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("Leaderboard") as CMlFrame);
 						
-						for(i,0,Leaderboard.Controls.count - 1) {
+						for(i,0,LeaderboardRequest.LeaderBoardInfo.count - 1) {
 							((Leaderboard.Controls[i] as CMlFrame).GetFirstChild("Username") as CMlLabel).SetText(LeaderboardRequest.LeaderBoardInfo[i].DisplayName);
 							((Leaderboard.Controls[i] as CMlFrame).GetFirstChild("Time") as CMlLabel).SetText(""^LeaderboardRequest.LeaderBoardInfo[i].Score);
+							Leaderboard.Controls[i].Show();
 						}
 					}
 					else if(LeaderboardRequest.HasFailed) {
@@ -689,10 +749,6 @@
 					else if(LeaderboardRequest.IsCanceled) {
 						(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").Hide();
 					}
-					
-					log(LeaderboardRequest.ErrorType);
-					log(LeaderboardRequest.ErrorCode);
-					log(LeaderboardRequest.ErrorDescription);
 					
 					ScoreMgr.TaskResult_Release(LeaderboardRequest.Id);
 					LeaderboardRequest = Null;
@@ -718,6 +774,7 @@
 		
 		Void DeselectAll() {
 			Page.GetFirstChild("Lock").Hide();
+			Page.GetFirstChild("LockText").Hide();
 			Page.GetFirstChild("buttonPlayTrack").Hide();
 			SelectEnvironment = -1;
 			SelectDifficulty = -1;
@@ -766,6 +823,9 @@
 				(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").Hide();
 				(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardError").Show();
 			}
+			else {
+				
+			}
 		}
 		
 		Void RefreshTrack() {		
@@ -812,6 +872,11 @@
 				switch(Diff) {
 					case 0: { Maps[i] = "A"^Number;
 						((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Thumbnail") as CMlQuad).ChangeImageUrl(Thumbnails[Environment]["A"^Number]);
+						if(MathLib::Rand(0.0,1.0) <= 0.1) {
+							if(Number == "08") {
+								((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Thumbnail") as CMlQuad).ChangeImageUrl("file://Media/Thumbnails/EasterEggs/"^Environment^"A08.jpg");
+							}
+						}
 					}
 					case 1: { Maps[i] = "B"^Number;
 						((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Thumbnail") as CMlQuad).ChangeImageUrl(Thumbnails[Environment]["B"^Number]);
@@ -860,6 +925,51 @@
 			
 			SelectEnvironment = -1;
 			
+			declare TaskSkinsCommon = DataFileMgr.Media_GetGameList(CDataFileMgr::EMediaType::Skins, "Models/CarCommon", True);
+			declare TaskSkinsCanyonCar = DataFileMgr.Media_GetGameList(CDataFileMgr::EMediaType::Skins, "Models/CanyonCar", True);
+			declare TaskSkinsStadiumCar = DataFileMgr.Media_GetGameList(CDataFileMgr::EMediaType::Skins, "Models/StadiumCar", True);
+			declare TaskSkinsValleyCar = DataFileMgr.Media_GetGameList(CDataFileMgr::EMediaType::Skins, "Models/ValleyCar", True);
+			declare TaskSkinsLagoonCar = DataFileMgr.Media_GetGameList(CDataFileMgr::EMediaType::Skins, "Models/LagoonCar", True);
+			
+			wait(!TaskSkinsCommon.IsProcessing);
+			wait(!TaskSkinsCanyonCar.IsProcessing);
+			wait(!TaskSkinsStadiumCar.IsProcessing);
+			wait(!TaskSkinsValleyCar.IsProcessing);
+			wait(!TaskSkinsLagoonCar.IsProcessing);
+			
+			SkinLists["Common"] = Text[];
+			SkinLists["CanyonCar"] = Text[];
+			SkinLists["StadiumCar"] = Text[];
+			SkinLists["ValleyCar"] = Text[];
+			SkinLists["LagoonCar"] = Text[];
+			
+			SkinLists["Common"].add("Default");
+			
+			foreach(File,TaskSkinsCommon.Files) {
+				SkinLists["Common"].add(File);
+				SkinLists["CanyonCar"].add(File);
+				SkinLists["StadiumCar"].add(File);
+				SkinLists["ValleyCar"].add(File);
+				SkinLists["LagoonCar"].add(File);
+			}
+			
+			foreach(File,TaskSkinsCanyonCar.Files) SkinLists["CanyonCar"].add(File);
+			foreach(File,TaskSkinsStadiumCar.Files) SkinLists["StadiumCar"].add(File);
+			foreach(File,TaskSkinsValleyCar.Files) SkinLists["ValleyCar"].add(File);
+			foreach(File,TaskSkinsLagoonCar.Files) SkinLists["LagoonCar"].add(File);
+			
+			DataFileMgr.TaskResult_Release(TaskSkinsCommon.Id);
+			DataFileMgr.TaskResult_Release(TaskSkinsCanyonCar.Id);
+			DataFileMgr.TaskResult_Release(TaskSkinsStadiumCar.Id);
+			DataFileMgr.TaskResult_Release(TaskSkinsValleyCar.Id);
+			DataFileMgr.TaskResult_Release(TaskSkinsLagoonCar.Id);
+			
+			declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+			((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("LabelCanyonCar") as CMlLabel).SetText(PERSISTENT_NEM_CAR_SKINS["CanyonCar"]);
+			((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("LabelStadiumCar") as CMlLabel).SetText(PERSISTENT_NEM_CAR_SKINS["StadiumCar"]);
+			((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("LabelValleyCar") as CMlLabel).SetText(PERSISTENT_NEM_CAR_SKINS["ValleyCar"]);
+			((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("LabelLagoonCar") as CMlLabel).SetText(PERSISTENT_NEM_CAR_SKINS["LagoonCar"]);
+			
 			declare ThumbnailProceed = 0.0;
 			
 			foreach(ThumbnailsCampaign,Thumbnails) {
@@ -870,7 +980,14 @@
 					yield;
 				}
 			}
+			
+			PreloadImage("file://Media/Thumbnails/EasterEggs/CanyonA08.jpg");
+			PreloadImage("file://Media/Thumbnails/EasterEggs/StadiumA08.jpg");
+			PreloadImage("file://Media/Thumbnails/EasterEggs/ValleyA08.jpg");
+			PreloadImage("file://Media/Thumbnails/EasterEggs/LagoonA08.jpg");
 		}
+		
+		declare Integer TimerRequest;
 		
 		Void OnStart() {
 			(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("Leaderboard").Hide();
@@ -890,14 +1007,20 @@
 				Maps[i] = "A"^Number;
 			}
 			
-			TrackOfTheDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/track_day.php");
-			MapBriefListRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_list_brief.php");
-		
 			StartTime = Now;
 			Page.GetFirstChild("menu").DataAttributeSet("time",StartTime^"");
+			
+			declare TimerRequest = Now - 60000;
 		}
 		
 		Void OnLoop() {
+			if(TimerRequest < Now - 60000) {
+				TrackOfTheDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/track_day.php");
+				MapBriefListRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_list_brief.php");
+			
+				TimerRequest = Now;
+			}
+		
 			(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").RelativeRotation+=1;
 		
 			if(SelectEnvironment == -1) Page.GetFirstChild("Scanner").Hide();
@@ -1029,6 +1152,24 @@
 				}
 			}
 			
+			foreach(Button,(Page.GetFirstChild("buttonsProfile") as CMlFrame).Controls) {
+				declare B <=> (Button as CMlFrame);
+				
+				declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+				
+				if(B.DataAttributeGet("hover") == "true") {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+					if(B.GetFirstChild("text") != Null)
+						(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+				}
+				else {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+					if(B.GetFirstChild("text") != Null)
+						(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
+				}
+			}
+			
 			foreach(Button,(Page.GetFirstChild("buttonsCustomCars") as CMlFrame).Controls) {
 				declare B <=> (Button as CMlFrame);
 				
@@ -1081,20 +1222,22 @@
 					}
 					
 					if(Frame.Parent.ControlId == "maps") {
-						if(SelectEnvironment == -1) {
-							Frame.DataAttributeSet("hover","true");
-							Frame.DataAttributeSet("hover_time",Now^"");
+						Frame.DataAttributeSet("hover","true");
+						Frame.DataAttributeSet("hover_time",Now^"");
+						
+						declare Text Diff = "";
 							
-							declare Text Diff = "";
-								
-							switch(GetDifficulty()) {
-								case 0: { Diff = "A"; }
-								case 1: { Diff = "B"; }
-								case 2: { Diff = "C"; }
-								case 3: { Diff = "D"; }
-								case 4: { Diff = "E"; }
-							}
-							
+						switch(GetDifficulty()) {
+							case 0: { Diff = "A"; }
+							case 1: { Diff = "B"; }
+							case 2: { Diff = "C"; }
+							case 3: { Diff = "D"; }
+							case 4: { Diff = "E"; }
+						}
+						
+						if(Diff ^ E.Control.Parent.ControlId == "C13" && Environment == "Valley") Page.GetFirstChild("LabelRiolu").Show();
+						
+						if(SelectEnvironment == -1) {							
 							declare Panel <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
 							
 							(Panel.GetFirstChild("Name") as CMlLabel).SetText(Diff ^ E.Control.Parent.ControlId);
@@ -1141,33 +1284,81 @@
 						Frame.DataAttributeSet("hover_time",Now^"");
 						Frame.DataAttributeSet("hover_out_value",(E.Control as CMlQuad).BgColor[0]^"");
 					}
-					if(SelectEnvironment == -1) {
-						if(E.Control.Parent.Parent.ControlId == "maps") {
-							Frame.DataAttributeSet("hover","false");
-							Frame.DataAttributeSet("hover_time",Now^"");
-						}
+					
+					
+					if(E.Control.Parent.Parent.ControlId == "maps") {
+						Frame.DataAttributeSet("hover","false");
+						Frame.DataAttributeSet("hover_time",Now^"");
 						
-						if(Frame.Parent.ControlId == "maps") {
-							declare Panel <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+						Page.GetFirstChild("LabelRiolu").Hide(); 
+					}
+					
+					if(SelectEnvironment == -1)
+					if(Frame.Parent.ControlId == "maps") {
+						declare Panel <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+					
+						(Panel.GetFirstChild("Name") as CMlLabel).SetText("...");
 						
-							(Panel.GetFirstChild("Name") as CMlLabel).SetText("...");
-							
-							(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(0.0);
-							(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(0.0);
-							(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(0.0);
-							(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(0.0);
-							(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(0.0);
-							(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(0.0);
-							(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(0.0);
-							(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(0.0);
-							Panel.GetFirstChild("MarkedCanyonCar").Hide();
-							Panel.GetFirstChild("MarkedStadiumCar").Hide();
-							Panel.GetFirstChild("MarkedValleyCar").Hide();
-							Panel.GetFirstChild("MarkedLagoonCar").Hide();
-						}
+						(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(0.0);
+						(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(0.0);
+						Panel.GetFirstChild("MarkedCanyonCar").Hide();
+						Panel.GetFirstChild("MarkedStadiumCar").Hide();
+						Panel.GetFirstChild("MarkedValleyCar").Hide();
+						Panel.GetFirstChild("MarkedLagoonCar").Hide();
 					}
 				}
 				case CMlEvent::Type::MouseClick: {
+					for(i,0,4) {
+						if(E.Control == ((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("FrameLines") as CMlFrame).Controls[i] && ProfileCar != "") {
+							declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+							PERSISTENT_NEM_CAR_SKINS[ProfileCar] = SkinLists[ProfileCar][i+ProfileListOffset];
+							
+							((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("Label"^ProfileCar) as CMlLabel).SetText(SkinLists[ProfileCar][i+ProfileListOffset]);
+						}
+					}
+					
+					if(E.Control.Parent.ControlId == "Profile") {
+						if(E.ControlId == "QuadUp" && ProfileCar != "") {
+							if(ProfileListOffset > 0)
+								ProfileListOffset-=1;
+							RefreshSkinList(ProfileCar);
+						}
+						if(E.ControlId == "QuadDown" && ProfileCar != "") {
+							if(ProfileListOffset < SkinLists[ProfileCar].count-5)
+								ProfileListOffset+=1;
+							RefreshSkinList(ProfileCar);
+						}
+						if(E.ControlId == "LabelCanyonCar") {
+							ProfileListOffset = 0;
+							ProfileCar = "CanyonCar";
+							(Page.GetFirstChild("LabelCarName") as CMlLabel).SetText("CanyonCar");
+							RefreshSkinList(ProfileCar);
+						}
+						if(E.ControlId == "LabelStadiumCar") {
+							ProfileListOffset = 0;
+							ProfileCar = "StadiumCar";
+							(Page.GetFirstChild("LabelCarName") as CMlLabel).SetText("StadiumCar");
+							RefreshSkinList(ProfileCar);
+						}
+						if(E.ControlId == "LabelValleyCar") {
+							ProfileListOffset = 0;
+							ProfileCar = "ValleyCar";
+							(Page.GetFirstChild("LabelCarName") as CMlLabel).SetText("ValleyCar");
+							RefreshSkinList(ProfileCar);
+						}
+						if(E.ControlId == "LabelLagoonCar") {
+							ProfileListOffset = 0;
+							ProfileCar = "LagoonCar";
+							(Page.GetFirstChild("LabelCarName") as CMlLabel).SetText("LagoonCar");
+							RefreshSkinList(ProfileCar);
+						}
+					}
 					if(E.Control.Parent.ControlId == "Scanner") {
 						if(E.ControlId == "ZoneNext") {
 							if(CurrentZone + 1 > Zones.count - 1)
@@ -1212,7 +1403,7 @@
 						}
 					}
 					if(E.ControlId == "hover") {
-						if(!Page.GetFirstChild("Lock").Visible)
+						//if(!Page.GetFirstChild("Lock").Visible)
 						if(E.Control.Parent.Parent.ControlId == "maps") {
 							declare Text Diff = "";
 							
@@ -1233,6 +1424,7 @@
 								E.Control.Parent.GetFirstChild("select").Hide();
 								
 								Page.GetFirstChild("Lock").Hide();
+								Page.GetFirstChild("LockText").Hide();
 								Page.GetFirstChild("buttonPlayTrack").Hide();
 								
 								SelectEnvironment = -1;
@@ -1243,6 +1435,7 @@
 								E.Control.Parent.GetFirstChild("select").Show();
 								
 								Page.GetFirstChild("Lock").Show();
+								Page.GetFirstChild("LockText").Show();
 								Page.GetFirstChild("buttonPlayTrack").Show();
 								
 								switch(Environment) {
@@ -1255,6 +1448,52 @@
 								SelectDifficulty = GetDifficulty();
 								SelectMap = TextLib::ToInteger(E.Control.Parent.ControlId);
 								
+								declare Text Diff = "";
+							
+								switch(GetDifficulty()) {
+									case 0: { Diff = "A"; }
+									case 1: { Diff = "B"; }
+									case 2: { Diff = "C"; }
+									case 3: { Diff = "D"; }
+									case 4: { Diff = "E"; }
+								}
+								
+								declare Panel <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("Panel") as CMlFrame);
+								
+								(Panel.GetFirstChild("Name") as CMlLabel).SetText(Diff ^ E.Control.Parent.ControlId);
+								
+								if(MapBriefDocument != Null) {								
+									(Panel.GetFirstChild("DifficultyCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Difficulty",0.0));
+									(Panel.GetFirstChild("DifficultyStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Difficulty",0.0));
+									(Panel.GetFirstChild("DifficultyValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Difficulty",0.0));
+									(Panel.GetFirstChild("DifficultyLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Difficulty",0.0));
+									
+									(Panel.GetFirstChild("QualityCanyonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeReal("Quality",0.0));
+									(Panel.GetFirstChild("QualityStadiumCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeReal("Quality",0.0));
+									(Panel.GetFirstChild("QualityValleyCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeReal("Quality",0.0));
+									(Panel.GetFirstChild("QualityLagoonCar") as CMlGauge).SetRatio(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeReal("Quality",0.0));
+									
+									if(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("CanyonCar").GetAttributeInteger("Marked",0) == 1)
+										Panel.GetFirstChild("MarkedCanyonCar").Show();
+									else
+										Panel.GetFirstChild("MarkedCanyonCar").Hide();
+										
+									if(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("StadiumCar").GetAttributeInteger("Marked",0) == 1)
+										Panel.GetFirstChild("MarkedStadiumCar").Show();
+									else
+										Panel.GetFirstChild("MarkedStadiumCar").Hide();
+										
+									if(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("ValleyCar").GetAttributeInteger("Marked",0) == 1)
+										Panel.GetFirstChild("MarkedValleyCar").Show();
+									else
+										Panel.GetFirstChild("MarkedValleyCar").Hide();
+									
+									if(MapBriefDocument.Root.GetFirstChild(Environment).GetFirstChild(Diff ^ E.Control.Parent.ControlId).GetFirstChild("LagoonCar").GetAttributeInteger("Marked",0) == 1)
+										Panel.GetFirstChild("MarkedLagoonCar").Show();
+									else
+										Panel.GetFirstChild("MarkedLagoonCar").Hide();
+								}
+								
 								RefreshTrack();
 							}
 						}
@@ -1262,7 +1501,12 @@
 					
 					if(E.ControlId == "PlayCanyonCar") if(SelectEnvironment != -1) SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"CanyonCar"]);
 					if(E.ControlId == "PlayStadiumCar") if(SelectEnvironment != -1) SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"StadiumCar"]);
-					if(E.ControlId == "PlayValleyCar") if(SelectEnvironment != -1) SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"ValleyCar"]);
+					if(E.ControlId == "PlayValleyCar") if(SelectEnvironment != -1) {
+						if(Environment == "Valley" && SelectDifficulty == 2 && SelectMap == 13)
+							OpenLink("https://www.youtube.com/watch?v=Dg8Kyee-TJY&list=PL8uPpC7aQ0CJnC3TwAqAFEiegYd8stcr1", CMlScript::LinkType::ExternalBrowser);
+						else
+							SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"ValleyCar"]);
+					}
 					if(E.ControlId == "PlayLagoonCar") if(SelectEnvironment != -1) SendCustomEvent("COMMAND_PLAYMAP", [Environment, ""^SelectDifficulty, ""^SelectMap,"LagoonCar"]);
 					
 					if(E.ControlId == "buttonPlayTrack")
@@ -1284,7 +1528,10 @@
 						if(E.Control.Parent.ControlId == "buttonProfile") {							
 							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
 							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
-							Page.GetFirstChild("menu").DataAttributeSet("action","menu_profile");
+							Page.GetFirstChild("menu").DataAttributeSet("action","");
+				
+							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
+							Page.GetFirstChild("Profile").Show();
 						}
 						if(E.Control.Parent.ControlId == "buttonExit") {
 							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
@@ -1375,6 +1622,16 @@
 							Page.GetFirstChild("selection").Hide();
 							Page.GetFirstChild("FrameCustomCars").Show();
 							LoadCustomCars();
+						}
+					}
+					if(E.Control.Parent.Parent.ControlId == "buttonsProfile") {
+						if(E.Control.Parent.ControlId == "buttonBack") {							
+							Page.GetFirstChild("menu").DataAttributeSet("state","shown");
+							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+							Page.GetFirstChild("menu").DataAttributeSet("action","");
+							
+							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Hide();
+							Page.GetFirstChild("Profile").Hide();
 						}
 					}
 					if(E.Control.Parent.Parent.ControlId == "buttonsCustomCars") {

@@ -58,8 +58,8 @@
 		(Page.GetFirstChild("LabelCar") as CMlLabel).SetText(Net_NEM_Car);
 		
 		while(True) {
-			declare persistent Integer PERSISTENT_NEM_TOKEN_TIME for LocalUser;
-			log("Token skončí za " ^ (PERSISTENT_NEM_TOKEN_TIME - CurrentTime)/1000 ^ " sekund");
+			//declare persistent Integer PERSISTENT_NEM_TOKEN_TIME for LocalUser;
+			//log("Token skončí za " ^ (PERSISTENT_NEM_TOKEN_TIME - CurrentTime)/1000 ^ " sekund");
 		
 			if(Net_NEM_Start != LastStart) {
 				LastStart = Net_NEM_Start;
