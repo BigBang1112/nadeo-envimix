@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+	<quad z-index="-1" size="320 180" bgcolor="000" halign="center" valign="center" pos="0 0" image="http://trackmania.bigbang1112.eu/nadeoenvimix/manialink/NandoMix.jpg" modulatecolor="222"/>
+	<label pos="-140 70" z-index="0" size="120 10" text="ABOUT" textsize="10" textfont="RajdhaniMono"/>
+	
+	<label pos="-140 55" z-index="0" size="260 20" text="Nadeo Envimix is a project long-dreamt by Poutrel, only months after the release of EnviMix technology by MixD in 2009.
+It was only when Mr. Lag suggested actually rebuilding the maps that the project sparkled in late 2014.
+The goal was to have a LOT of comparison between all the cars, where the usual winners would loose, which maps are impossible with some cars, and so on.
+After a couple of weeks, a tool was used to change the car simply, instead of rebuilding the maps... 6 times!
+Since then, a dozen players helped us process and validate Nadeo maps from all old TM games, and over 2,000 tracks have been uploaded on TMX, and countless replays.
+ManiaPlanet offers a lot more potential for this, with native EnviMix and Title Packs, which made the challenge possible like never before." autonewline="1" textsize="2"/>
+	
+	<label pos="-75 16" z-index="0" size="130 8" text="$iBIGBANG1112" textsize="6" textfont="OswaldMono" halign="center" valign="center"/>
+	<label pos="-140 10" z-index="0" size="130 60" text="$iI'm 16-year old random Czechish guy which likes to create things in an unusual way, fell in love with Trackmania in 2013 and never ended since then.
+
+I started a Trackmania YouTube channel in 2014, back then never dreaming of creating something big as a title pack, never dreaming of staying with Trackmania for over 4 years.
+
+My main focus was always the YouTube. By meaning that recently my 200th video was released. xD It became a norm for me, a great norm full of enjoyment. And I'm happy to continue for the next years.
+
+I tried almost everything in Trackmania and there's still something fun that keeps me playing it for thousands of hours. Although what I know is that Nadeo maps always had a special place in my heart.
+
+Besides Trackmania, currently I'm quite enjoying producing music as it's a different way of expressing the feelings. The title pack also uses a song and sound effects made by me. Honest is my producer name because numbers suck and I suck at naming. xD
+
+I started to look around programming about 5 or 6 years ago and the experience over the years really helped me with the development of this title pack. There were so many things needed to learn/understand and I'm just overall so happy that the first title pack I ever organized is nearly finished!" autonewline="1" textsize="1"/>
+	<label pos="-65 -50" z-index="0" size="55 5" text="Signature move: Says he's working on it but instead watches clickbait Top lists." autonewline="1" textsize="1"/>
+	<label pos="-140 -50" z-index="0" size="50 4" text="YOUTUBE - TRACKMANIA" textsize="2" textfont="RajdhaniMono" style="TextButtonBig" url="https://www.youtube.com/c/BigBang1112tm"/>
+	<label pos="-140 -55" z-index="0" size="50 4" text="FACEBOOK - TRACKMANIA" textsize="2" textfont="RajdhaniMono" style="TextButtonBig" url="https://www.facebook.com/BigBang1112tm"/>
+	<label pos="-140 -60" z-index="0" size="50 4" text="SOUNDCLOUD - MUSIC" textsize="2" textfont="RajdhaniMono" style="TextButtonBig" url="https://soundcloud.com/honestdnb"/>
+	<label pos="-140 -65" z-index="0" size="50 4" text="YOUTUBE - MUSIC" textsize="2" textfont="RajdhaniMono" style="TextButtonBig" url="https://www.youtube.com/channel/UCPisK7NRCXf8iNKv0IMf81Q"/>
+	<label pos="-140 -70" z-index="0" size="50 4" text="DISCORD" textsize="2" textfont="RajdhaniMono" style="TextButtonBig" url="https://discord.gg/q9whS3c"/>
+	
+	<label pos="65 16" z-index="0" size="130 8" text="$iPOUTREL" textsize="6" textfont="OswaldMono" halign="center" valign="center"/>
+	<label pos="0 10" z-index="0" size="130 60" text="$iI am from baguette and have been around TM since 2006 without any major pauses.
+	
+Unlike BigBang, I'm not on the creative side. My fields are rather listing, archiving, doing stats.
+
+I have started a few projects revolving around Nadeo maps, mainly Nadeo Reverse, inspired by JaV, and Nadeo EnviMix.
+
+I have also listed all and every single Nadeo maps officially released and their versions in an epic 68 min video, Nadeo Maps Archives." autonewline="1" textsize="2"/>
+	
+	<label pos="75 -50" z-index="0" size="55 5" text="Signature move: Pretends he knows programming but his only input to this TP are 5 SQL queries." autonewline="1" textsize="1"/>
+	<label pos="0 -50" z-index="0" size="50 4" text="YOUTUBE - TRACKMANIA" textsize="2" textfont="RajdhaniMono" style="TextButtonBig" url="https://www.youtube.com/user/GrandMacMac"/>
+</manialink>

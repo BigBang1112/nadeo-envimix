@@ -102,16 +102,13 @@ main() {
 								case "Lagoon": { Campaign <=> DataFileMgr.Campaigns[3]; }
 							}
 							
-							TitleFlow.PlayCampaign(Campaign,Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber],"","""
-								<mode_script_settings>
-									<setting name='S_Car' value='{{{Event.CustomEventData[3]}}}' type='text' />
-								</mode_script_settings>
-							""");
+							TitleFlow.PlayCampaign(Campaign,Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber],"","");
 						}
 						case "OPEN_ITEMEDITOR": {
 							TitleFlow.OpenEditor(CTitleFlow::EEditorType::ItemEditor);
 						}
 						case "PLAY_POUTREL_SERVER": {
+							Dialog_Message("Multiplayer gamemode script isn't yet working the way it should. The server should run in the next few days.");
 							TitleFlow.JoinServer("nadeo_envimix", False, "");
 						}
 					}

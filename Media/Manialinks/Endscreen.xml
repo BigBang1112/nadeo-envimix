@@ -3,11 +3,16 @@
 <quad z-index="0" size="150 100" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur" halign="center" valign="center" pos="0 0"/>
 <frame z-index="1">
 	<label z-index="0" size="100 15" text="0:00.000" halign="center" valign="center2" pos="0 35" textfont="RajdhaniMono" textsize="15" id="Record"/>
-	<label pos="0 27.5" z-index="0" size="100 5" text="NEW PESONAL BEST" halign="center" textfont="RajdhaniMono" id="Type"/>
+	<label pos="0 27.5" z-index="0" size="100 5" text="NEW PERSONAL BEST" halign="center" textfont="RajdhaniMono" id="Type"/>
 	
 	<label pos="48 5.75" z-index="0" size="40 10" text="STADIUM" halign="right" textfont="RajdhaniMono" textsize="6" valign="bottom" id="LabelEnvironment"/>
 	<label pos="70 16" z-index="0" size="20 10" text="A01" halign="right" textfont="RajdhaniMono" textsize="10" id="LabelMap"/>
 	<label pos="68 5" z-index="0" size="30 5" text="VALLEYCAR" textfont="RajdhaniMono" halign="right" id="LabelCar"/>
+	
+	<label pos="-45 17" z-index="0" size="55 6" text="" textfont="RajdhaniMono" id="LabelValidator" textsize="1" autonewline="1" halign="center" hidden="1"/>
+	
+	<label pos="0 14" z-index="0" size="29 10" text="0" textsize="10" textfont="OswaldMono" halign="center" id="LabelPointsValue"/>
+	<label pos="0 3" z-index="0" size="28 5" text="SKILLPOINTS" textsize="1" halign="center" id="LabelPoints"/>
 	
 	<quad pos="-15 -2" z-index="0" size="86 28" bgcolor="FFFA" style="Bgs1" substyle="BgList"/>
 	<frame id="FrameRating" hidden="1" pos="-2" z-index="1">
@@ -28,43 +33,43 @@
 	
 	<frame id="Leaderboard" z-index="1" pos="-67 7">
 		<quad pos="-3 3" z-index="-1" size="50 40" bgcolor="FFFA" style="Bgs1" substyle="BgList"/>
-		<frame pos="1.75 -2">
+		<frame pos="1.75 -2" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -5">
+		<frame pos="1.75 -5" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -8">
+		<frame pos="1.75 -8" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -11">
+		<frame pos="1.75 -11" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -14">
+		<frame pos="1.75 -14" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -17">
+		<frame pos="1.75 -17" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -20">
+		<frame pos="1.75 -20" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -23">
+		<frame pos="1.75 -23" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -26">
+		<frame pos="1.75 -26" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
-		<frame pos="1.75 -29">
+		<frame pos="1.75 -29" hidden="1">
 			<label size="20 3" text="USERNAME" textsize="1"/>
 			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
 		</frame>
@@ -82,58 +87,113 @@
 	#Include "TextLib" as TextLib
 	#Include "MathLib" as MathLib
 	#Include "AnimLib" as AnimLib
+	
+	declare Integer ActivityPoints;
+	
+	Boolean Activity(Text _Url) {
+		declare CXmlDocument Doc;
+		declare netread Text Net_NEM_Car for UI;
+		declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+		declare ActivityRequest = Http.CreateGet(_Url^"&token="^PERSISTENT_NEM_ACCESS_TOKEN);
+		wait(ActivityRequest.IsCompleted);
+		if(ActivityRequest.StatusCode == 200) {
+			Doc = Xml.Create(ActivityRequest.Result);
+			Http.Destroy(ActivityRequest);
+		}
+		else if(ActivityRequest.StatusCode == 403) {
+			Http.Destroy(ActivityRequest);
+			OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+			while(True) {
+				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+				declare SecondActivityRequest = Http.CreateGet(_Url^"&token="^PERSISTENT_NEM_ACCESS_TOKEN);
+				wait(SecondActivityRequest.IsCompleted);
+				if(SecondActivityRequest.StatusCode == 200) {
+					Doc = Xml.Create(SecondActivityRequest.Result);
+					break;
+				}
+				else if(SecondActivityRequest.StatusCode != 403) {
+					break;
+				}
+				Http.Destroy(SecondActivityRequest);
+			}
+		}
 		
-	declare Real StartDifficulty;
-	declare Real StartQuality;
+		if(Doc != Null) {
+			ActivityPoints += TextLib::ToInteger(Doc.Root.GetFirstChild("Points").TextContents);
+			Xml.Destroy(Doc);
+			return True;
+		}		
 		
-	declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
-	declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
-	declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+		return False;
+	}
 	
-	declare Difficulties = [
-		"Very easy",
-		"Easy",
-		"Simple",
-		"Intermediate",
-		"Advanced",
-		"Hard",
-		"Very hard",
-		"Challenging",
-		"Extreme",
-		"Nearly impossible"
-	];
-	
-	declare Qualities = [
-		"The worst",
-		"Bad",
-		"Weird",
-		"Not bad",
-		"Alright",
-		"Good",
-		"Enjoyable",
-		"Great",
-		"Very fun",
-		"Incredible"
-	];
-	
-	declare TimerRequest = Now;
-	
-	declare HoldDifficulty = False;
-	declare HoldQuality = False;
-	
-	declare CHttpRequest RateRequest;
-	declare MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid="^Map.MapInfo.MapUid^"&login="^LocalUser.Login);
-	
-	declare Real DifficultyValue = -1.0;
-	declare Real QualityValue = -1.0;
-	
-	declare netread Text Net_Environment for UI;
-	declare netread Text Net_Map for UI;
-	declare netread Text Net_NEM_Car for UI;
-
-	while(True) {
+	main() {
+		declare Real StartDifficulty;
+		declare Real StartQuality;
+			
+		declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
+		declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
+		declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+		
+		declare Difficulties = [
+			"Very easy",
+			"Easy",
+			"Simple",
+			"Intermediate",
+			"Advanced",
+			"Hard",
+			"Very hard",
+			"Challenging",
+			"Extreme",
+			"Nearly impossible"
+		];
+		
+		declare Qualities = [
+			"The worst",
+			"Bad",
+			"Weird",
+			"Not bad",
+			"Alright",
+			"Good",
+			"Enjoyable",
+			"Great",
+			"Very fun",
+			"Incredible"
+		];
+		
+		declare TimerPoints = Now + 1000;
+		
+		declare HoldDifficulty = False;
+		declare HoldQuality = False;
+		
+		// False - Skillpoints, True - Activity points
+		declare PointSwitch = False;
+		
+		declare CHttpRequest RateRequest;
+		
+		declare Real DifficultyValue = -1.0;
+		declare Real QualityValue = -1.0;
+		
+		declare netread Text Net_Environment for UI;
+		declare netread Text Net_Map for UI;
+		declare netread Text Net_NEM_Car for UI;
+		
+		declare netwrite Boolean Net_NEM_Validate for UI;
+		Net_NEM_Validate = False;
+		declare netread Integer Net_NEM_Validate_Tries for UI;
+		declare netread Integer Net_NEM_Skillpoints for UI;
+		(Page.GetFirstChild("LabelPointsValue") as CMlLabel).SetText(""^Net_NEM_Skillpoints);
+		
 		declare netread Integer Net_Record for UI;
-		(Page.GetFirstChild("Record") as CMlLabel).SetText(TextLib::TimeToText(Net_Record,True)^TextLib::SubText(""^Net_Record,TextLib::Length(""^Net_Record)-1,1));
+		declare Integer TimeAnimation;
+		declare Integer StartTime = Now + 500;
+		
+		EnableMenuNavigation(True,False,Null,50);
+		
+		declare MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid ^ "&login=" ^ LocalUser.Login);
+		
+		declare netread Integer Net_NEM_ActivityPoints for UI;
+		//(Page.GetFirstChild("LabelActivityPoints") as CMlLabel).SetText(""^Net_NEM_ActivityPoints);
 		
 		declare netread Text Net_Type for UI;
 		switch(Net_Type) {
@@ -142,198 +202,331 @@
 			case "WORSE": (Page.GetFirstChild("Type") as CMlLabel).SetText("MAYBE NEXT TIME");
 		}
 		
-		(Page.GetFirstChild("LabelEnvironment") as CMlLabel).SetText(TextLib::ToUpperCase(Net_Environment));
-		(Page.GetFirstChild("LabelMap") as CMlLabel).SetText(Net_Map);
-		(Page.GetFirstChild("LabelCar") as CMlLabel).SetText(TextLib::ToUpperCase(Net_NEM_Car));
-		
-		if(DifficultyValue != -1.0) {
-			DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
-			(Page.GetFirstChild("LabelDifficulty") as CMlLabel).SetText(Difficulties[MathLib::FloorInteger(DifficultyValue * 9.999)]);
+		if(Net_Type == "FIRST_FINISH") {
+			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+			declare netread Integer Net_NEM_FirstFinish_PlayerCount for UI;
+			declare Points = MathLib::NearestInteger(500/MathLib::ToReal(Net_NEM_FirstFinish_PlayerCount+1));
+			Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points="^Points);
 		}
-		if(QualityValue != -1.0) {
-			QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
-			(Page.GetFirstChild("LabelQuality") as CMlLabel).SetText(Qualities[MathLib::FloorInteger(QualityValue * 9.999)]);
+		else if(Net_Type == "PERSONAL_BEST") {
+			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+			Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=10");
+		}
+		else if(Net_Type == "EQUAL") {
+			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+			Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=5");
+		}
+		else if(Net_Type == "WORSE") {
+			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+			Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=1");
 		}
 		
-		if(MapInfoRequest != Null) {
-			if(MapInfoRequest.IsCompleted) {
-				if(MapInfoRequest.StatusCode == 200) {
-					declare Doc = Xml.Create(MapInfoRequest.Result);
-					
-					declare NodeInfo = Doc.GetFirstChild("MAP_INFO");
-					declare NodeCar <=> NodeInfo.GetFirstChild(Net_NEM_Car);
-					
-					StartDifficulty = TextLib::ToReal(NodeCar.GetFirstChild("Difficulty").TextContents);
-					StartQuality = TextLib::ToReal(NodeCar.GetFirstChild("Quality").TextContents);
-					DifficultyValue = StartDifficulty;
-					QualityValue = StartQuality;
-					
-					if(StartDifficulty == -1.0) {
-						Page.GetFirstChild("QuadDifficultyGlow").Show();
-					}
-					else {
-						Page.GetFirstChild("QuadDifficultySlider").Show();
-						Page.GetFirstChild("LabelDifficulty").Show();
-					}
-					if(StartQuality == -1.0) {
-						Page.GetFirstChild("QuadQualityGlow").Show();
-					}
-					else {
-						Page.GetFirstChild("QuadQualitySlider").Show();
-						Page.GetFirstChild("LabelQuality").Show();
-					}
-					
-					Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = StartDifficulty * 70 - 35;
-					Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = StartQuality * 70 - 35;
-					
-					Page.GetFirstChild("FrameRating").Show();
-				}
-				else if(MapInfoRequest.StatusCode == 12007) {
-					
+		declare ActivityDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/track_day.php");
+		wait(ActivityDayRequest.IsCompleted);
+		if(ActivityDayRequest.StatusCode == 200) {
+			declare Doc = Xml.Create(ActivityDayRequest.Result);
+			
+			declare Text M;
+			if(TextLib::ToInteger(Doc.Root.GetFirstChild("Map").TextContents) < 10)
+				M = Doc.Root.GetFirstChild("Difficulty").TextContents^0^Doc.Root.GetFirstChild("Map").TextContents;
+			else
+				M = Doc.Root.GetFirstChild("Difficulty").TextContents^Doc.Root.GetFirstChild("Map").TextContents;
+			
+			if(Doc.Root.GetFirstChild("Environment").TextContents == Net_Environment && "$fff$s"^M == Net_Map) {
+				log("yes");
+				declare AdditionalPoints = MathLib::NearestInteger(ActivityPoints * TextLib::ToReal(Doc.Root.GetFirstChild("Multiplier").TextContents)) - ActivityPoints;
+				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+				Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=trackoftheday&points="^AdditionalPoints);
+			}
+			Xml.Destroy(Doc);
+		}
+		Http.Destroy(ActivityDayRequest);
+		
+		while(True) {
+			TimeAnimation = MathLib::NearestInteger(AnimLib::EaseOutExp(Now - StartTime, 0.0, 1.0, 1000)*Net_Record);
+		
+			if(TimerPoints < Now - 2000) {
+				if(PointSwitch) PointSwitch = False;
+				else PointSwitch = True;
+				
+				if(PointSwitch) {
+					(Page.GetFirstChild("LabelPointsValue") as CMlLabel).SetText(""^ActivityPoints);
+					(Page.GetFirstChild("LabelPoints") as CMlLabel).SetText("ACTIVITY POINTS");
 				}
 				else {
-				
+					(Page.GetFirstChild("LabelPointsValue") as CMlLabel).SetText(""^Net_NEM_Skillpoints);
+					(Page.GetFirstChild("LabelPoints") as CMlLabel).SetText("SKILLPOINTS");
 				}
 				
-				Http.Destroy(MapInfoRequest);
-				MapInfoRequest = Null;
+				TimerPoints = Now;
 			}
-		}
-		if(RateRequest != Null) {
-			if(RateRequest.IsCompleted) {
-				if(RateRequest.StatusCode == 200) {
-					
-				}
-				else if (RateRequest.StatusCode == 403) {
-					OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
-				
-					while(True) {
-						Http.Destroy(RateRequest);
-						declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-						RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
-						wait(RateRequest.IsCompleted);
-						if(RateRequest.StatusCode == 200) {
-							break;
-						}
-					}
-				}
-				else if(RateRequest.StatusCode == 12007) {
-					
-				}
-				else {
-					
-				}
-				
-				declare netwrite Boolean Net_NEM_Continue for UI;
-				Net_NEM_Continue = True;
-				
-				Http.Destroy(RateRequest);
-				RateRequest = Null;
-			}
-		}
 		
-		
-		(Page.GetFirstChild("QuadDifficultyGlow") as CMlQuad).Opacity = MathLib::Sin(Now/100.0) * .5 + .5;
-		(Page.GetFirstChild("QuadQualityGlow") as CMlQuad).Opacity = MathLib::Sin((Now-1000)/100.0) * .5 + .5;
-		
-		if(MouseLeftButton) {
-			if(HoldDifficulty) {
-				Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 27.5,-35.0,35.0);
+			(Page.GetFirstChild("Record") as CMlLabel).SetText(TextLib::TimeToText(TimeAnimation,True)^TextLib::SubText(""^TimeAnimation,TextLib::Length(""^TimeAnimation)-1,1));
+			
+			(Page.GetFirstChild("LabelEnvironment") as CMlLabel).SetText(Net_Environment);
+			(Page.GetFirstChild("LabelMap") as CMlLabel).SetText(Net_Map);
+			(Page.GetFirstChild("LabelCar") as CMlLabel).SetText(Net_NEM_Car);
+			
+			if(DifficultyValue != -1.0) {
+				DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
+				(Page.GetFirstChild("LabelDifficulty") as CMlLabel).SetText(Difficulties[MathLib::FloorInteger(DifficultyValue * 9.999)]);
 			}
-			if(HoldQuality) {
-				Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 27.5,-35.0,35.0);
+			if(QualityValue != -1.0) {
+				QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
+				(Page.GetFirstChild("LabelQuality") as CMlLabel).SetText(Qualities[MathLib::FloorInteger(QualityValue * 9.999)]);
 			}
-		}
-		else {
-			HoldDifficulty = False;
-			HoldQuality = False;
-		}
-	
-		foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
-			declare B <=> (Button as CMlFrame);
-		
-			declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
-			declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
-					
-			if(B.DataAttributeGet("hover") == "true") {
-				(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
-				(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
-			}
-			else {
-				(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
-				(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
-			}
-		}
-		
-		foreach(Event,PendingEvents) {
-			switch(Event.Type) {
-				case CMlEvent::Type::KeyPress: {
-					if(Event.KeyName == "Enter") {
-						declare netwrite Text Net_State for UI;
-						Net_State = "CONTINUE";
-					}
-				}
-				case CMlEvent::Type::MouseOver: {
-					declare Frame <=> Event.Control.Parent;
-				
-					if(Event.ControlId == "button") {
-						Audio.PlaySoundEvent(SoundHover, 1.0);
-						Frame.DataAttributeSet("hover","true");
-						Frame.DataAttributeSet("hover_time",Now^"");
-						Frame.DataAttributeSet("hover_in_value",(Event.Control as CMlQuad).BgColor[0]^"");
-					}
-				}
-				case CMlEvent::Type::MouseOut: {
-					declare Frame <=> Event.Control.Parent;
-				
-					if(Event.ControlId == "button") {
-						Frame.DataAttributeSet("hover","false");
-						Frame.DataAttributeSet("hover_time",Now^"");
-						Frame.DataAttributeSet("hover_out_value",(Event.Control as CMlQuad).BgColor[0]^"");
-					}
-				}
-				case CMlScriptEvent::Type::MouseClick: {
-					if(Event.ControlId == "QuadDifficultySlider") {
-						HoldDifficulty = True;
-					}
-					if(Event.ControlId == "QuadQualitySlider") {
-						HoldQuality = True;
-					}
-					if(Event.ControlId == "QuadDifficultyBack") {
-						Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
-						HoldDifficulty = True;
+			
+			if(MapInfoRequest != Null) {
+				if(MapInfoRequest.IsCompleted) {
+					if(MapInfoRequest.StatusCode == 200) {
+						declare Doc = Xml.Create(MapInfoRequest.Result);
 						
-						Page.GetFirstChild("QuadDifficultyGlow").Hide();
-						Page.GetFirstChild("QuadDifficultySlider").Show();
-						Page.GetFirstChild("LabelDifficulty").Show();
+						declare NodeInfo = Doc.GetFirstChild("MAP_INFO");
+						declare NodeCar <=> NodeInfo.GetFirstChild(Net_NEM_Car);
 						
-						DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
-					}
-					if(Event.ControlId == "QuadQualityBack") {
-						Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
-						HoldQuality = True;
+						StartDifficulty = TextLib::ToReal(NodeCar.GetFirstChild("Difficulty").TextContents);
+						StartQuality = TextLib::ToReal(NodeCar.GetFirstChild("Quality").TextContents);
+						DifficultyValue = StartDifficulty;
+						QualityValue = StartQuality;
 						
-						Page.GetFirstChild("QuadQualityGlow").Hide();
-						Page.GetFirstChild("QuadQualitySlider").Show();
-						Page.GetFirstChild("LabelQuality").Show();
-						
-						QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
-					}
-					if(Event.Control.Parent.ControlId == "buttonContinue") {
-						if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
-							declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-							RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+						if(StartDifficulty == -1.0) {
+							Page.GetFirstChild("QuadDifficultyGlow").Show();
 						}
 						else {
-							declare netwrite Boolean Net_NEM_Continue for UI;
-							Net_NEM_Continue = True;
+							Page.GetFirstChild("QuadDifficultySlider").Show();
+							Page.GetFirstChild("LabelDifficulty").Show();
+						}
+						if(StartQuality == -1.0) {
+							Page.GetFirstChild("QuadQualityGlow").Show();
+						}
+						else {
+							Page.GetFirstChild("QuadQualitySlider").Show();
+							Page.GetFirstChild("LabelQuality").Show();
+						}
+						
+						Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = StartDifficulty * 70 - 35;
+						Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = StartQuality * 70 - 35;
+						
+						Page.GetFirstChild("FrameRating").Show();
+						
+						// If you're a new validator
+						if(Doc.GetFirstChild("MAP_INFO").GetFirstChild(Net_NEM_Car).GetAttributeText("Validator", "") == "") {
+							declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+							declare Text ActivityUrl = "http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=validation&points=1000";
+							declare ValidationRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/validate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&time="^Net_Record);
+							wait(ValidationRequest.IsCompleted);
+							if(ValidationRequest.StatusCode == 200) {
+								(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Congratz! You're the validator of "^Net_Environment^Net_Map^"."^Net_NEM_Car^".");
+								Page.GetFirstChild("LabelValidator").Show();
+								Activity(ActivityUrl);
+								//provide replay url
+							}
+							else if(ValidationRequest.StatusCode == 403) {
+								Http.Destroy(ValidationRequest);
+								Page.GetFirstChild("LabelValidator").Show();
+								OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+								
+								while(True) {
+									declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+									declare SecondValidationRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/validate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&time="^Net_Record);
+									wait(SecondValidationRequest.IsCompleted);
+									if(SecondValidationRequest.StatusCode == 200) {
+										(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Congratz! You're the validator of "^Net_Environment^Net_Map^"."^Net_NEM_Car^". Save the replay!");
+										Page.GetFirstChild("LabelValidator").Show();
+										Activity(ActivityUrl^"&token="^PERSISTENT_NEM_ACCESS_TOKEN);
+										//provide replay url
+										break;
+									}
+									else if(SecondValidationRequest.StatusCode != 403) {
+										(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Something is wrong on the serverside, try it again.");
+										Page.GetFirstChild("LabelValidator").Show();
+										break;
+									}
+									Http.Destroy(SecondValidationRequest);
+								}
+							}
+							else {
+								(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Something is wrong on the serverside, try it again.");
+								Page.GetFirstChild("LabelValidator").Show();
+							}
+							
+							if(ValidationRequest.StatusCode != 403)
+								Http.Destroy(ValidationRequest);
+						}
+						
+						// If you're validator of this track in general
+						if(Doc.GetFirstChild("MAP_INFO").GetFirstChild(Net_NEM_Car).GetAttributeText("Validator", "") == LocalUser.Name) {
+							(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("You're a validator of this track.");
+							Page.GetFirstChild("LabelValidator").Show();
+						}
+						
+						Xml.Destroy(Doc);
+					}
+					else if(MapInfoRequest.StatusCode == 12007) {
+						(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Offline mode. Unknown if you are a validator.");
+						Page.GetFirstChild("LabelValidator").Show();
+					}
+					else {
+					
+					}
+					
+					Http.Destroy(MapInfoRequest);
+					MapInfoRequest = Null;
+				}
+			}
+			if(RateRequest != Null) {
+				if(RateRequest.IsCompleted) {
+					if(RateRequest.StatusCode == 200) {
+						
+					}
+					else if (RateRequest.StatusCode == 403) {
+						OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+					
+						while(True) {
+							Http.Destroy(RateRequest);
+							declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+							RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+							wait(RateRequest.IsCompleted);
+							if(RateRequest.StatusCode == 200) {
+								break;
+							}
+						}
+					}
+					else if(RateRequest.StatusCode == 12007) {
+						
+					}
+					else {
+						
+					}
+					
+					declare netwrite Boolean Net_NEM_Continue for UI;
+					Net_NEM_Continue = True;
+					
+					Http.Destroy(RateRequest);
+					RateRequest = Null;
+				}
+			}
+			
+			
+			(Page.GetFirstChild("QuadDifficultyGlow") as CMlQuad).Opacity = MathLib::Sin(Now/100.0) * .5 + .5;
+			(Page.GetFirstChild("QuadQualityGlow") as CMlQuad).Opacity = MathLib::Sin((Now-1000)/100.0) * .5 + .5;
+			
+			if(MouseLeftButton) {
+				if(HoldDifficulty) {
+					Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 27.5,-35.0,35.0);
+				}
+				if(HoldQuality) {
+					Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 27.5,-35.0,35.0);
+				}
+			}
+			else {
+				HoldDifficulty = False;
+				HoldQuality = False;
+			}
+		
+			foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
+				declare B <=> (Button as CMlFrame);
+			
+				declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
+				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
+						
+				if(B.DataAttributeGet("hover") == "true") {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
+					(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
+				}
+				else {
+					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
+					(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
+				}
+			}
+			
+			foreach(Event,PendingEvents) {
+				switch(Event.Type) {
+					case CMlEvent::Type::MenuNavigation: {
+						switch(Event.MenuNavAction) {
+							case CMlEvent::EMenuNavAction::Select: {
+								if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
+									declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+									RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+								}
+								else {
+									declare netwrite Boolean Net_NEM_Continue for UI;
+									Net_NEM_Continue = True;
+								}
+							}
+						}
+					}
+					case CMlEvent::Type::KeyPress: {
+						if(Event.KeyName == "Enter") {
+							
+						}
+					}
+					case CMlEvent::Type::MouseOver: {
+						declare Frame <=> Event.Control.Parent;
+					
+						if(Event.ControlId == "button") {
+							Audio.PlaySoundEvent(SoundHover, 1.0);
+							Frame.DataAttributeSet("hover","true");
+							Frame.DataAttributeSet("hover_time",Now^"");
+							Frame.DataAttributeSet("hover_in_value",(Event.Control as CMlQuad).BgColor[0]^"");
+						}
+					}
+					case CMlEvent::Type::MouseOut: {
+						declare Frame <=> Event.Control.Parent;
+					
+						if(Event.ControlId == "button") {
+							Frame.DataAttributeSet("hover","false");
+							Frame.DataAttributeSet("hover_time",Now^"");
+							Frame.DataAttributeSet("hover_out_value",(Event.Control as CMlQuad).BgColor[0]^"");
+						}
+					}
+					case CMlScriptEvent::Type::MouseClick: {
+						if(Event.ControlId == "LabelValidator") {
+							declare netwrite Boolean Net_NEM_Validate for UI;
+							Net_NEM_Validate = True;
+						}
+						if(Event.ControlId == "QuadDifficultySlider") {
+							HoldDifficulty = True;
+						}
+						if(Event.ControlId == "QuadQualitySlider") {
+							HoldQuality = True;
+						}
+						if(Event.ControlId == "QuadDifficultyBack") {
+							Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
+							HoldDifficulty = True;
+							
+							Page.GetFirstChild("QuadDifficultyGlow").Hide();
+							Page.GetFirstChild("QuadDifficultySlider").Show();
+							Page.GetFirstChild("LabelDifficulty").Show();
+							
+							DifficultyValue = (Page.GetFirstChild("QuadDifficultySlider").RelativePosition_V3.X + 35)/70.0;
+						}
+						if(Event.ControlId == "QuadQualityBack") {
+							Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X = MathLib::Clamp(MouseX - 30.0,-35.0,35.0);
+							HoldQuality = True;
+							
+							Page.GetFirstChild("QuadQualityGlow").Hide();
+							Page.GetFirstChild("QuadQualitySlider").Show();
+							Page.GetFirstChild("LabelQuality").Show();
+							
+							QualityValue = (Page.GetFirstChild("QuadQualitySlider").RelativePosition_V3.X + 35)/70.0;
+						}
+						if(Event.Control.Parent.ControlId == "buttonContinue") {
+							if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
+								declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+								RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+							}
+							else {
+								declare netwrite Boolean Net_NEM_Continue for UI;
+								Net_NEM_Continue = True;
+							}
 						}
 					}
 				}
 			}
+			
+			yield;
 		}
-		
-		yield;
 	}
 -->
 </script>

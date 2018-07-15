@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+	<quad z-index="-1" size="320 180" bgcolor="000" halign="center" valign="center" pos="0 0" image="http://trackmania.bigbang1112.eu/nadeoenvimix/manialink/NandoMix.jpg" modulatecolor="222"/>
+	<label pos="-140 70" z-index="0" size="120 10" text="EXTENSIONS" textsize="10" textfont="RajdhaniMono"/>
+	
+	<label pos="-140 55" z-index="0" size="260 20" text="Extensions is a feature which will be available in the future updates. We, especially Poutrel, will be posting packs of Nadeo maps from earlier versions of the game. Like the Canyon Platform campaign or Nations ESWC and others which are possible. Those sort of campaigns wont count towards leaderboard but will be available to try. First extensions should come in August." autonewline="1"/>
+</manialink>

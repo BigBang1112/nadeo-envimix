@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
-<quad z-index="-1" size="320 180" bgcolor="000" halign="center" valign="center"/>
+<quad z-index="-1" size="320 180" bgcolor="000" halign="center" valign="center" pos="0 0" image="http://trackmania.bigbang1112.eu/nadeoenvimix/manialink/NandoMix.jpg" modulatecolor="222"/>
 	<label pos="-140 70" z-index="0" size="120 10" text="PRIVACY POLICY" textsize="10" textfont="RajdhaniMono"/>
-<label pos="-140 55" z-index="0" size="200 20" text="Nadeo Envimix Title Pack is actively connected with http://www.bigbang1112.eu meaning that the title pack sends requests to the website at its needs. Whenever you're about to send some of your information, the request will go through Maniaplanet's OAuth2 service. If you won't agree to authorize, the request won't pass and nothing will be stored in the database." autonewline="1"/>
+<label pos="-140 55" z-index="0" size="260 20" text="Nadeo Envimix Title Pack is actively connected with http://www.bigbang1112.eu meaning that the title pack sends requests to the website at its needs. In some cases, an OAuth2 token will be requested and stored by your profile. Whenever you're about to send some of your information, the stored token is used. The token is requested through Maniaplanet's OAuth2 service. If you won't agree to authorize, the request won't pass and nothing will be stored in the database." autonewline="1"/>
 <label pos="-140 30" z-index="0" size="200 5" text="Here's a list of what we can store about you in the database:"/>
 <label pos="-140 20" z-index="0" size="240 35" text="- Your login, your nickname after you authorized, your zone/region where you come from, and if you're banned.
 - If you're one of the first ten registering the title pack.
@@ -12,5 +12,5 @@
 - What activities you did on which track, when you did them, and how valuable they were.
 - Comments you wrote, when, and on which track." autonewline="1"/>
 
-<label pos="-140 -20" z-index="0" size="200 20" text="You are able to remove any of your information stored in the database, just as you can remove the authorization on Maniaplanet website, resulting nothing you sent to us being stored by our database. In case whenever you want to leave fully, make sure to disconnect the account from our database BEFORE removing the authorization with Nadeo Envimix application." autonewline="1"/>
+<label pos="-140 -20" z-index="0" size="260 20" text="You are able to remove any of your information stored in the database, just as you can remove the authorization on Maniaplanet website, resulting in nothing you sent to us being stored by our database. In case whenever you want to leave fully, make sure to disconnect the account from our database BEFORE removing the authorization with Nadeo Envimix application. (the title pack does not provide functionality for this yet but you can ask for the removal)" autonewline="1" hidden="0"/>
 </manialink>

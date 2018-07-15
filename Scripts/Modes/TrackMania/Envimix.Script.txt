@@ -1,0 +1,223 @@
+#RequireContext CTmMode
+
+#Include "MathLib" as MathLib
+#Include "TextLib" as TextLib
+#Include "TimeLib" as TimeLib
+
+#Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
+#Include "Libs/Nadeo/TrackMania/TM.Script.txt" as TM
+
+#Setting S_Car ""
+
+declare Ident[Text] VehicleList;
+
+declare Text Vehicle;
+
+declare Text LastVehicle;
+
+declare Boolean Finished;
+
+declare Integer LastPB;
+declare Boolean End;
+
+Void SpawnPlayer(CTmPlayer _Player) {
+	declare UI <=> UIManager.GetUI(_Player);
+	
+	declare netread Text[] Net_NEM_ResumeInfo for UI;
+	Vehicle = Net_NEM_ResumeInfo[0];
+	
+	_Player.ForceModelId = VehicleList[Vehicle];
+	_Player.Score.BestRace = Null;
+	
+	_Player.IsSpawned = True;
+	_Player.RaceStartTime = Now+2500;
+	
+	UI.UISequence = CUIConfig::EUISequence::Playing;
+	
+	declare netwrite Text Net_NEM_Car for UI;
+	Net_NEM_Car = Vehicle;
+
+	Layers2::Attach("Ingame",_Player);
+}
+
+Void Init() {	
+	ItemList_Begin();
+	VehicleList["CanyonCar"] = ItemList_AddWithSkin("CanyonVehicle.Item.Gbx","");
+	VehicleList["StadiumCar"] = ItemList_AddWithSkin("StadiumVehicle.Item.Gbx","");
+	VehicleList["ValleyCar"] = ItemList_AddWithSkin("ValleyVehicle.Item.Gbx","");
+	VehicleList["LagoonCar"] = ItemList_AddWithSkin("LagoonVehicle.Item.Gbx","");
+	
+	ItemList_End();
+	
+    UIManager.UIAll.SmallScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
+		
+	RequestLoadMap();
+    wait(MapLoaded);
+	
+	Layers2::Create("GameMenu","file://Media/Manialinks/GameMenuMultiplayer.xml");
+	Layers2::SetType("GameMenu", CUILayer::EUILayerType::InGameMenu);
+	Layers2::SetAnimationTypeIn("GameMenu",CUILayer::EUILayerAnimation::ScaleSlow);
+	Layers2::Attach("GameMenu",Null);
+	
+	Layers2::Create("Start","file://Media/Manialinks/Start.xml");
+	Layers2::Attach("Start",Null);
+	
+	Layers2::Create("Ingame","file://Media/Manialinks/Ingame.xml");
+	Layers2::SetAnimationTypeIn("Ingame",CUILayer::EUILayerAnimation::UpSlow);
+	
+	UiDisplayStuntsNames = True;
+}
+
+Boolean Start() {	
+	if(S_Car == "") {	
+		
+	}
+	else {
+		Vehicle = S_Car;
+	}
+	
+	CutOffTimeLimit = Now+1*1000*5;
+
+  return True;
+}
+
+Void Event(CTmModeEvent _Event) {
+	declare UI <=> UIManager.GetUI(_Event.Player);
+
+	switch(_Event.Type) {
+		case CTmModeEvent::EType::StartLine: {
+			
+		}
+		case CTmModeEvent::EType::WayPoint: {
+			if(_Event.IsEndRace) {				
+				_Event.Player.Score.PrevRace.Time = _Event.RaceTime;
+				
+				declare netwrite Text Net_Type for UI;
+				
+				if(_Event.Player.Score.BestRace.Time == -1) {
+					log("First finish");
+					LastPB = _Event.RaceTime;
+					_Event.Player.Score.BestRace.Time = _Event.RaceTime;
+				}
+				else if(_Event.RaceTime < _Event.Player.Score.BestRace.Time) {
+					log("Improvement");
+					LastPB = _Event.Player.Score.BestRace.Time;
+					_Event.Player.Score.BestRace.Time = _Event.RaceTime;
+				}
+				else if(_Event.RaceTime == _Event.Player.Score.BestRace.Time) {
+					log("Equal");
+				}
+				else {
+					log("Worse run");
+				}
+	
+				declare netwrite Integer Net_Record for UI;
+				Net_Record = _Event.RaceTime;
+				
+				TM::EndRaceSequence_Add(_Event.Player, "");
+				Finished = True;
+			}
+			else if(_Event.IsEndLap) {
+				
+			}
+			else {
+				
+			}
+		}
+		case CTmModeEvent::EType::GiveUp: {
+			
+		}
+	}
+}
+
+
+Void Loop() {
+	
+	foreach(Player,Players) {
+		declare UI <=> UIManager.GetUI(Player);
+		
+		declare netwrite Text Net_MapCar for UI;
+		Net_MapCar = MapPlayerModelName;
+	
+		declare netwrite Text Net_Environment for UI;
+		Net_Environment = Map.CollectionName;
+		declare netwrite Text Net_Map for UI;
+		Net_Map = Map.MapName;
+	
+		if(Player.RaceStartTime == 0 && Finished) {	
+			declare Integer PB;
+			
+			PB = Player.Score.BestRace.Time;
+			
+			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for Player.User;
+			
+			declare RequestActivity = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&type=finish_online&pb="^PB^"&pb_last="^LastPB);
+			
+			Finished = False;
+		}	
+		
+		declare Text[] ResumeInfo for Player;
+		if(ResumeInfo.count == 0) ResumeInfo.add("");
+	
+		declare netread Text[] Net_NEM_ResumeInfo for UI;
+		
+		if(Net_NEM_ResumeInfo.count == 1) 
+		if(ResumeInfo[0] != Net_NEM_ResumeInfo[0]) {
+			log("yes");
+			Layers2::Detach("Ingame",Player);
+			ResumeInfo = Net_NEM_ResumeInfo;
+			Player.Score.PrevRace.Time = -1;
+			UnspawnPlayer(Player);
+			if(Net_NEM_ResumeInfo[0] != "") {
+				SpawnPlayer(Player);
+			}
+		}	
+	}
+	
+	foreach(Player,PlayersWaiting) {
+		declare UI <=> UIManager.GetUI(Player);
+		
+		declare Text[] ResumeInfo for Player;
+		if(ResumeInfo.count == 0) ResumeInfo.add("");
+		declare netread Text[] Net_NEM_ResumeInfo for UI;
+		
+		if(Net_NEM_ResumeInfo.count == 1)
+		if(ResumeInfo[0] != "" && !Finished) {
+			Player.IsSpawned = True;
+			Player.RaceStartTime = Now+2500;
+			
+			declare netwrite Integer Net_NEM_Start for UI;
+			Net_NEM_Start = Player.RaceStartTime;
+		}
+	}
+	
+	TM::EndRaceSequence_Update();
+	
+	if(CutOffTimeLimit<Now) {
+		TM::Players_UnspawnAll();
+		
+		UIManager.UIAll.UISequence = CUIConfig::EUISequence::Podium;
+		wait(UIManager.UIAll.UISequenceIsCompleted);
+		
+		UIManager.UIAll.UISequence = CUIConfig::EUISequence::None;
+		Scores_Clear();
+		NextMapIndex+=1;
+	}
+}
+
+main() {
+    Init();
+	Start();
+	
+	while(!ServerShutdownRequested || End) {		
+		foreach(Event, PendingEvents) {
+			Event(Event);
+		}
+	
+		Loop();
+
+		yield;
+	}	
+
+    UIManager.ResetAll();
+}

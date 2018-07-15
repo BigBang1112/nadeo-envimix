@@ -41,6 +41,7 @@
 		foreach(FrameCar,Frame.Controls) FrameCar.Hide();
 		
 		declare Integer[] CheckpointCounters;
+		declare Integer MyCheckpointCounter;
 		declare Integer LastStart;
 		
 		declare netread Integer Net_NEM_Start for UI;
@@ -48,7 +49,8 @@
 		declare netread Integer[] Net_NEM_GhostTimes for UI;
 		declare netread Integer[][] Net_NEM_GhostCheckpoints for UI;
 		
-		
+		declare netwrite Boolean Net_NEM_Validate for UI;
+		Net_NEM_Validate = False;
 		
 		declare netread Text Net_Environment for UI;
 		(Page.GetFirstChild("LabelEnvironment") as CMlLabel).SetText(Net_Environment);
@@ -63,6 +65,10 @@
 		
 			if(Net_NEM_Start != LastStart) {
 				LastStart = Net_NEM_Start;
+				
+				MyCheckpointCounter = 0;
+				(Page.GetFirstChild("MyTime") as CMlLabel).SetText("0:00.000");
+				Page.GetFirstChild("MyState").Hide();
 				
 				CheckpointCounters.clear();
 				
@@ -107,13 +113,21 @@
 				switch(Event.Type) {
 					case CTmRaceClientEvent::EType::WayPoint: {
 						if(Event.IsEndRace) {
-							
+							(Page.GetFirstChild("MyTime") as CMlLabel).SetText(TextLib::TimeToText(Event.RaceTime,True)^TextLib::SubText(""^Event.RaceTime,TextLib::Length(""^Event.RaceTime)-1,1));
+							(Page.GetFirstChild("MyState") as CMlLabel).SetText("FIN");
+							(Page.GetFirstChild("MyState") as CMlLabel).TextColor = <1.0,0.25,0.25>;
 						}
 						else if(Event.IsEndLap) {
-							
+							(Page.GetFirstChild("MyTime") as CMlLabel).SetText(TextLib::TimeToText(Event.RaceTime,True)^TextLib::SubText(""^Event.RaceTime,TextLib::Length(""^Event.RaceTime)-1,1));
+							(Page.GetFirstChild("MyState") as CMlLabel).SetText("LAP");
+							(Page.GetFirstChild("MyState") as CMlLabel).TextColor = <1.0,0.75,0.0>;
 						}
 						else {
+							MyCheckpointCounter+=1;
 							(Page.GetFirstChild("MyTime") as CMlLabel).SetText(TextLib::TimeToText(Event.RaceTime,True)^TextLib::SubText(""^Event.RaceTime,TextLib::Length(""^Event.RaceTime)-1,1));
+							(Page.GetFirstChild("MyState") as CMlLabel).SetText("CP"^MyCheckpointCounter);
+							(Page.GetFirstChild("MyState") as CMlLabel).TextColor = <0.5,0.75,1.0>;
+							Page.GetFirstChild("MyState").Show();
 						}
 					}
 				}
@@ -121,12 +135,6 @@
 			
 			foreach(Event,PendingEvents) {
 				switch(Event.Type) {
-					case CMlEvent::Type::KeyPress: {
-						if(Event.KeyName == "M") {
-							declare netwrite Text Net_State for UI;
-							Net_State = "MENU";
-						}
-					}
 					case CMlEvent::Type::MouseOver: {
 						declare Frame <=> Event.Control.Parent;
 					
