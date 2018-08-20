@@ -3,13 +3,13 @@
 <quad z-index="0" size="150 100" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur" halign="center" valign="center" pos="0 0"/>
 <frame z-index="1">
 	<label z-index="0" size="100 15" text="0:00.000" halign="center" valign="center2" pos="0 35" textfont="RajdhaniMono" textsize="15" id="Record"/>
-	<label pos="0 27.5" z-index="0" size="100 5" text="NEW PERSONAL BEST" halign="center" textfont="RajdhaniMono" id="Type"/>
+	<label pos="0 27.5" z-index="0" size="100 5" text="" halign="center" textfont="RajdhaniMono" id="Type"/>
 	
-	<label pos="48 5.75" z-index="0" size="40 10" text="STADIUM" halign="right" textfont="RajdhaniMono" textsize="6" valign="bottom" id="LabelEnvironment"/>
-	<label pos="70 16" z-index="0" size="20 10" text="A01" halign="right" textfont="RajdhaniMono" textsize="10" id="LabelMap"/>
-	<label pos="68 5" z-index="0" size="30 5" text="VALLEYCAR" textfont="RajdhaniMono" halign="right" id="LabelCar"/>
+	<label pos="48 5.75" z-index="0" size="40 10" text="" halign="right" textfont="RajdhaniMono" textsize="6" valign="bottom" id="LabelEnvironment"/>
+	<label pos="70 16" z-index="0" size="20 10" text="" halign="right" textfont="RajdhaniMono" textsize="10" id="LabelMap"/>
+	<label pos="68 5" z-index="0" size="30 5" text="" textfont="RajdhaniMono" halign="right" id="LabelCar"/>
 	
-	<label pos="-45 17" z-index="0" size="55 6" text="" textfont="RajdhaniMono" id="LabelValidator" textsize="1" autonewline="1" halign="center" hidden="1"/>
+	<label pos="-45 18" z-index="0" size="50 12" text="" textfont="RajdhaniMono" id="LabelValidator" textsize="2" halign="center" autonewline="1" valign="center2" scriptevents="1" style="TextCardRaceRank"/>
 	
 	<label pos="0 14" z-index="0" size="29 10" text="0" textsize="10" textfont="OswaldMono" halign="center" id="LabelPointsValue"/>
 	<label pos="0 3" z-index="0" size="28 5" text="SKILLPOINTS" textsize="1" halign="center" id="LabelPoints"/>
@@ -31,54 +31,55 @@
 	</frame>
 	<label pos="28 -25" z-index="1" size="85 3" text="Don't forget to rate the track, it's helpful for everyone!" textsize="1" autonewline="1" halign="center"/>
 	
-	<frame id="Leaderboard" z-index="1" pos="-67 7">
-		<quad pos="-3 3" z-index="-1" size="50 40" bgcolor="FFFA" style="Bgs1" substyle="BgList"/>
+	<quad pos="-70 10" z-index="1" size="50 40" bgcolor="FFFA" style="Bgs1" substyle="BgList"/>
+	
+	<frame id="Leaderboard" z-index="2" pos="-67 7">
 		<frame pos="1.75 -2" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -5" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -8" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -11" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -14" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -17" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -20" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -23" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -26" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 		<frame pos="1.75 -29" hidden="1">
-			<label size="20 3" text="USERNAME" textsize="1"/>
-			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextTitle3"/>
+			<label size="20 3" text="USERNAME" textsize="1" id="Nickname" scriptevents="1" style="TextCardRaceRank"/>
+			<label pos="40 0" z-index="0" size="20 3" text="0:00:00" textsize="1" halign="right" style="TextCardMedium" id="Time" textfont="RajdhaniMono"/>
 		</frame>
 	</frame>
 	
 	<frame id="buttons">
 		<frame pos="0 -40" id="buttonContinue">
-			<quad z-index="0" size="140 10" bgcolor="000" halign="center" valign="center" scriptevents="1" id="button"/>
-			<label pos="0 0" z-index="1" size="30 5" text="Continue" halign="center" valign="center2" style="TextTitle3" id="text"/>
+			<quad z-index="0" size="140 10" bgcolor="FFF" halign="center" valign="center" scriptevents="1" id="button"/>
+			<label pos="0 0" z-index="1" size="50 5" text="Continue" halign="center" valign="center2" style="TextTitle3" id="text" textcolor="000" translate="1"/>
 		</frame>
 	</frame>
 </frame>
@@ -89,6 +90,8 @@
 	#Include "AnimLib" as AnimLib
 	
 	declare Integer ActivityPoints;
+	
+	declare Boolean ValidationIssues;
 	
 	Boolean Activity(Text _Url) {
 		declare CXmlDocument Doc;
@@ -103,7 +106,12 @@
 		else if(ActivityRequest.StatusCode == 403) {
 			Http.Destroy(ActivityRequest);
 			OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+			declare Tries = 0;
 			while(True) {
+				if(Tries > 5) {
+					OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+					Tries = 0;
+				}
 				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
 				declare SecondActivityRequest = Http.CreateGet(_Url^"&token="^PERSISTENT_NEM_ACCESS_TOKEN);
 				wait(SecondActivityRequest.IsCompleted);
@@ -114,7 +122,9 @@
 				else if(SecondActivityRequest.StatusCode != 403) {
 					break;
 				}
+				log("Endscreen stuck - Activity, Code " ^ SecondActivityRequest.StatusCode ^ " " ^ _Url);
 				Http.Destroy(SecondActivityRequest);
+				Tries+=1;
 			}
 		}
 		
@@ -127,6 +137,64 @@
 		return False;
 	}
 	
+	Void Validate() {
+		declare netread Text Net_Environment for UI;
+		declare netread Text Net_Map for UI;
+		declare netread Text Net_NEM_Car for UI;
+		declare netread Integer Net_Record for UI;
+	
+		declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+		declare Text ActivityUrl = "http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=validation&points=1000";
+		declare ValidationRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/validate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&time="^Net_Record);
+		wait(ValidationRequest.IsCompleted);
+		if(ValidationRequest.StatusCode == 200) {
+			(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Congratz! You're the validator of \n"^Net_Environment^Net_Map^"."^Net_NEM_Car^".");
+			Page.GetFirstChild("LabelValidator").Show();
+			Activity(ActivityUrl);
+			//provide replay url
+		}
+		else if(ValidationRequest.StatusCode == 403) {
+			Http.Destroy(ValidationRequest);
+			Page.GetFirstChild("LabelValidator").Show();
+			OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+			
+			declare Tries = 0;
+			while(True) {
+				if(Tries > 5) {
+					OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+					Tries = 0;
+				}
+				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+				declare SecondValidationRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/validate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&time="^Net_Record);
+				wait(SecondValidationRequest.IsCompleted);
+				if(SecondValidationRequest.StatusCode == 200) {
+					(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Congratz! You're the validator.");
+					Page.GetFirstChild("LabelValidator").Show();
+					Activity(ActivityUrl^"&token="^PERSISTENT_NEM_ACCESS_TOKEN);
+					//provide replay url
+					break;
+				}
+				else if(SecondValidationRequest.StatusCode != 403) {
+					(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Something is wrong on the serverside, try it again.");
+					Page.GetFirstChild("LabelValidator").Show();
+					ValidationIssues = True;
+					break;
+				}
+				log("Endscreen stuck - Validation, Code " ^ SecondValidationRequest.StatusCode);
+				Http.Destroy(SecondValidationRequest);
+				Tries+=1;
+			}
+		}
+		else {
+			(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Something is wrong on the serverside, try it again.");
+			ValidationIssues = True;
+			Page.GetFirstChild("LabelValidator").Show();
+		}
+		
+		if(ValidationRequest.StatusCode != 403)
+			Http.Destroy(ValidationRequest);
+	}
+	
 	main() {
 		declare Real StartDifficulty;
 		declare Real StartQuality;
@@ -134,6 +202,7 @@
 		declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
 		declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 		declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+		declare SoundFinish = Audio.CreateSound("file://Media/Sounds/Finish.ogg");
 		
 		declare Difficulties = [
 			"Very easy",
@@ -160,8 +229,6 @@
 			"Very fun",
 			"Incredible"
 		];
-		
-		declare TimerPoints = Now + 1000;
 		
 		declare HoldDifficulty = False;
 		declare HoldQuality = False;
@@ -197,6 +264,7 @@
 		
 		declare netread Text Net_Type for UI;
 		switch(Net_Type) {
+			case "FIRST_FINISH": (Page.GetFirstChild("Type") as CMlLabel).SetText("YOUR FIRST FINISH!");
 			case "PERSONAL_BEST": (Page.GetFirstChild("Type") as CMlLabel).SetText("NEW PERSONAL BEST");
 			case "EQUAL": (Page.GetFirstChild("Type") as CMlLabel).SetText("EQUAL! HOW UNLUCKY");
 			case "WORSE": (Page.GetFirstChild("Type") as CMlLabel).SetText("MAYBE NEXT TIME");
@@ -242,7 +310,20 @@
 		}
 		Http.Destroy(ActivityDayRequest);
 		
+		declare netread Text[Text][] Net_NEM_Leaderboard for UI;
+		
+		declare TimerPoints = Now + 1000;
+		Audio.PlaySoundEvent(SoundFinish, 1.0);
+		
 		while(True) {
+			for(i,0,(Page.GetFirstChild("Leaderboard") as CMlFrame).Controls.count-1) (Page.GetFirstChild("Leaderboard") as CMlFrame).Controls[i].Hide();
+			for(i,0,Net_NEM_Leaderboard.count-1) {
+				(((Page.GetFirstChild("Leaderboard") as CMlFrame).Controls[i] as CMlFrame).GetFirstChild("Nickname") as CMlLabel).SetText(Net_NEM_Leaderboard[i]["Nickname"]);
+				(((Page.GetFirstChild("Leaderboard") as CMlFrame).Controls[i] as CMlFrame).GetFirstChild("Time") as CMlLabel).SetText(TextLib::TimeToText(TextLib::ToInteger(Net_NEM_Leaderboard[i]["Time"]),True)^TextLib::SubText(Net_NEM_Leaderboard[i]["Time"],TextLib::Length(Net_NEM_Leaderboard[i]["Time"])-1,1));
+				
+				(Page.GetFirstChild("Leaderboard") as CMlFrame).Controls[i].Show();
+			}
+		
 			TimeAnimation = MathLib::NearestInteger(AnimLib::EaseOutExp(Now - StartTime, 0.0, 1.0, 1000)*Net_Record);
 		
 			if(TimerPoints < Now - 2000) {
@@ -311,51 +392,11 @@
 						
 						// If you're a new validator
 						if(Doc.GetFirstChild("MAP_INFO").GetFirstChild(Net_NEM_Car).GetAttributeText("Validator", "") == "") {
-							declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-							declare Text ActivityUrl = "http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=validation&points=1000";
-							declare ValidationRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/validate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&time="^Net_Record);
-							wait(ValidationRequest.IsCompleted);
-							if(ValidationRequest.StatusCode == 200) {
-								(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Congratz! You're the validator of "^Net_Environment^Net_Map^"."^Net_NEM_Car^".");
-								Page.GetFirstChild("LabelValidator").Show();
-								Activity(ActivityUrl);
-								//provide replay url
-							}
-							else if(ValidationRequest.StatusCode == 403) {
-								Http.Destroy(ValidationRequest);
-								Page.GetFirstChild("LabelValidator").Show();
-								OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
-								
-								while(True) {
-									declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-									declare SecondValidationRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/validate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&time="^Net_Record);
-									wait(SecondValidationRequest.IsCompleted);
-									if(SecondValidationRequest.StatusCode == 200) {
-										(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Congratz! You're the validator of "^Net_Environment^Net_Map^"."^Net_NEM_Car^". Save the replay!");
-										Page.GetFirstChild("LabelValidator").Show();
-										Activity(ActivityUrl^"&token="^PERSISTENT_NEM_ACCESS_TOKEN);
-										//provide replay url
-										break;
-									}
-									else if(SecondValidationRequest.StatusCode != 403) {
-										(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Something is wrong on the serverside, try it again.");
-										Page.GetFirstChild("LabelValidator").Show();
-										break;
-									}
-									Http.Destroy(SecondValidationRequest);
-								}
-							}
-							else {
-								(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("Something is wrong on the serverside, try it again.");
-								Page.GetFirstChild("LabelValidator").Show();
-							}
-							
-							if(ValidationRequest.StatusCode != 403)
-								Http.Destroy(ValidationRequest);
+							Validate();
 						}
 						
 						// If you're validator of this track in general
-						if(Doc.GetFirstChild("MAP_INFO").GetFirstChild(Net_NEM_Car).GetAttributeText("Validator", "") == LocalUser.Name) {
+						if(Doc.GetFirstChild("MAP_INFO").GetFirstChild(Net_NEM_Car).GetAttributeText("ValidatorLogin", "") == LocalUser.Login) {
 							(Page.GetFirstChild("LabelValidator") as CMlLabel).SetText("You're a validator of this track.");
 							Page.GetFirstChild("LabelValidator").Show();
 						}
@@ -390,6 +431,7 @@
 							if(RateRequest.StatusCode == 200) {
 								break;
 							}
+							log("Endscreen stuck - Rate, Code " ^ RateRequest.StatusCode);
 						}
 					}
 					else if(RateRequest.StatusCode == 12007) {
@@ -422,22 +464,6 @@
 			else {
 				HoldDifficulty = False;
 				HoldQuality = False;
-			}
-		
-			foreach(Button,(Page.GetFirstChild("buttons") as CMlFrame).Controls) {
-				declare B <=> (Button as CMlFrame);
-			
-				declare Time = TextLib::ToInteger(B.DataAttributeGet("hover_time"));
-				declare Value = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 200);
-						
-				if(B.DataAttributeGet("hover") == "true") {
-					(B.GetFirstChild("button") as CMlQuad).BgColor = <Value,Value,Value>;
-					(B.GetFirstChild("text") as CMlLabel).TextColor = <1.0-Value,1.0-Value,1.0-Value>;
-				}
-				else {
-					(B.GetFirstChild("button") as CMlQuad).BgColor = <1.0-Value,1.0-Value,1.0-Value>;
-					(B.GetFirstChild("text") as CMlLabel).TextColor = <Value,Value,Value>;
-				}
 			}
 			
 			foreach(Event,PendingEvents) {
@@ -482,8 +508,9 @@
 					}
 					case CMlScriptEvent::Type::MouseClick: {
 						if(Event.ControlId == "LabelValidator") {
-							declare netwrite Boolean Net_NEM_Validate for UI;
-							Net_NEM_Validate = True;
+							if(ValidationIssues) {
+								Validate();
+							}
 						}
 						if(Event.ControlId == "QuadDifficultySlider") {
 							HoldDifficulty = True;

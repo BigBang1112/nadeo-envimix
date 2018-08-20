@@ -18,13 +18,11 @@
 </frame>
 </frame>
 
-
-
-<label pos="128 69.5" z-index="0" size="40 10" text="STADIUM" halign="right" textfont="RajdhaniMono" textsize="6" valign="bottom" id="LabelEnvironment" textemboss="1"/>
-<label pos="150 80" z-index="0" size="20 10" text="A01" halign="right" textfont="RajdhaniMono" textsize="10" id="LabelMap" textemboss="1"/>
-<label pos="148.5 69" z-index="0" size="30 5" text="VALLEYCAR" textfont="RajdhaniMono" halign="right" id="LabelCar" textemboss="1"/>
-<label pos="148.5 60" z-index="0" size="20 5" text="0:00.000" textfont="RajdhaniMono" textemboss="1" halign="right" id="MyTime" valign="center2"/>
-<label pos="150 60" z-index="0" size="10 5" text="CP1" textfont="RajdhaniMono" textemboss="1" halign="left" textsize="1" id="MyState" valign="center2"/>
+<label pos="133 74.25" z-index="0" size="40 10" text="STADIUM" halign="right" textfont="RajdhaniMono" textsize="6" valign="bottom" id="LabelEnvironment" textemboss="1"/>
+<label pos="155 85" z-index="0" size="20 10" text="A01" halign="right" textsize="10" id="LabelMap" textemboss="1" textfont="RajdhaniMono"/>
+<label pos="154 74" z-index="0" size="30 5" text="VALLEYCAR" textfont="RajdhaniMono" halign="right" id="LabelCar" textemboss="1"/>
+<label pos="154 64" z-index="0" size="20 5" text="0:00.000" textfont="RajdhaniMono" textemboss="1" halign="right" id="MyTime" valign="center2"/>
+<label pos="154 60" z-index="0" size="10 5" text="CP1" textfont="RajdhaniMono" textemboss="1" halign="right" textsize="1" id="MyState" valign="center2"/>
 
 <script>
 	<!--

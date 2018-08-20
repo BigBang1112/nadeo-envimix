@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<quad z-index="10" size="60 20" bgcolor="FFFA" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur" pos="0 0"/>
+<label z-index="11" size="60 20" text="LOADING" halign="center" textfont="RajdhaniMono" textsize="8" pos="0 1" valign="center"/>
+</manialink>

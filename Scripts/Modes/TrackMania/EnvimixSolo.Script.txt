@@ -7,6 +7,8 @@
 #Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
 #Include "Libs/Nadeo/TrackMania/TM.Script.txt" as TM
 
+#Include "Libs/BigBang1112/Map.Script.txt" as Map
+
 #Setting S_Car ""
 
 declare Ident[Text] VehicleList;
@@ -18,6 +20,10 @@ declare CGhost Ghost;
 declare Text Vehicle;
 
 declare CTaskResult SetRecordRequest;
+declare CTaskResult_NaturalLeaderBoardInfoList LeaderboardRequest;
+declare CTaskResult_BuddiesChallengeRecord LeaderboardBuddiesRequest;
+
+declare Text[Text] Replays;
 
 declare Text LastVehicle;
 
@@ -26,39 +32,31 @@ declare Text[] Zones;
 
 declare Integer LastPB;
 
-Void RefreshPersonalGhosts() {
-	GhostList["CanyonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"CanyonCar"^"2");
-	GhostList["StadiumCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"StadiumCar"^"2");
-	GhostList["ValleyCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"ValleyCar"^"2");
-	GhostList["LagoonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"LagoonCar"^"2");
-	wait(!GhostList["CanyonCar"].IsProcessing);
-	wait(!GhostList["StadiumCar"].IsProcessing);
-	wait(!GhostList["ValleyCar"].IsProcessing);
-	wait(!GhostList["LagoonCar"].IsProcessing);
-}
-
-Void RefreshPersonalRecords() {
+Void Private_RefreshPlayableGhost(Text _Car) {
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
 	
-	declare netwrite Integer[] Net_Records for UI;
-	Net_Records.clear();
-	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "CanyonCar"^"2"));
-	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "StadiumCar"^"2"));
-	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "ValleyCar"^"2"));
-	Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, "LagoonCar"^"2"));
+	declare netwrite Integer Net_NEM_Start for UI;
+	declare netwrite Text[] Net_NEM_GhostCars for UI;
+	declare netwrite Integer[] Net_NEM_GhostTimes for UI;
+	declare netwrite Integer[][] Net_NEM_GhostCheckpoints for UI;
+
+	RaceGhost_Add(GhostList[_Car].Ghost, False);
+		
+	Net_NEM_GhostCars.add(_Car);
+	Net_NEM_GhostTimes.add(GhostList[_Car].Ghost.Result.Time);
+	
+	declare Integer[] CheckpointArray;
+	for(i,0,GhostList[_Car].Ghost.Result.Checkpoints.count-1)
+		CheckpointArray.add(GhostList[_Car].Ghost.Result.Checkpoints[i]);
+	Net_NEM_GhostCheckpoints.add(CheckpointArray);
 }
 
-Void SpawnPlayer(CTmPlayer _Player) {
-	declare UI <=> UIManager.GetUI(_Player);
+Void RefreshPersonalGhosts() {
+	declare Cars = ["CanyonCar","StadiumCar","ValleyCar","LagoonCar"];
 	
-	Vehicle = ResumeInfo[0];
-	
-	_Player.ForceModelId = VehicleList[Vehicle];
-	if(_Player.ForceModelId == VehicleList[MapPlayerModelName]) Terminate = True;
-				
-	RaceGhost_RemoveAll();
-	RefreshPersonalGhosts();
+	declare Player <=> Players[0];
+	declare UI <=> UIManager.GetUI(Player);
 	
 	declare netwrite Integer Net_NEM_Start for UI;
 	declare netwrite Text[] Net_NEM_GhostCars for UI;
@@ -70,61 +68,78 @@ Void SpawnPlayer(CTmPlayer _Player) {
 	Net_NEM_GhostTimes.clear();
 	Net_NEM_GhostCheckpoints.clear();
 	
-	if(GhostList["CanyonCar"].Ghost != Null && ResumeInfo[1] == "True") {
-		RaceGhost_Add(GhostList["CanyonCar"].Ghost, False);
-		
-		Net_NEM_GhostCars.add("CanyonCar");
-		Net_NEM_GhostTimes.add(GhostList["CanyonCar"].Ghost.Result.Time);
-		
-		declare Integer[] CheckpointArray;
-		for(i,0,GhostList["CanyonCar"].Ghost.Result.Checkpoints.count-1)
-			CheckpointArray.add(GhostList["CanyonCar"].Ghost.Result.Checkpoints[i]);
-		Net_NEM_GhostCheckpoints.add(CheckpointArray);
+	for(i,0,3) GhostList[Cars[i]] = ScoreMgr.Map_GetRecordGhost(NullId,Map.MapInfo.MapUid,Cars[i]^"2");
+	for(i,0,3) wait(!GhostList[Cars[i]].IsProcessing);
+	
+	RaceGhost_RemoveAll();
+	
+	for(i,0,3) {
+		if(GhostList[Cars[i]].Ghost != Null && ResumeInfo[i+1] == "True") {
+			Private_RefreshPlayableGhost(Cars[i]);
+		}
 	}
-	if(GhostList["StadiumCar"].Ghost != Null && ResumeInfo[2] == "True") {
-		RaceGhost_Add(GhostList["StadiumCar"].Ghost, False);
+}
+
+Void RefreshGhosts(Text[Text] _OnlineGhosts) {
+	RefreshPersonalGhosts();
+	
+	if(_OnlineGhosts.count > 0) {
+		Layers2::Attach("LoadingIngame",Null);
 		
-		Net_NEM_GhostCars.add("StadiumCar");
-		Net_NEM_GhostTimes.add(GhostList["StadiumCar"].Ghost.Result.Time);
+		foreach(File => Replay,_OnlineGhosts) {
+			declare TaskGhost = DataFileMgr.Ghost_Download(File, Replay);
+			wait(!TaskGhost.IsProcessing);
+			if(TaskGhost.HasSucceeded)
+				RaceGhost_Add(TaskGhost.Ghost, False);
+		}
 		
-		declare Integer[] CheckpointArray;
-		for(i,0,GhostList["StadiumCar"].Ghost.Result.Checkpoints.count-1)
-			CheckpointArray.add(GhostList["StadiumCar"].Ghost.Result.Checkpoints[i]);
-		Net_NEM_GhostCheckpoints.add(CheckpointArray);
+		Layers2::Detach("LoadingIngame",Null);
 	}
-	if(GhostList["ValleyCar"].Ghost != Null && ResumeInfo[3] == "True") {
-		RaceGhost_Add(GhostList["ValleyCar"].Ghost, False);
-		
-		Net_NEM_GhostCars.add("ValleyCar");
-		Net_NEM_GhostTimes.add(GhostList["ValleyCar"].Ghost.Result.Time);
-		
-		declare Integer[] CheckpointArray;
-		for(i,0,GhostList["ValleyCar"].Ghost.Result.Checkpoints.count-1)
-			CheckpointArray.add(GhostList["ValleyCar"].Ghost.Result.Checkpoints[i]);
-		Net_NEM_GhostCheckpoints.add(CheckpointArray);
+}
+
+Void RefreshPersonalRecords() {
+	declare Cars = ["CanyonCar","StadiumCar","ValleyCar","LagoonCar"];
+
+	declare Player <=> Players[0];
+	declare UI <=> UIManager.GetUI(Player);
+	
+	declare netwrite Integer[] Net_Records for UI;
+	declare netwrite Integer[] Net_Skillpoints for UI;
+	Net_Records.clear();
+	Net_Skillpoints.clear();
+	
+	for(i,0,3) {
+		Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, Cars[i]^"2"));
+		Net_Skillpoints.add(ScoreMgr.Map_GetSkillPoints(Player.Id, Map.MapInfo.MapUid, Cars[i]^"2"));
 	}
-	if(GhostList["LagoonCar"].Ghost != Null && ResumeInfo[4] == "True") {
-		RaceGhost_Add(GhostList["LagoonCar"].Ghost, False);
-		
-		Net_NEM_GhostCars.add("LagoonCar");
-		Net_NEM_GhostTimes.add(GhostList["LagoonCar"].Ghost.Result.Time);
-		
-		declare Integer[] CheckpointArray;
-		for(i,0,GhostList["LagoonCar"].Ghost.Result.Checkpoints.count-1)
-			CheckpointArray.add(GhostList["LagoonCar"].Ghost.Result.Checkpoints[i]);
-		Net_NEM_GhostCheckpoints.add(CheckpointArray);
-	}
+}
+
+Void SpawnPlayer(CTmPlayer _Player, Text[Text] _OnlineGhosts) {
+	declare UI <=> UIManager.GetUI(_Player);
+	
+	Vehicle = ResumeInfo[0];
+	
+	_Player.ForceModelId = VehicleList[Vehicle];
+	if(_Player.ForceModelId == VehicleList[MapPlayerModelName]) Terminate = True;
+	
+	if(Map::IsNadeoMap(Map.MapInfo))
+		Map.MapName = Map.CollectionName^TextLib::StripFormatting(Map.MapInfo.Name)^"."^Vehicle;
+	
+	RefreshGhosts(_OnlineGhosts);
 	
 	if(GhostList[Vehicle].Ghost != Null) {
 		_Player.Score.BestRace = GhostList[Vehicle].Ghost.Result;
 	}
 	else _Player.Score.BestRace = Null;
 	
+	_Player.Score.PrevRace = _Player.Score.BestRace;
+	
 	_Player.IsSpawned = True;
 	_Player.RaceStartTime = Now+2500;
 	
 	UI.UISequence = CUIConfig::EUISequence::Playing;
 	
+	declare netwrite Integer Net_NEM_Start for UI;
 	Net_NEM_Start = _Player.RaceStartTime;
 	
 	declare netwrite Text Net_NEM_Car for UI;
@@ -133,40 +148,22 @@ Void SpawnPlayer(CTmPlayer _Player) {
 	Layers2::Attach("Ingame",_Player);
 }
 
-Void Init() {
-	wait(Players.count>0);
-	
-	declare Player <=> Players[0];
-
-	declare persistent Text[] NEM_CustomCars for Player.User;
-
-	declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for Player.User;
-	
-	ItemList_Begin();
-	VehicleList["CanyonCar"] = ItemList_AddWithSkin("CanyonVehicle.Item.Gbx",PERSISTENT_NEM_CAR_SKINS["CanyonCar"]);
-	VehicleList["StadiumCar"] = ItemList_AddWithSkin("StadiumVehicle.Item.Gbx",PERSISTENT_NEM_CAR_SKINS["StadiumCar"]);
-	VehicleList["ValleyCar"] = ItemList_AddWithSkin("ValleyVehicle.Item.Gbx",PERSISTENT_NEM_CAR_SKINS["ValleyCar"]);
-	VehicleList["LagoonCar"] = ItemList_AddWithSkin("LagoonVehicle.Item.Gbx",PERSISTENT_NEM_CAR_SKINS["LagoonCar"]);
-	
-	foreach(Car,NEM_CustomCars) {
-		if(Car != "" && !VehicleList.existskey(Car)) VehicleList[Car] = ItemList_Add(Car);
+Void RespawnPlayer(CTmPlayer _Player, Text[Text] _OnlineGhosts) {
+	declare UI <=> UIManager.GetUI(_Player);
+	Layers2::Detach("Ingame",_Player);
+	UnspawnPlayer(_Player);
+	if(ResumeInfo[0] != "") {
+		wait(PlayersWaiting.existskey(0));
+		SpawnPlayer(_Player,_OnlineGhosts);
 	}
-	
-	ItemList_End();
-	
-	CutOffTimeLimit = -1;
-	
-	RequestLoadMap();
-  wait(MapLoaded);
-	
 }
 
-Boolean Start() {
+Void Init() {
+	wait(Players.count>0);
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
 	
-	UiDisplayStuntsNames = True;
-	
+	UiDisplayStuntsNames = True;	
 	UIManager.UIAll.OverlayHideChat = True;
   UIManager.UIAll.OverlayHidePosition = True;
   UIManager.UIAll.OverlayHideSpectatorControllers = True;
@@ -180,6 +177,53 @@ Boolean Start() {
 
   UIManager.UIAll.ScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
   UIManager.UIAll.SmallScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
+	
+	ItemList_Begin();
+	
+	declare CanyonCar = ItemList_Add("CanyonCar");
+	declare StadiumCar = ItemList_Add("StadiumCar");
+	declare ValleyCar = ItemList_Add("ValleyCar");
+	declare LagoonCar = ItemList_Add("LagoonCar");
+	
+	declare CanyonCarOnStadium = ItemList_Add("CanyonVehicle.Item.Gbx");
+	declare StadiumCarOnStadium = ItemList_Add("StadiumVehicle.Item.Gbx");
+	declare ValleyCarOnStadium = ItemList_Add("ValleyVehicle.Item.Gbx");
+	declare LagoonCarOnStadium = ItemList_Add("LagoonVehicle.Item.Gbx");
+	
+	ItemList_End();
+	
+	CutOffTimeLimit = -1;
+	
+	RequestLoadMap();
+  wait(MapLoaded);
+	
+	declare netwrite Text Net_MapCar for UI;
+	Net_MapCar = MapPlayerModelName;
+
+	Map.TMObjective_AuthorTime = 999999999;
+	Map.TMObjective_GoldTime = 999999999;
+	Map.TMObjective_SilverTime = 999999999;
+	Map.TMObjective_BronzeTime = 999999999;
+
+	if(Map.MapInfo.CollectionName == "Stadium") {
+		VehicleList["CanyonCar"] = CanyonCarOnStadium;
+		VehicleList["StadiumCar"] = StadiumCarOnStadium;
+		VehicleList["ValleyCar"] = ValleyCarOnStadium;
+		VehicleList["LagoonCar"] = LagoonCarOnStadium;
+	}
+	else {
+		VehicleList["CanyonCar"] = CanyonCar;
+		VehicleList["StadiumCar"] = StadiumCar;
+		VehicleList["ValleyCar"] = ValleyCar;
+		VehicleList["LagoonCar"] = LagoonCar;
+	}
+}
+
+Boolean Start() {
+	declare Player <=> Players[0];
+	declare UI <=> UIManager.GetUI(Player);
+	
+	declare Cars = ["CanyonCar","StadiumCar","ValleyCar","LagoonCar"];
 
 	RefreshPersonalRecords();
 	
@@ -191,37 +235,33 @@ Boolean Start() {
 	Layers2::SetAnimationTypeIn("GameMenu",CUILayer::EUILayerAnimation::ScaleSlow);
 	Layers2::Attach("GameMenu",Null);
 	
+	Layers2::Create("LoadingIngame","file://Media/Manialinks/LoadingIngame.xml");
+	
 	Layers2::Create("Ingame","file://Media/Manialinks/Ingame.xml");
 	Layers2::SetAnimationTypeIn("Ingame",CUILayer::EUILayerAnimation::UpSlow);
 	
 	Layers2::Create("Endscreen","file://Media/Manialinks/Endscreen.xml");
 	Layers2::SetAnimationTypeIn("Endscreen",CUILayer::EUILayerAnimation::ScaleSlow);
+	//Layers2::Attach("Endscreen",Player);
 	
-	GhostList["CanyonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"CanyonCar"^"2");
-	GhostList["StadiumCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"StadiumCar"^"2");
-	GhostList["ValleyCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"ValleyCar"^"2");
-	GhostList["LagoonCar"] = ScoreMgr.Map_GetRecordGhost(Players[0].Id,Map.MapInfo.MapUid,"LagoonCar"^"2");
-	wait(!GhostList["CanyonCar"].IsProcessing);
-	wait(!GhostList["StadiumCar"].IsProcessing);
-	wait(!GhostList["ValleyCar"].IsProcessing);
-	wait(!GhostList["LagoonCar"].IsProcessing);
+	Map.MapName = Map.MapInfo.CollectionName^Map.MapInfo.Name;
+	
+	for(i,0,3) GhostList[Cars[i]] = ScoreMgr.Map_GetRecordGhost(Player.Id,Map.MapInfo.MapUid,Cars[i]^"2");
+	for(i,0,3) wait(!GhostList[Cars[i]].IsProcessing);
 	
 	Zones = TextLib::Split("|",Player.User.ZonePath);
-	
-	declare netwrite Text Net_MapCar for UI;
-	Net_MapCar = MapPlayerModelName;
 	
 	declare netwrite Text Net_Environment for UI;
 	Net_Environment = Map.CollectionName;
 	declare netwrite Text Net_Map for UI;
-	Net_Map = Map.MapName;
+	Net_Map = TextLib::StripFormatting(Map.MapInfo.Name);
 	
-	if(S_Car == "") {	
+	/*if(S_Car == "Any") {	
 		
 	}
 	else {
 		Vehicle = S_Car;
-	}
+	}*/
 	
 	ResumeInfo = ["","","",""];
 
@@ -240,6 +280,8 @@ Void Event(CTmModeEvent _Event) {
 				Ghost = ScoreMgr.Playground_GetPlayerGhost(_Event.Player);
 				TM::EndRaceSequence_Add(_Event.Player, "");
 				Finished = True;
+				UIManager.UIAll.OverlayHideChrono = True;
+				Layers2::SetVisibility("GameMenu",False);
 			}
 			else if(_Event.IsEndLap) {
 				
@@ -248,97 +290,130 @@ Void Event(CTmModeEvent _Event) {
 				
 			}
 		}
-		case CTmModeEvent::EType::GiveUp: {
-			
+		case CTmModeEvent::EType::Stunt: {
+			declare netwrite Integer StuntCounter for UI;
+			StuntCounter += _Event.Points;
 		}
 	}
 }
 
 Void EventUI(CUIConfigEvent _Event) {
+	declare Player <=> Players[0];
+	declare UI <=> UIManager.GetUI(Player);
+	
 	switch(_Event.CustomEventType) {
-		case "VIEW_GHOSTS": {		
-			declare netwrite Integer Net_NEM_Start for _Event.UI;
-			declare netwrite Text[] Net_NEM_GhostCars for _Event.UI;
-			declare netwrite Integer[] Net_NEM_GhostTimes for _Event.UI;
-			declare netwrite Integer[][] Net_NEM_GhostCheckpoints for _Event.UI;
-			
-			Net_NEM_Start = 0;
-			Net_NEM_GhostCars.clear();
-			Net_NEM_GhostTimes.clear();
-			Net_NEM_GhostCheckpoints.clear();
-		
-			if(GhostList["CanyonCar"].Ghost != Null) {
-				RaceGhost_Add(GhostList["CanyonCar"].Ghost, False);
+		case "Request_Leaderboard": {
+			declare netwrite Text[Text][] Net_NEM_EventResult_Leaderboard for UI;
+			declare netwrite Text Net_NEM_EventResult_Leaderboard_State for UI;
+			Net_NEM_EventResult_Leaderboard.clear();
+			Net_NEM_EventResult_Leaderboard_State = "LOADING";
+			if(_Event.CustomEventData[1] == "Buddies") {
+				declare Integer C;
+				if(Map.MapInfo.CollectionName == "Canyon" && _Event.CustomEventData[0] == "CanyonCar") C = 0;
+				else if(Map.MapInfo.CollectionName == "Stadium" && _Event.CustomEventData[0] == "CanyonCar") C = 1;
+				else if(Map.MapInfo.CollectionName == "Valley" && _Event.CustomEventData[0] == "CanyonCar") C = 2;
+				else if(Map.MapInfo.CollectionName == "Lagoon" && _Event.CustomEventData[0] == "CanyonCar") C = 3;
+				else if(Map.MapInfo.CollectionName == "Canyon" && _Event.CustomEventData[0] == "StadiumCar") C = 4;
+				else if(Map.MapInfo.CollectionName == "Stadium" && _Event.CustomEventData[0] == "StadiumCar") C = 5;
+				else if(Map.MapInfo.CollectionName == "Valley" && _Event.CustomEventData[0] == "StadiumCar") C = 6;
+				else if(Map.MapInfo.CollectionName == "Lagoon" && _Event.CustomEventData[0] == "StadiumCar") C = 7;
+				else if(Map.MapInfo.CollectionName == "Canyon" && _Event.CustomEventData[0] == "ValleyCar") C = 8;
+				else if(Map.MapInfo.CollectionName == "Stadium" && _Event.CustomEventData[0] == "ValleyCar") C = 9;
+				else if(Map.MapInfo.CollectionName == "Valley" && _Event.CustomEventData[0] == "ValleyCar") C = 10;
+				else if(Map.MapInfo.CollectionName == "Lagoon" && _Event.CustomEventData[0] == "ValleyCar") C = 11;
+				else if(Map.MapInfo.CollectionName == "Canyon" && _Event.CustomEventData[0] == "LagoonCar") C = 12;
+				else if(Map.MapInfo.CollectionName == "Stadium" && _Event.CustomEventData[0] == "LagoonCar") C = 13;
+				else if(Map.MapInfo.CollectionName == "Valley" && _Event.CustomEventData[0] == "LagoonCar") C = 14;
+				else if(Map.MapInfo.CollectionName == "Lagoon" && _Event.CustomEventData[0] == "LagoonCar") C = 15;
 				
-				Net_NEM_GhostCars.add("CanyonCar");
-				Net_NEM_GhostTimes.add(GhostList["CanyonCar"].Ghost.Result.Time);
-				
-				declare Integer[] CheckpointArray;
-				for(i,0,GhostList["CanyonCar"].Ghost.Result.Checkpoints.count-1)
-					CheckpointArray.add(GhostList["CanyonCar"].Ghost.Result.Checkpoints[i]);
-				Net_NEM_GhostCheckpoints.add(CheckpointArray);
+				LeaderboardBuddiesRequest = ScoreMgr.Campaign_GetBuddiesMapRecord(Player.Id, DataFileMgr.Campaigns[C].CampaignId, Map.MapInfo.MapUid);
 			}
-			if(GhostList["StadiumCar"].Ghost != Null) {
-				RaceGhost_Add(GhostList["StadiumCar"].Ghost, False);
-				
-				Net_NEM_GhostCars.add("StadiumCar");
-				Net_NEM_GhostTimes.add(GhostList["StadiumCar"].Ghost.Result.Time);
-				
-				declare Integer[] CheckpointArray;
-				for(i,0,GhostList["StadiumCar"].Ghost.Result.Checkpoints.count-1)
-					CheckpointArray.add(GhostList["StadiumCar"].Ghost.Result.Checkpoints[i]);
-				Net_NEM_GhostCheckpoints.add(CheckpointArray);
-			}
-			if(GhostList["ValleyCar"].Ghost != Null) {
-				RaceGhost_Add(GhostList["ValleyCar"].Ghost, False);
-				
-				Net_NEM_GhostCars.add("ValleyCar");
-				Net_NEM_GhostTimes.add(GhostList["ValleyCar"].Ghost.Result.Time);
-				
-				declare Integer[] CheckpointArray;
-				for(i,0,GhostList["ValleyCar"].Ghost.Result.Checkpoints.count-1)
-					CheckpointArray.add(GhostList["ValleyCar"].Ghost.Result.Checkpoints[i]);
-				Net_NEM_GhostCheckpoints.add(CheckpointArray);
-			}
-			if(GhostList["LagoonCar"].Ghost != Null) {
-				RaceGhost_Add(GhostList["LagoonCar"].Ghost, False);
-				
-				Net_NEM_GhostCars.add("LagoonCar");
-				Net_NEM_GhostTimes.add(GhostList["LagoonCar"].Ghost.Result.Time);
-				
-				declare Integer[] CheckpointArray;
-				for(i,0,GhostList["LagoonCar"].Ghost.Result.Checkpoints.count-1)
-					CheckpointArray.add(GhostList["LagoonCar"].Ghost.Result.Checkpoints[i]);
-				Net_NEM_GhostCheckpoints.add(CheckpointArray);
+			else {
+				LeaderboardRequest = ScoreMgr.MapLeaderBoard_GetPlayerList(Player.Id, Map.MapInfo.MapUid, _Event.CustomEventData[0]^"2", _Event.CustomEventData[1], 1, 10);
+				if(LeaderboardRequest == Null)
+					Net_NEM_EventResult_Leaderboard_State = "ERROR";
 			}
 		}
 	}
 }
 
-Void ScoreRequestEvent() {
-	if(SetRecordRequest != Null) {
-		if(!SetRecordRequest.IsProcessing) {
-			if(SetRecordRequest.HasSucceeded) {
-				log("SetRecord succeeded");	
-				log(ScoreMgr.Map_GetSkillPoints(Players[0].Id, Map.MapInfo.MapUid, Vehicle^"2"));
+Void EventScore() {
+	declare Player <=> Players[0];
+	declare UI <=> UIManager.GetUI(Player);
+	
+	if(LeaderboardRequest != Null) {
+		if(!LeaderboardRequest.IsProcessing) {			
+			if(LeaderboardRequest.HasSucceeded) {
+				declare netwrite Text[Text][] Net_NEM_EventResult_Leaderboard for UI;
+				declare netwrite Text Net_NEM_EventResult_Leaderboard_State for UI;
+				Net_NEM_EventResult_Leaderboard_State = "SUCCESS";
+				Net_NEM_EventResult_Leaderboard.clear();
+				foreach(Line,LeaderboardRequest.LeaderBoardInfo) {
+					Net_NEM_EventResult_Leaderboard.add(
+						[
+							"Login" => Line.Login,
+							"Nickname" => Line.DisplayName,
+							"Time" => Line.Score^"",
+							"Replay" => Line.ReplayUrl
+						]
+					);
+				}
 			}
-			else if(SetRecordRequest.HasFailed) {
-				log("SetRecord failed");
+			if(LeaderboardRequest.HasFailed) {
+				declare netwrite Text[Text][] Net_NEM_EventResult_Leaderboard for UI;
+				Net_NEM_EventResult_Leaderboard.clear();
+				declare netwrite Text Net_NEM_EventResult_Leaderboard_State for UI;
+				Net_NEM_EventResult_Leaderboard_State = "ERROR";
 			}
 			
-			ScoreMgr.TaskResult_Release(SetRecordRequest.Id);
-			SetRecordRequest = Null;
+			ScoreMgr.TaskResult_Release(LeaderboardRequest.Id);
+			LeaderboardRequest = Null;
 		}
 	}
+	if(LeaderboardBuddiesRequest != Null) {
+		if(!LeaderboardBuddiesRequest.IsProcessing) {			
+			if(LeaderboardBuddiesRequest.HasSucceeded) {
+				declare netwrite Text[Text][] Net_NEM_EventResult_Leaderboard for UI;
+				declare netwrite Text Net_NEM_EventResult_Leaderboard_State for UI;
+				Net_NEM_EventResult_Leaderboard_State = "SUCCESS";
+				Net_NEM_EventResult_Leaderboard.clear();
+				foreach(Line,LeaderboardBuddiesRequest.BuddiesChallengeRecord) {
+					Net_NEM_EventResult_Leaderboard.add(
+						[
+							"Login" => Line.OpponentLogin,
+							"Nickname" => Line.OpponentDisplayName,
+							"Time" => Line.OpponentRecordScore^"",
+							"Replay" => Line.OpponentRecordUrl
+						]
+					);
+				}
+			}
+			if(LeaderboardBuddiesRequest.HasFailed) {
+				declare netwrite Text[Text][] Net_NEM_EventResult_Leaderboard for UI;
+				Net_NEM_EventResult_Leaderboard.clear();
+				declare netwrite Text Net_NEM_EventResult_Leaderboard_State for UI;
+				Net_NEM_EventResult_Leaderboard_State = "ERROR";
+			}
+			
+			ScoreMgr.TaskResult_Release(LeaderboardBuddiesRequest.Id);
+			LeaderboardBuddiesRequest = Null;
+		}
+	}
+	
 }
 
 Void Loop() {
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
+		
+	declare netwrite Text Net_NEM_Test_State for UI;
+	Net_NEM_Test_State = ""^ScoreMgr.ScoreStatus_GetLocalStatus(NullId);
+	
+	declare netread Text[] Net_NEM_ResumeInfo for UI;
+	declare netread Text[Text] Net_NEM_Replays for UI;
 	
 	if(Player.RaceStartTime == 0 && Finished) {
 		Player.Score.PrevRace = Ghost.Result;
-		log(Ghost.Result.Time);
 		
 		declare netwrite Integer Net_Record for UI;
 		Net_Record = Ghost.Result.Time;
@@ -353,6 +428,7 @@ Void Loop() {
 				Player.Score.BestRace = Ghost.Result;
 				Net_Type = "FIRST_FINISH";
 			}
+			ScoreMgr.TaskResult_Release(SetRecordRequest.Id);
 		}
 		else if(Ghost.Result.Time < Player.Score.BestRace.Time) {
 			SetRecordRequest = ScoreMgr.Map_SetNewRecord(Player.Id, Map.MapInfo.MapUid, Vehicle^"2", Ghost);
@@ -361,6 +437,7 @@ Void Loop() {
 				Player.Score.BestRace = Ghost.Result;
 				Net_Type = "PERSONAL_BEST";
 			}
+			ScoreMgr.TaskResult_Release(SetRecordRequest.Id);
 		}
 		else if(Ghost.Result.Time == Player.Score.BestRace.Time) {
 			Net_Type = "EQUAL";
@@ -368,12 +445,15 @@ Void Loop() {
 		else {
 			Net_Type = "WORSE";
 		}
+		
+		RefreshPersonalRecords();
 	
 		declare netwrite Integer Net_NEM_Validation for UI;
 		Net_NEM_Validation = 0;
 		
-		declare netwrite Integer Net_NEM_Skillpoints for UI;
-		Net_NEM_Skillpoints = ScoreMgr.Map_GetSkillPoints(NullId, Map.MapInfo.MapUid, Vehicle^"2");
+		declare netwrite Text[Text][] Net_NEM_Leaderboard for UI;
+		Net_NEM_Leaderboard.clear();
+		declare LeaderboardScore = ScoreMgr.MapLeaderBoard_GetPlayerList(Player.Id, Map.MapInfo.MapUid, Vehicle^"2", "World", 1, 10);
 		
 		if(Zones.count > 0) {
 			declare netwrite Integer Net_NEM_FirstFinish_PlayerCount for UI;
@@ -383,10 +463,10 @@ Void Loop() {
 			wait(MapRequest.IsCompleted);
 			if(MapRequest.StatusCode == 200) {
 				declare Doc = Xml.Create(MapRequest.Result);
-				if(Doc.GetFirstChild("MAP_INFO").GetFirstChild(Vehicle).GetAttributeText("Validator", "") == "") {
-					if(ScoreMgr.MapLeaderBoard_GetPlayerCount(Map.MapInfo.MapUid, Vehicle^"2", "World") == 0)
-						Net_NEM_Validation = 1;
+				if(Doc.GetFirstChild("MAP_INFO").GetFirstChild(Vehicle).GetAttributeText("ValidatorLogin", "") == "") {
+					Net_NEM_Validation = 1;
 				}
+				Xml.Destroy(Doc);
 			}
 			else if(MapRequest.StatusCode != 403) {
 				Net_NEM_Validation = -1;
@@ -394,36 +474,57 @@ Void Loop() {
 			Http.Destroy(MapRequest);
 		}
 		
-		RefreshPersonalRecords();
-		RefreshPersonalGhosts();
-		
+		Layers2::Detach("Ingame",Player);
 		Layers2::Attach("Endscreen",Player);
-		Layers2::SetVisibility("GameMenu",False);
 		declare netread Boolean Net_NEM_Continue for UI;
 		
-		wait(Net_NEM_Continue);
+		while(!Net_NEM_Continue) {
+			declare netwrite Integer Net_NEM_Skillpoints for UI;
+			Net_NEM_Skillpoints = ScoreMgr.Map_GetSkillPoints(Player.Id, Map.MapInfo.MapUid, Vehicle^"2");
+			if(LeaderboardScore != Null) {
+				if(LeaderboardScore.HasSucceeded) {
+					foreach(Info,LeaderboardScore.LeaderBoardInfo)
+						Net_NEM_Leaderboard.add(["Nickname" => Info.DisplayName, "Time" => Info.Score^""]);
+					ScoreMgr.TaskResult_Release(LeaderboardScore.Id);
+					LeaderboardScore = Null;
+				}
+			}
+			yield;
+		}
+		
 		Layers2::Detach("Endscreen",Player);
 		Layers2::SetVisibility("GameMenu",True);
+		TM::EndRaceSequence_Remove(Player);
 		Solo_SetNewRecord(Player.Score, CMode::EMedal::None);
 		wait(!Solo_NewRecordSequenceInProgress);
+		UIManager.UIAll.OverlayHideChrono = False;
+		RespawnPlayer(Player,Net_NEM_Replays);
+		Layers2::Attach("Ingame",Player);
 		Finished = False;
 	}
 	
-	declare netread Text[] Net_NEM_ResumeInfo for UI;
+	foreach(Key=>Value,Net_NEM_Replays) {
+		if(!Replays.exists(Value)) {
+			Replays = Net_NEM_Replays;
+			RespawnPlayer(Player,Net_NEM_Replays);
+		}
+	}
 	
-	if(Net_NEM_ResumeInfo.count == 5)
+	foreach(Key=>Value,Replays) {
+		if(!Net_NEM_Replays.exists(Value)) {
+			Replays = Net_NEM_Replays;
+			RespawnPlayer(Player,Net_NEM_Replays);
+		}
+	}
+	
+	if(Net_NEM_ResumeInfo.count >= 5)
 	if(ResumeInfo[0] != Net_NEM_ResumeInfo[0]
 	|| ResumeInfo[1] != Net_NEM_ResumeInfo[1]
 	|| ResumeInfo[2] != Net_NEM_ResumeInfo[2]
 	|| ResumeInfo[3] != Net_NEM_ResumeInfo[3]
 	|| ResumeInfo[4] != Net_NEM_ResumeInfo[4]) {
-		Layers2::Detach("Ingame",Player);
 		ResumeInfo = Net_NEM_ResumeInfo;
-		UnspawnPlayer(Player);
-		if(ResumeInfo[0] != "") {
-			wait(PlayersWaiting.existskey(0));
-			SpawnPlayer(Player);
-		}
+		RespawnPlayer(Player,Net_NEM_Replays);
 	}
 	
 	if(ResumeInfo[0] != "" && !Finished) {
@@ -443,9 +544,7 @@ main() {
     Init();
 	Start();
 	
-	while(!ServerShutdownRequested && !Terminate) {
-		ScoreRequestEvent();
-		
+	while(!ServerShutdownRequested && !Terminate) {		
 		foreach(Event, PendingEvents) {
 			Event(Event);
 		}
@@ -453,6 +552,8 @@ main() {
 		foreach(Event,UIManager.PendingEvents) {
 			EventUI(Event);
 		}
+		
+		EventScore();
 	
 		Loop();
 

@@ -1,0 +1,369 @@
+// Time Attack mode for Envimix
+//
+// Scripted by BigBang1112
+
+#RequireContext CTmMode
+
+#Include "MathLib" as MathLib
+#Include "TextLib" as TextLib
+#Include "TimeLib" as TimeLib
+
+#Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
+#Include "Libs/Nadeo/TrackMania/TM.Script.txt" as TM
+#Include "Libs/Nadeo/TrackMania/TM2.Script.txt" as TM2
+
+#Include "Libs/BigBang1112/Map.Script.txt" as Map
+
+#Setting S_TimeLimit 600
+#Setting S_VoteNext False
+
+Void Unprepare() {
+	foreach (Player in AllPlayers) {
+		declare Boolean Prepared for Player;
+		Prepared = False;
+	}
+}
+
+Void CreateTestificates() {
+	Users_DestroyAllFakes();
+	Users_CreateFake("prc", 0);
+}
+
+main() {
+	log("[Server] GAMEMODE START");
+	
+	ItemList_Begin();
+	declare CanyonCar = ItemList_Add("CanyonCar");
+	declare StadiumCar = ItemList_Add("StadiumCar");
+	declare ValleyCar = ItemList_Add("ValleyCar");
+	declare LagoonCar = ItemList_Add("LagoonCar");
+
+	declare CanyonCarOnStadium = ItemList_Add("CanyonVehicle.Item.Gbx");
+	declare StadiumCarOnStadium = ItemList_Add("StadiumVehicle.Item.Gbx");
+	declare ValleyCarOnStadium = ItemList_Add("ValleyVehicle.Item.Gbx");
+	declare LagoonCarOnStadium = ItemList_Add("LagoonVehicle.Item.Gbx");
+	ItemList_End();
+	
+	log("[Server] CAR MODELS LOADED");
+	
+	ActionList_Begin();
+	ActionList_End();
+	
+	EnableScaleCar = True;
+	EnableBonusEvents = True;
+	
+	ModeStatusMessage = "wat";
+	
+	UiDisplayStuntsNames = True;
+	
+	UIManager.UIAll.OverlayHideMultilapInfos = True;
+	UIManager.UIAll.OverlayHideCheckPointList = True;
+	UIManager.UIAll.OverlayHidePosition = True;
+	UIManager.UIAll.ScoreTableOnlyManialink = True;
+	
+	CreateTestificates();
+	
+	Layers2::Create("GameMenu","file://Media/Manialinks/GameMenuMultiplayer.xml");
+	Layers2::SetType("GameMenu", CUILayer::EUILayerType::InGameMenu);
+	Layers2::SetAnimationTypeIn("GameMenu",CUILayer::EUILayerAnimation::ScaleSlow);
+	
+	Layers2::Create("ScoreTable","file://Media/Manialinks/ScoreboardTimeAttack.xml");
+	Layers2::SetType("ScoreTable", CUILayer::EUILayerType::ScoresTable);
+	Layers2::Attach("ScoreTable");
+	//Layers2::SetAnimationTypeIn("ScoreTable",CUILayer::EUILayerAnimation::ScaleSlow);
+	
+	log("[Server] LAYERS CREATED");
+	
+	Unprepare();
+
+	while(!ServerShutdownRequested) {
+		declare MapLoop = True;
+		while(MapLoop) {
+			UIManager.UIAll.UISequence = CUIConfig::EUISequence::None;
+			
+			RequestLoadMap();
+			log("[Server] MAP REQUEST");
+			wait(MapLoaded);
+			log("[Server] MAP LOADED");
+			
+			if(Map::IsNadeoMap(Map.MapInfo))
+				Map.MapName = Map.MapInfo.CollectionName^TextLib::StripFormatting(Map.MapInfo.Name);
+			
+			if(MapList.count > 1) {
+				if(NextMapIndex == MapList.count - 1)
+					NextMapIndex = 0;
+				else
+					NextMapIndex += 1;
+			}
+			
+			declare Ident[Text] CarList;
+			if(Map.MapInfo.CollectionName == "Stadium") { // It its a Stadium map
+				// It will use special cars which can be placed on Stadium
+				CarList["CanyonCar"] = CanyonCarOnStadium;
+				CarList["StadiumCar"] = StadiumCarOnStadium;
+				CarList["ValleyCar"] = ValleyCarOnStadium;
+				CarList["LagoonCar"] = LagoonCarOnStadium;
+				
+				log("[Server] STADIUM MAP: Using special car models");
+			}
+			else {
+				// Otherwise use the classic ones which have a skin
+				CarList["CanyonCar"] = CanyonCar;
+				CarList["StadiumCar"] = StadiumCar;
+				CarList["ValleyCar"] = ValleyCar;
+				CarList["LagoonCar"] = LagoonCar;
+				
+				log("[Server] NON-STADIUM MAP: Using original car models");
+			}
+	
+			CutOffTimeLimit = Now + S_TimeLimit * 1000; // Sets time limit which is in milliseconds
+			log("[Server] TIME LIMIT: "^S_TimeLimit^"s");
+			
+			UIManager.UIAll.OverlayHideSpectatorControllers = False;
+			UIManager.UIAll.UISequence = CUIConfig::EUISequence::None;
+			
+			log("[Server] INITIALIZING LEADERBOARD");
+			declare UltraLeaderboard = ["CanyonCar" => Text[Text][], "StadiumCar" => Text[Text][], "ValleyCar" => Text[Text][], "LagoonCar" => Text[Text][]];
+			
+			log("[Server] STARTING GAME LOOP");
+			declare GameLoop = True;
+			while(GameLoop) { // Game loop running around 20 times per second
+				foreach(Event, PendingEvents) { // Checks global events around the mode
+					if(Event.Type == CTmModeEvent::EType::WayPoint) {
+						if(Event.IsEndRace) {							
+							declare Integer[Text] Records for Event.Player;
+							declare Integer[Text] PrevRecords for Event.Player;
+							declare Integer[][Text] Checkpoints for Event.Player;
+							declare Integer[][Text] PrevCheckpoints for Event.Player;
+							declare Text[] ResumeInfo for Event.Player;
+							
+							PrevRecords[ResumeInfo[0]] = Event.RaceTime;
+							Event.Player.Score.PrevRace.Time = Event.RaceTime;
+							
+							// Here is the record comparison which informs the 4 states below
+							
+							if(Records[ResumeInfo[0]] == -1) {
+								log("[Server] FINISH: First finish ("^Event.Player.User.Login^", "^Event.RaceTime^")");
+								Records[ResumeInfo[0]] = Event.RaceTime;
+								Event.Player.Score.BestRace.Time = Event.RaceTime;
+								
+								Event.Player.Score.BestRace.Checkpoints.clear();
+								Checkpoints[ResumeInfo[0]].clear();
+								foreach(Checkpoint,PrevCheckpoints[ResumeInfo[0]]) {
+									Event.Player.Score.BestRace.Checkpoints.add(Checkpoint);
+									Checkpoints[ResumeInfo[0]].add(Checkpoint);
+								}
+								Event.Player.Score.BestRace.Checkpoints.add(Event.RaceTime);
+								Checkpoints[ResumeInfo[0]].add(Event.RaceTime);
+							}
+							else if(Event.RaceTime < Records[ResumeInfo[0]]) {
+								log("[Server] FINISH: Improvement ("^Event.Player.User.Login^", "^Event.RaceTime^")");
+								Records[ResumeInfo[0]] = Event.RaceTime;
+								Event.Player.Score.BestRace.Time = Event.RaceTime;
+
+								Event.Player.Score.BestRace.Checkpoints.clear();
+								Checkpoints[ResumeInfo[0]].clear();
+								foreach(Checkpoint,PrevCheckpoints[ResumeInfo[0]]) {
+									Event.Player.Score.BestRace.Checkpoints.add(Checkpoint);
+									Checkpoints[ResumeInfo[0]].add(Checkpoint);
+								}
+								Event.Player.Score.BestRace.Checkpoints.add(Event.RaceTime);
+								Checkpoints[ResumeInfo[0]].add(Event.RaceTime);
+							}
+							else if(Event.RaceTime == Records[ResumeInfo[0]]) {
+								log("[Server] FINISH: Equal ("^Event.Player.User.Login^", "^Event.RaceTime^")");
+							}
+							else {
+								log("[Server] FINISH: Worse ("^Event.Player.User.Login^", "^Event.RaceTime^")");
+							}
+							
+							// Confirms the race end which adds outro and leaderboard showcase
+							TM2::EndRace(Event.Player,True);
+							
+							// Here begins the record saving process
+							
+							// -1 means no record
+							declare RecordLine = -1;
+							for(i,0,UltraLeaderboard[ResumeInfo[0]].count - 1) {
+								// If ultra leaderboard contains the user already
+								if(UltraLeaderboard[ResumeInfo[0]][i]["Login"] == Event.Player.User.Login) {
+									RecordLine = i; // Stores the line
+									break;
+								}
+							}
+							
+							if(RecordLine != -1) { // If the user is already in the leaderboard, update its record
+								UltraLeaderboard[ResumeInfo[0]][RecordLine] = ["Login" => Event.Player.User.Login,"Time" => ""^Records[ResumeInfo[0]], "Name" => Event.Player.User.Name];
+							}
+							else { // Otherwise add him there
+								UltraLeaderboard[ResumeInfo[0]].add(["Login" => Event.Player.User.Login,"Time" => ""^Records[ResumeInfo[0]], "Name" => Event.Player.User.Name]);
+							}
+							
+							// Thats it on the server side. It might be weird because it doesn't sort, but that is actually done on the client side to save performance.
+						}
+						else if(Event.IsEndLap) {
+							log("[Server] LAP FINISH ("^Event.Player.User.Login^", "^Event.RaceTime^")");
+						}
+						else {
+							log("[Server] CHECKPOINT ("^Event.Player.User.Login^", "^Event.RaceTime^")");
+							declare Text[] ResumeInfo for Event.Player;
+							declare Integer[][Text] PrevCheckpoints for Event.Player;
+							PrevCheckpoints[ResumeInfo[0]].add(Event.RaceTime);
+						}
+					}
+					
+					if(Event.Type == CTmModeEvent::EType::OnPlayerAdded) {
+						log("[Server] NEW PLAYER ("^Event.Player.User.Login^")");
+						declare Boolean Prepared for Event.Player;
+						Prepared = False;
+					}
+				}
+				
+				TM2::Loop();
+				
+				// This section goes through all players which are not prepared with the mode and assigns them certain information
+				foreach (Player in AllPlayers) {
+					declare Boolean Prepared for Player;
+					declare Text[] ResumeInfo for Player;
+					
+					if(!Prepared) {
+						// Variables stored on a server FOR a player
+						declare Text[] ResumeInfo for Player;
+						declare Integer[Text] Records for Player;
+						declare Integer[Text] PrevRecords for Player;
+						declare Integer[][Text] Checkpoints for Player;
+						declare Integer[][Text] PrevCheckpoints for Player;
+						
+						// Initialization, empty means waiting for car selection
+						ResumeInfo = [""];
+						// Initialization, records for each car, -1 means no record driven
+						Records = ["CanyonCar" => -1,"StadiumCar" => -1,"ValleyCar" => -1,"LagoonCar" => -1];
+						PrevRecords = ["CanyonCar" => -1,"StadiumCar" => -1,"ValleyCar" => -1,"LagoonCar" => -1];
+						// Initialization
+						Checkpoints = ["CanyonCar" => Integer[],"StadiumCar" => Integer[],"ValleyCar" => Integer[],"LagoonCar" => Integer[]];
+						PrevCheckpoints = ["CanyonCar" => Integer[],"StadiumCar" => Integer[],"ValleyCar" => Integer[],"LagoonCar" => Integer[]];
+						
+						declare UI <=> UIManager.GetUI(Player);
+							
+						declare netwrite Text Net_MapCar for UI;
+						Net_MapCar = MapPlayerModelName;
+						
+						Layers2::Attach("GameMenu",Player);
+						
+						Prepared = True;
+						log("[Server] PLAYER PREPARED ("^Player.User.Login^")");
+					}
+				}
+				
+				// This goes through all players that are prepared and ready to go time attack (whenever respawn or new map)
+				foreach (Player in PlayersWaiting) {
+					declare Boolean Prepared for Player;
+					declare Text[] ResumeInfo for Player;
+					
+					// If they are prepared and have a legal car selected, count comparision is there to avoid random gamemode crashes xd
+					if(Prepared && ResumeInfo.count > 0 && ResumeInfo[0] != "" && ResumeInfo[0] != MapPlayerModelName) {
+						Player.ForceModelId = CarList[ResumeInfo[0]];
+						TM2::StartRace(Player);
+						
+						declare Integer[][Text] PrevCheckpoints for Player;
+						PrevCheckpoints[ResumeInfo[0]] = Integer[];
+					}
+				}
+				
+				// Here it goes through all the players currently enjoying their envimix time
+				foreach (Player in Players) {
+					declare Boolean Prepared for Player;
+					
+					if(Prepared) {
+						declare UI <=> UIManager.GetUI(Player);
+						
+						declare Text[] ResumeInfo for Player;
+						declare netread Text[] Net_NEM_ResumeInfo for UI;
+						
+						// This is a special algorithm which detects if player changed the car
+						if(Net_NEM_ResumeInfo.count >= 1)
+						if(ResumeInfo[0] != Net_NEM_ResumeInfo[0]) {
+							ResumeInfo = Net_NEM_ResumeInfo;
+							
+							log("[Server] CAR CHANGE ("^Player.User.Login^", "^ResumeInfo[0]^")");
+							
+							Player.Score.Clear();
+							
+							if(ResumeInfo[0] == "") {
+								TM2::WaitRace(Player);
+							}
+							else if(ResumeInfo[0] == MapPlayerModelName) { // If player somehow manages to select original car
+								// Nothing means invalid action and as well nothing will happen
+							}
+							else { // If there's a legal car selected
+								Player.ForceModelId = CarList[ResumeInfo[0]];
+								// This function somehow creates a nice transition between the cars, sad I can't implement that into solo due to ghosts
+								TM2::StartRace(Player);
+								
+								declare Integer[Text] Records for Player;
+								Player.Score.BestRace.Time = Records[ResumeInfo[0]];
+								declare Integer[Text] PrevRecords for Player;
+								Player.Score.PrevRace.Time = PrevRecords[ResumeInfo[0]];
+							
+								declare Integer[][Text] Checkpoints for Player;
+								Player.Score.BestRace.Checkpoints.clear();
+								foreach(Checkpoint,Checkpoints[ResumeInfo[0]]) Player.Score.BestRace.Checkpoints.add(Checkpoint);
+							}
+						}
+						
+						declare netwrite Text[Text][][Text] Net_NEM_UltraLeaderboard for UI;
+						Net_NEM_UltraLeaderboard = UltraLeaderboard; // Sends the leaderboard info to the player UI
+					}
+				}
+				
+				// If the time is over. This section runs through the whole podium time
+				if(CutOffTimeLimit < Now) {
+					log("[Server] MAP END");
+					
+					Unprepare();
+					
+					// From Records array, determine the positions
+					
+					
+					
+					foreach(Player,Players) {
+						Layers2::Detach("GameMenu",Player);
+					
+						declare Integer[Text] Records for Player;
+						
+						foreach(Car => Record,Records) {
+							
+						}
+					}
+					
+					UIManager.UIAll.UISequence = CUIConfig::EUISequence::Podium;
+					log("[Server] PODIUM SEQUENCE");
+					TM2::EndRaceAll();
+					log("[Server] ALL PLAYERS DESPAWN");
+					CutOffTimeLimit = -1; // Removes the time limit from the UI
+					UIManager.UIAll.OverlayHideSpectatorControllers = True;
+					UIManager.UIAll.ScoreTableVisibility = CUIConfig::EVisibility::ForcedVisible;
+					log("[Server] SCOREBOARD SHOWN");
+					wait(UIManager.UIAll.UISequenceIsCompleted); 
+					UIManager.UIAll.UISequence = CUIConfig::EUISequence::None;
+					UIManager.UIAll.ScoreTableVisibility = CUIConfig::EVisibility::Normal;
+					GameLoop = False; // Closes the game loop to reach the RequestUnloadMap() below
+					log("[Server] GAME LOOP END");
+				}
+		
+				yield;
+			}
+			
+			log("[Server] MAP SWITCH");
+			RequestUnloadMap();
+			wait(!MapLoaded);
+			
+			yield;
+		}
+		yield;
+	}
+	
+	Layers2::Clean(True);
+	
+	RequestUnloadMap();
+}

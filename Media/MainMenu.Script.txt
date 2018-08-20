@@ -12,15 +12,15 @@ Void StartMenu() {
 	
 	MainMenuLayer = UILayerCreate();
 	MainMenuLayer.ManialinkPage = "file://Media/Manialinks/Menu.xml";
-	
 	wait(TitleFlow.IsReady);
 	TitleFlow.GetServerInfo("nadeo_envimix");
+	wait(TitleFlow.IsReady);
 }
 
 main() {	
 	declare ProceedLayer = UILayerCreate();
 	
-	declare CServerInfo LastServerResult = Null;
+	declare Boolean ServerFound;
 
 	declare Text[] Zones = TextLib::Split("|", LocalUser.ZonePath);
 	if(Zones.count == 0) {
@@ -44,8 +44,6 @@ main() {
 		else {
 			StartMenu();
 		}
-		
-		log(ScoreMgr.ScoreStatus_GetMasterServerStatus(UserMgr.MainUser.Id));
 	}
 	
 	declare LoadingLayer = UILayerCreate();
@@ -54,12 +52,6 @@ main() {
 	
 	while(True) {
 		yield;
-		
-		if(TitleFlow.GetServerInfo_Result != Null && TitleFlow.GetServerInfo_Result != LastServerResult) {
-			log("WHOP RESULT");
-			LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["ONLINE"]);
-			LastServerResult = TitleFlow.GetServerInfo_Result;
-		}
 		
 		foreach(Event,PendingEvents) {
 			if(Event.Type == CManiaAppEvent::EType::LayerCustomEvent) {
@@ -88,12 +80,12 @@ main() {
 							Menu_Quit();
 						}
 						case "COMMAND_PLAYMAP": {
-							//TitleFlow.PlayMap(Event.CustomEventData[0] ^ "/" ^ Event.CustomEventData[1] ^ ".Map.Gbx","","");
+							Audio.PlaySoundEvent(CAudioManager::ELibSound::Start,0,1.0);
 							
 							declare DifficultyNumber = TextLib::ToInteger(Event.CustomEventData[1]);
 							declare MapNumber = TextLib::ToInteger(Event.CustomEventData[2]) - 1;
 							
-							declare CCampaign Campaign = Null;
+							declare CCampaign Campaign;
 							
 							switch(Event.CustomEventData[0]) {
 								case "Canyon": { Campaign <=> DataFileMgr.Campaigns[0]; }
@@ -102,18 +94,61 @@ main() {
 								case "Lagoon": { Campaign <=> DataFileMgr.Campaigns[3]; }
 							}
 							
-							TitleFlow.PlayCampaign(Campaign,Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber],"","");
+							if(TitleFlow.IsReady)
+								TitleFlow.PlayCampaign(Campaign,Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber],"Modes/TrackMania/EnvimixSolo.Script.txt","""<mode_script_settings>
+									<setting name='S_Car' value='{{{Event.CustomEventData[3]}}}' type='text' />
+								</mode_script_settings>""");
 						}
-						case "OPEN_ITEMEDITOR": {
-							TitleFlow.OpenEditor(CTitleFlow::EEditorType::ItemEditor);
+						case "EXPLORE_MAP": {							
+							declare DifficultyNumber = TextLib::ToInteger(Event.CustomEventData[1]);
+							declare MapNumber = TextLib::ToInteger(Event.CustomEventData[2]) - 1;
+							
+							declare CCampaign Campaign;
+							
+							switch(Event.CustomEventData[0]) {
+								case "Canyon": { Campaign <=> DataFileMgr.Campaigns[0]; }
+								case "Stadium": { Campaign <=> DataFileMgr.Campaigns[1]; }
+								case "Valley": { Campaign <=> DataFileMgr.Campaigns[2]; }
+								case "Lagoon": { Campaign <=> DataFileMgr.Campaigns[3]; }
+							}
+							
+							if(TitleFlow.IsReady)
+								TitleFlow.EditMap(Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber].FileName,"","");
 						}
 						case "PLAY_POUTREL_SERVER": {
-							Dialog_Message("Multiplayer gamemode script isn't yet working the way it should. The server should run in the next few days.");
-							TitleFlow.JoinServer("nadeo_envimix", False, "");
+							Dialog_Message("Multiplayer gamemode script isn't yet working the way it should. The server should run in the next few days. Seriously, I promise.");
+							//if(TitleFlow.IsReady)
+							//	TitleFlow.JoinServer("nadeo_envimix", False, "");
+						}
+						case "GET_LEADERBOARD_REPLAY": {
+							declare DifficultyNumber = TextLib::ToInteger(Event.CustomEventData[1]);
+							declare MapNumber = TextLib::ToInteger(Event.CustomEventData[2]) - 1;
+							
+							declare CCampaign Campaign;
+							
+							switch(Event.CustomEventData[0]) {
+								case "Canyon": { Campaign <=> DataFileMgr.Campaigns[0]; }
+								case "Stadium": { Campaign <=> DataFileMgr.Campaigns[1]; }
+								case "Valley": { Campaign <=> DataFileMgr.Campaigns[2]; }
+								case "Lagoon": { Campaign <=> DataFileMgr.Campaigns[3]; }
+							}
+
+							declare MapInf = Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber];
+							
+							if(TitleFlow.IsReady)
+								TitleFlow.PlayMap(MapInf.FileName,"Modes/TrackMania/ReplaySave.Script.txt","""<mode_script_settings>
+									<setting name='S_Car' value='{{{Event.CustomEventData[3]}}}' type='text' />
+									<setting name='S_ReplayUrl' value='{{{Event.CustomEventData[4]}}}' type='text' />
+								</mode_script_settings>""");
 						}
 					}
 				}
 			}
+		}
+		
+		if(TitleFlow.GetServerInfo_Result != Null && !ServerFound) {
+			ServerFound = True;
+			LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["ONLINE"]);
 		}
 	}
 	

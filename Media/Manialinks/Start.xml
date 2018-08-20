@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
+<label pos="-155 -85" z-index="0" size="50 5" textsize="1" id="State" valign="bottom"/>
 <script>
 	ShowInGameMenu();
+	
+	//declare netread Text Net_NEM_Test_State for UI;
+	
+	while(True) {
+		//(Page.GetFirstChild("State") as CMlLabel).SetText(Net_NEM_Test_State);
+		yield;
+	}
 </script>
 </manialink>

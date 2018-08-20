@@ -1,0 +1,84 @@
+	#RequireContext CTmMode
+
+	#Include "MathLib" as MathLib
+	#Include "TextLib" as TextLib
+	#Include "TimeLib" as TimeLib
+
+	#Include "Libs/Nadeo/TrackMania/TM2.Script.txt" as TM2
+	#Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
+
+	#Setting S_ReplayUrl ""
+	#Setting S_Car ""
+
+	main() {
+			ItemList_Begin();
+			declare CanyonCar = ItemList_Add("CanyonCar");
+			declare StadiumCar = ItemList_Add("StadiumCar");
+			declare ValleyCar = ItemList_Add("ValleyCar");
+			declare LagoonCar = ItemList_Add("LagoonCar");
+		
+			declare CanyonCarOnStadium = ItemList_Add("CanyonVehicle.Item.Gbx");
+			declare StadiumCarOnStadium = ItemList_Add("StadiumVehicle.Item.Gbx");
+			declare ValleyCarOnStadium = ItemList_Add("ValleyVehicle.Item.Gbx");
+			declare LagoonCarOnStadium = ItemList_Add("LagoonVehicle.Item.Gbx");
+			ItemList_End();
+			
+			declare Boolean Terminate;
+			
+			UIManager.UIAll.OverlayHideSpectatorControllers = True;
+			UIManager.UIAll.OverlayHidePosition = True;
+			UIManager.UIAll.OverlayHideBackground = True;
+			UIManager.UIAll.ScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
+			UIManager.UIAll.SmallScoreTableVisibility = CUIConfig::EVisibility::ForcedHidden;
+			UIManager.UIAll.UISequence = CUIConfig::EUISequence::PlayersPresentation;
+			
+			RequestLoadMap();
+			wait(MapLoaded);
+			
+			wait(Players.count > 0);
+			
+			Map.MapName = TextLib::StripFormatting(Map.MapInfo.CollectionName^Map.MapInfo.Name^"."^S_Car);
+			
+			RaceGhost_RemoveAll();
+			
+			Layers2::Create("LoadingIngame","file://Media/Manialinks/LoadingIngame.xml");
+			Layers2::Attach("LoadingIngame",Null);
+			
+			declare GhostTask = DataFileMgr.Ghost_Download("Replays/Downloaded/Nadeo_Envimix@bigbang1112/TempGhost.Replay.Gbx", S_ReplayUrl);
+			wait(!GhostTask.IsProcessing);
+			Layers2::Detach("LoadingIngame",Null);
+			if(GhostTask.HasSucceeded) {
+				declare Ghost = GhostTask.Ghost;
+				
+				declare netwrite Text Net_ReplayName for UIManager.GetUI(Players[0]);
+				Net_ReplayName = Map.MapName^"_"^TextLib::StripFormatting(Ghost.Nickname)^"_"^TM2::TimeToText(Ghost.Result.Time);
+				
+				Layers2::Create("ReplaySave","file://Media/Manialinks/ReplaySave.xml");
+				Layers2::Attach("ReplaySave",Null);
+
+				declare GhostRace = RaceGhost_AddWithOffset(Ghost, -2000);
+				
+				UIManager.UIAll.SpectatorForcedTarget = GhostRace;
+				UIManager.UIAll.SpectatorForceCameraType = 1;
+				UIManager.UIAll.UISequence = CUIConfig::EUISequence::EndRound;
+				
+				declare netwrite Boolean Net_Saved for UIManager.GetUI(Players[0]);
+				Net_Saved = False;
+
+				while(!Terminate) {
+					foreach(Event, UIManager.PendingEvents) {
+						if(Event.CustomEventType == "SAVE_REPLAY") {
+							declare SaveTask = DataFileMgr.Replay_Save("Downloaded/Nadeo_Envimix/"^Net_ReplayName^".Replay.Gbx", Map, Ghost);
+							wait(!SaveTask.IsProcessing);
+							if(SaveTask.HasSucceeded) {
+								Net_Saved = True;
+							}
+						}
+						if(Event.CustomEventType == "EXIT") {
+							Terminate = True;
+						}
+					}
+					yield;
+				}
+			}
+	}

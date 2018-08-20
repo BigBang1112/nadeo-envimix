@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<quad pos="-60 0" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/CanyonCar.png"/>
+<quad pos="-20 0" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/StadiumCar.png"/>
+<quad pos="20 0" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/ValleyCar.png"/>
+<quad pos="60 0" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/LagoonCar.png"/>
+</manialink>

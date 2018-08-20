@@ -1,0 +1,24 @@
+#Include "MathLib" as MathLib
+#Include "TextLib" as TextLib
+
+Boolean IsCampaignMap(Text _MapUid) {
+	foreach(Campaign,DataFileMgr.Campaigns) {
+		foreach(MapGroup,Campaign.MapGroups) {
+			foreach(MapInfo,MapGroup.MapInfos) {
+				if(MapInfo.MapUid == _MapUid) {
+					return True;
+				}
+			}
+		}
+	}
+	
+	return False;
+}
+
+Boolean IsCampaignMap(CMapInfo _MapInfo) {
+	return IsCampaignMap(_MapInfo.MapUid);
+}
+
+Boolean IsNadeoMap(CMapInfo _MapInfo) {
+	return (_MapInfo.AuthorLogin == "Nadeo");
+}

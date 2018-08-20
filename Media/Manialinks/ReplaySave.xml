@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<entry pos="-150 -81" z-index="0" size="200 8" default="" valign="center2" id="EntryReplayName"/>
+<label pos="77.5 -81" z-index="0" size="20 5" text="Save" valign="center" style="CardButtonMedium" scale="1.25" scriptevents="1" id="ButtonSave" halign="center"/>
+<label pos="77.5 -81" z-index="1" size="20 5" text="SAVED" style="TextTitle3" halign="center" valign="center2" id="LabelSaved" hidden="1"/>
+<label pos="150 -81" z-index="0" size="20 5" text="Exit" valign="center" style="CardButtonMedium" scale="1.25" halign="right" id="ButtonExit" scriptevents="1"/>
+<label pos="-150 82" z-index="0" size="100 5" text="Save location: Replays/Downloaded/Nadeo_Envimix" valign="center" halign="left" textsize="2"/>
+<label pos="150 82" z-index="0" size="20 5" text="BETA" valign="center" scale="1.25" halign="right" style="TextTitle3"/>
+<script>
+<!--
+    declare netread Text Net_ReplayName for UI;
+    (Page.GetFirstChild("EntryReplayName") as CMlEntry).SetText(Net_ReplayName, False);
+	declare netread Boolean Net_Saved for UI;
+	
+    while(True) {
+		if(Net_Saved) {
+    		Page.GetFirstChild("ButtonSave").Hide();
+    		Page.GetFirstChild("LabelSaved").Show();
+		}
+		else {
+    		Page.GetFirstChild("ButtonSave").Show();
+    		Page.GetFirstChild("LabelSaved").Hide();
+		}
+
+		foreach(Event,PendingEvents) {
+			if(Event.Type == CMlEvent::Type::MouseClick) {
+				if(Event.ControlId == "ButtonSave") SendCustomEvent("SAVE_REPLAY", Text[]);
+				if(Event.ControlId == "ButtonExit") SendCustomEvent("EXIT", Text[]);
+			}
+		}
+        yield;
+    }
+-->
+</script>
+</manialink>
