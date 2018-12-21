@@ -8,6 +8,7 @@
 	<label pos="48 5.75" z-index="0" size="40 10" text="" halign="right" textfont="RajdhaniMono" textsize="6" valign="bottom" id="LabelEnvironment"/>
 	<label pos="70 16" z-index="0" size="20 10" text="" halign="right" textfont="RajdhaniMono" textsize="10" id="LabelMap"/>
 	<label pos="68 5" z-index="0" size="30 5" text="" textfont="RajdhaniMono" halign="right" id="LabelCar"/>
+	<label pos="70 5.75" z-index="0" size="60 10" text="" halign="right" textfont="RajdhaniMono" textsize="4" valign="bottom" id="LabelMapName"/>
 	
 	<label pos="-45 18" z-index="0" size="50 12" text="" textfont="RajdhaniMono" id="LabelValidator" textsize="2" halign="center" autonewline="1" valign="center2" scriptevents="1" style="TextCardRaceRank"/>
 	
@@ -105,11 +106,11 @@
 		}
 		else if(ActivityRequest.StatusCode == 403) {
 			Http.Destroy(ActivityRequest);
-			OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+			OpenLink("https://prod.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
 			declare Tries = 0;
 			while(True) {
 				if(Tries > 5) {
-					OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+					OpenLink("https://prod.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
 					Tries = 0;
 				}
 				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
@@ -156,12 +157,12 @@
 		else if(ValidationRequest.StatusCode == 403) {
 			Http.Destroy(ValidationRequest);
 			Page.GetFirstChild("LabelValidator").Show();
-			OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+			OpenLink("https://prod.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
 			
 			declare Tries = 0;
 			while(True) {
 				if(Tries > 5) {
-					OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+					OpenLink("https://prod.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
 					Tries = 0;
 				}
 				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
@@ -193,6 +194,20 @@
 		
 		if(ValidationRequest.StatusCode != 403)
 			Http.Destroy(ValidationRequest);
+	}
+	
+	Boolean IsCampaignMap(Text _MapUid) {
+		foreach(Campaign,DataFileMgr.Campaigns) {
+			foreach(MapGroup,Campaign.MapGroups) {
+				foreach(MapInfo,MapGroup.MapInfos) {
+					if(MapInfo.MapUid == _MapUid) {
+						return True;
+					}
+				}
+			}
+		}
+		
+		return False;
 	}
 	
 	main() {
@@ -236,6 +251,7 @@
 		// False - Skillpoints, True - Activity points
 		declare PointSwitch = False;
 		
+		declare CHttpRequest MapInfoRequest;
 		declare CHttpRequest RateRequest;
 		
 		declare Real DifficultyValue = -1.0;
@@ -257,7 +273,8 @@
 		
 		EnableMenuNavigation(True,False,Null,50);
 		
-		declare MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid ^ "&login=" ^ LocalUser.Login);
+		if(IsCampaignMap(Map.MapInfo.MapUid))
+			MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid ^ "&login=" ^ LocalUser.Login);
 		
 		declare netread Integer Net_NEM_ActivityPoints for UI;
 		//(Page.GetFirstChild("LabelActivityPoints") as CMlLabel).SetText(""^Net_NEM_ActivityPoints);
@@ -270,45 +287,47 @@
 			case "WORSE": (Page.GetFirstChild("Type") as CMlLabel).SetText("MAYBE NEXT TIME");
 		}
 		
-		if(Net_Type == "FIRST_FINISH") {
-			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-			declare netread Integer Net_NEM_FirstFinish_PlayerCount for UI;
-			declare Points = MathLib::NearestInteger(500/MathLib::ToReal(Net_NEM_FirstFinish_PlayerCount+1));
-			Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points="^Points);
-		}
-		else if(Net_Type == "PERSONAL_BEST") {
-			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-			Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=10");
-		}
-		else if(Net_Type == "EQUAL") {
-			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-			Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=5");
-		}
-		else if(Net_Type == "WORSE") {
-			declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-			Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=1");
-		}
-		
-		declare ActivityDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/track_day.php");
-		wait(ActivityDayRequest.IsCompleted);
-		if(ActivityDayRequest.StatusCode == 200) {
-			declare Doc = Xml.Create(ActivityDayRequest.Result);
-			
-			declare Text M;
-			if(TextLib::ToInteger(Doc.Root.GetFirstChild("Map").TextContents) < 10)
-				M = Doc.Root.GetFirstChild("Difficulty").TextContents^0^Doc.Root.GetFirstChild("Map").TextContents;
-			else
-				M = Doc.Root.GetFirstChild("Difficulty").TextContents^Doc.Root.GetFirstChild("Map").TextContents;
-			
-			if(Doc.Root.GetFirstChild("Environment").TextContents == Net_Environment && "$fff$s"^M == Net_Map) {
-				log("yes");
-				declare AdditionalPoints = MathLib::NearestInteger(ActivityPoints * TextLib::ToReal(Doc.Root.GetFirstChild("Multiplier").TextContents)) - ActivityPoints;
+		if(IsCampaignMap(Map.MapInfo.MapUid)) {
+			if(Net_Type == "FIRST_FINISH") {
 				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-				Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=trackoftheday&points="^AdditionalPoints);
+				declare netread Integer Net_NEM_FirstFinish_PlayerCount for UI;
+				declare Points = MathLib::NearestInteger(500/MathLib::ToReal(Net_NEM_FirstFinish_PlayerCount+1));
+				//Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points="^Points);
 			}
-			Xml.Destroy(Doc);
+			else if(Net_Type == "PERSONAL_BEST") {
+				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+				//Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=10");
+			}
+			else if(Net_Type == "EQUAL") {
+				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+				//Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=5");
+			}
+			else if(Net_Type == "WORSE") {
+				declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+				//Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=finish&points=1");
+			}
+			
+			/*declare ActivityDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/track_day.php");
+			wait(ActivityDayRequest.IsCompleted);
+			if(ActivityDayRequest.StatusCode == 200) {
+				declare Doc = Xml.Create(ActivityDayRequest.Result);
+				
+				declare Text M;
+				if(TextLib::ToInteger(Doc.Root.GetFirstChild("Map").TextContents) < 10)
+					M = Doc.Root.GetFirstChild("Difficulty").TextContents^0^Doc.Root.GetFirstChild("Map").TextContents;
+				else
+					M = Doc.Root.GetFirstChild("Difficulty").TextContents^Doc.Root.GetFirstChild("Map").TextContents;
+				
+				if(Doc.Root.GetFirstChild("Environment").TextContents == Net_Environment && "$fff$s"^M == Net_Map) {
+					log("yes");
+					declare AdditionalPoints = MathLib::NearestInteger(ActivityPoints * TextLib::ToReal(Doc.Root.GetFirstChild("Multiplier").TextContents)) - ActivityPoints;
+					declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+					Activity("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity.php?map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&type=trackoftheday&points="^AdditionalPoints);
+				}
+				Xml.Destroy(Doc);
+			}
+			Http.Destroy(ActivityDayRequest);*/
 		}
-		Http.Destroy(ActivityDayRequest);
 		
 		declare netread Text[Text][] Net_NEM_Leaderboard for UI;
 		
@@ -344,8 +363,12 @@
 		
 			(Page.GetFirstChild("Record") as CMlLabel).SetText(TextLib::TimeToText(TimeAnimation,True)^TextLib::SubText(""^TimeAnimation,TextLib::Length(""^TimeAnimation)-1,1));
 			
-			(Page.GetFirstChild("LabelEnvironment") as CMlLabel).SetText(Net_Environment);
-			(Page.GetFirstChild("LabelMap") as CMlLabel).SetText(Net_Map);
+			if(IsCampaignMap(Map.MapInfo.MapUid)) {
+				(Page.GetFirstChild("LabelEnvironment") as CMlLabel).SetText(Net_Environment);
+				(Page.GetFirstChild("LabelMap") as CMlLabel).SetText(Net_Map);
+			}
+			else (Page.GetFirstChild("LabelMapName") as CMlLabel).SetText(Map.MapInfo.Name);
+			
 			(Page.GetFirstChild("LabelCar") as CMlLabel).SetText(Net_NEM_Car);
 			
 			if(DifficultyValue != -1.0) {
@@ -392,7 +415,7 @@
 						
 						// If you're a new validator
 						if(Doc.GetFirstChild("MAP_INFO").GetFirstChild(Net_NEM_Car).GetAttributeText("Validator", "") == "") {
-							Validate();
+							//Validate();
 						}
 						
 						// If you're validator of this track in general
@@ -420,8 +443,8 @@
 					if(RateRequest.StatusCode == 200) {
 						
 					}
-					else if (RateRequest.StatusCode == 403) {
-						OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
+					else if (RateRequest.StatusCode == 403) {/*
+						OpenLink("https://prod.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state=kkkkk&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/token.php", CMlScript::LinkType::ManialinkBrowser);
 					
 						while(True) {
 							Http.Destroy(RateRequest);
@@ -432,7 +455,7 @@
 								break;
 							}
 							log("Endscreen stuck - Rate, Code " ^ RateRequest.StatusCode);
-						}
+						}*/
 					}
 					else if(RateRequest.StatusCode == 12007) {
 						
@@ -472,8 +495,14 @@
 						switch(Event.MenuNavAction) {
 							case CMlEvent::EMenuNavAction::Select: {
 								if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
-									declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-									RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+									if(IsCampaignMap(Map.MapInfo.MapUid)) {
+										declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+										RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+									}
+									else {
+										declare netwrite Boolean Net_NEM_Continue for UI;
+										Net_NEM_Continue = True;
+									}
 								}
 								else {
 									declare netwrite Boolean Net_NEM_Continue for UI;
@@ -540,8 +569,14 @@
 						}
 						if(Event.Control.Parent.ControlId == "buttonContinue") {
 							if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
-								declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-								RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+								if(IsCampaignMap(Map.MapInfo.MapUid)) {
+									declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
+									RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+								}
+								else {
+									declare netwrite Boolean Net_NEM_Continue for UI;
+									Net_NEM_Continue = True;
+								}
 							}
 							else {
 								declare netwrite Boolean Net_NEM_Continue for UI;

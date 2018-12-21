@@ -6,24 +6,58 @@
 
 declare CUILayer MainMenuLayer;
 
+declare Boolean NormalServerPrivate;
+declare Boolean NormalServerPrivateSpectate;
+declare Boolean EventServerPrivate;
+declare Boolean EventServerPrivateSpectate;
+
 Void StartMenu() {
 	declare Music = Audio.CreateSound("file://Media/Musics/Menu/Silence.ogg", 1.0, True, True, False);
 	Music.Play();
 	
 	MainMenuLayer = UILayerCreate();
 	MainMenuLayer.ManialinkPage = "file://Media/Manialinks/Menu.xml";
+}
+
+Void UpdateServerInfo() {
 	wait(TitleFlow.IsReady);
 	TitleFlow.GetServerInfo("nadeo_envimix");
 	wait(TitleFlow.IsReady);
+	
+	declare ServerResult <=> TitleFlow.GetServerInfo_Result;
+	
+	if(TitleFlow.LatestResult == CTitleFlow::EResult::Error_Net_ServerNotFound || TitleFlow.LatestResult == CTitleFlow::EResult::Error_Net_ServerUnreachable)
+		LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["OFFLINE"]);
+	else if(ServerResult != Null) {
+		LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["ONLINE",ServerResult.PlayerCount^"/"^ServerResult.MaxPlayerCount,ServerResult.IsPrivate^"",ServerResult.IsPrivateForSpectator^""]);
+		
+		NormalServerPrivate = ServerResult.IsPrivate;
+		NormalServerPrivateSpectate = ServerResult.IsPrivateForSpectator;
+	}
+	else LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["OFFLINE"]);
+	
+	wait(TitleFlow.IsReady);
+	TitleFlow.GetServerInfo("envimix_event");
+	wait(TitleFlow.IsReady);
+	
+	if(TitleFlow.LatestResult == CTitleFlow::EResult::Error_Net_ServerNotFound || TitleFlow.LatestResult == CTitleFlow::EResult::Error_Net_ServerUnreachable)
+		LayerCustomEvent(MainMenuLayer, "SERVER_INFO_EVENT", ["OFFLINE"]);
+	else if(ServerResult != Null) {
+		LayerCustomEvent(MainMenuLayer, "SERVER_INFO_EVENT", ["ONLINE",ServerResult.PlayerCount^"/"^ServerResult.MaxPlayerCount,ServerResult.IsPrivate^"",ServerResult.IsPrivateForSpectator^""]);
+		
+		EventServerPrivate = ServerResult.IsPrivate;
+		EventServerPrivateSpectate = ServerResult.IsPrivateForSpectator;
+	}
+	else LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["OFFLINE"]);
 }
 
 main() {	
 	declare ProceedLayer = UILayerCreate();
 	
-	declare Boolean ServerFound;
+	declare ServerTimer = Now;
 
 	declare Text[] Zones = TextLib::Split("|", LocalUser.ZonePath);
-	if(Zones.count == 0) {
+	/*if(Zones.count == 0) {
 		StartMenu();
 	}
 	else {
@@ -33,7 +67,7 @@ main() {
 			if(Xml.Create(RequestPlayer.Result).Root.GetFirstChild("Exists").TextContents == "0") {
 				declare NonPredictableRandomString = Random::String(30,50);
 		
-				OpenLink("https://v4.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state="^NonPredictableRandomString^"&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/join.php", CManiaApp::ELinkType::ManialinkBrowser);
+				OpenLink("https://prod.live.maniaplanet.com/login/oauth2/authorize?response_type=code&scope=basic&state="^NonPredictableRandomString^"&client_id=d7de0ddcdc&redirect_uri=http:%2F%2Ftrackmania.bigbang1112.eu/nadeoenvimix/api/join.php", CManiaApp::ELinkType::ManialinkBrowser);
 				
 				ProceedLayer.ManialinkPage = "file://Media/Manialinks/Proceed.xml";
 			}
@@ -44,14 +78,21 @@ main() {
 		else {
 			StartMenu();
 		}
-	}
+	}*/
+	
+	StartMenu();
 	
 	declare LoadingLayer = UILayerCreate();
 	LoadingLayer.ManialinkPage = "file://Media/Manialinks/Loading.xml";
-	LoadingLayer.Type = CUILayer::EUILayerType::LoadingScreen; 
+	LoadingLayer.Type = CUILayer::EUILayerType::LoadingScreen;
+	
+	UpdateServerInfo();
 	
 	while(True) {
-		yield;
+		if(ServerTimer + 10000 < Now) {
+			UpdateServerInfo();
+			ServerTimer = Now;
+		}
 		
 		foreach(Event,PendingEvents) {
 			if(Event.Type == CManiaAppEvent::EType::LayerCustomEvent) {
@@ -113,12 +154,23 @@ main() {
 							}
 							
 							if(TitleFlow.IsReady)
-								TitleFlow.EditMap(Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber].FileName,"","");
+								TitleFlow.EditNewMapFromBaseMap(Campaign.MapGroups[DifficultyNumber].MapInfos[MapNumber].FileName, "", "", "", "", "");
 						}
 						case "PLAY_POUTREL_SERVER": {
-							Dialog_Message("Multiplayer gamemode script isn't yet working the way it should. The server should run in the next few days. Seriously, I promise.");
-							//if(TitleFlow.IsReady)
-							//	TitleFlow.JoinServer("nadeo_envimix", False, "");
+							if(TitleFlow.IsReady) {
+								if(!NormalServerPrivate)
+									TitleFlow.JoinServer("nadeo_envimix", False, "");
+								else if(!NormalServerPrivateSpectate)
+									TitleFlow.JoinServer("nadeo_envimix", True, "");
+							}
+						}
+						case "PLAY_EVENT_SERVER": {
+							if(TitleFlow.IsReady) {
+								if(!EventServerPrivate)
+									TitleFlow.JoinServer("envimix_event", False, "");
+								else if(!EventServerPrivateSpectate)
+									TitleFlow.JoinServer("envimix_event", True, "");
+							}
 						}
 						case "GET_LEADERBOARD_REPLAY": {
 							declare DifficultyNumber = TextLib::ToInteger(Event.CustomEventData[1]);
@@ -146,10 +198,7 @@ main() {
 			}
 		}
 		
-		if(TitleFlow.GetServerInfo_Result != Null && !ServerFound) {
-			ServerFound = True;
-			LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["ONLINE"]);
-		}
+		yield;
 	}
 	
 	UILayerDestroyAll();

@@ -7,20 +7,38 @@
 	#Include "Libs/Nadeo/TrackMania/TM2.Script.txt" as TM2
 	#Include "Libs/Nadeo/Layers2.Script.txt" as Layers2
 
+	#Include "Libs/Envimix/Skins.Script.txt" as Skins
+
 	#Setting S_ReplayUrl ""
 	#Setting S_Car ""
 
-	main() {
+	main() {			
 			ItemList_Begin();
+			
 			declare CanyonCar = ItemList_Add("CanyonCar");
 			declare StadiumCar = ItemList_Add("StadiumCar");
 			declare ValleyCar = ItemList_Add("ValleyCar");
 			declare LagoonCar = ItemList_Add("LagoonCar");
-		
+			
+			declare DesertCar = ItemList_AddWithSkin("DesertCar",Skins::GetDesertCar());
+			declare SnowCar = ItemList_AddWithSkin("SnowCar",Skins::GetSnowCar());
+			declare RallyCar = ItemList_AddWithSkin("RallyCar",Skins::GetRallyCar());
+			declare BayCar = ItemList_AddWithSkin("BayCar",Skins::GetBayCar());
+			declare IslandCar = ItemList_AddWithSkin("IslandCar",Skins::GetIslandCar());
+			declare CoastCar = ItemList_AddWithSkin("CoastCar",Skins::GetCoastCar());
+			
 			declare CanyonCarOnStadium = ItemList_Add("CanyonVehicle.Item.Gbx");
 			declare StadiumCarOnStadium = ItemList_Add("StadiumVehicle.Item.Gbx");
 			declare ValleyCarOnStadium = ItemList_Add("ValleyVehicle.Item.Gbx");
 			declare LagoonCarOnStadium = ItemList_Add("LagoonVehicle.Item.Gbx");
+			
+			declare DesertCarOnStadium = ItemList_AddWithSkin("DesertCarOnStadium.Item.Gbx",Skins::GetDesertCar());
+			declare SnowCarOnStadium = ItemList_AddWithSkin("SnowCarOnStadium.Item.Gbx",Skins::GetSnowCar());
+			declare RallyCarOnStadium = ItemList_AddWithSkin("RallyCarOnStadium.Item.Gbx",Skins::GetRallyCar());
+			declare BayCarOnStadium = ItemList_AddWithSkin("BayCarOnStadium.Item.Gbx",Skins::GetBayCar());
+			declare IslandCarOnStadium = ItemList_AddWithSkin("IslandCarOnStadium.Item.Gbx",Skins::GetIslandCar());
+			declare CoastCarOnStadium = ItemList_AddWithSkin("CoastCarOnStadium.Item.Gbx",Skins::GetCoastCar());
+			
 			ItemList_End();
 			
 			declare Boolean Terminate;

@@ -1,0 +1,15 @@
+Text[] GetUnfinishedTracks() {
+    declare Text[] Tracks;
+
+    foreach(Campaign,DataFileMgr.Campaigns) {
+		foreach(MapGroup,Campaign.MapGroups) {
+			foreach(MapInfo,MapGroup.MapInfos) {
+				//declare Task = MapLeaderBoard_GetPlayerList(NullId, MapInfo.MapUid, Campaign.ScoreContext, "World", 1, 1);
+                if(ScoreMgr.Map_GetRecord(NullId, MapInfo.MapUid, Campaign.ScoreContext) == -1)
+                    Tracks.add(MapInfo.MapUid);
+			}
+		}
+	}
+
+    return Tracks;
+}

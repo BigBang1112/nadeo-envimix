@@ -1,0 +1,52 @@
+#RequireContext CMapEditorPlugin
+
+#Include "ColorLib" as ColorLib
+
+declare Real G_LibRainbow_Substract;
+declare Real G_LibRainbow_Value;
+declare Real G_LibRainbow_Frequency;
+declare Boolean G_LibRainbow_Running;
+
+Void Start() {
+	G_LibRainbow_Value = 0.0;
+	G_LibRainbow_Substract = Now+0.0;
+	G_LibRainbow_Running = True;
+	G_LibRainbow_Frequency = 1.0;
+}
+
+Void Stop() {
+    G_LibRainbow_Running = False;
+}
+
+Real GetValue() {
+	return G_LibRainbow_Value;
+}
+
+Vec3 GetHSV() {
+	return <G_LibRainbow_Value,1.0,1.0>;
+}
+
+Vec3 GetRGB() {
+   return ColorLib::HsvToRgb(<G_LibRainbow_Value,1.0,1.0>);
+}
+
+Void Loop() {
+    if(G_LibRainbow_Running) {
+        declare FreqValue = 1/G_LibRainbow_Frequency*1000;
+        if(G_LibRainbow_Substract + FreqValue <= Now)
+            G_LibRainbow_Substract += FreqValue;
+        G_LibRainbow_Value = (Now - G_LibRainbow_Substract) / FreqValue;
+    }
+}
+
+main() {
+	Start();
+	EditMediatrackIngame ();
+	while(True) {
+		Loop();
+		//log(GetRGB());
+		CustomSelectionRGB = GetRGB();
+		foreach(Cord, CustomSelectionCoords) log(Cord);
+		yield;
+	}
+}

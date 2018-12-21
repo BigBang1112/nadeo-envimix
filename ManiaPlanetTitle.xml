@@ -23,13 +23,13 @@
 		<background_replay name=""/>
 		<header name="MenuHeader.png"/>
 		<music name="Menu\Silence.ogg"/>
-		<manialink url=""/>
+		<manialink url="Scripts/MainMenu.Script.txt"/>
 	</menu>
 	<menu_style name=""/>
 	<music folder=""/>
 	<mod name=""/>
 	<editor>
-		<maptype name=""/>
+		<maptype name="MapTypes\TrackMania\Envimix.Script.txt"/>
 		<simple_editor_map name=""/>
 		<internalitems/>
 	</editor>
@@ -104,6 +104,54 @@
 		</score_context>
 		<score_context>
 			<name>LagoonCar2</name>
+			<maprecord_type>2</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>false</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name>DesertCar2</name>
+			<maprecord_type>2</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>false</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name>SnowCar2</name>
+			<maprecord_type>2</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>false</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name>RallyCar2</name>
+			<maprecord_type>2</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>false</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name>BayCar2</name>
+			<maprecord_type>2</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>false</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name>IslandCar2</name>
+			<maprecord_type>2</maprecord_type>
+			<medals_enabled>true</medals_enabled>
+			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
+			<author_medals_enabled>false</author_medals_enabled>
+			<skillpoints_enabled>true</skillpoints_enabled>
+		</score_context>
+		<score_context>
+			<name>CoastCar2</name>
 			<maprecord_type>2</maprecord_type>
 			<medals_enabled>true</medals_enabled>
 			<compute_medals_from_maprecord>false</compute_medals_from_maprecord>
@@ -241,14 +289,198 @@
 		<campaign num="16">
 			<playlist name=""/>
 			<mode name=""/>
-			<score_context></score_context>
+			<score_context>DesertCar2</score_context>
 			<official_record_enabled>true</official_record_enabled>
 			<disable_unlock_system>true</disable_unlock_system>
-			<maps folder="Campaigns\"/>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="17">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>DesertCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="18">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>DesertCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="19">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>DesertCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
+		</campaign>
+		<campaign num="20">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>SnowCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="21">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>SnowCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="22">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>SnowCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="23">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>SnowCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
+		</campaign>
+		<campaign num="24">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>RallyCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="25">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>RallyCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="26">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>RallyCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="27">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>RallyCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
+		</campaign>
+		<campaign num="28">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>BayCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="29">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>BayCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="30">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>BayCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="31">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>BayCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
+		</campaign>
+		<campaign num="32">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>IslandCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="33">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>IslandCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="34">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>IslandCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="35">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>IslandCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
+		</campaign>
+		<campaign num="36">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>CoastCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Canyon\"/>
+		</campaign>
+		<campaign num="37">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>CoastCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Stadium\"/>
+		</campaign>
+		<campaign num="38">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>CoastCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Valley\"/>
+		</campaign>
+		<campaign num="39">
+			<playlist name=""/>
+			<mode name=""/>
+			<score_context>CoastCar2</score_context>
+			<official_record_enabled>true</official_record_enabled>
+			<disable_unlock_system>true</disable_unlock_system>
+			<maps folder="Campaigns\Lagoon\"/>
 		</campaign>
 	</solo>
 	<network>
-		<mode name=""/>
+		<mode name="Modes\TrackMania\EnvimixTimeAttack.Script.txt"/>
 		<playlist name=""/>
 	</network>
 	<splitscreen>
@@ -258,6 +490,7 @@
 	<files/>
 	<folders>
 		<folder name="Scripts/" public="false" internal="true"/>
+		<folder name="Skins/" public="false" internal="false"/>
 		<folder name="Media/" public="false" internal="false"/>
 		<folder name="Media/Manialinks" public="false" internal="false"/>
 		<folder name="Media/Musics" public="false" internal="false"/>
@@ -278,4 +511,5 @@
 	<use_hmd>false</use_hmd>
 	<unlock_features>0</unlock_features>
 	<hud3dfont name=""/>
+	<hud_default_module name=""/>
 </maniaplanet_title>

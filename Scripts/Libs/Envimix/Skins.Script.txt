@@ -1,0 +1,23 @@
+Text GetDesertCar() {
+    return "Skins/Models/DesertCar/DesertCar_Default.zip";
+}
+
+Text GetSnowCar() {
+    return "Skins/Models/SnowCar/SnowCar_Default.zip";
+}
+
+Text GetRallyCar() {
+    return "Skins/Models/RallyCar/RallyCar_Default.zip";
+}
+
+Text GetBayCar() {
+    return "Skins/Models/BayCar/BayCar_Default.zip";
+}
+
+Text GetIslandCar() {
+    return "Skins/Models/IslandCar/IslandCar_Default.zip";
+}
+
+Text GetCoastCar() {
+    return "Skins/Models/CoastCar/CoastCar_Default.zip";
+}

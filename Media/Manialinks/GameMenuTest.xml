@@ -112,19 +112,6 @@
 	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="45 5" text="Resume" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text" translate="1"/>
 </frame>
-<frame pos="105 29" id="buttonSpectate">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
-	<quad z-index="0.5" size="45 6" bgcolor="111" halign="center" valign="center" opacity=".5" id="select"/>
-	<label size="30 5" text="Spectator" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text" translate="1"/>
-</frame>
-<frame pos="105 -18" id="buttonHelp" hidden="1">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
-	<label size="30 5" text="Help" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text" translate="1"/>
-</frame>
-<frame pos="105 -29" id="buttonServerSettings">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
-	<label size="30 5" text="Settings" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text" translate="1"/>
-</frame>
 <frame pos="105 -40" id="buttonExit">
 	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
 	<label size="30 5" text="Exit" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text" translate="1"/>
@@ -144,6 +131,8 @@
 			declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
 			declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 			declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+
+			RequestSpectatorClient(True);
 			
 			declare CHttpRequest MapRequest;
 			
@@ -285,7 +274,7 @@
 					}
 				}
 
-				if(IsSpectatorClient) {
+				if(IsSpectator) {
 					((Page.GetFirstChild("buttonSpectate") as CMlFrame).GetFirstChild("select") as CMlQuad).BgColor = <0.5,0.5,0.5>;
 				}
 				else {

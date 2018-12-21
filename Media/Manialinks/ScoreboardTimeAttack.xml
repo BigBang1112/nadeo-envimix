@@ -1,114 +1,123 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
+<frame z-index="1" id="Frame_PlayerTooltip" hidden="1">
+	<quad pos="0 0" z-index="-1" size="50 16" bgcolor="FFFA" style="Bgs1InRace" substyle="BgHealthBar"/>
+	<label pos="12 -2" z-index="2" size="5 5" text="1" textfont="RajdhaniMono" textsize="2" halign="right" textemboss="1" id="Label_Fame"/>
+	<quad pos="10 -1" z-index="1" size="5 5" bgcolor="FFFA" style="BgRaceScore2" substyle="Fame" id="Quad_Fame"/>
+	<quad pos="3 -3" z-index="0" size="10 10" bgcolor="FFFA" id="Quad_Avatar"/>
+	<label pos="15 -4.5" z-index="0" size="30 4" text="" textsize="1" textfont="RajdhaniMono" valign="center" id="Label_Nickname"/>
+	<quad pos="15 -8" z-index="0" size="5 5" bgcolor="FFFA" id="Quad_CountryFlag"/>
+	<label pos="21.5 -10.7" z-index="0" size="24 4" text="Rank" textsize="1" textfont="RajdhaniMono" valign="center2" id="Label_Rank"/>
+</frame>
 <frame z-index="-1">
 <frame pos="-90 50" id="Frame_CanyonCar">
 	<quad z-index="-1" size="50 100" halign="center" style="Bgs1" substyle="BgDialogBlur"/>
 	<quad pos="0 5" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/CanyonCar.png" id="Quad_Car"/>
 	<frame id="Frame_Leaderboard">
 		<frame pos="-22 -12" hidden="1">
-			<label z-index="0" size="5 5" text="1)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="1)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -16" hidden="1">
-			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -20" hidden="1">
-			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -24" hidden="1">
-			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -28" hidden="1">
-			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -32" hidden="1">
-			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -36" hidden="1">
-			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -40" hidden="1">
-			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -44" hidden="1">
-			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -48" hidden="1">
-			<label z-index="0" size="6 5" text="10)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="10)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -52" hidden="1">
-			<label z-index="0" size="6 5" text="11)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="11)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -56" hidden="1">
-			<label z-index="0" size="6 5" text="12)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="12)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -60" hidden="1">
-			<label z-index="0" size="6 5" text="13)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="13)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -64" hidden="1">
-			<label z-index="0" size="6 5" text="14)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="14)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -68" hidden="1">
-			<label z-index="0" size="6 5" text="15)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="15)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -72" hidden="1">
-			<label z-index="0" size="6 5" text="16)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="16)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -76" hidden="1">
-			<label z-index="0" size="6 5" text="17)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="17)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -80" hidden="1">
-			<label z-index="0" size="6 5" text="18)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="18)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -84" hidden="1">
-			<label z-index="0" size="6 5" text="19)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="19)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -88" hidden="1">
-			<label z-index="0" size="6 5" text="20)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="20)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -96" hidden="1">
-			<label z-index="0" size="6 5" text="??)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="YOU" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="??)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="YOU" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 	</frame>
 </frame>
@@ -117,109 +126,109 @@
 	<quad pos="0 4" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/StadiumCar.png" id="Quad_Car"/>
 	<frame id="Frame_Leaderboard">
 		<frame pos="-22 -12" hidden="1">
-			<label z-index="0" size="5 5" text="1)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="1)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -16" hidden="1">
-			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -20" hidden="1">
-			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -24" hidden="1">
-			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -28" hidden="1">
-			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -32" hidden="1">
-			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -36" hidden="1">
-			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -40" hidden="1">
-			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -44" hidden="1">
-			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -48" hidden="1">
-			<label z-index="0" size="6 5" text="10)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="10)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -52" hidden="1">
-			<label z-index="0" size="6 5" text="11)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="11)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -56" hidden="1">
-			<label z-index="0" size="6 5" text="12)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="12)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -60" hidden="1">
-			<label z-index="0" size="6 5" text="13)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="13)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -64" hidden="1">
-			<label z-index="0" size="6 5" text="14)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="14)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -68" hidden="1">
-			<label z-index="0" size="6 5" text="15)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="15)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -72" hidden="1">
-			<label z-index="0" size="6 5" text="16)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="16)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -76" hidden="1">
-			<label z-index="0" size="6 5" text="17)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="17)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -80" hidden="1">
-			<label z-index="0" size="6 5" text="18)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="18)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -84" hidden="1">
-			<label z-index="0" size="6 5" text="19)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="19)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -88" hidden="1">
-			<label z-index="0" size="6 5" text="20)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="20)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -96" hidden="1">
-			<label z-index="0" size="6 5" text="??)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="YOU" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="??)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="YOU" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 	</frame>
 </frame>
@@ -228,109 +237,109 @@
 	<quad pos="0 7" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/ValleyCar.png" id="Quad_Car"/>
 	<frame id="Frame_Leaderboard">
 		<frame pos="-22 -12" hidden="1">
-			<label z-index="0" size="5 5" text="1)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="1)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -16" hidden="1">
-			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -20" hidden="1">
-			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -24" hidden="1">
-			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -28" hidden="1">
-			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -32" hidden="1">
-			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -36" hidden="1">
-			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -40" hidden="1">
-			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -44" hidden="1">
-			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -48" hidden="1">
-			<label z-index="0" size="6 5" text="10)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="10)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -52" hidden="1">
-			<label z-index="0" size="6 5" text="11)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="11)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -56" hidden="1">
-			<label z-index="0" size="6 5" text="12)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="12)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -60" hidden="1">
-			<label z-index="0" size="6 5" text="13)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="13)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -64" hidden="1">
-			<label z-index="0" size="6 5" text="14)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="14)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -68" hidden="1">
-			<label z-index="0" size="6 5" text="15)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="15)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -72" hidden="1">
-			<label z-index="0" size="6 5" text="16)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="16)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -76" hidden="1">
-			<label z-index="0" size="6 5" text="17)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="17)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -80" hidden="1">
-			<label z-index="0" size="6 5" text="18)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="18)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -84" hidden="1">
-			<label z-index="0" size="6 5" text="19)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="19)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -88" hidden="1">
-			<label z-index="0" size="6 5" text="20)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="20)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -96" hidden="1">
-			<label z-index="0" size="6 5" text="??)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="YOU" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="??)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="YOU" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 	</frame>
 </frame>
@@ -339,115 +348,115 @@
 	<quad pos="0 7" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/LagoonCar.png" id="Quad_Car"/>
 	<frame id="Frame_Leaderboard">
 		<frame pos="-22 -12" hidden="1">
-			<label z-index="0" size="5 5" text="1)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="1)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -16" hidden="1">
-			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -20" hidden="1">
-			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -24" hidden="1">
-			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -28" hidden="1">
-			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -32" hidden="1">
-			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -36" hidden="1">
-			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -40" hidden="1">
-			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -44" hidden="1">
-			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -48" hidden="1">
-			<label z-index="0" size="6 5" text="10)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="10)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -52" hidden="1">
-			<label z-index="0" size="6 5" text="11)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="11)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -56" hidden="1">
-			<label z-index="0" size="6 5" text="12)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="12)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -60" hidden="1">
-			<label z-index="0" size="6 5" text="13)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="13)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -64" hidden="1">
-			<label z-index="0" size="6 5" text="14)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="14)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -68" hidden="1">
-			<label z-index="0" size="6 5" text="15)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="15)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -72" hidden="1">
-			<label z-index="0" size="6 5" text="16)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="16)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -76" hidden="1">
-			<label z-index="0" size="6 5" text="17)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="17)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -80" hidden="1">
-			<label z-index="0" size="6 5" text="18)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="18)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -84" hidden="1">
-			<label z-index="0" size="6 5" text="19)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="19)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -88" hidden="1">
-			<label z-index="0" size="6 5" text="20)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="USERNAME" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="20)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 		<frame pos="-22 -96" hidden="1">
-			<label z-index="0" size="6 5" text="??)" valign="center2" textsize="2" pos="0 0"/>
-			<label pos="6 -.35" z-index="0" size="23 5" text="YOU" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="0:00.00" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
+			<label z-index="0" size="6 5" text="??)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate"/>
+			<label pos="6 -.35" z-index="0" size="23 5" text="YOU" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="AAA"/>
+			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time"/>
 		</frame>
 	</frame>
 </frame>
 <frame pos="0 -56">
 	<quad z-index="-1" size="230 8" style="Bgs1" substyle="BgDialogBlur" halign="center" valign="center"/>
-	<label z-index="0" size="100 8" text="NADEO ENVIMIX TIME ATTACK" halign="center" style="TextTitle3" textsize="3" pos="0 0" valign="center2"/>
+	<label z-index="0" size="100 8" text="ENVIMIX TIME ATTACK" halign="center" style="TextTitle3" textsize="3" pos="0 0" valign="center2"/>
 </frame>
 </frame>
 <script>
@@ -458,17 +467,51 @@
 		declare netread Integer Net_NEM_YourRecord for UI;
 		declare netread Integer Net_NEM_YourPosition for UI;
 		declare netread Text Net_MapCar for UI;
+		declare netread Boolean Net_NEM_Ladder for UI;
+		declare netread Text[Text][Text] Net_NEM_LadderPoints for UI;
 
 		while(True) {
 			foreach(Event,PendingEvents) {
 				switch(Event.Type) {
 					case CMlEvent::Type::MouseClick: {
-						if(Event.ControlId == "Label_Name" && Event.Control.DataAttributeGet("login") != "") {
+						if(Event.ControlId == "Label_Name" && Event.Control.DataAttributeGet("login") != "" && Event.Control.DataAttributeGet("connected") == "True") {
+							
 							ShowProfile(Event.Control.DataAttributeGet("login"));
+						}
+						if(Event.ControlId == "Label_Spectate" && Event.Control.DataAttributeGet("login") != "" && Event.Control.DataAttributeGet("login") != LocalUser.Login) {
+							RequestSpectatorClient(True);
+							SetSpectateTarget(Event.Control.DataAttributeGet("login"));
+						}
+					}
+					case CMlEvent::Type::MouseOver: {
+						if(Event.ControlId == "Label_Name") {
+							Page.GetFirstChild("Frame_PlayerTooltip").Show();
+							declare Frame <=> (Page.GetFirstChild("Frame_PlayerTooltip") as CMlFrame);
+							(Frame.GetFirstChild("Quad_Avatar") as CMlQuad).ChangeImageUrl(Event.Control.DataAttributeGet("avatarUrl"));
+							(Frame.GetFirstChild("Quad_CountryFlag") as CMlQuad).ChangeImageUrl(Event.Control.DataAttributeGet("countryFlagUrl"));
+							(Frame.GetFirstChild("Label_Nickname") as CMlLabel).SetText((Event.Control as CMlLabel).Value);
+							(Frame.GetFirstChild("Label_Rank") as CMlLabel).SetText(Event.Control.DataAttributeGet("rank"));
+
+							if(TextLib::ToInteger(Event.Control.DataAttributeGet("fame")) > 0) {
+								Frame.GetFirstChild("Quad_Fame").Show();
+								Frame.GetFirstChild("Label_Fame").Show();
+								(Frame.GetFirstChild("Label_Fame") as CMlLabel).SetText(Event.Control.DataAttributeGet("fame"));
+							}
+							else {
+								Frame.GetFirstChild("Quad_Fame").Hide();
+								Frame.GetFirstChild("Label_Fame").Hide();
+							}
+						}
+					}
+					case CMlEvent::Type::MouseOut: {
+						if(Event.ControlId == "Label_Name") {
+							Page.GetFirstChild("Frame_PlayerTooltip").Hide();
 						}
 					}
 				}
 			}
+
+			Page.GetFirstChild("Frame_PlayerTooltip").RelativePosition_V3 = <MouseX,MouseY>;
 
 			if(Net_MapCar == "CanyonCar") ((Page.GetFirstChild("Frame_CanyonCar") as CMlFrame).GetFirstChild("Quad_Car") as CMlQuad).ModulateColor = <0.25,0.25,0.25>;
 			else ((Page.GetFirstChild("Frame_CanyonCar") as CMlFrame).GetFirstChild("Quad_Car") as CMlQuad).ModulateColor = <1.0,1.0,1.0>;
@@ -483,10 +526,20 @@
 				declare Integer[Text] Times;
 				declare Text[Text][Text] Info;
 				for(i,0,Leaderboard.count-1) {
-					Times[Leaderboard[i]["Login"]] = TextLib::ToInteger(Leaderboard[i]["Time"]);
-					Info[Leaderboard[i]["Login"]] = ["Name" => Leaderboard[i]["Name"]];
+					if(Leaderboard[i]["Time"] != "-1") {
+						Times[Leaderboard[i]["Login"]] = TextLib::ToInteger(Leaderboard[i]["Time"]);
+						Info[Leaderboard[i]["Login"]] = ["Name" => Leaderboard[i]["Name"], "AvatarUrl" => Leaderboard[i]["AvatarUrl"], "CountryFlagUrl" => Leaderboard[i]["CountryFlagUrl"], "Rank" => Leaderboard[i]["Rank"], "Fame" => Leaderboard[i]["Fame"], "Connected" => Leaderboard[i]["Connected"]];
+					}
 				}
 				declare SortedTimes = Times.sort();
+
+				for(i,0,Leaderboard.count-1) {
+					if(Leaderboard[i]["Time"] == "-1") {
+						SortedTimes[Leaderboard[i]["Login"]] = -1;
+						Info[Leaderboard[i]["Login"]] = ["Name" => Leaderboard[i]["Name"], "AvatarUrl" => Leaderboard[i]["AvatarUrl"], "CountryFlagUrl" => Leaderboard[i]["CountryFlagUrl"], "Rank" => Leaderboard[i]["Rank"], "Fame" => Leaderboard[i]["Fame"], "Connected" => Leaderboard[i]["Connected"]];
+					}
+				}
+
 				declare Count = 0;
 				foreach(Login => Time, SortedTimes) {
 					if(Count < 20) {
@@ -495,7 +548,34 @@
 
 						(Line.GetFirstChild("Label_Name") as CMlLabel).SetText(Info[Login]["Name"]);
 						Line.GetFirstChild("Label_Name").DataAttributeSet("login",Login);
-						(Line.GetFirstChild("Label_Time") as CMlLabel).SetText(TextLib::TimeToText(Time,True)^TextLib::SubText(""^Time,TextLib::Length(""^Time)-1,1));
+						Line.GetFirstChild("Label_Name").DataAttributeSet("avatarUrl",Info[Login]["AvatarUrl"]);
+						Line.GetFirstChild("Label_Name").DataAttributeSet("countryFlagUrl",Info[Login]["CountryFlagUrl"]);
+						Line.GetFirstChild("Label_Name").DataAttributeSet("rank",Info[Login]["Rank"]);
+						Line.GetFirstChild("Label_Name").DataAttributeSet("fame",Info[Login]["Fame"]);
+						Line.GetFirstChild("Label_Name").DataAttributeSet("connected",Info[Login]["Connected"]);
+						Line.GetFirstChild("Label_Spectate").DataAttributeSet("login",Login);
+
+						if(Net_NEM_Ladder) {
+							if(Net_NEM_LadderPoints[CarName].exists(Login))
+								(Line.GetFirstChild("Label_Time") as CMlLabel).SetText(Net_NEM_LadderPoints[CarName][Login]);
+							else
+								(Line.GetFirstChild("Label_Time") as CMlLabel).SetText("");
+						}
+						else {
+							if(Time == -1)
+								(Line.GetFirstChild("Label_Time") as CMlLabel).SetText("-:--.---");
+							else
+								(Line.GetFirstChild("Label_Time") as CMlLabel).SetText(TextLib::TimeToText(Time,True)^TextLib::SubText(""^Time,TextLib::Length(""^Time)-1,1));
+						}
+						
+						if(Info[Login]["Connected"] == "True")
+							(Line.GetFirstChild("Label_Name") as CMlLabel).Opacity = 1.0;
+						else
+							(Line.GetFirstChild("Label_Name") as CMlLabel).Opacity = .5;
+
+						foreach(Player,Players) {
+							if(Player.User.Login == Login) (Line.GetFirstChild("Label_Name") as CMlLabel).TextColor = <1.0,1.0,1.0>;
+						}
 					}
 					Count+=1;
 				}

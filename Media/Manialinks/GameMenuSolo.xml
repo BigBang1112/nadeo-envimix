@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <manialink version="3">
+<frame z-index="1">
+	<label pos="-75 -70" z-index="0" size="20 5" text="DesertCar" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_DesertCar"/>
+	<label pos="-45 -70" z-index="0" size="20 5" text="SnowCar" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_SnowCar"/>
+	<label pos="-15 -70" z-index="0" size="20 5" text="RallyCar" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_RallyCar"/>
+	<label pos="15 -70" z-index="0" size="20 5" text="BayCar" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_BayCar"/>
+	<label pos="45 -70" z-index="0" size="20 5" text="IslandCar" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_IslandCar"/>
+	<label pos="75 -70" z-index="0" size="20 5" text="CoastCar" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_CoastCar"/>
+	<label pos="-75 -76" z-index="0" size="20 5" text="Leaderboard" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_DesertCar_LB" scale=".75"/>
+	<label pos="-45 -76" z-index="0" size="20 5" text="Leaderboard" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_SnowCar_LB" scale=".75"/>
+	<label pos="-15 -76" z-index="0" size="20 5" text="Leaderboard" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_RallyCar_LB" scale=".75"/>
+	<label pos="15 -76" z-index="0" size="20 5" text="Leaderboard" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_BayCar_LB" scale=".75"/>
+	<label pos="45 -76" z-index="0" size="20 5" text="Leaderboard" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_IslandCar_LB" scale=".75"/>
+	<label pos="75 -76" z-index="0" size="20 5" text="Leaderboard" halign="center" style="CardButtonSmallS" scriptevents="1" id="Label_CoastCar_LB" scale=".75"/>
+	<label pos="-75 -80" z-index="0" size="20 5" text="Ghost Off" halign="center" style="CardButtonSmall" scriptevents="1" id="Label_DesertCar_Ghost" scale=".75" hidden="1"/>
+	<label pos="-45 -80" z-index="0" size="20 5" text="Ghost Off" halign="center" style="CardButtonSmall" scriptevents="1" id="Label_SnowCar_Ghost" scale=".75" hidden="1"/>
+	<label pos="-15 -80" z-index="0" size="20 5" text="Ghost Off" halign="center" style="CardButtonSmall" scriptevents="1" id="Label_RallyCar_Ghost" scale=".75" hidden="1"/>
+	<label pos="15 -80" z-index="0" size="20 5" text="Ghost Off" halign="center" style="CardButtonSmall" scriptevents="1" id="Label_BayCar_Ghost" scale=".75" hidden="1"/>
+	<label pos="45 -80" z-index="0" size="20 5" text="Ghost Off" halign="center" style="CardButtonSmall" scriptevents="1" id="Label_IslandCar_Ghost" scale=".75" hidden="1"/>
+	<label pos="75 -80" z-index="0" size="20 5" text="Ghost Off" halign="center" style="CardButtonSmall" scriptevents="1" id="Label_CoastCar_Ghost" scale=".75" hidden="1"/>
+	<label pos="-75 -66" z-index="1" size="40 5" text="-:--.--" halign="center" textfont="RajdhaniMono" textsize="2" id="Label_DesertCar_PB" textemboss="1"/>
+	<label pos="-45 -66" z-index="1" size="40 5" text="-:--.--" halign="center" textfont="RajdhaniMono" textsize="2" id="Label_SnowCar_PB" textemboss="1"/>
+	<label pos="-15 -66" z-index="1" size="40 5" text="-:--.--" halign="center" textfont="RajdhaniMono" textsize="2" id="Label_RallyCar_PB" textemboss="1"/>
+	<label pos="15 -66" z-index="1" size="40 5" text="-:--.--" halign="center" textfont="RajdhaniMono" textsize="2" id="Label_BayCar_PB" textemboss="1"/>
+	<label pos="45 -66" z-index="1" size="40 5" text="-:--.--" halign="center" textfont="RajdhaniMono" textsize="2" id="Label_IslandCar_PB" textemboss="1"/>
+	<label pos="75 -66" z-index="1" size="40 5" text="-:--.--" halign="center" textfont="RajdhaniMono" textsize="2" id="Label_CoastCar_PB" textemboss="1"/>
+</frame>
+
 <quad pos="0 0" z-index="0" size="270 100" bgcolor="000A" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur"/>
 <quad pos="135 50" z-index="101" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Help" scriptevents="1" id="Quad_Help"/>
 <quad pos="76 55.5" z-index="1" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Camera" scriptevents="1" id="Quad_Spectate"/>
@@ -34,7 +61,7 @@
 	<label pos="25 -5" z-index="4" size="45 5" text="Canyon Car" halign="center" style="TextTitle3" textsize="3"/>
 	<quad pos="45 -5" z-index="5" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="Star" hidden="1"/>
 	<label pos="25 -15" z-index="1" size="40 5" text="PERSONAL BEST" halign="center" textfont="RajdhaniMono" textsize="2" id="PBText"/>
-	<label pos="25 -20" z-index="1" size="40 5" text="---" halign="center" textfont="RajdhaniMono" id="PB"/>
+	<label pos="25 -20" z-index="1" size="40 5" text="-:--.---" halign="center" textfont="RajdhaniMono" id="PB"/>
 	<label pos="8 -21.5" z-index="1" size="10 2" text="0" halign="center" id="Skillpoints" style="TextSPScoreBig" textsize=".2" textemboss="1"/>
 	<label pos="42 -21.5" z-index="1" size="10 2" text="0" halign="center" id="Activity" style="TextSPScoreBig" textsize=".2" textprefix="$58f" textemboss="1"/>
 	<label pos="25 -61" z-index="1" size="40 5" text="$nVALIDATED BY" halign="center" textfont="RajdhaniMono" textsize="2" id="ValidatedBy" hidden="1"/>
@@ -56,7 +83,7 @@
 	<label pos="25 -5" z-index="4" size="45 5" text="Stadium Car" halign="center" style="TextTitle3" textsize="3"/>
 	<quad pos="45 -5" z-index="5" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="Star" hidden="1"/>
 	<label pos="25 -15" z-index="1" size="40 5" text="PERSONAL BEST" halign="center" textfont="RajdhaniMono" textsize="2" id="PBText"/>
-	<label pos="25 -20" z-index="1" size="40 5" text="---" halign="center" textfont="RajdhaniMono" id="PB"/>
+	<label pos="25 -20" z-index="1" size="40 5" text="-:--.---" halign="center" textfont="RajdhaniMono" id="PB"/>
 	<label pos="8 -21.5" z-index="1" size="10 2" text="0" halign="center" id="Skillpoints" style="TextSPScoreBig" textsize=".2" textemboss="1"/>
 	<label pos="42 -21.5" z-index="1" size="10 2" text="0" halign="center" id="Activity" style="TextSPScoreBig" textsize=".2" textprefix="$58f" textemboss="1"/>
 	<label pos="25 -61" z-index="1" size="40 5" text="$nVALIDATED BY" halign="center" textfont="RajdhaniMono" textsize="2" id="ValidatedBy" hidden="1"/>
@@ -78,7 +105,7 @@
 	<label pos="25 -5" z-index="4" size="45 5" text="Valley Car" halign="center" style="TextTitle3" textsize="3"/>
 	<quad pos="45 -5" z-index="5" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="Star" hidden="1"/>
 	<label pos="25 -15" z-index="1" size="40 5" text="PERSONAL BEST" halign="center" textfont="RajdhaniMono" textsize="2" id="PBText"/>
-	<label pos="25 -20" z-index="1" size="40 5" text="---" halign="center" textfont="RajdhaniMono" id="PB"/>
+	<label pos="25 -20" z-index="1" size="40 5" text="-:--.---" halign="center" textfont="RajdhaniMono" id="PB"/>
 	<label pos="8 -21.5" z-index="1" size="10 2" text="0" halign="center" id="Skillpoints" style="TextSPScoreBig" textsize=".2" textemboss="1"/>
 	<label pos="42 -21.5" z-index="1" size="10 2" text="0" halign="center" id="Activity" style="TextSPScoreBig" textsize=".2" textprefix="$58f" textemboss="1"/>
 	<label pos="25 -61" z-index="1" size="40 5" text="$nVALIDATED BY" halign="center" textfont="RajdhaniMono" textsize="2" id="ValidatedBy" hidden="1"/>
@@ -100,7 +127,7 @@
 	<label pos="25 -5" z-index="4" size="45 5" text="Lagoon Car" halign="center" style="TextTitle3" textsize="3"/>
 	<quad pos="45 -5" z-index="5" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="Fame" id="Star" hidden="1"/>
 	<label pos="25 -15" z-index="1" size="40 5" text="PERSONAL BEST" halign="center" textfont="RajdhaniMono" textsize="2" id="PBText"/>
-	<label pos="25 -20" z-index="1" size="40 5" text="---" halign="center" textfont="RajdhaniMono" id="PB"/>
+	<label pos="25 -20" z-index="1" size="40 5" text="-:--.---" halign="center" textfont="RajdhaniMono" id="PB"/>
 	<label pos="8 -21.5" z-index="1" size="10 2" text="0" halign="center" id="Skillpoints" style="TextSPScoreBig" textsize=".2" textemboss="1"/>
 	<label pos="42 -21.5" z-index="1" size="10 2" text="0" halign="center" id="Activity" style="TextSPScoreBig" textsize=".2" textprefix="$58f" textemboss="1"/>
 	<label pos="25 -61" z-index="1" size="40 5" text="$nVALIDATED BY" halign="center" textfont="RajdhaniMono" textsize="2" id="ValidatedBy" hidden="1"/>
@@ -278,18 +305,24 @@
 		#Include "MathLib" as MathLib
 		#Include "AnimLib" as AnimLib
 		
-		Void DoNothing() {
+		Boolean IsCampaignMap(Text _MapUid) {
+			foreach(Campaign,DataFileMgr.Campaigns) {
+				foreach(MapGroup,Campaign.MapGroups) {
+					foreach(MapInfo,MapGroup.MapInfos) {
+						if(MapInfo.MapUid == _MapUid) {
+							return True;
+						}
+					}
+				}
+			}
 			
+			return False;
 		}
 		
 		main() {
 			declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
 			declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 			declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
-
-			if(Map != Null)
-				if(Map.MapInfo.AuthorLogin == "Nadeo")
-					Map.MapName = Map.MapInfo.CollectionName^TextLib::StripFormatting(Map.MapInfo.Name);
 			
 			declare CHttpRequest MapRequest;
 			
@@ -320,10 +353,10 @@
 			
 			declare netwrite Boolean[] Net_NEM_Ghosts for UI;
 			Net_NEM_Ghosts.clear();
-			for(i,1,4) Net_NEM_Ghosts.add(False);
+			for(i,1,10) Net_NEM_Ghosts.add(False);
 			
 			declare netwrite Text[] Net_NEM_ResumeInfo for UI;
-			Net_NEM_ResumeInfo = ["","False","False","False","False"];
+			Net_NEM_ResumeInfo = ["","False","False","False","False","False","False","False","False","False","False"];
 			
 			declare TimerRequest = Now - 10000;
 			
@@ -332,7 +365,7 @@
 			declare Zones = TextLib::Split("|", LocalUser.ZonePath);
 			Zones.add("Buddies");
 			declare CurrentZone = 0;
-			declare Cars = ["CanyonCar", "StadiumCar", "ValleyCar", "LagoonCar"];
+			declare Cars = ["CanyonCar", "StadiumCar", "ValleyCar", "LagoonCar", "DesertCar", "SnowCar", "RallyCar", "BayCar", "IslandCar", "CoastCar"];
 			declare CurrentCar = 0;
 			
 			declare netread Text Net_MapCar for UI;
@@ -382,8 +415,7 @@
 						case CMlEvent::Type::MenuNavigation: {
 							switch(Event.MenuNavAction) {
 								case CMlEvent::EMenuNavAction::Cancel: {
-									declare netwrite Text[] Net_NEM_ResumeInfo for UI;
-									Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^""];
+									Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^"",Net_NEM_Ghosts[4]^"",Net_NEM_Ghosts[5]^"",Net_NEM_Ghosts[6]^"",Net_NEM_Ghosts[7]^"",Net_NEM_Ghosts[8]^"",Net_NEM_Ghosts[9]^""];
 									Net_NEM_Replays = Replays;
 									CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
 								}
@@ -415,7 +447,7 @@
 							}
 							if(Event.ControlId == "Quad_Spectate") {
 								Net_Vehicle = "";
-								Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^""];
+								Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^"",Net_NEM_Ghosts[4]^"",Net_NEM_Ghosts[5]^"",Net_NEM_Ghosts[6]^"",Net_NEM_Ghosts[7]^"",Net_NEM_Ghosts[8]^"",Net_NEM_Ghosts[9]^""];
 
 								CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
 							}
@@ -465,9 +497,36 @@
 									case "SelectionStadium": { Net_Vehicle = "StadiumCar"; }
 									case "SelectionValley": { Net_Vehicle = "ValleyCar"; }
 									case "SelectionLagoon": { Net_Vehicle = "LagoonCar"; }
+									case "Label_DesertCar": { Net_Vehicle = "DesertCar"; }
+									case "Label_SnowCar": { Net_Vehicle = "SnowCar"; }
+									case "Label_RallyCar": { Net_Vehicle = "RallyCar"; }
+									case "Label_BayCar": { Net_Vehicle = "BayCar"; }
+									case "Label_IslandCar": { Net_Vehicle = "IslandCar"; }
+									case "Label_CoastCar": { Net_Vehicle = "CoastCar"; }
 								}
 								
-								Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^""];
+								Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^"",Net_NEM_Ghosts[4]^"",Net_NEM_Ghosts[5]^"",Net_NEM_Ghosts[6]^"",Net_NEM_Ghosts[7]^"",Net_NEM_Ghosts[8]^"",Net_NEM_Ghosts[9]^""];
+								Net_NEM_Replays = Replays;
+								
+								CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
+							}
+
+							if(Event.ControlId == "Label_DesertCar"
+							|| Event.ControlId == "Label_SnowCar"
+							|| Event.ControlId == "Label_RallyCar"
+							|| Event.ControlId == "Label_BayCar"
+							|| Event.ControlId == "Label_IslandCar"
+							|| Event.ControlId == "Label_CoastCar") {
+								switch(Event.ControlId) {
+									case "Label_DesertCar": { Net_Vehicle = "DesertCar"; }
+									case "Label_SnowCar": { Net_Vehicle = "SnowCar"; }
+									case "Label_RallyCar": { Net_Vehicle = "RallyCar"; }
+									case "Label_BayCar": { Net_Vehicle = "BayCar"; }
+									case "Label_IslandCar": { Net_Vehicle = "IslandCar"; }
+									case "Label_CoastCar": { Net_Vehicle = "CoastCar"; }
+								}
+								
+								Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^"",Net_NEM_Ghosts[4]^"",Net_NEM_Ghosts[5]^"",Net_NEM_Ghosts[6]^"",Net_NEM_Ghosts[7]^"",Net_NEM_Ghosts[8]^"",Net_NEM_Ghosts[9]^""];
 								Net_NEM_Replays = Replays;
 								
 								CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
@@ -489,7 +548,7 @@
 							
 							if(Event.Control.Parent.ControlId == "buttonResume") {
 								declare netwrite Text[] Net_NEM_ResumeInfo for UI;
-								Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^""];
+								Net_NEM_ResumeInfo = [Net_Vehicle,Net_NEM_Ghosts[0]^"",Net_NEM_Ghosts[1]^"",Net_NEM_Ghosts[2]^"",Net_NEM_Ghosts[3]^"",Net_NEM_Ghosts[4]^"",Net_NEM_Ghosts[5]^"",Net_NEM_Ghosts[6]^"",Net_NEM_Ghosts[7]^"",Net_NEM_Ghosts[8]^"",Net_NEM_Ghosts[9]^""];
 								Net_NEM_Replays = Replays;
 								CloseInGameMenu(CMlScriptIngame::EInGameMenuResult::Resume);
 							}
@@ -528,6 +587,42 @@
 									Net_NEM_Ghosts[3] = True;
 								else
 									Net_NEM_Ghosts[3] = False;
+							}
+							if(Event.ControlId == "Label_DesertCar_Ghost") {
+								if(Net_NEM_Ghosts[4] == False)
+									Net_NEM_Ghosts[4] = True;
+								else
+									Net_NEM_Ghosts[4] = False;
+							}
+							if(Event.ControlId == "Label_SnowCar_Ghost") {
+								if(Net_NEM_Ghosts[5] == False)
+									Net_NEM_Ghosts[5] = True;
+								else
+									Net_NEM_Ghosts[5] = False;
+							}
+							if(Event.ControlId == "Label_RallyCar_Ghost") {
+								if(Net_NEM_Ghosts[6] == False)
+									Net_NEM_Ghosts[6] = True;
+								else
+									Net_NEM_Ghosts[6] = False;
+							}
+							if(Event.ControlId == "Label_BayCar_Ghost") {
+								if(Net_NEM_Ghosts[7] == False)
+									Net_NEM_Ghosts[7] = True;
+								else
+									Net_NEM_Ghosts[7] = False;
+							}
+							if(Event.ControlId == "Label_IslandCar_Ghost") {
+								if(Net_NEM_Ghosts[8] == False)
+									Net_NEM_Ghosts[8] = True;
+								else
+									Net_NEM_Ghosts[8] = False;
+							}
+							if(Event.ControlId == "Label_CoastCar_Ghost") {
+								if(Net_NEM_Ghosts[9] == False)
+									Net_NEM_Ghosts[9] = True;
+								else
+									Net_NEM_Ghosts[9] = False;
 							}
 							
 							if(Event.Control.Parent.ControlId == "LeaderboardCanyon") {
@@ -582,15 +677,102 @@
 								(Page.GetFirstChild("LeaderboardCar") as CMlLabel).SetText("Lagoon Car");
 								Page.GetFirstChild("Frame_Leaderboard").Show();
 							}
+							
+							if(Event.ControlId == "Label_DesertCar_LB") {
+								CurrentCar = 4;
+
+								declare Zone = Zones[CurrentZone];
+								if(Zones[CurrentZone] != "Buddies") {
+									Zone = "World";
+									for(i,1,CurrentZone) Zone ^= "|"^Zones[i];
+								}
+
+								SendCustomEvent("Request_Leaderboard", [Cars[CurrentCar],Zone]);
+								(Page.GetFirstChild("LeaderboardCar") as CMlLabel).SetText("Desert Car");
+								Page.GetFirstChild("Frame_Leaderboard").Show();
+							}
+							if(Event.ControlId == "Label_SnowCar_LB") {
+								CurrentCar = 5;
+
+								declare Zone = Zones[CurrentZone];
+								if(Zones[CurrentZone] != "Buddies") {
+									Zone = "World";
+									for(i,1,CurrentZone) Zone ^= "|"^Zones[i];
+								}
+
+								SendCustomEvent("Request_Leaderboard", [Cars[CurrentCar],Zone]);
+								(Page.GetFirstChild("LeaderboardCar") as CMlLabel).SetText("Snow Car");
+								Page.GetFirstChild("Frame_Leaderboard").Show();
+							}
+							if(Event.ControlId == "Label_RallyCar_LB") {
+								CurrentCar = 6;
+
+								declare Zone = Zones[CurrentZone];
+								if(Zones[CurrentZone] != "Buddies") {
+									Zone = "World";
+									for(i,1,CurrentZone) Zone ^= "|"^Zones[i];
+								}
+
+								SendCustomEvent("Request_Leaderboard", [Cars[CurrentCar],Zone]);
+								(Page.GetFirstChild("LeaderboardCar") as CMlLabel).SetText("Rally Car");
+								Page.GetFirstChild("Frame_Leaderboard").Show();
+							}
+							if(Event.ControlId == "Label_BayCar_LB") {
+								CurrentCar = 7;
+
+								declare Zone = Zones[CurrentZone];
+								if(Zones[CurrentZone] != "Buddies") {
+									Zone = "World";
+									for(i,1,CurrentZone) Zone ^= "|"^Zones[i];
+								}
+
+								SendCustomEvent("Request_Leaderboard", [Cars[CurrentCar],Zone]);
+								(Page.GetFirstChild("LeaderboardCar") as CMlLabel).SetText("Bay Car");
+								Page.GetFirstChild("Frame_Leaderboard").Show();
+							}
+							if(Event.ControlId == "Label_IslandCar_LB") {
+								CurrentCar = 8;
+
+								declare Zone = Zones[CurrentZone];
+								if(Zones[CurrentZone] != "Buddies") {
+									Zone = "World";
+									for(i,1,CurrentZone) Zone ^= "|"^Zones[i];
+								}
+
+								SendCustomEvent("Request_Leaderboard", [Cars[CurrentCar],Zone]);
+								(Page.GetFirstChild("LeaderboardCar") as CMlLabel).SetText("Island Car");
+								Page.GetFirstChild("Frame_Leaderboard").Show();
+							}
+							if(Event.ControlId == "Label_CoastCar_LB") {
+								CurrentCar = 9;
+
+								declare Zone = Zones[CurrentZone];
+								if(Zones[CurrentZone] != "Buddies") {
+									Zone = "World";
+									for(i,1,CurrentZone) Zone ^= "|"^Zones[i];
+								}
+
+								SendCustomEvent("Request_Leaderboard", [Cars[CurrentCar],Zone]);
+								(Page.GetFirstChild("LeaderboardCar") as CMlLabel).SetText("Coast Car");
+								Page.GetFirstChild("Frame_Leaderboard").Show();
+							}
 						}
 					}
 				}
 
 				if(Map != Null) {
-					if(Map.MapInfo.AuthorLogin == "Nadeo")
-						Map.MapName = Map.MapInfo.CollectionName^TextLib::StripFormatting(Map.MapInfo.Name)^"."^Net_Vehicle;
-					else
-						Map.MapName = TextLib::StripFormatting(Map.MapInfo.Name)^"."^Net_Vehicle;
+					if(Net_Vehicle == "") {
+						if(IsCampaignMap(Map.MapInfo.MapUid))
+							Map.MapName = Map.MapInfo.CollectionName^TextLib::StripFormatting(Map.MapInfo.Name);
+						else
+							Map.MapName = TextLib::StripFormatting(Map.MapInfo.Name);
+					}
+					else {
+						if(IsCampaignMap(Map.MapInfo.MapUid))
+							Map.MapName = Map.MapInfo.CollectionName^TextLib::StripFormatting(Map.MapInfo.Name)^"."^Net_Vehicle;
+						else
+							Map.MapName = TextLib::StripFormatting(Map.MapInfo.Name)^"."^Net_Vehicle;
+					}						
 				}
 				
 				Page.GetFirstChild("LeaderboardLoading").RelativeRotation+=Period*0.2;
@@ -644,27 +826,58 @@
 				if(Net_Records[CurrentCar] != -1)
 					(Page.GetFirstChild("MyTime") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[CurrentCar],True)^TextLib::SubText(Net_Records[CurrentCar]^"",TextLib::Length(Net_Records[CurrentCar]^"")-1,1));
 				else
-					(Page.GetFirstChild("MyTime") as CMlLabel).SetText("---");
+					(Page.GetFirstChild("MyTime") as CMlLabel).SetText("-:--.---");
 				
-				if(Net_Records[0] == -1) ((Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
+				if(Net_Records[0] == -1) ((Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("-:--.---");
 				else {
 					((Page.GetFirstChild("SelectionCanyon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[0],True)^TextLib::SubText(""^Net_Records[0],TextLib::Length(""^Net_Records[0])-1,1));
 					Page.GetFirstChild("GhostCanyon").Show();
 				}
-				if(Net_Records[1] == -1) ((Page.GetFirstChild("SelectionStadium") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
+				if(Net_Records[1] == -1) ((Page.GetFirstChild("SelectionStadium") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("-:--.---");
 				else {
 					((Page.GetFirstChild("SelectionStadium") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[1],True)^TextLib::SubText(""^Net_Records[1],TextLib::Length(""^Net_Records[1])-1,1));
 					Page.GetFirstChild("GhostStadium").Show();
 				}
-				if(Net_Records[2] == -1) ((Page.GetFirstChild("SelectionValley") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
+				if(Net_Records[2] == -1) ((Page.GetFirstChild("SelectionValley") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("-:--.---");
 				else {
 					((Page.GetFirstChild("SelectionValley") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[2],True)^TextLib::SubText(""^Net_Records[2],TextLib::Length(""^Net_Records[2])-1,1));
 					Page.GetFirstChild("GhostValley").Show();
 				}
-				if(Net_Records[3] == -1) ((Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("---");
+				if(Net_Records[3] == -1) ((Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("-:--.---");
 				else {
 					((Page.GetFirstChild("SelectionLagoon") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[3],True)^TextLib::SubText(""^Net_Records[3],TextLib::Length(""^Net_Records[3])-1,1));
 					Page.GetFirstChild("GhostLagoon").Show();
+				}
+
+				if(Net_Records[4] == -1) (Page.GetFirstChild("Label_DesertCar_PB") as CMlLabel).SetText("-:--.---");
+				else {
+					(Page.GetFirstChild("Label_DesertCar_PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[4],True)^TextLib::SubText(""^Net_Records[4],TextLib::Length(""^Net_Records[4])-1,1));
+					Page.GetFirstChild("Label_DesertCar_Ghost").Show();
+				}
+				if(Net_Records[5] == -1) (Page.GetFirstChild("Label_SnowCar_PB") as CMlLabel).SetText("-:--.---");
+				else {
+					(Page.GetFirstChild("Label_SnowCar_PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[5],True)^TextLib::SubText(""^Net_Records[5],TextLib::Length(""^Net_Records[5])-1,1));
+					Page.GetFirstChild("Label_SnowCar_Ghost").Show();
+				}
+				if(Net_Records[6] == -1) (Page.GetFirstChild("Label_RallyCar_PB") as CMlLabel).SetText("-:--.---");
+				else {
+					(Page.GetFirstChild("Label_RallyCar_PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[6],True)^TextLib::SubText(""^Net_Records[6],TextLib::Length(""^Net_Records[6])-1,1));
+					Page.GetFirstChild("Label_RallyCar_Ghost").Show();
+				}
+				if(Net_Records[7] == -1) (Page.GetFirstChild("Label_BayCar_PB") as CMlLabel).SetText("-:--.---");
+				else {
+					(Page.GetFirstChild("Label_BayCar_PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[7],True)^TextLib::SubText(""^Net_Records[7],TextLib::Length(""^Net_Records[7])-1,1));
+					Page.GetFirstChild("Label_BayCar_Ghost").Show();
+				}
+				if(Net_Records[8] == -1) (Page.GetFirstChild("Label_IslandCar_PB") as CMlLabel).SetText("-:--.---");
+				else {
+					(Page.GetFirstChild("Label_IslandCar_PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[8],True)^TextLib::SubText(""^Net_Records[8],TextLib::Length(""^Net_Records[8])-1,1));
+					Page.GetFirstChild("Label_IslandCar_Ghost").Show();
+				}
+				if(Net_Records[9] == -1) (Page.GetFirstChild("Label_CoastCar_PB") as CMlLabel).SetText("-:--.---");
+				else {
+					(Page.GetFirstChild("Label_CoastCar_PB") as CMlLabel).SetText(TextLib::TimeToText(Net_Records[9],True)^TextLib::SubText(""^Net_Records[9],TextLib::Length(""^Net_Records[9])-1,1));
+					Page.GetFirstChild("Label_CoastCar_Ghost").Show();
 				}
 
 				declare netread Integer[] Net_Skillpoints for UI;
@@ -802,6 +1015,19 @@
 				else ((Page.GetFirstChild("GhostValley") as CMlFrame).GetFirstChild("B") as CMlLabel).SetText("$f00GHOST OFF");
 				if(Net_NEM_Ghosts[3]) ((Page.GetFirstChild("GhostLagoon") as CMlFrame).GetFirstChild("B") as CMlLabel).SetText("$0f0GHOST ON");
 				else ((Page.GetFirstChild("GhostLagoon") as CMlFrame).GetFirstChild("B") as CMlLabel).SetText("$f00GHOST OFF");
+
+				if(Net_NEM_Ghosts[4]) (Page.GetFirstChild("Label_DesertCar_Ghost") as CMlLabel).SetText("Ghost On");
+				else (Page.GetFirstChild("Label_DesertCar_Ghost") as CMlLabel).SetText("Ghost Off");
+				if(Net_NEM_Ghosts[5]) (Page.GetFirstChild("Label_SnowCar_Ghost") as CMlLabel).SetText("Ghost On");
+				else (Page.GetFirstChild("Label_SnowCar_Ghost") as CMlLabel).SetText("Ghost Off");
+				if(Net_NEM_Ghosts[6]) (Page.GetFirstChild("Label_RallyCar_Ghost") as CMlLabel).SetText("Ghost On");
+				else (Page.GetFirstChild("Label_RallyCar_Ghost") as CMlLabel).SetText("Ghost Off");
+				if(Net_NEM_Ghosts[7]) (Page.GetFirstChild("Label_BayCar_Ghost") as CMlLabel).SetText("Ghost On");
+				else (Page.GetFirstChild("Label_BayCar_Ghost") as CMlLabel).SetText("Ghost Off");
+				if(Net_NEM_Ghosts[8]) (Page.GetFirstChild("Label_IslandCar_Ghost") as CMlLabel).SetText("Ghost On");
+				else (Page.GetFirstChild("Label_IslandCar_Ghost") as CMlLabel).SetText("Ghost Off");
+				if(Net_NEM_Ghosts[9]) (Page.GetFirstChild("Label_CoastCar_Ghost") as CMlLabel).SetText("Ghost On");
+				else (Page.GetFirstChild("Label_CoastCar_Ghost") as CMlLabel).SetText("Ghost Off");
 				
 				
 				yield;

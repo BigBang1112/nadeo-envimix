@@ -1,1 +1,39 @@
 #RequireContext CTmMapType
+
+ValidationStatus = CMapType::ValidationStatus::NotValidable;
+
+//declare LayerMenu = UILayerCreate();
+//LayerMenu.ManialinkPage = "file://Media/Manialinks/GameMenuTest.xml";
+
+while(True) {
+		
+		// Manage events
+		foreach(Event in PendingEvents) {
+			switch(Event.Type) {
+				case CPluginEvent::Type::MapModified: {
+					
+				} 
+				case CPluginEvent::Type::StartValidation: {
+					log("kfasdfsafek");
+				} 
+				case CPluginEvent::Type::StartTest: {
+					
+					log("kgsdsgsdgdgsdgsdgsdgsddgek");
+					
+					
+					
+					while(True) {
+						yield;
+					}
+					
+					UILayerDestroyAll();
+				}
+				case CPluginEvent::Type::EditObjectives: {
+					
+				}
+			}
+		}
+		yield;
+	}
+	
+	

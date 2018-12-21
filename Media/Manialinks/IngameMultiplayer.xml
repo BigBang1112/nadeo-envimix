@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<label pos="0 30" z-index="0" size="40 6" text="-:--.---" halign="center" textfont="RajdhaniMono" textsize="4" valign="center2" textemboss="1" id="Label_CP_Time" hidden="1"/>
+<label pos="0 25" z-index="0" size="40 6" text="+-:--.---" halign="center" textfont="RajdhaniMono" textsize="2" valign="center2" textemboss="1" id="Label_CP_Difference" hidden="1"/>
+
+<script>
+	<!--
+		#Include "TextLib" as TextLib
+		#Include "MathLib" as MathLib
+		#Include "AnimLib" as AnimLib
+		
+		main() {	
+			declare SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
+			declare SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
+			declare SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+			declare SoundElectricShort = Audio.CreateSound("file://Media/Sounds/ElectricShort.ogg");
+
+			declare netread Integer Net_NEM_Start for UI;
+			declare Integer LastStart;
+
+			declare CP_Cross_Time = -1;
+			
+			declare Integer CounterWaypoint;
+
+			while(True) {
+				if(CP_Cross_Time != -1 && CP_Cross_Time + 2000 < Now) {
+					Page.GetFirstChild("Label_CP_Time").Hide();
+					Page.GetFirstChild("Label_CP_Difference").Hide();
+					CP_Cross_Time = -1;
+				}
+
+				if(Net_NEM_Start != LastStart) {
+					LastStart = Net_NEM_Start;
+					
+					CounterWaypoint = 0;
+				}
+			
+				foreach(Event,RaceEvents) {
+					switch(Event.Type) {
+						case CTmRaceClientEvent::EType::WayPoint: {
+							if(Event.Player.User.Login == LocalUser.Login) {
+								(Page.GetFirstChild("Label_CP_Time") as CMlLabel).SetText(TextLib::TimeToText(Event.LapTime,True)^TextLib::SubText(""^Event.LapTime,TextLib::Length(""^Event.LapTime)-1,1));
+								Page.GetFirstChild("Label_CP_Time").Show();
+
+								if(Event.Player.Score.BestRace.Checkpoints.count > 0 && Event.Player.Score.BestRace.Checkpoints.existskey(CounterWaypoint)) {
+									declare Text DifferencePrefix;
+									declare Integer Difference;
+									if(Event.IsEndRace)
+										Difference = Event.LapTime - Event.Player.Score.BestRace.Time;
+									else
+										Difference = Event.LapTime - Event.Player.Score.BestRace.Checkpoints[CounterWaypoint];
+									
+									if(Difference > 0)
+										DifferencePrefix = "$f00+";
+									else if(Difference < 0)
+										DifferencePrefix = "$00f";
+									else
+										DifferencePrefix = "$f0f";
+
+									(Page.GetFirstChild("Label_CP_Difference") as CMlLabel).SetText(DifferencePrefix^TextLib::TimeToText(Difference,True)^TextLib::SubText(""^Difference,TextLib::Length(""^Difference)-1,1));
+									Page.GetFirstChild("Label_CP_Difference").Show();
+								}
+								CounterWaypoint+=1;
+								CP_Cross_Time = Now;
+
+								if(Event.IsEndRace) {
+									CounterWaypoint = 0;
+								}
+								else if(Event.IsEndLap) {
+									CounterWaypoint = 0;
+								}
+								else {
+									
+								}
+
+								Audio.PlaySoundEvent(SoundElectricShort, 1.0);
+							}
+						}
+					}
+				}
+				
+				yield;
+			}
+		}
+	-->
+</script>
+</manialink>
