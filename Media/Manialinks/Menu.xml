@@ -107,7 +107,7 @@
 	<frame id="selection" z-index="1" hidden="1">
 		<quad pos="-140 70" z-index="-1" size="223 140" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur"/>
 		<quad pos="85 70" z-index="-1" size="55 140" bgcolor="FFFA" style="Bgs1" substyle="BgDialogBlur"/>
-		<quad pos="-160 89.8" z-index="-2" size="320 180" scriptevents="1"/>
+		<quad pos="-160 90" z-index="-2" size="320 180" scriptevents="1"/>
 		<quad pos="-140 70" z-index="0" size="3 140" bgcolor="444A"/>
 		<quad pos="88 70" z-index="0" size="49 12.5" bgcolor="444A"/>
 		<quad pos="88 57.5" z-index="0" size="49 127.5" bgcolor="000A"/>
@@ -139,6 +139,7 @@
 		</frame>
 		
 		<label pos="-130 64" z-index="1" size="70 10" text="Canyon" style="TextTitle3" textsize="3" valign="center" scale="1.25" id="labelEnvironment"/>
+		<label pos="35 63.9" z-index="1" size="80 10" text="Nadeo Envimix completion: 0.00%" style="TextTitle3" textsize="1" valign="center" scale="1.25" id="labelCompletion" halign="right"/>
 		
 		<frame pos="112.5 66" z-index="1">
 			<label pos="0 0" z-index="0" size="45 5" text="Menu" style="TextTitle3" halign="center" textsize="4"/>
@@ -426,9 +427,20 @@
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A01" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="60 -10" id="02">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
@@ -436,112 +448,267 @@
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="100 -10" id="03">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A03" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="140 -10" id="04">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A04" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="180 -10" id="05">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A05" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 				
 			<frame pos="20 -30" id="06">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A06" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="60 -30" id="07">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A07" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="100 -30" id="08">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A08" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="140 -30" id="09">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A09" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="180 -30" id="10">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A10" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 				
 			<frame pos="20 -50" id="11">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A11" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="60 -50" id="12">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A12" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="100 -50" id="13">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A13" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="140 -50" id="14">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A14" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 			<frame pos="180 -50" id="15">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
 				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
-				<label pos="15 -7.5" z-index="3" size="20 10" text="A15" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
+				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
-				<label pos="17 7" z-index="3" size="20 5" text="DESELECT" halign="right" textsize="0.5" style="TextButtonBig" scriptevents="1" id="Deselect" hidden="1"/>
+				<frame id="Unfinished" hidden="1" z-index="3">
+					<label pos="-20 9" size="20 2" text="CanyonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 7" size="20 2" text="StadiumCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 5" size="20 2" text="ValleyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 3" size="20 2" text="LagoonCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 1" size="20 2" text="DesertCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -1" size="20 2" text="RallyCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -3" size="20 2" text="SnowCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -5" size="20 2" text="BayCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -7" size="20 2" text="IslandCar" textsize="0.5" valign="center" textemboss="1"/>
+					<label pos="-20 -9" size="20 2" text="CoastCar" textsize="0.5" valign="center" textemboss="1"/>
+				</frame>
 			</frame>
 		</frame>
 		
@@ -670,17 +837,9 @@
 		<label pos="124 8.75" z-index="2" size="20 12" text="0" textsize="4" style="TextSPScoreBig" id="ActivityOverall" halign="center" valign="center2" textprefix="$58f"/>
 		
 		<frame id="buttonsSelection" z-index="1">
-			<frame pos="-24 63.5" id="buttonUnvalidated">
+			<frame pos="60 63.5" id="buttonUnfinished">
 				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
-				<label pos="0 0" z-index="1" size="40 8" text="Unvalidated" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
-			</frame>
-			<frame pos="18 63.5" id="buttonMostInteresting">
-				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
-				<label pos="0 0" z-index="1" size="40 8" text="Most Interesting" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
-			</frame>
-			<frame pos="60 63.5" id="buttonMostDifficult">
-				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
-				<label pos="0 0" z-index="1" size="40 8" text="Most Difficult" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
+				<label pos="0 0" z-index="1" size="40 8" text="Unfinished" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
 			</frame>
 		
 			<frame pos="112.5 51" id="buttonCanyon">
@@ -820,6 +979,8 @@
 		declare CXmlDocument MapBriefDocument;
 		
 		declare Text[Text][Text] Thumbnails;
+
+		declare Boolean Unfinished;
 		
 		declare Integer ProfileListOffset;
 		declare Text ProfileCar;
@@ -973,6 +1134,11 @@
 							
 							if(Control.ControlId == "name")
 								(Control as CMlLabel).SetText(Maps[i]);
+						}
+						else if(Control is CMlFrame) {
+							foreach(C,(Control as CMlFrame).Controls) {
+								(C as CMlLabel).Opacity = AnimLib::EaseOutCubic(Now - Time, 0.0, 1.0, 500);
+							}
 						}
 					}
 					Time+=20;
@@ -1483,6 +1649,20 @@
 						ScoreMgr.Map_GetSkillPoints(NullId, UID, "IslandCar"^"2")+
 						ScoreMgr.Map_GetSkillPoints(NullId, UID, "CoastCar"^"2"))^""
 					);
+
+					declare Text[] Crs;
+					foreach(C, Cars) if(ScoreMgr.Map_GetRecord(NullId, UID, C^"2") == -1 && DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].CollectionName^"Car" != C) Crs.add(C);
+
+					for(j,0,9) {
+						declare CarLabel = (((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Unfinished") as CMlFrame).Controls[j] as CMlLabel);
+						if(Crs.existskey(j)) {
+							CarLabel.Show();
+							CarLabel.SetText(Crs[j]);
+						}
+						else {
+							CarLabel.Hide();
+						}
+					}
 				}
 			}
 			if(Diff == 4) {
@@ -1501,6 +1681,20 @@
 						ScoreMgr.Map_GetSkillPoints(NullId, UID, "IslandCar"^"2")+
 						ScoreMgr.Map_GetSkillPoints(NullId, UID, "CoastCar"^"2"))^""
 					);
+
+					declare Text[] Crs;
+					foreach(C, Cars) if(ScoreMgr.Map_GetRecord(NullId, UID, C^"2") == -1 && DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].CollectionName^"Car" != C) Crs.add(C);
+
+					for(j,0,9) {
+						declare CarLabel = (((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Unfinished") as CMlFrame).Controls[j] as CMlLabel);
+						if(Crs.existskey(j)) {
+							CarLabel.Show();
+							CarLabel.SetText(Crs[j]);
+						}
+						else {
+							CarLabel.Hide();
+						}
+					}
 				}
 			}
 		}
@@ -1527,6 +1721,18 @@
 			(Page.GetFirstChild("SkillpointsLagoon") as CMlLabel).SetText(""^CampaignSkillpoints[3]);
 			
 			(Page.GetFirstChild("SkillpointsOverall") as CMlLabel).SetText(""^CampaignSkillpointsOverall);
+
+			declare Integer Finished;
+
+			foreach(Campaign,DataFileMgr.Campaigns) {
+				foreach(MapGroup,Campaign.MapGroups) {
+					foreach(MapInfo,MapGroup.MapInfos) {
+						if(ScoreMgr.Map_GetRecord(NullId, MapInfo.MapUid, Campaign.ScoreContext) != -1) Finished+=1;
+					}
+				}
+			}
+
+			(Page.GetFirstChild("labelCompletion") as CMlLabel).SetText("Nadeo Envimix completion: "^(Finished / 2340.0 * 100)^"%");
 		}
 		
 		Void OnEvent(CMlEvent _Event) {
@@ -2043,28 +2249,22 @@
 							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Hide();
 							Page.GetFirstChild("selection").Hide();
 						}
-						
-						if(E.Control.Parent.ControlId == "buttonMostInteresting") {
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Hide();
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameLeaderboards").Hide();
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Show();
-							Environment = "Most Interesting";
-							
-							// TUUU
-						}
-						if(E.Control.Parent.ControlId == "buttonMostDifficult") {
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Hide();
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameLeaderboards").Hide();
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Show();
-							Environment = "Most Difficult";
-							
-							// TUUU
-						}
-						if(E.Control.Parent.ControlId == "buttonUnvalidated") {
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign").Hide();
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameLeaderboards").Hide();
-							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Show();
-							Environment = "Unvalidated";
+
+						if(E.Control.Parent.ControlId == "buttonUnfinished") {
+							if(Unfinished) {
+								Unfinished = False;
+								foreach(Tile,(Page.GetFirstChild("maps") as CMlFrame).Controls) {
+									(Tile as CMlFrame).GetFirstChild("Skillpoints").Show();
+									(Tile as CMlFrame).GetFirstChild("Unfinished").Hide();
+								}
+							}
+							else {
+								Unfinished = True;
+								foreach(Tile,(Page.GetFirstChild("maps") as CMlFrame).Controls) {
+									(Tile as CMlFrame).GetFirstChild("Skillpoints").Hide();
+									(Tile as CMlFrame).GetFirstChild("Unfinished").Show();
+								}
+							}
 							
 							// TUUU
 						}
@@ -2564,6 +2764,11 @@
 			}
 			else {
 				(Button.GetFirstChild("button") as CMlQuad).BgColor = <1.0-V,1.0-V,1.0-V>;
+			}
+
+			if(Unfinished) {
+				((Page.GetFirstChild("buttonUnfinished") as CMlFrame).GetFirstChild("button") as CMlQuad).BgColor = <1.0,1.0,1.0>;
+				((Page.GetFirstChild("buttonUnfinished") as CMlFrame).GetFirstChild("text") as CMlLabel).TextColor = <0.0,0.0,0.0>;
 			}
 		}
 		
