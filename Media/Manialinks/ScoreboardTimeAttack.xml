@@ -153,114 +153,108 @@
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
 		<frame pos="-22 -20" hidden="1">
-			<label z-index="0" size="5 5" text="2)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
-			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
-			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
-			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
-		</frame>
-		<frame pos="-22 -24" hidden="1">
 			<label z-index="0" size="5 5" text="3)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -28" hidden="1">
+		<frame pos="-22 -24" hidden="1">
 			<label z-index="0" size="5 5" text="4)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -32" hidden="1">
+		<frame pos="-22 -28" hidden="1">
 			<label z-index="0" size="5 5" text="5)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -36" hidden="1">
+		<frame pos="-22 -32" hidden="1">
 			<label z-index="0" size="5 5" text="6)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -40" hidden="1">
+		<frame pos="-22 -36" hidden="1">
 			<label z-index="0" size="5 5" text="7)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -44" hidden="1">
+		<frame pos="-22 -40" hidden="1">
 			<label z-index="0" size="5 5" text="8)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -48" hidden="1">
+		<frame pos="-22 -44" hidden="1">
 			<label z-index="0" size="5 5" text="9)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -52" hidden="1">
+		<frame pos="-22 -48" hidden="1">
 			<label z-index="0" size="5 5" text="10)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
-			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
+			<label pos="4 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -56" hidden="1">
+		<frame pos="-22 -52" hidden="1">
 			<label z-index="0" size="5 5" text="11)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -60" hidden="1">
+		<frame pos="-22 -56" hidden="1">
 			<label z-index="0" size="5 5" text="12)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -64" hidden="1">
+		<frame pos="-22 -60" hidden="1">
 			<label z-index="0" size="5 5" text="13)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -68" hidden="1">
+		<frame pos="-22 -64" hidden="1">
 			<label z-index="0" size="5 5" text="14)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -72" hidden="1">
+		<frame pos="-22 -68" hidden="1">
 			<label z-index="0" size="5 5" text="15)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -76" hidden="1">
+		<frame pos="-22 -72" hidden="1">
 			<label z-index="0" size="5 5" text="16)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -80" hidden="1">
+		<frame pos="-22 -76" hidden="1">
 			<label z-index="0" size="5 5" text="17)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -84" hidden="1">
+		<frame pos="-22 -80" hidden="1">
 			<label z-index="0" size="5 5" text="18)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -88" hidden="1">
+		<frame pos="-22 -84" hidden="1">
 			<label z-index="0" size="5 5" text="19)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
 			<quad pos="-1" z-index="-1" size="46 4" bgcolor="FFFF" valign="center" style="Bgs1" substyle="BgMetalBar" id="Quad_Highlight" hidden="1"/>
 		</frame>
-		<frame pos="-22 -96" hidden="1">
+		<frame pos="-22 -88" hidden="1">
 			<label z-index="0" size="5 5" text="20)" valign="center2" textsize="2" pos="0 0" scriptevents="1" style="TextCardMedium" id="Label_Spectate" textemboss="1"/>
 			<label pos="5.75 -.35" z-index="0" size="23 5" text="" valign="center2" textsize="1" textfont="RajdhaniMono" style="TextCardMedium" id="Label_Name" scriptevents="1" textcolor="FFF" textemboss="1"/>
 			<label pos="43 -0.3" z-index="0" size="15 5" text="-:--.---" valign="center2" textsize="2" textfont="RajdhaniMono" style="TextCardMedium" halign="right" id="Label_Time" textemboss="1"/>
