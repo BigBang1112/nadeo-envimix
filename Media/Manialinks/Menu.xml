@@ -1533,10 +1533,11 @@
 			
 			log(DataFileMgr.Campaigns[C].CampaignId);
 			
-			SkillpointsSplittedLeaderboardRequest = ScoreMgr.CampaignLeaderBoard_GetPlayerList(NullId, DataFileMgr.Campaigns[C].CampaignId, Zone, True, 1, 10);
+			declare Ident MyUserID for LocalUser;
+			SkillpointsSplittedLeaderboardRequest = ScoreMgr.CampaignLeaderBoard_GetPlayerList(MyUserID, DataFileMgr.Campaigns[C].CampaignId, Zone, True, 1, 10);
 			
-			(Page.GetFirstChild("SkillpointsSplittedRank") as CMlLabel).SetText("Rank: "^ScoreMgr.CampaignLeaderBoard_GetPlayerRanking(NullId, DataFileMgr.Campaigns[C].CampaignId, Zone, True)^"/"^ScoreMgr.CampaignLeaderBoard_GetPlayerCount(DataFileMgr.Campaigns[C].CampaignId, Zone, True));
-			(Page.GetFirstChild("SkillpointsSplittedSP") as CMlLabel).SetText(""^ScoreMgr.Campaign_GetSkillPoints(NullId, DataFileMgr.Campaigns[C].CampaignId));
+			(Page.GetFirstChild("SkillpointsSplittedRank") as CMlLabel).SetText("Rank: "^ScoreMgr.CampaignLeaderBoard_GetPlayerRanking(MyUserID, DataFileMgr.Campaigns[C].CampaignId, Zone, True)^"/"^ScoreMgr.CampaignLeaderBoard_GetPlayerCount(DataFileMgr.Campaigns[C].CampaignId, Zone, True));
+			(Page.GetFirstChild("SkillpointsSplittedSP") as CMlLabel).SetText(""^ScoreMgr.Campaign_GetSkillPoints(MyUserID, DataFileMgr.Campaigns[C].CampaignId));
 			
 			if(SkillpointsSplittedLeaderboardRequest == Null) {
 				Page.GetFirstChild("SkillpointsSplittedLoading").Hide();
@@ -1556,7 +1557,8 @@
 				ZoneChosen^="|"^Zones[i];
 			}
 			
-			LeaderboardRequest = ScoreMgr.MapLeaderBoard_GetPlayerList(NullId, UID, Cars[CurrentCar]^"2", ZoneChosen, 1, 10);
+			declare Ident MyUserID for LocalUser;
+			LeaderboardRequest = ScoreMgr.MapLeaderBoard_GetPlayerList(MyUserID, UID, Cars[CurrentCar]^"2", ZoneChosen, 1, 10);
 			
 			if(LeaderboardRequest == Null) {
 				(Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("LeaderboardLoading").Hide();
@@ -1569,6 +1571,8 @@
 		
 		Void RefreshTrack() {		
 			declare Integer CampaignID;
+
+			declare Ident MyUserID for LocalUser;
 			
 			switch(Environment) {
 				case "Canyon": CampaignID = 0;
@@ -1579,8 +1583,8 @@
 		
 			declare UID = DataFileMgr.Campaigns[CampaignID].MapGroups[SelectDifficulty].MapInfos[SelectMap - 1].MapUid;
 			
-			declare Time = ScoreMgr.Map_GetRecord(NullId, UID, Cars[CurrentCar]^"2");
-			declare Skillpoints = ScoreMgr.Map_GetSkillPoints(NullId, UID, Cars[CurrentCar]^"2");
+			declare Time = ScoreMgr.Map_GetRecord(MyUserID, UID, Cars[CurrentCar]^"2");
+			declare Skillpoints = ScoreMgr.Map_GetSkillPoints(MyUserID, UID, Cars[CurrentCar]^"2");
 			
 			if(Time == -1) ((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText("-:--.---");
 			else ((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("PB") as CMlLabel).SetText(TextLib::TimeToText(Time,True)^TextLib::SubText(""^Time,TextLib::Length(""^Time)-1,1));
@@ -1596,6 +1600,8 @@
 		Void UpdateThumbnails() {
 			declare Mapz <=> (((Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("campaign") as CMlFrame).GetFirstChild("maps") as CMlFrame);
 			declare Diff = GetDifficulty();
+
+			declare Ident MyUserID for LocalUser;
 			
 			declare Integer CampaignID;
 		
@@ -1638,20 +1644,20 @@
 					declare UID = DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].MapUid;
 						
 					((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Skillpoints") as CMlLabel).SetText(
-						(ScoreMgr.Map_GetSkillPoints(NullId, UID, "CanyonCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "StadiumCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "ValleyCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "LagoonCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "DesertCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "SnowCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "RallyCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "BayCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "IslandCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "CoastCar"^"2"))^""
+						(ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "CanyonCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "StadiumCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "ValleyCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "LagoonCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "DesertCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "SnowCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "RallyCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "BayCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "IslandCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "CoastCar"^"2"))^""
 					);
 
 					declare Text[] Crs;
-					foreach(C, Cars) if(ScoreMgr.Map_GetRecord(NullId, UID, C^"2") == -1 && DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].CollectionName^"Car" != C) Crs.add(C);
+					foreach(C, Cars) if(ScoreMgr.Map_GetRecord(MyUserID, UID, C^"2") == -1 && DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].CollectionName^"Car" != C) Crs.add(C);
 
 					for(j,0,9) {
 						declare CarLabel = (((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Unfinished") as CMlFrame).Controls[j] as CMlLabel);
@@ -1670,20 +1676,20 @@
 					declare UID = DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].MapUid;
 						
 					((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Skillpoints") as CMlLabel).SetText(
-						(ScoreMgr.Map_GetSkillPoints(NullId, UID, "CanyonCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "StadiumCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "ValleyCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "LagoonCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "DesertCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "SnowCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "RallyCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "BayCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "IslandCar"^"2")+
-						ScoreMgr.Map_GetSkillPoints(NullId, UID, "CoastCar"^"2"))^""
+						(ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "CanyonCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "StadiumCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "ValleyCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "LagoonCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "DesertCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "SnowCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "RallyCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "BayCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "IslandCar"^"2")+
+						ScoreMgr.Map_GetSkillPoints(MyUserID, UID, "CoastCar"^"2"))^""
 					);
 
 					declare Text[] Crs;
-					foreach(C, Cars) if(ScoreMgr.Map_GetRecord(NullId, UID, C^"2") == -1 && DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].CollectionName^"Car" != C) Crs.add(C);
+					foreach(C, Cars) if(ScoreMgr.Map_GetRecord(MyUserID, UID, C^"2") == -1 && DataFileMgr.Campaigns[CampaignID].MapGroups[Diff].MapInfos[i-1].CollectionName^"Car" != C) Crs.add(C);
 
 					for(j,0,9) {
 						declare CarLabel = (((Mapz.Controls[i-1] as CMlFrame).GetFirstChild("Unfinished") as CMlFrame).Controls[j] as CMlLabel);
@@ -1703,6 +1709,8 @@
 			TrackOfTheDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/track_day.php");
 			MapBriefListRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_list_brief.php");
 			ActivityInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity_info.php?login="^LocalUser.Login);
+
+			declare Ident MyUserID for LocalUser;
 			
 			//Skillpoint refresh
 			
@@ -1710,7 +1718,7 @@
 			declare CampaignSkillpointsOverall = 0;
 			
 			for(i,0,3) {
-				for(j,0,9) CampaignSkillpoints[i] += ScoreMgr.Campaign_GetSkillPoints(NullId, DataFileMgr.Campaigns[j*4+i].CampaignId);
+				for(j,0,9) CampaignSkillpoints[i] += ScoreMgr.Campaign_GetSkillPoints(MyUserID, DataFileMgr.Campaigns[j*4+i].CampaignId);
 				
 				CampaignSkillpointsOverall += CampaignSkillpoints[i];
 			}
@@ -1727,7 +1735,7 @@
 			foreach(Campaign,DataFileMgr.Campaigns) {
 				foreach(MapGroup,Campaign.MapGroups) {
 					foreach(MapInfo,MapGroup.MapInfos) {
-						if(ScoreMgr.Map_GetRecord(NullId, MapInfo.MapUid, Campaign.ScoreContext) != -1) Finished+=1;
+						if(ScoreMgr.Map_GetRecord(MyUserID, MapInfo.MapUid, Campaign.ScoreContext) != -1) Finished+=1;
 					}
 				}
 			}
@@ -2273,8 +2281,10 @@
 							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameLeaderboards").Show();
 							(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("FrameMost").Hide();
 							Environment = "Leaderboards";
+
+							declare Ident MyUserID for LocalUser;
 							
-							GlobalLeaderboardRequest = ScoreMgr.CampaignLeaderBoard_GetPlayerList(NullId, DataFileMgr.Campaigns[16].CampaignId, "World", True, 1, 10);
+							GlobalLeaderboardRequest = ScoreMgr.CampaignLeaderBoard_GetPlayerList(MyUserID, "", "World", True, 1, 10);
 							//log(ScoreMgr.GlobalLeaderBoard_GetPlayerCount("World"));
 							
 							if(ActivityCampaignsRequest != Null) Http.Destroy(ActivityCampaignsRequest);

@@ -59,6 +59,7 @@ Void RefreshPersonalGhosts() {
 	
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
+	declare Ident MyUserID for Player.User;
 	
 	declare netwrite Integer Net_NEM_Start for UI;
 	declare netwrite Text[] Net_NEM_GhostCars for UI;
@@ -70,7 +71,7 @@ Void RefreshPersonalGhosts() {
 	Net_NEM_GhostTimes.clear();
 	Net_NEM_GhostCheckpoints.clear();
 	
-	for(i,0,9) GhostList[Cars[i]] = ScoreMgr.Map_GetRecordGhost(NullId,Map.MapInfo.MapUid,Cars[i]^"2");
+	for(i,0,9) GhostList[Cars[i]] = ScoreMgr.Map_GetRecordGhost(MyUserID,Map.MapInfo.MapUid,Cars[i]^"2");
 	for(i,0,9) wait(!GhostList[Cars[i]].IsProcessing);
 	
 	RaceGhost_RemoveAll();
@@ -104,6 +105,7 @@ Void RefreshPersonalRecords() {
 
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
+	declare Ident MyUserID for Player.User;
 	
 	declare netwrite Integer[] Net_Records for UI;
 	declare netwrite Integer[] Net_Skillpoints for UI;
@@ -111,8 +113,8 @@ Void RefreshPersonalRecords() {
 	Net_Skillpoints.clear();
 	
 	for(i,0,9) {
-		Net_Records.add(ScoreMgr.Map_GetRecord(Player.Id, Map.MapInfo.MapUid, Cars[i]^"2"));
-		Net_Skillpoints.add(ScoreMgr.Map_GetSkillPoints(Player.Id, Map.MapInfo.MapUid, Cars[i]^"2"));
+		Net_Records.add(ScoreMgr.Map_GetRecord(MyUserID, Map.MapInfo.MapUid, Cars[i]^"2"));
+		Net_Skillpoints.add(ScoreMgr.Map_GetSkillPoints(MyUserID, Map.MapInfo.MapUid, Cars[i]^"2"));
 	}
 }
 
@@ -266,12 +268,18 @@ Void Init() {
 Boolean Start() {
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
+	declare Ident MyUserID for Player.User;
+	
+	/*declare Rank = ScoreMgr.MapLeaderBoard_GetPlayerRanking(Player.Id, Map.MapInfo.MapUid, "ValleyCar2", "World");
+	declare Count = ScoreMgr.MapLeaderBoard_GetPlayerCount(Map.MapInfo.MapUid, "ValleyCar2", "World");
+	log("RANK:" ^ Rank);
+	log("SKILLPOINTS:" ^ (343452-1)*100/1);*/
 	
 	declare Cars = ["CanyonCar","StadiumCar","ValleyCar","LagoonCar", "DesertCar", "SnowCar", "RallyCar", "BayCar", "IslandCar", "CoastCar"];
 
 	RefreshPersonalRecords();
 	
-	for(i,0,9) GhostList[Cars[i]] = ScoreMgr.Map_GetRecordGhost(Player.Id,Map.MapInfo.MapUid,Cars[i]^"2");
+	for(i,0,9) GhostList[Cars[i]] = ScoreMgr.Map_GetRecordGhost(MyUserID,Map.MapInfo.MapUid,Cars[i]^"2");
 	for(i,0,9) wait(!GhostList[Cars[i]].IsProcessing);
 	
 	Zones = TextLib::Split("|",Player.User.ZonePath);
@@ -325,6 +333,7 @@ Void Event(CTmModeEvent _Event) {
 Void EventUI(CUIConfigEvent _Event) {
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
+	declare Ident MyUserID for Player.User;
 	
 	switch(_Event.CustomEventType) {
 		case "Request_Leaderboard": {
@@ -351,10 +360,10 @@ Void EventUI(CUIConfigEvent _Event) {
 				else if(Map.MapInfo.CollectionName == "Valley" && _Event.CustomEventData[0] == "LagoonCar") C = 14;
 				else if(Map.MapInfo.CollectionName == "Lagoon" && _Event.CustomEventData[0] == "LagoonCar") C = 15;
 				
-				LeaderboardBuddiesRequest = ScoreMgr.Campaign_GetBuddiesMapRecord(Player.Id, DataFileMgr.Campaigns[C].CampaignId, Map.MapInfo.MapUid);
+				LeaderboardBuddiesRequest = ScoreMgr.Campaign_GetBuddiesMapRecord(MyUserID, DataFileMgr.Campaigns[C].CampaignId, Map.MapInfo.MapUid);
 			}
 			else {
-				LeaderboardRequest = ScoreMgr.MapLeaderBoard_GetPlayerList(Player.Id, Map.MapInfo.MapUid, _Event.CustomEventData[0]^"2", _Event.CustomEventData[1], 1, 10);
+				LeaderboardRequest = ScoreMgr.MapLeaderBoard_GetPlayerList(MyUserID, Map.MapInfo.MapUid, _Event.CustomEventData[0]^"2", _Event.CustomEventData[1], 1, 10);
 				if(LeaderboardRequest == Null)
 					Net_NEM_EventResult_Leaderboard_State = "ERROR";
 			}
@@ -430,9 +439,10 @@ Void EventScore() {
 Void Loop() {
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
+	declare Ident MyUserID for Player.User;
 		
 	declare netwrite Text Net_NEM_Test_State for UI;
-	Net_NEM_Test_State = ""^ScoreMgr.ScoreStatus_GetLocalStatus(NullId);
+	Net_NEM_Test_State = ""^ScoreMgr.ScoreStatus_GetLocalStatus(MyUserID);
 	
 	declare netread Text[] Net_NEM_ResumeInfo for UI;
 	declare netread Text[Text] Net_NEM_Replays for UI;
@@ -447,7 +457,7 @@ Void Loop() {
 				
 		if(Player.Score.BestRace.Time == -1) {
 			log("First finish");
-			SetRecordRequest = ScoreMgr.Map_SetNewRecord(Player.Id, Map.MapInfo.MapUid, Vehicle^"2", Ghost);
+			SetRecordRequest = ScoreMgr.Map_SetNewRecord(MyUserID, Map.MapInfo.MapUid, Vehicle^"2", Ghost);
 			if(SetRecordRequest != Null) {
 				wait(!SetRecordRequest.IsProcessing);
 				if(SetRecordRequest.HasSucceeded) {
@@ -458,7 +468,7 @@ Void Loop() {
 			}
 		}
 		else if(Ghost.Result.Time < Player.Score.BestRace.Time) {
-			SetRecordRequest = ScoreMgr.Map_SetNewRecord(Player.Id, Map.MapInfo.MapUid, Vehicle^"2", Ghost);
+			SetRecordRequest = ScoreMgr.Map_SetNewRecord(MyUserID, Map.MapInfo.MapUid, Vehicle^"2", Ghost);
 			if(SetRecordRequest != Null) {
 				wait(!SetRecordRequest.IsProcessing);
 				if(SetRecordRequest.HasSucceeded) {
@@ -482,7 +492,7 @@ Void Loop() {
 		
 		declare netwrite Text[Text][] Net_NEM_Leaderboard for UI;
 		Net_NEM_Leaderboard.clear();
-		declare LeaderboardScore = ScoreMgr.MapLeaderBoard_GetPlayerList(Player.Id, Map.MapInfo.MapUid, Vehicle^"2", "World", 1, 10);
+		declare LeaderboardScore = ScoreMgr.MapLeaderBoard_GetPlayerList(MyUserID, Map.MapInfo.MapUid, Vehicle^"2", "World", 1, 10);
 		
 		if(Zones.count > 0) {
 			declare netwrite Integer Net_NEM_FirstFinish_PlayerCount for UI;
@@ -514,7 +524,7 @@ Void Loop() {
 		
 		while(!Net_NEM_Continue) {
 			declare netwrite Integer Net_NEM_Skillpoints for UI;
-			Net_NEM_Skillpoints = ScoreMgr.Map_GetSkillPoints(Player.Id, Map.MapInfo.MapUid, Vehicle^"2");
+			Net_NEM_Skillpoints = ScoreMgr.Map_GetSkillPoints(MyUserID, Map.MapInfo.MapUid, Vehicle^"2");
 			if(LeaderboardScore != Null) {
 				if(LeaderboardScore.HasSucceeded) {
 					foreach(Info,LeaderboardScore.LeaderBoardInfo)

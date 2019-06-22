@@ -51,7 +51,10 @@ Void UpdateServerInfo() {
 	else LayerCustomEvent(MainMenuLayer, "SERVER_INFO", ["OFFLINE"]);
 }
 
-main() {	
+main() {
+	declare Ident MyUserID for LocalUser;
+	MyUserID = UserMgr.MainUser.Id;
+
 	declare ProceedLayer = UILayerCreate();
 	
 	declare ServerTimer = Now;
