@@ -12,7 +12,8 @@
 	#Setting S_ReplayUrl ""
 	#Setting S_Car ""
 
-	main() {			
+	main() {
+			wait(Players.count>0);	
 			ItemList_Begin();
 			
 			declare CanyonCar = ItemList_Add("CanyonCar");

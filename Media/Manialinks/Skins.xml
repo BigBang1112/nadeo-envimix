@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<frame>
+	<frame pos="0 60">
+		<quad pos="-50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Reflective.dds"/>
+		<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar"/>
+		<quad pos="-30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/Reflective.dds"/>
+		<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar"/>
+		<quad pos="-10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Reflective.dds"/>
+		<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar"/>
+		<quad pos="10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/Reflective.dds"/>
+		<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar"/>
+		<quad pos="30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/Reflective.dds"/>
+		<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar"/>
+		<quad pos="50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/Reflective.dds"/>
+		<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar"/>
+	</frame>
+	<frame pos="0 40">
+		<quad pos="-50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Blackdevil.dds"/>
+		<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar"/>
+		<quad pos="-30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/DarkVelvet.dds"/>
+		<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar"/>
+		<quad pos="-10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Panda.dds"/>
+		<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar"/>
+		<quad pos="10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Black.dds"/>
+		<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar"/>
+		<quad pos="30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Black.dds"/>
+		<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar"/>
+		<quad pos="50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Black.dds"/>
+		<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar"/>
+	</frame>
+	<frame pos="0 20">
+		<quad pos="-50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Lagoonracer.dds"/>
+		<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar"/>
+		<quad pos="-30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/DeepSeaKing.dds"/>
+		<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar"/>
+		<quad pos="-10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/BubbleCat.dds"/>
+		<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar"/>
+		<quad pos="10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Blue.dds"/>
+		<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar"/>
+		<quad pos="30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Blue.dds"/>
+		<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar"/>
+		<quad pos="50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Blue.dds"/>
+		<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar"/>
+	</frame>
+	<frame pos="0 0">
+		<quad pos="-50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Toggleindustry.dds"/>
+		<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar"/>
+		<quad pos="-30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/RoadManns.dds"/>
+		<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar"/>
+		<quad pos="-10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Jungle.dds"/>
+		<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar"/>
+		<quad pos="10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Green.dds"/>
+		<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar"/>
+		<quad pos="30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Green.dds"/>
+		<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar"/>
+		<quad pos="50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Green.dds"/>
+		<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar"/>
+	</frame>
+	<frame pos="0 -20">
+		<quad pos="-50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Funkyrace.dds"/>
+		<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar"/>
+		<quad pos="-30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/PurpleQueen.dds"/>
+		<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar"/>
+		<quad pos="-10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Dragon.dds"/>
+		<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar"/>
+		<quad pos="10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Red.dds"/>
+		<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar"/>
+		<quad pos="30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Red.dds"/>
+		<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar"/>
+		<quad pos="50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Red.dds"/>
+		<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar"/>
+	</frame>
+	<frame pos="0 -40">
+		<quad pos="-50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Silvermania.dds"/>
+		<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar"/>
+		<quad pos="-30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/MadCow.dds"/>
+		<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar"/>
+		<quad pos="-10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Japon.dds"/>
+		<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar"/>
+		<quad pos="10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_White.dds"/>
+		<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar"/>
+		<quad pos="30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_White.dds"/>
+		<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar"/>
+		<quad pos="50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_White.dds"/>
+		<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar"/>
+	</frame>
+	<frame pos="0 -60">
+		<quad pos="-50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Default.dds"/>
+		<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar"/>
+		<quad pos="-30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/SilverBird.dds"/>
+		<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar"/>
+		<quad pos="-10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Cerisier.dds"/>
+		<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar"/>
+		<quad pos="10 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Yellow.dds"/>
+		<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar"/>
+		<quad pos="30 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Yellow.dds"/>
+		<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar"/>
+		<quad pos="50 0" z-index="0" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Yellow.dds"/>
+		<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar"/>
+	</frame>
+</frame>
+<quad pos="140 -70" z-index="0" size="20 20" bgcolor="FFFA" halign="center" valign="center" style="Icons128x128_1" substyle="BackFocusable" scriptevents="1" rot="180" id="QUAD_SKINS_BACK"/>
+</manialink>

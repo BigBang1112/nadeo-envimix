@@ -35,18 +35,16 @@
 		</frame>
 		<quad pos="55 20" z-index="101" size="8 8" bgcolor="FFFA" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Help" scriptevents="1" id="Quad_Help_Menu"/>
 		<quad pos="0 5" z-index="0" size="120 120" halign="center" valign="center" scriptevents="1" id="block" hidden="1"/>
-		<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" manialink="nadeoenvimix" id="logo"/>
-		<label pos="0 25" z-index="1" size="100 10" text="UNITED UPDATE" halign="center" valign="center2" style="TextTitle3" id="update" textemboss="1" manialink="nadeoenvimix?news=ServerUpdate" textprefix="$fff"/>
+		<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" id="logo"/>
+		<label pos="0 25" z-index="1" size="100 10" text="1 YEAR OF NADEO ENVIMIX" halign="center" valign="center2" style="TextTitle3" id="update" textemboss="1" textprefix="$fff"/>
 		<frame pos="0 -52" id="footer" scale="1">
 			<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3" style="Bgs1" substyle="BgDialogBlur"/>
 			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextButtonBig" pos="0 -3" manialink="nadeoenvimix?about"/>
 		</frame>
 		
-		<label pos="-58 -40" z-index="1" size="20 5" text="REPORT A BUG" valign="center2" textsize=".5" style="TextCardMedium" halign="right" textemboss="1" url="maniaplanet://#mailto=bigbang1112"/>
 		<label pos="-58 -45" z-index="1" size="20 5" text="PRIVACY POLICY" valign="center2" textsize=".5" style="TextCardMedium" manialink="nadeoenvimix?privacy" halign="right" textemboss="1" translate="1"/>
 		
-		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur"/>	
-		<label pos="55 15" z-index="0" size="20 5" text="News" style="CardButtonSmallS" valign="center" rot="90" manialink="nadeoenvimix?news" translate="1"/>	
+		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur"/>
 		<frame id="buttons">
 			<frame pos="0 5" id="buttonPlay">
 				<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
@@ -56,9 +54,9 @@
 				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button" action="menu_editors"/>
 				<label pos="0 0" z-index="1" size="48 10" text="Replays" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
-			<frame pos="-26 -24" id="buttonCredits">
+			<frame pos="-26 -24" id="buttonSkins">
 				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
-				<label pos="0 0" z-index="1" size="48 10" text="Credits" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
+				<label pos="0 0" z-index="1" size="48 10" text="Skins" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
 			<frame pos="-26 -40" id="buttonExit">
 				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
@@ -425,7 +423,7 @@
 		<frame pos="-135 50" id="maps" z-index="1">
 			<frame pos="20 -10" id="01">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -444,7 +442,7 @@
 			</frame>
 			<frame pos="60 -10" id="02">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -463,7 +461,7 @@
 			</frame>
 			<frame pos="100 -10" id="03">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -482,7 +480,7 @@
 			</frame>
 			<frame pos="140 -10" id="04">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -501,7 +499,7 @@
 			</frame>
 			<frame pos="180 -10" id="05">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -521,7 +519,7 @@
 				
 			<frame pos="20 -30" id="06">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -540,7 +538,7 @@
 			</frame>
 			<frame pos="60 -30" id="07">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -559,7 +557,7 @@
 			</frame>
 			<frame pos="100 -30" id="08">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -578,7 +576,7 @@
 			</frame>
 			<frame pos="140 -30" id="09">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -597,7 +595,7 @@
 			</frame>
 			<frame pos="180 -30" id="10">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -617,7 +615,7 @@
 				
 			<frame pos="20 -50" id="11">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -636,7 +634,7 @@
 			</frame>
 			<frame pos="60 -50" id="12">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -655,7 +653,7 @@
 			</frame>
 			<frame pos="100 -50" id="13">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -674,7 +672,7 @@
 			</frame>
 			<frame pos="140 -50" id="14">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -693,7 +691,7 @@
 			</frame>
 			<frame pos="180 -50" id="15">
 				<quad z-index="0" size="40 20" image="file://Media/Thumbnails/NoThumbnail.jpg" opacity=".9" halign="center" valign="center" id="Thumbnail"/>
-				<quad z-index="1" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
+				<quad z-index="2" size="40 20" bgcolor="FFFF" halign="center" valign="center" opacity=".25" id="hover" scriptevents="1"/>
 				<quad z-index="2" size="40 20" bgcolor="FFFA" style="Bgs1" substyle="BgColorContour" id="select" hidden="1" halign="center" valign="center"/>
 				<label pos="15 -7.5" z-index="3" size="20 10" text="A02" valign="bottom" style="TextTitle3" halign="right" textsize="4" id="name" textemboss="1"/>
 				<label pos="-17 7" z-index="3" size="20 5" text="000000" style="TextSPScoreBig" textsize="2" id="Skillpoints" textemboss="1"/>
@@ -956,6 +954,109 @@
 			</frame>
 		</frame>
 	</frame>
+	<frame id="Skins" z-index="1" hidden="1">
+		<frame id="SkinList">
+			<frame pos="0 60">
+				<quad pos="-50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Reflective.dds"/>
+				<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar" data-skin="Reflective"/>
+				<quad pos="-30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/Reflective.dds"/>
+				<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar" data-skin="Reflective"/>
+				<quad pos="-10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Reflective.dds"/>
+				<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar" data-skin="Reflective"/>
+				<quad pos="10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/Reflective.dds"/>
+				<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar" data-skin="Reflective"/>
+				<quad pos="30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/Reflective.dds"/>
+				<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar" data-skin="Reflective"/>
+				<quad pos="50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/Reflective.dds"/>
+				<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar" data-skin="Reflective"/>
+			</frame>
+			<frame pos="0 40">
+				<quad pos="-50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Blackdevil.dds"/>
+				<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar" data-skin="Blackdevil"/>
+				<quad pos="-30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/DarkVelvet.dds"/>
+				<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar" data-skin="DarkVelvet"/>
+				<quad pos="-10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Panda.dds"/>
+				<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar" data-skin="Panda"/>
+				<quad pos="10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Black.dds"/>
+				<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar" data-skin="U_Black"/>
+				<quad pos="30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Black.dds"/>
+				<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar" data-skin="U_Black"/>
+				<quad pos="50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Black.dds"/>
+				<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar" data-skin="U_Black"/>
+			</frame>
+			<frame pos="0 20">
+				<quad pos="-50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Lagoonracer.dds"/>
+				<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar" data-skin="Lagoonracer"/>
+				<quad pos="-30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/DeepSeaKing.dds"/>
+				<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar" data-skin="DeepSeaKing"/>
+				<quad pos="-10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/BubbleCat.dds"/>
+				<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar" data-skin="BubbleCat"/>
+				<quad pos="10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Blue.dds"/>
+				<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar" data-skin="U_Blue"/>
+				<quad pos="30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Blue.dds"/>
+				<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar" data-skin="U_Blue"/>
+				<quad pos="50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Blue.dds"/>
+				<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar" data-skin="U_Blue"/>
+			</frame>
+			<frame pos="0 0">
+				<quad pos="-50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Toggleindustry.dds"/>
+				<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar" data-skin="Toggleindustry"/>
+				<quad pos="-30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/RoadManns.dds"/>
+				<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar" data-skin="RoadManns"/>
+				<quad pos="-10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Jungle.dds"/>
+				<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar" data-skin="Jungle"/>
+				<quad pos="10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Green.dds"/>
+				<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar" data-skin="U_Green"/>
+				<quad pos="30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Green.dds"/>
+				<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar" data-skin="U_Green"/>
+				<quad pos="50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Green.dds"/>
+				<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar" data-skin="U_Green"/>
+			</frame>
+			<frame pos="0 -20">
+				<quad pos="-50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Funkyrace.dds"/>
+				<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar" data-skin="Funkyrace"/>
+				<quad pos="-30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/PurpleQueen.dds"/>
+				<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar" data-skin="PurpleQueen"/>
+				<quad pos="-10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Dragon.dds"/>
+				<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar" data-skin="Dragon"/>
+				<quad pos="10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Red.dds"/>
+				<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar" data-skin="U_Red"/>
+				<quad pos="30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Red.dds"/>
+				<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar" data-skin="U_Red"/>
+				<quad pos="50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Red.dds"/>
+				<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar" data-skin="U_Red"/>
+			</frame>
+			<frame pos="0 -40">
+				<quad pos="-50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Silvermania.dds"/>
+				<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar" data-skin="Silvermania"/>
+				<quad pos="-30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/MadCow.dds"/>
+				<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar" data-skin="MadCow"/>
+				<quad pos="-10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Japon.dds"/>
+				<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar" data-skin="Japon"/>
+				<quad pos="10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_White.dds"/>
+				<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar" data-skin="U_White"/>
+				<quad pos="30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_White.dds"/>
+				<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar" data-skin="U_White"/>
+				<quad pos="50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_White.dds"/>
+				<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar" data-skin="U_White"/>
+			</frame>
+			<frame pos="0 -60">
+				<quad pos="-50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/DesertCar/Default.dds"/>
+				<quad pos="-50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadDesertCar" data-skin="Default"/>
+				<quad pos="-30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/RallyCar/SilverBird.dds"/>
+				<quad pos="-30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadRallyCar" data-skin="SilverBird"/>
+				<quad pos="-10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/SnowCar/Cerisier.dds"/>
+				<quad pos="-10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadSnowCar" data-skin="Cerisier"/>
+				<quad pos="10 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/BayCar/U_Yellow.dds"/>
+				<quad pos="10 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadBayCar" data-skin="U_Yellow"/>
+				<quad pos="30 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/IslandCar/U_Yellow.dds"/>
+				<quad pos="30 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadIslandCar" data-skin="U_Yellow"/>
+				<quad pos="50 0" z-index="1" size="18 18" halign="center" valign="center" image="file://Media/UnitedCars/CoastCar/U_Yellow.dds"/>
+				<quad pos="50 0" z-index="0" size="20 20" halign="center" valign="center" style="Bgs1InRace" substyle="BgCardInventoryItem" scriptevents="1" id="QuadCoastCar" data-skin="U_Yellow"/>
+			</frame>
+		</frame>
+		<quad pos="140 -70" z-index="0" size="20 20" bgcolor="FFFA" halign="center" valign="center" style="Icons128x128_1" substyle="BackFocusable" scriptevents="1" rot="180" id="QUAD_SKINS_BACK"/>
+	</frame>
 	<script>
 	<!--
 		#Include "TextLib" as TextLib
@@ -1068,7 +1169,7 @@
 			
 			Page.GetFirstChild("buttonPlay").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 300, 0.0, 1.0, 500);
 			Page.GetFirstChild("buttonReplays").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 400, 0.0, 1.0, 500);
-			Page.GetFirstChild("buttonCredits").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 500, 0.0, 1.0, 500);
+			Page.GetFirstChild("buttonSkins").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 500, 0.0, 1.0, 500);
 			Page.GetFirstChild("buttonExit").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 600, 0.0, 1.0, 500);
 			Page.GetFirstChild("buttonTrack").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 400, 0.0, 1.0, 500);
 		}
@@ -1742,6 +1843,24 @@
 
 			(Page.GetFirstChild("labelCompletion") as CMlLabel).SetText("Nadeo Envimix completion: "^(Finished / 2340.0 * 100)^"%");
 		}
+
+		Void UpdateSkins() {
+			declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+			foreach(Frame, (Page.GetFirstChild("SkinList") as CMlFrame).Controls) {
+				foreach(Control, (Frame as CMlFrame).Controls) {
+					declare SkinName = Control.DataAttributeGet("skin");
+					(Control as CMlQuad).Substyle = "BgCardInventoryItem";
+					if(SkinName != "") {
+						if(Control.ControlId == "QuadDesertCar" && PERSISTENT_NEM_CAR_SKINS["DesertCar"] == SkinName) (Control as CMlQuad).Substyle = "BgCard";
+						if(Control.ControlId == "QuadRallyCar" && PERSISTENT_NEM_CAR_SKINS["RallyCar"] == SkinName) (Control as CMlQuad).Substyle = "BgCard";
+						if(Control.ControlId == "QuadSnowCar" && PERSISTENT_NEM_CAR_SKINS["SnowCar"] == SkinName) (Control as CMlQuad).Substyle = "BgCard";
+						if(Control.ControlId == "QuadBayCar" && PERSISTENT_NEM_CAR_SKINS["BayCar"] == SkinName) (Control as CMlQuad).Substyle = "BgCard";
+						if(Control.ControlId == "QuadIslandCar" && PERSISTENT_NEM_CAR_SKINS["IslandCar"] == SkinName) (Control as CMlQuad).Substyle = "BgCard";
+						if(Control.ControlId == "QuadCoastCar" && PERSISTENT_NEM_CAR_SKINS["CoastCar"] == SkinName) (Control as CMlQuad).Substyle = "BgCard";
+					}
+				}
+			}
+		}
 		
 		Void OnEvent(CMlEvent _Event) {
 			declare E <=> _Event;
@@ -1918,6 +2037,37 @@
 					}
 				}
 				case CMlEvent::Type::MouseClick: {
+					if(E.ControlId == "QuadDesertCar") {
+						declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+						PERSISTENT_NEM_CAR_SKINS["DesertCar"] = E.Control.DataAttributeGet("skin");
+						UpdateSkins();
+					}
+					if(E.ControlId == "QuadRallyCar") {
+						declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+						PERSISTENT_NEM_CAR_SKINS["RallyCar"] = E.Control.DataAttributeGet("skin");
+						UpdateSkins();
+					}
+					if(E.ControlId == "QuadSnowCar") {
+						declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+						PERSISTENT_NEM_CAR_SKINS["SnowCar"] = E.Control.DataAttributeGet("skin");
+						UpdateSkins();
+					}
+					if(E.ControlId == "QuadBayCar") {
+						declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+						PERSISTENT_NEM_CAR_SKINS["BayCar"] = E.Control.DataAttributeGet("skin");
+						UpdateSkins();
+					}
+					if(E.ControlId == "QuadIslandCar") {
+						declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+						PERSISTENT_NEM_CAR_SKINS["IslandCar"] = E.Control.DataAttributeGet("skin");
+						UpdateSkins();
+					}
+					if(E.ControlId == "QuadCoastCar") {
+						declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
+						PERSISTENT_NEM_CAR_SKINS["CoastCar"] = E.Control.DataAttributeGet("skin");
+						UpdateSkins();
+					}
+
 					if(E.ControlId == "SkillpointsSplittedCampaignNext") {
 						if(SkillpointsSplittedCampaign == Campaigns.count-1)
 							SkillpointsSplittedCampaign = 0;
@@ -1989,6 +2139,15 @@
 					if(E.ControlId == "Time") {
 						declare Url = E.Control.Parent.DataAttributeGet("ReplayUrl");
 						SendCustomEvent("GET_LEADERBOARD_REPLAY", [Environment, ""^SelectDifficulty, ""^SelectMap, ""^Cars[CurrentCar], Url]);
+					}
+					
+					if(E.ControlId == "QUAD_SKINS_BACK") {							
+						Page.GetFirstChild("menu").DataAttributeSet("state","shown");
+						Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
+						Page.GetFirstChild("menu").DataAttributeSet("action","");
+							
+						(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Hide();
+						Page.GetFirstChild("Skins").Hide();
 					}
 					
 					if(E.Control.Parent.ControlId == "Profile") {
@@ -2227,14 +2386,14 @@
 							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
 							Page.GetFirstChild("selection").Show();
 						}
-						if(E.Control.Parent.ControlId == "buttonCredits") {	
-							/*Audio.PlaySoundEvent(SoundElectric, 1.0);
+						if(E.Control.Parent.ControlId == "buttonSkins") {	
+							Audio.PlaySoundEvent(SoundElectric, 1.0);
 							Page.GetFirstChild("menu").DataAttributeSet("state","hidden");
 							Page.GetFirstChild("menu").DataAttributeSet("time",Now^"");
 							Page.GetFirstChild("menu").DataAttributeSet("action","");
 				
 							(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("block").Show();
-							Page.GetFirstChild("Profile").Show();*/
+							Page.GetFirstChild("Skins").Show();
 						}
 						if(E.Control.Parent.ControlId == "buttonExit") {
 							Audio.PlaySoundEvent(SoundElectric, 1.0);
@@ -2483,18 +2642,13 @@
 			DataFileMgr.TaskResult_Release(TaskSkinsLagoonCar.Id);
 			
 			declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for LocalUser;
-			if(PERSISTENT_NEM_CAR_SKINS.count > 0) {
-				((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("LabelCanyonCar") as CMlLabel).SetText(PERSISTENT_NEM_CAR_SKINS["CanyonCar"]);
-				((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("LabelStadiumCar") as CMlLabel).SetText(PERSISTENT_NEM_CAR_SKINS["StadiumCar"]);
-				((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("LabelValleyCar") as CMlLabel).SetText(PERSISTENT_NEM_CAR_SKINS["ValleyCar"]);
-				((Page.GetFirstChild("Profile") as CMlFrame).GetFirstChild("LabelLagoonCar") as CMlLabel).SetText(PERSISTENT_NEM_CAR_SKINS["LagoonCar"]);
-			}
-			else {
-				PERSISTENT_NEM_CAR_SKINS["CanyonCar"] = "";
-				PERSISTENT_NEM_CAR_SKINS["StadiumCar"] = "";
-				PERSISTENT_NEM_CAR_SKINS["ValleyCar"] = "";
-				PERSISTENT_NEM_CAR_SKINS["LagoonCar"] = "";
-			}
+			if(!PERSISTENT_NEM_CAR_SKINS.existskey("DesertCar")) PERSISTENT_NEM_CAR_SKINS["DesertCar"] = "Reflective";
+			if(!PERSISTENT_NEM_CAR_SKINS.existskey("RallyCar")) PERSISTENT_NEM_CAR_SKINS["RallyCar"] = "Reflective";
+			if(!PERSISTENT_NEM_CAR_SKINS.existskey("SnowCar")) PERSISTENT_NEM_CAR_SKINS["SnowCar"] = "Reflective";
+			if(!PERSISTENT_NEM_CAR_SKINS.existskey("BayCar")) PERSISTENT_NEM_CAR_SKINS["BayCar"] = "Reflective";
+			if(!PERSISTENT_NEM_CAR_SKINS.existskey("IslandCar")) PERSISTENT_NEM_CAR_SKINS["IslandCar"] = "Reflective";
+			if(!PERSISTENT_NEM_CAR_SKINS.existskey("CoastCar")) PERSISTENT_NEM_CAR_SKINS["CoastCar"] = "Reflective";
+			UpdateSkins();
 			
 			EnableMenuNavigation(True,False,Null,50);
 		}

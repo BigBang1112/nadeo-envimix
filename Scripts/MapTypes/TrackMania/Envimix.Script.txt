@@ -2,33 +2,45 @@
 
 ValidationStatus = CMapType::ValidationStatus::NotValidable;
 
-//declare LayerMenu = UILayerCreate();
-//LayerMenu.ManialinkPage = "file://Media/Manialinks/GameMenuTest.xml";
+declare Player <=> Mode.AllPlayers[0];
+declare UI <=> Mode.UIManager.GetUI(Player);
+
+
 
 while(True) {
-		
-		// Manage events
 		foreach(Event in PendingEvents) {
 			switch(Event.Type) {
-				case CPluginEvent::Type::MapModified: {
+				case CMapEditorPluginEvent::Type::MapModified: {
 					
 				} 
-				case CPluginEvent::Type::StartValidation: {
-					log("kfasdfsafek");
+				case CMapEditorPluginEvent::Type::StartValidation: {
+					
 				} 
-				case CPluginEvent::Type::StartTest: {
+				case CMapEditorPluginEvent::Type::StartTest: {			
+					log("hello?");		
+					RequestEnterPlayground();
+					Player.RaceStartTime = -1;
+					Player.IsSpawned = True;
+					Player.Score.Clear();
+					Mode.UIManager.UIAll.UISequence = CUIConfig::EUISequence::Intro;
+					wait(Mode.UIManager.UIAll.UISequenceIsCompleted);
+					Mode.CutOffTimeLimit = -1;
+					Mode.UIManager.UIAll.UISequence = CUIConfig::EUISequence::Playing;
 					
-					log("kgsdsgsdgdgsdgsdgsdgsddgek");
-					
-					
+					declare LayerMenu = Mode.UIManager.UILayerCreate();
+LayerMenu.ManialinkPage = "file://Media/Manialinks/GameMenu.xml";
 					
 					while(True) {
+						if(ValidationEndRequested) RequestLeavePlayground();
+						
+						foreach(PlayerWaiting,Mode.PlayersWaiting) {
+							Mode.SpawnPlayer(PlayerWaiting, 0, Mode.Now+2500);
+						}
+						
 						yield;
 					}
-					
-					UILayerDestroyAll();
 				}
-				case CPluginEvent::Type::EditObjectives: {
+				case CMapEditorPluginEvent::Type::EditObjectives: {
 					
 				}
 			}

@@ -1,23 +1,41 @@
 Text GetDesertCar() {
-    return "Skins/Models/DesertCar/DesertCar_Default.zip";
+	declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for Players[0].User;
+	if(PERSISTENT_NEM_CAR_SKINS["DesertCar"] != "Reflective")
+		return "Skins/Models/DesertCar/"^PERSISTENT_NEM_CAR_SKINS["DesertCar"]^".zip";
+	return "";
 }
 
 Text GetSnowCar() {
-    return "Skins/Models/SnowCar/SnowCar_Default.zip";
+	declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for Players[0].User;
+	if(PERSISTENT_NEM_CAR_SKINS["SnowCar"] != "Reflective")
+		return "Skins/Models/SnowCar/"^PERSISTENT_NEM_CAR_SKINS["SnowCar"]^".zip";
+	return "";
 }
 
 Text GetRallyCar() {
-    return "Skins/Models/RallyCar/RallyCar_Default.zip";
+	declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for Players[0].User;
+	if(PERSISTENT_NEM_CAR_SKINS["RallyCar"] != "Reflective")
+		return "Skins/Models/RallyCar/"^PERSISTENT_NEM_CAR_SKINS["RallyCar"]^".zip";
+	return "";
 }
 
 Text GetBayCar() {
-    return "Skins/Models/BayCar/BayCar_Default.zip";
+	declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for Players[0].User;
+	if(PERSISTENT_NEM_CAR_SKINS["BayCar"] != "Reflective")
+		return "Skins/Models/BayCar/"^PERSISTENT_NEM_CAR_SKINS["BayCar"]^".zip";
+	return "";
 }
 
 Text GetIslandCar() {
-    return "Skins/Models/IslandCar/IslandCar_Default.zip";
+	declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for Players[0].User;
+	if(PERSISTENT_NEM_CAR_SKINS["IslandCar"] != "Reflective")
+		return "Skins/Models/IslandCar/"^PERSISTENT_NEM_CAR_SKINS["IslandCar"]^".zip";
+	return "";
 }
 
 Text GetCoastCar() {
-    return "Skins/Models/CoastCar/CoastCar_Default.zip";
+	declare persistent Text[Text] PERSISTENT_NEM_CAR_SKINS for Players[0].User;
+	if(PERSISTENT_NEM_CAR_SKINS["CoastCar"] != "Reflective")
+		return "Skins/Models/CoastCar/"^PERSISTENT_NEM_CAR_SKINS["CoastCar"]^".zip";
+	return "";
 }
