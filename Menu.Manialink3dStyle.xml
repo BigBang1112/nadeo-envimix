@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stylesheet>
+    <frame3dstyles>
+        <style3d id="ButtonNav" lightcolor="021e00" flightcolor="50f020"/>
+    </frame3dstyles>
+    <mood     LAmbient_LinearRgb="0.004 0.012 0.030"  
+            LDir0_LinearRgb="1.000 1.000 1.000" LDir0_Intens="1.000" LDir0_DirTheta="0" LDir0_DirPhi="-60" 
+            LDir1_LinearRgb="0.35 0.7 0.35"    LDir1_Intens="1.50" LDir1_DirTheta="86.760" LDir1_DirPhi="142.000" 
+            LBall_LinearRgb="0.004 0.004 0.004" LBall_Intens="1.000" LBall_Radius="20000.000" 
+            
+            CloudsRgbMinLinear="0.0 0.1 0.0" 
+            CloudsRgbMaxLinear="0.7 1.1 0.7" 
+            FogColorSrgb="0.000 0.000 0.000" SkyGradientV_Scale="1.000" >
+        <skygradient>
+            <key color="66aa66" x="0.200" scale="9.1" />
+            <key color="33aa33" x="0.230" scale="2.5"/>
+            <key color="33cc33" x="0.260" scale="0.5" /> 
+            <key color="225522" x="0.450" scale="1"/>
+        </skygradient>
+
+    </mood>

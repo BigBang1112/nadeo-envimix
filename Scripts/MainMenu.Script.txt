@@ -4,6 +4,13 @@
 
 #Include "Libs/BigBang1112/Random.Script.txt" as Random
 
+#Struct SLeaderboardInfo {
+	Text Map;
+	Text Car;
+	Text Env;
+	CTaskResult_NaturalLeaderBoardInfoList Task;
+}
+
 declare CUILayer MainMenuLayer;
 
 declare Boolean NormalServerPrivate;
@@ -21,7 +28,7 @@ Void StartMenu() {
 
 Void UpdateServerInfo() {
 	wait(TitleFlow.IsReady);
-	TitleFlow.GetServerInfo("nadeo_envimix");
+	TitleFlow.GetServerInfo("envimix_online");
 	wait(TitleFlow.IsReady);
 	
 	declare ServerResult <=> TitleFlow.GetServerInfo_Result;
@@ -162,9 +169,9 @@ main() {
 						case "PLAY_POUTREL_SERVER": {
 							if(TitleFlow.IsReady) {
 								if(!NormalServerPrivate)
-									TitleFlow.JoinServer("nadeo_envimix", False, "");
+									TitleFlow.JoinServer("envimix_online", False, "");
 								else if(!NormalServerPrivateSpectate)
-									TitleFlow.JoinServer("nadeo_envimix", True, "");
+									TitleFlow.JoinServer("envimix_online", True, "");
 							}
 						}
 						case "PLAY_EVENT_SERVER": {

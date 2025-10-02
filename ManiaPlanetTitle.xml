@@ -25,7 +25,7 @@
 		<music name="Menu\Silence.ogg"/>
 		<manialink url="Scripts/MainMenu.Script.txt"/>
 	</menu>
-	<menu_style name=""/>
+	<menu_style name="Menu.Manialink3dStyle.xml"/>
 	<music folder=""/>
 	<mod name=""/>
 	<editor>
@@ -502,6 +502,7 @@
 		<folder name="Media/Thumbnails/Valley" public="false" internal="false"/>
 		<folder name="Media/Thumbnails/Lagoon" public="false" internal="false"/>
 		<folder name="Maps/Campaigns" public="false" internal="false"/>
+		<folder name="Maps/MatchSettings" public="false" internal="false"/>
 		<folder name="Items/" public="false" internal="false"/>
 		<!--- <folder name="...." public="..." internal="..." /> -->
 	</folders>

@@ -79,7 +79,7 @@
 	
 	<frame id="buttons">
 		<frame pos="0 -40" id="buttonContinue">
-			<quad z-index="0" size="140 10" bgcolor="FFF" halign="center" valign="center" scriptevents="1" id="button"/>
+			<quad z-index="0" size="140 10" bgcolor="FFF" halign="center" valign="center" scriptevents="1" id="button" opacity=".75"/>
 			<label pos="0 0" z-index="1" size="50 5" text="Continue" halign="center" valign="center2" style="TextTitle3" id="text" textcolor="000" translate="1"/>
 		</frame>
 	</frame>

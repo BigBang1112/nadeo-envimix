@@ -28,7 +28,6 @@
 </frame>
 
 <quad pos="0 0" z-index="0" size="270 100" bgcolor="000A" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur"/>
-<quad pos="135 50" z-index="101" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Help" scriptevents="1" id="Quad_Help"/>
 <quad pos="76 55.5" z-index="1" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Camera" scriptevents="1" id="Quad_Spectate"/>
 <frame id="Frame_Help" z-index="100" hidden="1">
 	<quad z-index="-1" size="320 180" halign="center" valign="center" scriptevents="1" pos="0 0"/>
@@ -279,23 +278,23 @@
 </frame>
 
 <frame pos="105 40" id="buttonResume">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button" opacity=".75"/>
 	<label size="45 5" text="Resume" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text" translate="1"/>
 </frame>
 <frame pos="105 28" id="buttonViewGhosts" hidden="1">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button" opacity=".75"/>
 	<label size="45 5" text="View Ghosts" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
 </frame>
 <frame pos="105 -16" id="buttonRecords" hidden="1">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button" opacity=".75"/>
 	<label size="45 5" text="Records" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
 </frame>
 <frame pos="105 -28" id="buttonSpectate" hidden="1">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button" opacity=".75"/>
 	<label size="30 5" text="Spectate" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text"/>
 </frame>
 <frame pos="105 -40" id="buttonExit">
-	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button"/>
+	<quad pos="0 0" z-index="0" size="50 10" bgcolor="000F" halign="center" valign="center" scriptevents="1" id="button" opacity=".75"/>
 	<label size="30 5" text="Exit" style="TextTitle3" halign="center" valign="center2" z-index="1" id="text" translate="1"/>
 </frame>
 </frame>

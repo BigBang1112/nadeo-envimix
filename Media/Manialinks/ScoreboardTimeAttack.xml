@@ -10,7 +10,7 @@
 	<label pos="21.5 -10.7" z-index="0" size="24 4" text="Rank" textsize="1" textfont="RajdhaniMono" valign="center2" id="Label_Rank"/>
 </frame>
 <frame z-index="-1">
-<frame pos="-90 50" id="Frame_CanyonCar">
+<frame pos="-77 50" id="Frame_CanyonCar">
 	<quad z-index="-1" size="50 100" halign="center" style="Bgs1" substyle="BgDialogBlur"/>
 	<quad pos="0 5" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/CanyonCar.png" id="Quad_Car"/>
 	<frame id="Frame_Leaderboard">
@@ -136,7 +136,7 @@
 		</frame>
 	</frame>
 </frame>
-<frame pos="-30 50" id="Frame_StadiumCar">
+<frame pos="-25.6 50" id="Frame_StadiumCar">
 	<quad z-index="-1" size="50 100" halign="center" style="Bgs1" substyle="BgDialogBlur"/>
 	<quad pos="0 4" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/StadiumCar.png" id="Quad_Car"/>
 	<frame id="Frame_Leaderboard">
@@ -262,7 +262,7 @@
 		</frame>
 	</frame>
 </frame>
-<frame pos="30 50" id="Frame_ValleyCar">
+<frame pos="25.6 50" id="Frame_ValleyCar">
 	<quad z-index="-1" size="50 100" halign="center" style="Bgs1" substyle="BgDialogBlur"/>
 	<quad pos="0 7" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/ValleyCar.png" id="Quad_Car"/>
 	<frame id="Frame_Leaderboard">
@@ -388,7 +388,7 @@
 		</frame>
 	</frame>
 </frame>
-<frame pos="90 50" id="Frame_LagoonCar">
+<frame pos="77 50" id="Frame_LagoonCar">
 	<quad z-index="-1" size="50 100" halign="center" style="Bgs1" substyle="BgDialogBlur"/>
 	<quad pos="0 7" z-index="0" size="50 50" bgcolor="FFFA" halign="center" valign="center" image="file://Media/LagoonCar.png" id="Quad_Car"/>
 	<frame id="Frame_Leaderboard">
@@ -515,9 +515,13 @@
 	</frame>
 </frame>
 <frame pos="0 -56">
-	<quad z-index="-1" size="230 8" style="Bgs1" substyle="BgDialogBlur" halign="center" valign="center"/>
+	<quad z-index="-1" size="204 8" style="Bgs1" substyle="BgDialogBlur" halign="center" valign="center"/>
 	<label z-index="0" size="100 8" text="ENVIMIX TIME ATTACK" halign="center" style="TextTitle3" textsize="3" pos="0 0" valign="center2"/>
 </frame>
+</frame>
+<frame pos="120 -75">
+	<quad z-index="1" size="60 15" halign="center" valign="center" image="file://Media/Images/Envimix.png" url="https://forum.maniaplanet.com/viewtopic.php?f=538&t=44272"/>
+	<quad pos="0.3 -0.3" z-index="0" size="60 15" halign="center" valign="center" image="file://Media/Images/Envimix.png" modulatecolor="111"/>
 </frame>
 <script>
 	<!--

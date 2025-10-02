@@ -17,6 +17,7 @@
 
 #Setting S_TimeLimit 6000
 #Setting S_IndependentLaps True
+#Setting S_EnableOriginalCar False
 
 Void Unprepare() {
 	foreach (Player in AllPlayers) {
@@ -65,6 +66,7 @@ main() {
 	UIManager.UIAll.OverlayHideCheckPointTime = True;
 	UIManager.UIAll.OverlayHidePosition = True;
 	UIManager.UIAll.ScoreTableOnlyManialink = True;
+	UIManager.UIAll.OverlayHideEndMapLadderRecap = True;
 	
 	Scores_Sort(CTmMode::ETmScoreSortOrder::TotalPoints);
 	
@@ -179,6 +181,7 @@ main() {
 								
 								Event.Player.Score.BestRace.Checkpoints.clear();
 								Checkpoints[Car][Event.Player.User.Login].clear();
+								if(PrevCheckpoints[Car].count > 0)
 								foreach(Checkpoint,PrevCheckpoints[Car][Event.Player.User.Login]) {
 									Event.Player.Score.BestRace.Checkpoints.add(Checkpoint);
 									Checkpoints[Car][Event.Player.User.Login].add(Checkpoint);
@@ -266,7 +269,8 @@ main() {
 					
 					declare UI <=> UIManager.GetUI(Player);
 					declare netwrite Text Net_MapCar for UI;
-					Net_MapCar = MapPlayerModelName;
+					if(S_EnableOriginalCar) Net_MapCar = "";
+					else Net_MapCar = MapPlayerModelName;
 					
 					if(!Prepared) {
 						// Variables stored on a server FOR a player
@@ -313,7 +317,7 @@ main() {
 					declare UI <=> UIManager.GetUI(Player);
 					
 					// If they are prepared and have a legal car selected, count comparision is there to avoid random gamemode crashes xd
-					if(Prepared && ResumeInfo.count > 0 && ResumeInfo[0] != "" && ResumeInfo[0] != MapPlayerModelName) {
+					if(Prepared && ResumeInfo.count > 0 && ResumeInfo[0] != "" && (ResumeInfo[0] != MapPlayerModelName || S_EnableOriginalCar)) {
 						Player.ForceModelId = CarList[ResumeInfo[0]];
 						TM2::StartRace(Player);
 						declare netwrite Integer Net_NEM_Start for UI;
@@ -358,7 +362,7 @@ main() {
 							if(ResumeInfo[0] == "") {
 								TM2::WaitRace(Player);
 							}
-							else if(ResumeInfo[0] == MapPlayerModelName) { // If player somehow manages to select original car
+							else if(ResumeInfo[0] == MapPlayerModelName && !S_EnableOriginalCar) { // If player somehow manages to select original car
 								// Nothing means invalid action and as well nothing will happen
 							}
 							else { // If there's a legal car selected

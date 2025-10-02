@@ -187,6 +187,13 @@ Void Init() {
 	declare ValleyCar = ItemList_Add("ValleyCar");
 	declare LagoonCar = ItemList_Add("LagoonCar");
 	
+	ItemList_AddWithSkin("DesertCar", "Skins/Models/DesertCar/DesertCarNew.zip");
+	ItemList_AddWithSkin("SnowCar", "Skins/Models/SnowCar/SnowCarNew.zip");
+	ItemList_AddWithSkin("RallyCar", "Skins/Models/RallyCar/RallyCarNew.zip");
+	ItemList_AddWithSkin("BayCar", "Skins/Models/BayCar/BayCarNew.zip");
+	ItemList_AddWithSkin("IslandCar", "Skins/Models/IslandCar/IslandCarNew.zip");
+	ItemList_AddWithSkin("CoastCar", "Skins/Models/CoastCar/CoastCarNew.zip");
+	
 	declare DesertCar = ItemList_AddWithSkin("DesertCarNew.Item.Gbx",Skins::GetDesertCar());
 	declare SnowCar = ItemList_AddWithSkin("SnowCarNew.Item.Gbx",Skins::GetSnowCar());
 	declare RallyCar = ItemList_AddWithSkin("RallyCarNew.Item.Gbx",Skins::GetRallyCar());
@@ -433,8 +440,6 @@ Void Loop() {
 	declare Player <=> Players[0];
 	declare UI <=> UIManager.GetUI(Player);
 	declare Ident MyUserID for Player.User;
-	
-	log(ScoreMgr.ScoreStatus_GetMasterServerStatus(MyUserID));
 		
 	declare netwrite Text Net_NEM_Test_State for UI;
 	Net_NEM_Test_State = ""^ScoreMgr.ScoreStatus_GetLocalStatus(MyUserID);

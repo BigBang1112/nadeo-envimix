@@ -33,37 +33,36 @@
 			<label pos="9 -67" z-index="0" size="30 13" text="Know more about the authors of the title pack" autonewline="1" textsize="1" textemboss="1"/>
 			<label pos="54 -38" z-index="0" size="30 13" text="Play a track that is assigned each day which gives more activity points" autonewline="1" textsize="1" textemboss="1"/>
 		</frame>
-		<quad pos="55 20" z-index="101" size="8 8" bgcolor="FFFA" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Help" scriptevents="1" id="Quad_Help_Menu"/>
 		<quad pos="0 5" z-index="0" size="120 120" halign="center" valign="center" scriptevents="1" id="block" hidden="1"/>
 		<quad pos="0 45" z-index="0" size="120 40" image="file://Media/Images/NadeoEnvimix2.png" halign="center" valign="center" id="logo"/>
-		<label pos="0 25" z-index="1" size="100 10" text="1 YEAR OF NADEO ENVIMIX" halign="center" valign="center2" style="TextTitle3" id="update" textemboss="1" textprefix="$fff"/>
+		<label pos="0 25" z-index="1" size="100 10" text="ENVIMIX TURBO - NOVEMBER 2025" halign="center" valign="center2" style="TextTitle3" id="update" textemboss="1" textprefix="$fff"/>
 		<frame pos="0 -52" id="footer" scale="1">
 			<quad z-index="0" size="110 6" bgcolor="0008" valign="center" halign="center" pos="0 -3" style="Bgs1" substyle="BgDialogBlur"/>
-			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextButtonBig" pos="0 -3" manialink="nadeoenvimix?about"/>
+			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextButtonBig" pos="0 -3" manialink="file://Media/Manialinks/About.xml"/>
 		</frame>
 		
-		<label pos="-58 -45" z-index="1" size="20 5" text="PRIVACY POLICY" valign="center2" textsize=".5" style="TextCardMedium" manialink="nadeoenvimix?privacy" halign="right" textemboss="1" translate="1"/>
+		<label pos="-58 -45" z-index="1" size="20 5" text="PRIVACY POLICY" valign="center2" textsize=".5" style="TextCardMedium" manialink="file://Media/Manialinks/Privacy.xml" halign="right" textemboss="1" translate="1" hidden="1"/>
 		
 		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur"/>
 		<frame id="buttons">
 			<frame pos="0 5" id="buttonPlay">
-				<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
+				<quad pos="0 0" z-index="0" size="100 20" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button"/>
 				<label pos="0 0" z-index="1" size="100 20" text="Play" halign="center" valign="center2" style="TextTitle3" textsize="8 " id="text" translate="1"/>
 			</frame>
 			<frame pos="-26 -12" id="buttonReplays">
-				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button" action="menu_editors"/>
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button" action="menu_editors"/>
 				<label pos="0 0" z-index="1" size="48 10" text="Replays" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
 			<frame pos="-26 -24" id="buttonSkins">
-				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button"/>
 				<label pos="0 0" z-index="1" size="48 10" text="Skins" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
 			<frame pos="-26 -40" id="buttonExit">
-				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
+				<quad pos="0 0" z-index="0" size="48 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button"/>
 				<label pos="0 0" z-index="1" size="48 10" text="Exit" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
 			<frame pos="25 -26" id="buttonTrack">
-				<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".75" id="button" halign="center" valign="center" pos="0 0"/>
+				<quad z-index="0" size="50 38" bgcolor="000F" scriptevents="1" opacity=".5" id="button" halign="center" valign="center" pos="0 0"/>
 				<label pos="0 14" z-index="1" size="50 10" text="Track of the Day" style="TextTitle3" halign="center" valign="center2" textsize="1" id="text"/>
 				<frame z-index="1" scale="1.05" id="track">
 					<quad pos="0 9" size="50 25" halign="center" image="file://Media/Thumbnails/Loading.jpg" id="thumbnail"/>
@@ -116,7 +115,6 @@
 		<quad pos="85 70" z-index="0" size="3 140" bgcolor="444A"/>
 		<quad pos="137 70" z-index="0" size="3 140" bgcolor="444A"/>
 		
-		<quad pos="140 70" z-index="101" size="10 10" bgcolor="FFFA" id="Quad_Help_Selection" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Help" scriptevents="1"/>
 		<frame id="Frame_Help" z-index="100" hidden="1">
 			<quad z-index="-1" size="320 180" halign="center" valign="center" scriptevents="1" pos="0 0"/>
 			<quad pos="140 50" z-index="0" size="10 10" bgcolor="FFFA" style="Bgs1" substyle="ArrowLeft" halign="center" valign="center" rot="20"/>
@@ -148,10 +146,11 @@
 			<quad pos="32 -0.5" z-index="0" size="60 7" halign="center" valign="center2" bgcolor="000A"/>
 			<quad z-index="0" size="60 110" bgcolor="000A" halign="center" pos="32 -5"/>
 			<quad pos="32 -60" z-index="1" size="20 20" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="SandTimer" id="SkillpointLoading" hidden="1"/>
+			<label pos="32 -80" z-index="1" size="30 10" text="The overall skillpoints are now fixed, they take up a loong time to request though. Be patient." halign="center" textsize=".5" valign="center2" id="SkillpointLoadingText" textemboss="1" textfont="RajdhaniMono" hidden="1" translate="1" autonewline="1"/>
 			<label pos="32 -60" z-index="1" size="30 10" textprefix="$f00" text="Error" halign="center" textsize="4" valign="center2" id="SkillpointError" textemboss="1" textfont="RajdhaniMono" hidden="1" translate="1"/>
-			<label pos="32 -9" z-index="1" size="40 5" text="World" halign="center" style="TextTitle3" textsize="1" valign="center2" translate="1"/>
-			<quad pos="8 -9" z-index="1" size="8 8" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowPrev" valign="center" halign="center" scriptevents="1"/>
-			<quad pos="56 -9" z-index="1" size="8 8" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowNext" valign="center" halign="center" scriptevents="1"/>
+			<label pos="32 -9" z-index="1" size="40 5" text="World" halign="center" style="TextTitle3" textsize="1" valign="center2" translate="1" id="SkillpointsOverallZone"/>
+			<quad pos="8 -9" z-index="1" size="8 8" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowPrev" valign="center" halign="center" scriptevents="1" id="SkillpointsOverallZonePrev"/>
+			<quad pos="56 -9" z-index="1" size="8 8" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowNext" valign="center" halign="center" scriptevents="1" id="SkillpointsOverallZoneNext"/>
 			
 			<frame pos="0 -5" id="SkillpointLeaderboard" z-index="1" hidden="1">
 				<frame pos="5 -12">
@@ -210,7 +209,7 @@
 			<label pos="93 -0.5" z-index="1" size="60 5" text="Activity Points" halign="center" style="TextTitle3" textsize="2" valign="center2"/>
 			<quad pos="93 -0.5" z-index="0" size="60 7" halign="center" valign="center2" bgcolor="000A"/>
 			<quad pos="93 -60" z-index="1" size="20 20" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="SandTimer" hidden="1" id="ActivityLoading"/>
-			<label pos="93 -60" z-index="1" size="30 10" textprefix="$f00" text="Error" translate="1" halign="center" textsize="4" valign="center2" textemboss="1" textfont="RajdhaniMono" hidden="1" id="ActivityError"/>
+			<label pos="93 -60" z-index="1" size="50 10" textprefix="$f00" text="Gone" translate="1" halign="center" textsize="4" valign="center2" textemboss="1" textfont="RajdhaniMono" hidden="1" id="ActivityError"/>
 			<label pos="93 -9" z-index="1" size="40 5" text="World" halign="center" style="TextTitle3" textsize="1" valign="center2" translate="1"/>
 			<quad pos="69 -9" z-index="1" size="8 8" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowPrev" valign="center" halign="center" scriptevents="1"/>
 			<quad pos="117 -9" z-index="1" size="8 8" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowNext" valign="center" halign="center" scriptevents="1"/>
@@ -269,7 +268,7 @@
 			</frame>
 			
 			<quad z-index="0" size="87 110" bgcolor="000A" halign="center" pos="167.5 -5"/>
-			<label pos="167.5 -0.5" z-index="1" size="87 5" text="Skillpoints splitted" halign="center" style="TextTitle3" textsize="2" valign="center2"/>
+			<label pos="167.5 -0.5" z-index="1" size="87 5" text="Skillpoints split" halign="center" style="TextTitle3" textsize="2" valign="center2"/>
 			<quad pos="167.5 -0.5" z-index="0" size="87 7" halign="center" valign="center2" bgcolor="000A"/>
 			<quad pos="167.5 -65" z-index="1" size="20 20" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="SandTimer" hidden="0" id="SkillpointsSplittedLoading"/>
 			<label pos="167.5 -65" z-index="1" size="30 10" textprefix="$f00" text="Error" translate="1" halign="center" textsize="4" valign="center2" textemboss="1" textfont="RajdhaniMono" hidden="1" id="SkillpointsSplittedError"/>
@@ -836,42 +835,42 @@
 		
 		<frame id="buttonsSelection" z-index="1">
 			<frame pos="60 63.5" id="buttonUnfinished">
-				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
+				<quad pos="0 0" z-index="0" size="40 8" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button"/>
 				<label pos="0 0" z-index="1" size="40 8" text="Unfinished" halign="center" valign="center2" style="TextTitle3" textsize="1" id="text"/>
 			</frame>
 		
 			<frame pos="112.5 51" id="buttonCanyon">
-				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".75"/>
-				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/CanyonButton.jpg" opacity=".75"/>
+				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".5"/>
+				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/CanyonButton.jpg" opacity=".5"/>
 				<label pos="0 0" z-index="2" size="49 10" text="Canyon" halign="center" valign="center2" style="TextTitle3" textsize="2" textemboss="1"/>
 				<label pos="19.5 -4" z-index="2" size="20 5" text="0" textsize="1" halign="right" valign="bottom" style="TextSPScoreBig" id="SkillpointsCanyon"/>
 			</frame>
 			<frame pos="112.5 40.5" id="buttonStadium">
-				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".75"/>
-				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/StadiumButton.jpg" opacity=".75"/>
+				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".5"/>
+				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/StadiumButton.jpg" opacity=".5"/>
 				<label pos="0 0" z-index="2" size="49 10" text="Stadium" halign="center" valign="center2" style="TextTitle3" textsize="2" textemboss="1"/>
 				<label pos="19.5 -4" z-index="2" size="20 5" text="0" textsize="1" halign="right" valign="bottom" style="TextSPScoreBig" id="SkillpointsStadium"/>
 			</frame>
 			<frame pos="112.5 30" id="buttonValley">
-				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".75"/>
-				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/ValleyButton.jpg" opacity=".75"/>
+				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".5"/>
+				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/ValleyButton.jpg" opacity=".5"/>
 				<label pos="0 0" z-index="2" size="49 10" text="Valley" halign="center" valign="center2" style="TextTitle3" textsize="2" textemboss="1"/>
 				<label pos="19.5 -4" z-index="2" size="20 5" text="0" textsize="1" halign="right" valign="bottom" style="TextSPScoreBig" id="SkillpointsValley"/>
 			</frame>
 			<frame pos="112.5 19.5" id="buttonLagoon">
-				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".75"/>
-				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/LagoonButton.jpg" opacity=".75"/>
+				<quad z-index="0" size="49 10" bgcolor="000" halign="center" valign="center" id="button" scriptevents="1" opacity=".5"/>
+				<quad z-index="1" size="40 8" bgcolor="000" halign="center" valign="center" image="file://Media/LagoonButton.jpg" opacity=".5"/>
 				<label pos="0 0" z-index="2" size="49 10" text="Lagoon" halign="center" valign="center2" style="TextTitle3" textsize="2" textemboss="1"/>
 				<label pos="19.5 -4" z-index="2" size="20 5" text="0" textsize="1" halign="right" valign="bottom" style="TextSPScoreBig" id="SkillpointsLagoon"/>
 			</frame>
 			
 			<frame pos="112.5 6" z-index="1" id="buttonExtensions" hidden="1">
-				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button" manialink="nadeoenvimix?extensions"/>
+				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button" manialink="nadeoenvimix?extensions"/>
 				<label pos="0 0" z-index="1" size="49 10" text="Extensions" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 			</frame>
 		
 			<frame pos="112.5 -6" z-index="1" id="buttonPlayOnline">
-				<quad pos="0 0" size="49 20" bgcolor="000" scriptevents="1" opacity=".75" id="button" halign="center" valign="center"/>
+				<quad pos="0 0" size="49 20" bgcolor="000" scriptevents="1" opacity=".5" id="button" halign="center" valign="center"/>
 				<label pos="0 5" z-index="1" size="49 10" text="Play Online" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 				<quad z-index="1" size="45 8" bgcolor="111A" halign="center"/>
 				<label pos="0 -2" z-index="2" size="40 5" text="$f00OFFLINE" halign="center" textfont="RajdhaniMono" id="NormalServerOffline"/>
@@ -888,7 +887,7 @@
 			</frame>
 			
 			<frame pos="112.5 -26.5" z-index="1" id="buttonPlayEvent">
-				<quad pos="0 0" size="49 20" bgcolor="000" scriptevents="1" opacity=".75" id="button" halign="center" valign="center"/>
+				<quad pos="0 0" size="49 20" bgcolor="000" scriptevents="1" opacity=".5" id="button" halign="center" valign="center"/>
 				<label pos="0 5" z-index="1" size="49 10" text="Play Event" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text"/>
 				<quad z-index="1" size="45 8" bgcolor="111A" halign="center"/>
 				<label pos="0 -2" z-index="2" size="40 5" text="$f00OFFLINE" halign="center" textfont="RajdhaniMono" id="EventServerOffline"/>
@@ -905,22 +904,22 @@
 			</frame>
 			
 			<frame pos="112.5 -42" z-index="1" id="buttonPlayLocally">
-				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button" action="menu_local"/>
-				<label pos="0 0" z-index="1" size="49 10" text="Play Locally" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
+				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button" action="menu_local"/>
+				<label pos="0 0" z-index="1" size="49 10" text="Local Play" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
 			
 			<frame pos="112.5 -52.5" z-index="1" id="buttonLeaderboards">
-				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
+				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button"/>
 				<label pos="0 0" z-index="1" size="49 10" text="Leaderboards" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
 			
 			<frame pos="112.5 -39" z-index="1" id="buttonCustomCars" hidden="1">
-				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
+				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button"/>
 				<label pos="0 0" z-index="1" size="49 10" text="Custom Cars" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
 		
 			<frame pos="112.5 -63" z-index="1" id="buttonBack">
-				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".75" id="button"/>
+				<quad pos="0 0" size="49 10" bgcolor="000" halign="center" valign="center" scriptevents="1" opacity=".5" id="button"/>
 				<label pos="0 0" z-index="1" size="49 10" text="Back" halign="center" valign="center2" style="TextTitle3" textsize="2" id="text" translate="1"/>
 			</frame>
 		</frame>
@@ -1371,7 +1370,9 @@
 		}
 		
 		declare CTaskResult_NaturalLeaderBoardInfoList LeaderboardRequest;
-		declare CTaskResult_NaturalLeaderBoardInfoList GlobalLeaderboardRequest;
+		declare Boolean AllGlobalLeaderboardRequestsCompleted;
+		declare Integer[Text] GlobalLeaderboard;
+		declare CTaskResult_NaturalLeaderBoardInfoList[] GlobalLeaderboardRequest;
 		declare CTaskResult_NaturalLeaderBoardInfoList SkillpointsSplittedLeaderboardRequest;
 		
 		Void HandleScoreRequests() {
@@ -1406,34 +1407,52 @@
 					LeaderboardRequest = Null;
 				}
 			}
-			if(GlobalLeaderboardRequest != Null) {
-				Page.GetFirstChild("SkillpointLeaderboard").Hide();
-				Page.GetFirstChild("SkillpointError").Hide();
-				Page.GetFirstChild("SkillpointLoading").Show();
-				if(!GlobalLeaderboardRequest.IsProcessing) {
-					Page.GetFirstChild("SkillpointLoading").Hide();
-					
-					if(GlobalLeaderboardRequest.HasSucceeded) {
-						Page.GetFirstChild("SkillpointLeaderboard").Show();
-						for(i,0,9) (Page.GetFirstChild("SkillpointLeaderboard") as CMlFrame).Controls[i].Hide();
-						for(i,0,GlobalLeaderboardRequest.Count - 1) {
-							declare Place <=> ((Page.GetFirstChild("SkillpointLeaderboard") as CMlFrame).Controls[i] as CMlFrame);
-							(Place.GetFirstChild("Nickname") as CMlLabel).SetText(GlobalLeaderboardRequest.LeaderBoardInfo[i].DisplayName);
-							(Place.GetFirstChild("Points") as CMlLabel).SetText(""^GlobalLeaderboardRequest.LeaderBoardInfo[i].Score);
+
+			if(GlobalLeaderboardRequest.count > 0) {
+				AllGlobalLeaderboardRequestsCompleted = True;
+				foreach(Task in GlobalLeaderboardRequest) {
+					if(Task.IsProcessing) AllGlobalLeaderboardRequestsCompleted = False;
+				}
+			}
+			if(AllGlobalLeaderboardRequestsCompleted) {
+				GlobalLeaderboard.clear();
+				foreach(Task in GlobalLeaderboardRequest) {
+					if(Task.HasSucceeded) {
+						foreach(Info in Task.LeaderBoardInfo) {
+							declare Key = Info.Login ^ " " ^ Info.DisplayName;
+							if(!GlobalLeaderboard.existskey(Key))
+								GlobalLeaderboard[Key] = 0;
+							GlobalLeaderboard[Key] += Info.Score;
+
+							ScoreMgr.TaskResult_Release(Info.Id);
 						}
 					}
-					else if(GlobalLeaderboardRequest.HasFailed) {
-						Page.GetFirstChild("SkillpointLeaderboard").Hide();
-						Page.GetFirstChild("SkillpointError").Show();
-						log(GlobalLeaderboardRequest.ErrorDescription);
-					}
-					else if(GlobalLeaderboardRequest.IsCanceled) {
-						Page.GetFirstChild("SkillpointLeaderboard").Hide();
-					}
-					
-					ScoreMgr.TaskResult_Release(GlobalLeaderboardRequest.Id);
-					GlobalLeaderboardRequest = Null;
 				}
+
+				GlobalLeaderboard = GlobalLeaderboard.sortreverse();
+
+				Page.GetFirstChild("SkillpointLoading").Hide();
+				Page.GetFirstChild("SkillpointLoadingText").Hide();
+				
+				Page.GetFirstChild("SkillpointLeaderboard").Show();
+				for(i,0,9) (Page.GetFirstChild("SkillpointLeaderboard") as CMlFrame).Controls[i].Hide();
+				declare Counter = 0;
+				foreach(User => Sco in GlobalLeaderboard) {
+					if(Counter < 10) {
+						declare Inf = TextLib::Split(" ", User);
+						Inf.removekey(0);
+
+						declare Place = ((Page.GetFirstChild("SkillpointLeaderboard") as CMlFrame).Controls[Counter] as CMlFrame);
+						(Place.GetFirstChild("Nickname") as CMlLabel).SetText(TextLib::Join(" ", Inf));
+						(Place.GetFirstChild("Points") as CMlLabel).SetText(Sco^"");
+						Place.Show();
+						Counter += 1;
+						log(User ^ " " ^ Sco);
+					}
+				}
+
+				AllGlobalLeaderboardRequestsCompleted = False;
+				GlobalLeaderboardRequest.clear();
 			}
 			if(SkillpointsSplittedLeaderboardRequest != Null) {
 				if(!SkillpointsSplittedLeaderboardRequest.IsProcessing) {
@@ -1538,6 +1557,28 @@
 		
 		declare Text[] Zones;
 		declare Integer CurrentZone;
+
+		declare Integer CurrentZoneOverall;
+
+		Void RequestOverall() {
+			declare Ident MyUserID for LocalUser;
+
+			Page.GetFirstChild("SkillpointLoading").Show();
+			Page.GetFirstChild("SkillpointLoadingText").Show();
+			Page.GetFirstChild("SkillpointLeaderboard").Hide();
+
+			foreach(Task in GlobalLeaderboardRequest) {
+				Task.Cancel();
+			}
+
+			GlobalLeaderboardRequest.clear();
+			
+			foreach(Campaign in DataFileMgr.Campaigns) {
+				declare Count = ScoreMgr.CampaignLeaderBoard_GetPlayerCount(Campaign.CampaignId, Zones[CurrentZoneOverall], True);
+				GlobalLeaderboardRequest.add(ScoreMgr.CampaignLeaderBoard_GetPlayerList(MyUserID, Campaign.CampaignId, Zones[CurrentZoneOverall], True, 1, 10));
+				GlobalLeaderboardRequest.add(ScoreMgr.CampaignLeaderBoard_GetPlayerList(MyUserID, Campaign.CampaignId, Zones[CurrentZoneOverall], True, 10, Count-10));
+			}
+		}
 		
 		Void ReloadSkillpointsSplitted() {
 			Page.GetFirstChild("SkillpointsSplittedError").Hide();
@@ -2116,6 +2157,23 @@
 							
 						ReloadSkillpointsSplitted();
 					}
+
+					if(E.ControlId == "SkillpointsOverallZoneNext") {
+						if(CurrentZoneOverall == Zones.count-1)
+							CurrentZoneOverall = 0;
+						else
+							CurrentZoneOverall += 1;
+							
+						RequestOverall();
+					}
+					if(E.ControlId == "SkillpointsOverallZonePrev") {
+						if(CurrentZoneOverall == 0)
+							CurrentZoneOverall = Zones.count - 1;
+						else
+							CurrentZoneOverall -= 1;
+							
+						RequestOverall();
+					}
 				
 					if(E.ControlId == "Quad_Help_Menu") {
 						if(MenuHelpMode) MenuHelpMode = False;
@@ -2192,6 +2250,22 @@
 							declare FileName = (Page.GetFirstChild("Validation") as CMlFileEntry).FullFileName;
 							if(FileName != "")
 								ValidationRequest = Http.CreateGet(FileName);//Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/validate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^""^"&car="^""^"&replay="^FileName);
+						}
+						if(E.ControlId == "ZoneNext") {
+							if(CurrentZone + 1 > Zones.count - 1)
+								CurrentZone = 0;
+							else
+								CurrentZone+=1;
+								
+							ReloadLeaderboard(SelectEnvironment);
+						}
+						if(E.ControlId == "ZonePrev") {
+							if(CurrentZone - 1 < 0)
+								CurrentZone = Zones.count - 1;
+							else
+								CurrentZone-=1;
+							
+							ReloadLeaderboard(SelectEnvironment);
 						}
 						if(E.ControlId == "ZoneNext") {
 							if(CurrentZone + 1 > Zones.count - 1)
@@ -2442,9 +2516,13 @@
 							Environment = "Leaderboards";
 
 							declare Ident MyUserID for LocalUser;
-							
-							GlobalLeaderboardRequest = ScoreMgr.CampaignLeaderBoard_GetPlayerList(MyUserID, "", "World", True, 1, 10);
-							//log(ScoreMgr.GlobalLeaderBoard_GetPlayerCount("World"));
+
+							RequestOverall();
+
+							Page.GetFirstChild("SkillpointLeaderboard").Hide();
+							Page.GetFirstChild("SkillpointError").Hide();
+							Page.GetFirstChild("SkillpointLoading").Show();
+							Page.GetFirstChild("SkillpointLoadingText").Show();
 							
 							if(ActivityCampaignsRequest != Null) Http.Destroy(ActivityCampaignsRequest);
 							ActivityCampaignsRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity_leaderboard.php");
@@ -2712,6 +2790,7 @@
 			(Page.GetFirstChild("SkillpointsSplittedCampaign") as CMlLabel).SetText(Campaigns[SkillpointsSplittedCampaign]);
 			(Page.GetFirstChild("SkillpointsSplittedCar") as CMlLabel).SetText(Cars[SkillpointsSplittedCar]);
 			(Page.GetFirstChild("SkillpointsSplittedZone") as CMlLabel).SetText(Zones[SkillpointsSplittedZone]);
+			(Page.GetFirstChild("SkillpointsOverallZone") as CMlLabel).SetText(Zones[CurrentZoneOverall]);
 			
 			(Page.GetFirstChild("menu") as CMlFrame).GetFirstChild("Frame_Help").Visible = MenuHelpMode;
 			(Page.GetFirstChild("selection") as CMlFrame).GetFirstChild("Frame_Help").Visible = SelectionHelpMode;

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<manialink version="3">
+<frame id="FRAME_MENU" z-index="-1">
+	<frame id="FRAME_BACKGROUND" z-index="-1">
+		<quad z-index="-4" size="110 75" bgcolor="000A" halign="center" valign="center" style="Bgs1" substyle="BgCardList"/>
+		<quad z-index="-3" size="110 75" bgcolor="000A" halign="center" valign="center" style="Bgs1" substyle="BgCardList"/>
+		<quad z-index="-2" size="110 75" bgcolor="FFFA" style="Bgs1InRace" substyle="BgGradV" valign="center" pos="0 0" halign="center"/>
+	</frame>
+	<frame id="FRAME_INSIDE">
+		<quad pos="0 0" size="110 50" bgcolor="FFFA" halign="center" valign="center" style="Bgs1" substyle="BgColorContour" opacity=".25" hidden="1"/>
+		<quad pos="0 36" z-index="0" size="90 36" image="file://Media/Images/NadeoEnvimix.png" halign="center"/>
+		<quad pos="0.5 35.5" z-index="0" size="90 36" image="file://Media/Images/NadeoEnvimix.png" halign="center" modulatecolor="036"/>
+		<frame pos="0 -10">
+			<frame>
+				<quad z-index="0" size="90 10" halign="center" valign="bottom" style="Bgs1InRace" substyle="BgCard" scriptevents="1" modulatecolor="036"/>
+				<label pos="0 4.7" z-index="1" size="90 10" text="Play Nadeo Envimix" valign="center2" halign="center" textfont="RajdhaniMono" textprefix="$t"/>
+			</frame>
+			<frame pos="0 -11">
+				<quad z-index="0" size="90 10" halign="center" valign="bottom" style="Bgs1InRace" substyle="BgCard" scriptevents="1" modulatecolor="036"/>
+				<label pos="-42 7" z-index="1" size="40 5" text="Map of the day" valign="center2" textfont="RajdhaniMono" textprefix="$t" textsize="1"/>
+				<label pos="-42.5 1.25" z-index="1" size="84 6" text="A01" valign="bottom" textfont="RajdhaniMono" textsize="2.5"/>
+				<frame pos="15.5 5" z-index="1" clip="True" clipposn="1 0.1" clipsizen="55 8">
+					<quad pos="1" size="55 40" bgcolor="FFF" halign="center" valign="center" opacity="0.9"/>
+				</frame>
+			</frame>
+			<frame pos="-0.5 -12">
+				<quad z-index="0" size="44.5 10" halign="right" style="Bgs1InRace" substyle="BgCard" scriptevents="1" modulatecolor="036" id="QUAD_REPLAYS"/>
+				<label pos="-22.25 -5.25" z-index="1" size="44.5 10" text="Replays" halign="center" valign="center2" textfont="RajdhaniMono" translate="1" textprefix="$t"/>
+			</frame>
+			<frame pos="0.5 -12">
+				<quad z-index="0" size="44.5 10" halign="left" style="Bgs1InRace" substyle="BgCard" scriptevents="1" modulatecolor="800" id="QUAD_EXIT"/>
+				<label pos="22.25 -5.25" z-index="1" size="44.5 10" text="Exit" halign="center" valign="center2" textfont="RajdhaniMono" translate="1" textprefix="$t"/>
+			</frame>
+		</frame>
+	</frame>
+	<quad pos="-60 -20" z-index="0" size="10 10" bgcolor="FFFA" halign="center" valign="center" style="UIConstruction_Buttons" substyle="Plugins" scriptevents="1"/>
+	<quad pos="-60 -32.5" z-index="0" size="8 8" image="file://Media/Images/SignSmall.png" url="https://bigbang1112.eu" halign="center" valign="center" id="QUAD_SIGN" scriptevents="1"/>
+	<quad pos="-60 -32.5" z-index="-1" size="20 20" valign="center" halign="center" style="Bgs1InRace" substyle="Glow" opacity=".75" id="QUAD_SIGN_GLOW"/>
+	<label pos="-50 38.8" z-index="0" size="50 5" text="version" textsize="1" textemboss="1" textcolor="AAA" id="LABEL_VERSION" valign="bottom"/>
+	<label pos="50 38.5" z-index="0" size="60 5" text="MADE BY $o$i$nBIGBANG1112" halign="right" valign="bottom" textsize="1.5" textemboss="1" textfont="RajdhaniMono" scriptevents="1" style="TextButtonBig" id="LABEL_MADEBY"/>
+	<label pos="0 -60" z-index="0" size="160 5" text="WANT TO MAKE YOUR OWN ENVIMIX? $ff0TRY THE NEW ENVIMIX TITLE PACK" valign="center" textsize="2.5" textemboss="1" textfont="RajdhaniMono" scriptevents="1" style="TextButtonBig" halign="center"/>
+</frame>
+<script><!--
+	#Include "TextLib" as TextLib
+
+	(Page.GetFirstChild("LABEL_VERSION") as CMlLabel).SetText(TextLib::Split(" ", LoadedTitle.TitleVersion)[0]);
+--></script>
+</manialink>
