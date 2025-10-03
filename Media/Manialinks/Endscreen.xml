@@ -273,8 +273,8 @@
 		
 		EnableMenuNavigation(True,False,Null,50);
 		
-		if(IsCampaignMap(Map.MapInfo.MapUid))
-			MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid ^ "&login=" ^ LocalUser.Login);
+		//if(IsCampaignMap(Map.MapInfo.MapUid))
+		//	MapInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid ^ "&login=" ^ LocalUser.Login);
 		
 		declare netread Integer Net_NEM_ActivityPoints for UI;
 		//(Page.GetFirstChild("LabelActivityPoints") as CMlLabel).SetText(""^Net_NEM_ActivityPoints);
@@ -497,7 +497,9 @@
 								if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
 									if(IsCampaignMap(Map.MapInfo.MapUid)) {
 										declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-										RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+										//RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+										declare netwrite Boolean Net_NEM_Continue for UI;
+										Net_NEM_Continue = True;
 									}
 									else {
 										declare netwrite Boolean Net_NEM_Continue for UI;
@@ -571,7 +573,9 @@
 							if(StartDifficulty != DifficultyValue || StartQuality != QualityValue) {
 								if(IsCampaignMap(Map.MapInfo.MapUid)) {
 									declare persistent Text PERSISTENT_NEM_ACCESS_TOKEN for LocalUser;
-									RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+									//RateRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/rate.php?token="^PERSISTENT_NEM_ACCESS_TOKEN^"&map="^Map.MapInfo.MapUid^"&car="^Net_NEM_Car^"&difficulty="^DifficultyValue^"&quality="^QualityValue);
+									declare netwrite Boolean Net_NEM_Continue for UI;
+									Net_NEM_Continue = True;
 								}
 								else {
 									declare netwrite Boolean Net_NEM_Continue for UI;

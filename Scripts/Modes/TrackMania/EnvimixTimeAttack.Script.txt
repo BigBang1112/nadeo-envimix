@@ -189,7 +189,9 @@ main() {
 								Event.Player.Score.BestRace.Checkpoints.add(RaceTime);
 								Checkpoints[Car][Event.Player.User.Login].add(RaceTime);
 								
-								PrevCheckpoints[Car][Event.Player.User.Login].clear();
+								if (PrevCheckpoints[Car].existskey(Event.Player.User.Login)) {
+									PrevCheckpoints[Car][Event.Player.User.Login].clear();
+								}
 									
 								declare Text Rank;
 								if(Event.Player.User.LadderRank == -1) Rank = "Unranked";

@@ -311,7 +311,7 @@
 			
 				if(Zones.count != 0)
 				if(TimerRequest < Now - 10000) {
-					MapRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid);
+					//MapRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid);
 				
 					TimerRequest = Now;
 				}

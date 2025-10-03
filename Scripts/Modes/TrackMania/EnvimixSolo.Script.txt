@@ -498,7 +498,8 @@ Void Loop() {
 			declare netwrite Integer Net_NEM_FirstFinish_PlayerCount for UI;
 			Net_NEM_FirstFinish_PlayerCount = ScoreMgr.MapLeaderBoard_GetPlayerCount(Map.MapInfo.MapUid, Vehicle^"2", "World");
 			
-			if(Map::IsCampaignMap(Map.MapInfo.MapUid)) {
+			Net_NEM_Validation = -1;
+			/*if(Map::IsCampaignMap(Map.MapInfo.MapUid)) {
 				declare MapRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ Map.MapInfo.MapUid);
 				wait(MapRequest.IsCompleted);
 				if(MapRequest.StatusCode == 200) {
@@ -515,7 +516,7 @@ Void Loop() {
 					Net_NEM_Validation = -1;
 				}
 				Http.Destroy(MapRequest);
-			}
+			}*/
 		}
 		
 		Layers2::Detach("Ingame",Player);

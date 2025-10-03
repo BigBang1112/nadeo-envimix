@@ -41,7 +41,7 @@
 			<label z-index="1" size="110 6" text="Made by $iBigBang1112 & Poutrel" valign="center2" textsize="1" halign="center" style="TextButtonBig" pos="0 -3" manialink="file://Media/Manialinks/About.xml"/>
 		</frame>
 		
-		<label pos="-58 -45" z-index="1" size="20 5" text="PRIVACY POLICY" valign="center2" textsize=".5" style="TextCardMedium" manialink="file://Media/Manialinks/Privacy.xml" halign="right" textemboss="1" translate="1" hidden="1"/>
+		<label pos="-58 -45" z-index="1" size="30 5" id="build" valign="center2" textsize=".5" halign="right" textemboss="1"/>
 		
 		<quad pos="0 -15" z-index="-1" size="110 70" bgcolor="0008" halign="center" valign="center" style="Bgs1" substyle="BgDialogBlur"/>
 		<frame id="buttons">
@@ -1165,6 +1165,7 @@
 			Page.GetFirstChild("update").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime, 0.0, 1.0, 1000);
 			Page.GetFirstChild("menu").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 100, 0.0, 1.0, 1000);
 			Page.GetFirstChild("footer").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 200, 0.0, 1.0, 1000);
+			Page.GetFirstChild("build").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 200, 0.0, 1.0, 1000);
 			
 			Page.GetFirstChild("buttonPlay").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 300, 0.0, 1.0, 500);
 			Page.GetFirstChild("buttonReplays").RelativeScale = AnimLib::EaseOutCubic(Now - _StartTime - 400, 0.0, 1.0, 500);
@@ -1734,7 +1735,7 @@
 			((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("Skillpoints") as CMlLabel).SetText(""^Skillpoints);
 			
 			((Page.GetFirstChild("Scanner") as CMlFrame).GetFirstChild("ActivityPoints") as CMlLabel).SetText("$58f0");
-			ActivityTrackRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ UID ^ "&login=" ^ LocalUser.Login);
+			//ActivityTrackRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_info.php?uid=" ^ UID ^ "&login=" ^ LocalUser.Login);
 			
 			ReloadLeaderboard(CampaignID);
 		}
@@ -1848,9 +1849,9 @@
 		}
 		
 		Void Refresh() {
-			TrackOfTheDayRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/track_day.php");
-			MapBriefListRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_list_brief.php");
-			ActivityInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity_info.php?login="^LocalUser.Login);
+			TrackOfTheDayRequest = Http.CreateGet("https://v2.bigbang1112.cz/trackmania/nadeoenvimix/trackday");
+			//MapBriefListRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_list_brief.php");
+			//ActivityInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity_info.php?login="^LocalUser.Login);
 
 			declare Ident MyUserID for LocalUser;
 			
@@ -2655,21 +2656,26 @@
 			SoundHover = Audio.CreateSound("file://Media/Sounds/Hover.ogg");
 			SoundClick = Audio.CreateSound("file://Media/Sounds/Click.ogg");
 			SoundElectric = Audio.CreateSound("file://Media/Sounds/Electric.ogg");
+
+			(Page.GetFirstChild("build") as CMlLabel).SetText(TextLib::Split(" ", LoadedTitle.TitleVersion)[0]);
 			
 			Thumbnails = ThumbnailList();
 			
-			declare ThumbnailProceed = 0.0;
+			declare ThumbnailProceed = 0;
 			
 			foreach(ThumbnailsCampaign,Thumbnails) {
 				foreach(Thumb,ThumbnailsCampaign) {
 					PreloadImage(Thumb);
 					ThumbnailProceed+=1;
-					(Page.GetFirstChild("LoadingBar") as CMlGauge).SetRatio(ThumbnailProceed / (4*65+5*4));
+					(Page.GetFirstChild("LoadingBar") as CMlGauge).SetRatio(ThumbnailProceed * 1.0 / (4*65+5*4));
 					
 					foreach(Event,PendingEvents) {
 						OnEvent(Event);
 					}
-					yield;
+					
+					if (ThumbnailProceed % 5 == 0) {
+						yield;
+					}
 				}
 			}
 			
