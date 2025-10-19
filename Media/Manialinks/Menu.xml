@@ -1849,7 +1849,7 @@
 		}
 		
 		Void Refresh() {
-			TrackOfTheDayRequest = Http.CreateGet("https://v2.bigbang1112.cz/trackmania/nadeoenvimix/trackday");
+			TrackOfTheDayRequest = Http.CreateGet("https://api.envimix.gbx.tools/totd/Nadeo_Envimix@bigbang1112");
 			//MapBriefListRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/map_list_brief.php");
 			//ActivityInfoRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity_info.php?login="^LocalUser.Login);
 
