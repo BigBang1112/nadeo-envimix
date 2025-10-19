@@ -209,7 +209,7 @@
 			<label pos="93 -0.5" z-index="1" size="60 5" text="Activity Points" halign="center" style="TextTitle3" textsize="2" valign="center2"/>
 			<quad pos="93 -0.5" z-index="0" size="60 7" halign="center" valign="center2" bgcolor="000A"/>
 			<quad pos="93 -60" z-index="1" size="20 20" bgcolor="FFFA" halign="center" valign="center" style="BgRaceScore2" substyle="SandTimer" hidden="1" id="ActivityLoading"/>
-			<label pos="93 -60" z-index="1" size="50 10" textprefix="$f00" text="Gone" translate="1" halign="center" textsize="4" valign="center2" textemboss="1" textfont="RajdhaniMono" hidden="1" id="ActivityError"/>
+			<label pos="93 -60" z-index="1" size="50 10" textprefix="$f00" text="Error" translate="1" halign="center" textsize="4" valign="center2" textemboss="1" textfont="RajdhaniMono" hidden="1" id="ActivityError"/>
 			<label pos="93 -9" z-index="1" size="40 5" text="World" halign="center" style="TextTitle3" textsize="1" valign="center2" translate="1"/>
 			<quad pos="69 -9" z-index="1" size="8 8" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowPrev" valign="center" halign="center" scriptevents="1"/>
 			<quad pos="117 -9" z-index="1" size="8 8" bgcolor="FFFA" style="Icons64x64_1" substyle="ArrowNext" valign="center" halign="center" scriptevents="1"/>
