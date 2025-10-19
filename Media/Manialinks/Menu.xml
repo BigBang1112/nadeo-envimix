@@ -2526,7 +2526,7 @@
 							Page.GetFirstChild("SkillpointLoadingText").Show();
 							
 							if(ActivityCampaignsRequest != Null) Http.Destroy(ActivityCampaignsRequest);
-							ActivityCampaignsRequest = Http.CreateGet("http://trackmania.bigbang1112.eu/nadeoenvimix/api/activity_leaderboard.php");
+							ActivityCampaignsRequest = Http.CreateGet("https://api.envimix.gbx.tools/activity/leaderboard?titleId=Nadeo_Envimix@bigbang1112");
 							
 							ReloadSkillpointsSplitted();
 						}
